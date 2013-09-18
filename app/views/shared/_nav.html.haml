@@ -1,6 +1,14 @@
 %nav.top-bar
   %ul.title-area
-    %li.home
-      = link_to "Madi"
-    %li.supporters
-      = link_to "Supporters"
+    %li.name
+      %h1
+        = link_to "MADi"
+    %li.toggle-topbar.menu-icon
+      = link_to content_tag(:span, "Menu"), "#"
+  %section.top-bar-section
+    %ul.left
+      %li
+        = link_to "Support and Contribute", support_path
+    // - if current_user
+    //  %ul.right
+
