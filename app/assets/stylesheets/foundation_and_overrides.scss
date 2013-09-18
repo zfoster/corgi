@@ -49,12 +49,14 @@ $em-base: 16 !default;
 
 // Various global styles
 
+@import url(http://fonts.googleapis.com/css?family=Cabin:400,700);
+
 $default-float: left;
 
-// $body-bg: #fff;
-// $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-// $body-font-weight: normal;
+$body-bg: #F7F5EF;
+$body-font-color: #4D4D4D;
+$body-font-family: "Cabin", Helvetica, Arial, sans-serif;
+$body-font-weight: normal;
 // $body-font-style: normal;
 
 // Font-smoothing
@@ -160,7 +162,7 @@ $default-float: left;
 
 // Control header font styles
 
-// $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$header-font-family: "Cabin", Helvetica, Arial, sans-serif;
 // $header-font-weight: bold;
 // $header-font-style: normal;
 // $header-font-color: #222;
