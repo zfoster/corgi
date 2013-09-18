@@ -6,7 +6,15 @@
     %p This is where intro text will go
   .small-12.large-6.columns
     %h3 Get connected
-    %p Connect with Twitter
-    %p Connect with LinkedIn
-    %p Connect with Facebook
-    %p Connect with Google+
+    %a.button Connect with Twitter
+    %br
+    %a.button Connect with LinkedIn
+    %br
+    %a.button Connect with Facebook
+    %br
+    %a.button Connect with Google+
+    / = form_for :user
+    /   .field-and-label
+    /     / = cc.label 'email', 'Email Address'
+    /     / = cc.text_field 'email', value: "", placeholder: 'Email'
+    /   = submit_tag "Connect", class: 'button.confirm'
