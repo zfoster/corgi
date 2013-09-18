@@ -1310,22 +1310,29 @@ $button-border-color: darken($primary-color, $button-function-factor);
 
 @import 'foundation';
 
-
-
 // Social Media Buttons
 
+.social-media {
+  @include button;
+  $button-border-width: 0;
+}
+
 .twitter {
+  @include button;
   background-color: #00aced;
 }
 
 .facebook {
+  @include button;
   background-color: #3b5998;
 }
 
 .linkedin {
+  @include button;
   background-color: #007bb6;
 }
 
 .googleplus {
+  @include button;
   background-color: #dd4b39;
 }
