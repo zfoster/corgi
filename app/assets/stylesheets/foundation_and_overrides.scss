@@ -2,6 +2,9 @@
 // Foundation Variables
 //
 
+@import url(http://fonts.googleapis.com/css?family=Cabin:400,700);
+
+
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
 $base-font-size: 100% !default;
@@ -49,7 +52,6 @@ $em-base: 16 !default;
 
 // Various global styles
 
-@import url(http://fonts.googleapis.com/css?family=Cabin:400,700);
 
 $default-float: left;
 
@@ -69,7 +71,7 @@ $body-font-weight: normal;
 
 // Colors
 
-// $primary-color: #2ba6cb;
+$primary-color: #333333;
 // $secondary-color: #e9e9e9;
 // $alert-color: #c60f13;
 // $success-color: #5da423;
@@ -82,8 +84,8 @@ $body-font-weight: normal;
 // Inset shadow shiny edges and depressions.
 
 $shiny-edge-size: 0;
-$shiny-edge-color: rgba(#fff, .5);
-$shiny-edge-active-color: rgba(#000, .2);
+// $shiny-edge-color: rgba(#fff, .5);
+// $shiny-edge-active-color: rgba(#000, .2);
 
 // Control whether or not CSS classes come through in the CSS files.
 
@@ -344,23 +346,7 @@ $header-font-color: #4D4D4D;
 // Button Variables
 //
 
-// Social Media Buttons
 
-.twitter {
-  background-color: #00aced;
-}
-
-.facebook {
-  background-color: #3b5998;
-}
-
-.linkedin {
-  background-color: #007bb6;
-}
-
-.googleplus {
-  background-color: #dd4b39;
-}
 
 // We use these to build padding for buttons.
 
@@ -388,13 +374,13 @@ $header-font-color: #4D4D4D;
 
 // We use these to control various hover effects.
 
-// $button-function-factor: 10%;
+$button-function-factor: 10%;
 
 // We use these to control button border styles.
 
 $button-border-width: 0px;
 // $button-border-style: solid;
-// $button-border-color: darken($primary-color, $button-function-factor);
+$button-border-color: darken($primary-color, $button-function-factor);
 
 // We use this to set the default radius used throughout the core.
 
@@ -1321,4 +1307,25 @@ $button-border-width: 0px;
 
 // $topbar-sticky-class: ".sticky";
 
+
 @import 'foundation';
+
+
+
+// Social Media Buttons
+
+.twitter {
+  background-color: #00aced;
+}
+
+.facebook {
+  background-color: #3b5998;
+}
+
+.linkedin {
+  background-color: #007bb6;
+}
+
+.googleplus {
+  background-color: #dd4b39;
+}
