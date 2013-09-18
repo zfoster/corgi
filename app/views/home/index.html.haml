@@ -22,8 +22,8 @@
       %a.button.facebook Connect with Facebook
       %br
       %a.button.googleplus Connect with Google+
-      / = form_for :user
-      /   .field-and-label
-      /     / = cc.label 'email', 'Email Address'
-      /     / = cc.text_field 'email', value: "", placeholder: 'Email'
-      /   = submit_tag "Connect", class: 'button.confirm'
+      = form_for :identity
+        .field-and-label
+          = cc.label 'email', 'Email Address'
+          = cc.text_field 'email', value: "", placeholder: 'Email Address'
+        = submit_tag "Connect", class: 'button.confirm'
