@@ -1,0 +1,6 @@
+%h1 Users#show
+%p= @user.email
+
+%ul
+  - @user.identities.each do |identity|
+    %li #{identity.provider} - #{identity.uid}

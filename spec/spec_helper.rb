@@ -1,8 +1,12 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
+require 'simplecov'
+SimpleCov.start
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'capybara/rspec'
+require 'capybara/rails'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -40,3 +44,42 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+OmniAuth.config.test_mode = true
+
+OmniAuth.config.add_mock(:twitter, {:uid => '12345'})
+
+OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(
+  { "provider"=>"facebook",
+    "uid"=>"12312",
+    "info"=>
+    { "nickname"=>"bob",
+      "email"=>"bob@example.com",
+      "name"=>"Bob Loblaw",
+      "first_name"=>"Bob",
+      "last_name"=>"Loblaw",
+      "image"=>"http://graph.facebook.com/8623851/picture?type=square",
+      "urls"=>{"Facebook"=>"https://www.facebook.com/southpolesteve"},
+      "verified"=>true},
+    "credentials"=>
+    { "token"=>
+      "kljwejkqwejklqejq2e9iq9d0adu09ad9asd",
+      "expires_at"=>1695062093,
+      "expires"=>true},
+    "extra"=>
+    { "raw_info"=>
+      { "id"=>"12312",
+        "name"=>"Bob Loblaw",
+        "first_name"=>"Bob",
+        "last_name"=>"Loblaw",
+        "link"=>"https://www.facebook.com/southpolesteve",
+        "username"=>"bobloblaw",
+        "gender"=>"male",
+        "email"=>"test@example.com",
+        "timezone"=>-5,
+        "locale"=>"en_US",
+        "verified"=>true,
+        "updated_time"=>"2012-09-24T02:48:31+0000"
+      }
+    }
+  })

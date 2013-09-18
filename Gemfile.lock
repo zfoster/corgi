@@ -28,6 +28,12 @@ GEM
     arel (4.0.0)
     atomic (1.1.14)
     builder (3.1.4)
+    capybara (2.1.0)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     coderay (1.0.9)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -36,9 +42,16 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    daemons (1.1.9)
     diff-lcs (1.2.4)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     execjs (2.0.1)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -46,7 +59,9 @@ GEM
       activesupport (>= 3.1, < 4.1)
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
+    hashie (2.0.5)
     hike (1.2.3)
+    httpauth (0.2.0)
     i18n (0.6.5)
     jbuilder (1.5.1)
       activesupport (>= 3.0.0)
@@ -54,13 +69,41 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jwt (0.1.8)
+      multi_json (>= 1.5)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     method_source (0.8.2)
     mime-types (1.25)
+    mini_portile (0.5.1)
     minitest (4.7.5)
     multi_json (1.8.0)
+    multipart-post (1.2.0)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
+    oauth (0.4.7)
+    oauth2 (0.8.1)
+      faraday (~> 0.8)
+      httpauth (~> 0.1)
+      jwt (~> 0.1.4)
+      multi_json (~> 1.0)
+      rack (~> 1.2)
+    omniauth (1.1.4)
+      hashie (>= 1.2, < 3)
+      rack
+    omniauth-facebook (1.4.1)
+      omniauth-oauth2 (~> 1.1.0)
+    omniauth-oauth (1.0.1)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-oauth2 (1.1.1)
+      oauth2 (~> 0.8.0)
+      omniauth (~> 1.0)
+    omniauth-twitter (1.0.0)
+      multi_json (~> 1.3)
+      omniauth-oauth (~> 1.0)
+    pg (0.16.0)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -68,6 +111,8 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
+    quiet_assets (1.0.2)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -101,6 +146,10 @@ GEM
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     slop (3.4.6)
     sprockets (2.10.0)
       hike (~> 1.2)
@@ -112,6 +161,10 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     sqlite3 (1.3.8)
+    thin (1.5.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.18.1)
     thread_safe (0.1.3)
       atomic
@@ -125,6 +178,8 @@ GEM
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
     zurb-foundation (4.3.0)
       sass (>= 3.2.0)
 
@@ -132,15 +187,24 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  capybara
   coffee-rails (~> 4.0.0)
+  figaro
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails
+  omniauth
+  omniauth-facebook
+  omniauth-twitter
+  pg
   pry-rails
+  quiet_assets
   rails (= 4.0.0)
   rspec-rails
   sass-rails (~> 4.0.0)
+  simplecov
   sqlite3
+  thin
   turbolinks
   uglifier (>= 1.3.0)
   zurb-foundation
