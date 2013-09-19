@@ -2,8 +2,14 @@ class SessionsController < ApplicationController
   def create
     auth = request.env['omniauth.auth']
     @identity = Identity.find_or_create_with_omniauth(auth)
-    @user = @identity.find_or_create_user
-    redirect_to @user
+    if signed_in?
+      @identity.user = current_user
+      @identity.save
+    else
+      @identity.find_or_create_user
+      sign_in @identity.user
+    end
+    redirect_to @identity.user
 
     # if signed_in?
     #   if @identity.user == current_user
