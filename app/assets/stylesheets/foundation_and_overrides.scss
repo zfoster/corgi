@@ -1354,7 +1354,8 @@ $button-border-color: darken($primary-color, $button-function-factor);
 
 // Front page content
 
-body {
+body.home.index {
+  background-color: #555;
   background-image: url('madison.jpg');
   background-repeat: no-repeat;
   background-size:100%;
