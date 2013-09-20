@@ -8,11 +8,17 @@
       %p
         Connect. Find the tread. Get involved. Involve yourself. Dig in. Get tied in. Red thread. Discover Madison. Find the thread. Follow the thread. Madison business connections. Join Madison's innovation network
     .small-12.large-4.columns.pull-1
-      = link_to "Connect with Twitter", twitter_auth_path, :class => "button twitter expand large"
+      - if current_user && current_user.twitter_identity
+        %a.button.twitter.large.expand Twitter - @handle
+      - else
+        = link_to "Connect with Twitter", twitter_auth_path, :class => "button twitter expand large"
       %br
       %a.button.linkedin.large.expand Connect with LinkedIn
       %br
-      = link_to "Connect with Facebook", facebook_auth_path, :class => "button facebook expand large"
+      - if current_user && current_user.facebook_identity
+        %a.button.twitter.large.expand Facebook - @handle
+      - else
+        = link_to "Connect with Facebook", facebook_auth_path, :class => "button facebook expand large"
       %br
       %a.button.googleplus.large.expand Connect with Google+
       / = form_tag() do
