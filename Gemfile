@@ -14,6 +14,7 @@ gem 'zurb-foundation'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'omniauth-linkedin'
 gem 'pg'
 
 group :development, :test do
