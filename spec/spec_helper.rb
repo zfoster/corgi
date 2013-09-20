@@ -49,7 +49,23 @@ OmniAuth.config.test_mode = true
 
 OmniAuth.config.add_mock(:twitter, {:uid => '12345'})
 
-OmniAuth.config.add_mock(:linkedin, {:uid => '12345'})
+OmniAuth.config.add_mock(:linkedin, {:uid => '12345',
+  :info => {
+    :email => 'wash@firefly.com',
+    :first_name => 'Wash',
+    :last_name => 'Hoburne'
+    }
+  }
+)
+
+OmniAuth.config.add_mock(:google_oauth2, {:uid => '12345',
+  :info => {
+    :email => 'captain@firefly.com',
+    :first_name => 'Malcolm',
+    :last_name => 'Reynolds'
+    }
+  }
+)
 
 OmniAuth.config.add_mock(:facebook, {:uid => '12345', 
   :info => { 
@@ -59,6 +75,8 @@ OmniAuth.config.add_mock(:facebook, {:uid => '12345',
     }
   }
 )
+
+# OmniAuth.config.add_mock(:)
 
 # OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(
 #   { "provider"=>"facebook",
