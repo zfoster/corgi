@@ -25,9 +25,11 @@ describe "A new user authorizes" do
       expect(page).to have_content('Please provide an email address')
     end
 
-    let(:email) { 'doctor@firefly.com' }
+    let(:email) { 'wash@firefly.com' }
     
     it "does not ask for email if it already exists" do
+      visit root_path
+      click_link 'Connect with LinkedIn'
       visit root_path
       click_link 'Connect with Twitter'
       expect(page).to have_content(provider)
