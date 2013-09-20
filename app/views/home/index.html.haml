@@ -1,29 +1,22 @@
 .columns
-  .row
-    .header.columns
-      = image_tag "madi-logo.png", title: "MADi logo"
+  .row.main-content
+    .small-12.large-6.columns
+      .header
+        = image_tag "madi-logo.png", title: "MADi logo"
       %h2.subheader
-        Connect To Madison's Business Community
-  .row
-    .small-12.large-6.columns
+        Discover Madison Innovation
       %p
-        One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.
-        %br
-        %br
-        "What's happened to me?" he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame. It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather.
-    .small-12.large-6.columns
-      %h3 Get connected
-      = link_to "Connect with Facebook", facebook_auth_path, :class => ("button facebook")
-      = link_to "Connect with Twitter", twitter_auth_path
-      %a.button.twitter Connect with Twitter
+        Connect. Find the tread. Get involved. Involve yourself. Dig in. Get tied in. Red thread. Discover Madison. Find the thread. Follow the thread. Madison business connections. Join Madison's innovation network
+    .small-12.large-4.columns.pull-1
+      = link_to "Connect with Twitter", twitter_auth_path, :class => "button twitter expand large"
       %br
-      %a.button.linkedin Connect with LinkedIn
+      %a.button.linkedin.large.expand Connect with LinkedIn
       %br
-      %a.button.facebook Connect with Facebook
+      = link_to "Connect with Facebook", facebook_auth_path, :class => "button facebook expand large"
       %br
-      %a.button.googleplus Connect with Google+
-      = form_for :identity
-        .field-and-label
-          = cc.label 'email', 'Email Address'
-          = cc.text_field 'email', value: "", placeholder: 'Email Address'
-        = submit_tag "Connect", class: 'button.confirm'
+      %a.button.googleplus.large.expand Connect with Google+
+      / = form_tag() do
+      /   = label_tag('email', 'Email Address')
+      /   = text_field_tag('email', :placeholder => "Email Address")
+      /   = submit_tag("Connect", :class => "button submit")
+

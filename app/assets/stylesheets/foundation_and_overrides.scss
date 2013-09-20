@@ -1320,6 +1320,11 @@ $button-border-color: darken($primary-color, $button-function-factor);
 .twitter {
   @include button;
   background-color: #00aced;
+  &:hover,
+  &:active {
+    background-color: #008ccd;
+    box-shadow: 5px 5px 5px 5px #ddd;
+  }
 }
 
 .facebook {
