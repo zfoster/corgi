@@ -11,4 +11,8 @@ module ApplicationHelper
   def linkedin_auth_path
     '/auth/linkedin'
   end
+
+  def googleplus_auth_path
+    '/auth/googleplus'
+  end
 end
