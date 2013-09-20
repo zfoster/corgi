@@ -26,13 +26,15 @@ class SessionsController < ApplicationController
     #   else
     #     @user = User.create email: auth['info']['email']
     #     @identity.user = @user
-    #     @identity.save 
+    #     @identity.save
     #     redirect_to root_path, notice: "Please finish registering"
     #   end
     # end
   end
 
   def destroy
+    self.current_user = nil
+    redirect_to root_url, notice: 'Signed out!'
   end
 
 end
