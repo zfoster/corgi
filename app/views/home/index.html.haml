@@ -23,7 +23,7 @@
       - else
         = link_to "Connect with Facebook", facebook_auth_path, :class => "button facebook expand large"
       %br
-      - if current_user && current_user.linkedin_identity
+      - if current_user && current_user.googleplus_identity
         %a.button.googleplus.large.expand= current_user.googleplus_identity.info['email']
       - else
         = link_to "Connect with Google+", googleplus_auth_path, :class => "button googleplus expand large"
