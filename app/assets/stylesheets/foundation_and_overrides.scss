@@ -2,6 +2,9 @@
 // Foundation Variables
 //
 
+@import url(http://fonts.googleapis.com/css?family=Cabin:400,700);
+
+
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
 $base-font-size: 100% !default;
@@ -49,12 +52,13 @@ $em-base: 16 !default;
 
 // Various global styles
 
+
 $default-float: left;
 
-// $body-bg: #fff;
-// $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-// $body-font-weight: normal;
+$body-bg: #F7F5EF;
+$body-font-color: #4D4D4D;
+$body-font-family: "Cabin", Helvetica, Arial, sans-serif;
+$body-font-weight: normal;
 // $body-font-style: normal;
 
 // Font-smoothing
@@ -67,7 +71,7 @@ $default-float: left;
 
 // Colors
 
-// $primary-color: #2ba6cb;
+$primary-color: #D72C20;
 // $secondary-color: #e9e9e9;
 // $alert-color: #c60f13;
 // $success-color: #5da423;
@@ -79,7 +83,7 @@ $default-float: left;
 
 // Inset shadow shiny edges and depressions.
 
-// $shiny-edge-size: 0 1px 0;
+$shiny-edge-size: 0;
 // $shiny-edge-color: rgba(#fff, .5);
 // $shiny-edge-active-color: rgba(#000, .2);
 
@@ -160,10 +164,10 @@ $default-float: left;
 
 // Control header font styles
 
-// $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$header-font-family: "Cabin", Helvetica, Arial, sans-serif;
 // $header-font-weight: bold;
 // $header-font-style: normal;
-// $header-font-color: #222;
+$header-font-color: #4D4D4D;
 // $header-line-height: 1.4;
 // $header-top-margin: .2em;
 // $header-bottom-margin: .5em;
@@ -342,6 +346,8 @@ $default-float: left;
 // Button Variables
 //
 
+
+
 // We use these to build padding for buttons.
 
 // $button-med: emCalc(12);
@@ -368,13 +374,13 @@ $default-float: left;
 
 // We use these to control various hover effects.
 
-// $button-function-factor: 10%;
+$button-function-factor: 10%;
 
 // We use these to control button border styles.
 
-// $button-border-width: 1px;
+$button-border-width: 0px;
 // $button-border-style: solid;
-// $button-border-color: darken($primary-color, $button-function-factor);
+$button-border-color: darken($primary-color, $button-function-factor);
 
 // We use this to set the default radius used throughout the core.
 
@@ -1301,4 +1307,37 @@ $default-float: left;
 
 // $topbar-sticky-class: ".sticky";
 
+
 @import 'foundation';
+
+// Social Media Buttons
+
+.social-media {
+  @include button;
+  $button-border-width: 0;
+}
+
+.twitter {
+  @include button;
+  background-color: #00aced;
+  &:hover,
+  &:active {
+    background-color: #008ccd;
+    box-shadow: 5px 5px 5px 5px #ddd;
+  }
+}
+
+.facebook {
+  @include button;
+  background-color: #3b5998;
+}
+
+.linkedin {
+  @include button;
+  background-color: #007bb6;
+}
+
+.googleplus {
+  @include button;
+  background-color: #dd4b39;
+}

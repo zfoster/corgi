@@ -2,6 +2,7 @@ Corgi::Application.routes.draw do
 
   get "sessions/create"
   get "sessions/destroy"
+  get '/support' => 'content#support', :as => :support
   root "home#index"
 
   resources :users, only: [:show]

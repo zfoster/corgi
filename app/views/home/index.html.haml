@@ -1,6 +1,22 @@
-%h1 Home#index
+.columns
+  .row.main-content
+    .small-12.large-6.columns
+      .header
+        = image_tag "madi-logo.png", title: "MADi logo"
+      %h2.subheader
+        Discover Madison Innovation
+      %p
+        Connect. Find the tread. Get involved. Involve yourself. Dig in. Get tied in. Red thread. Discover Madison. Find the thread. Follow the thread. Madison business connections. Join Madison's innovation network
+    .small-12.large-4.columns.pull-1
+      = link_to "Connect with Twitter", twitter_auth_path, :class => "button twitter expand large"
+      %br
+      %a.button.linkedin.large.expand Connect with LinkedIn
+      %br
+      = link_to "Connect with Facebook", facebook_auth_path, :class => "button facebook expand large"
+      %br
+      %a.button.googleplus.large.expand Connect with Google+
+      / = form_tag() do
+      /   = label_tag('email', 'Email Address')
+      /   = text_field_tag('email', :placeholder => "Email Address")
+      /   = submit_tag("Connect", :class => "button submit")
 
-%p= link_to "Sign up with Facebook", facebook_auth_path
-%p= link_to "Sign up with Twitter", twitter_auth_path
-%p= link_to "Sign up with LinkedIn", linkedin_auth_path
-%p= link_to "Sign Out", sessions_destroy_path
