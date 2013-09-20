@@ -17,6 +17,7 @@
     = javascript_include_tag "vendor/custom.modernizr"
     = csrf_meta_tags
   %body
+    = render 'shared/nav'
     = render 'layouts/flashes'
     = yield
     = javascript_include_tag "application"
