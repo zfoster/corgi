@@ -19,11 +19,20 @@ describe "A new user authorizes" do
   context 'with twitter' do
     let(:provider) { 'twitter' }
 
-    it "shows my authorized accounts" do
+    it "asks for email if needed" do
+      visit root_path
+      click_link 'Connect with Twitter'
+      expect(page).to have_content('Please provide an email address')
+    end
+
+    let(:email) { 'doctor@firefly.com' }
+    
+    it "does not ask for email if it already exists" do
       visit root_path
       click_link 'Connect with Twitter'
       expect(page).to have_content(provider)
       expect(page).to have_content(uid)
+      expect(page).to have_content(email)
     end
   end
 
