@@ -13,16 +13,14 @@
       - else
         = link_to "Connect with Twitter", twitter_auth_path, :class => "button twitter expand large"
       %br
-      %a.button.linkedin.large.expand Connect with LinkedIn
+      = link_to "Connect with LinkedIn", linkedin_auth_path, :class => "button linkedin expand large"
       %br
       - if current_user && current_user.facebook_identity
         %a.button.twitter.large.expand Facebook - @handle
       - else
         = link_to "Connect with Facebook", facebook_auth_path, :class => "button facebook expand large"
       %br
-      %a.button.googleplus.large.expand Connect with Google+
-      %br
-      = link_to "Connect with Google Plus", googleplus_auth_path, :class => "button googleplus expand large"
+      = link_to "Connect with Google+", googleplus_auth_path, :class => "button googleplus expand large"
       / = form_tag() do
       /   = label_tag('email', 'Email Address')
       /   = text_field_tag('email', :placeholder => "Email Address")

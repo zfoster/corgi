@@ -9,7 +9,7 @@ describe "A new user authorizes" do
 
     it "shows my authorized accounts" do
       visit root_path
-      click_link 'Sign up with Facebook'
+      click_link 'Connect with Facebook'
       expect(page).to have_content(email)
       expect(page).to have_content(provider)
       expect(page).to have_content(uid)
@@ -21,7 +21,7 @@ describe "A new user authorizes" do
 
     it "shows my authorized accounts" do
       visit root_path
-      click_link 'Sign up with Twitter'
+      click_link 'Connect with Twitter'
       expect(page).to have_content(provider)
       expect(page).to have_content(uid)
     end
@@ -33,7 +33,7 @@ describe "A new user authorizes" do
 
     it "shows my authorized accounts" do
       visit root_path
-      click_link 'Sign up with LinkedIn'
+      click_link 'Connect with LinkedIn'
       expect(page).to have_content(provider)
       expect(page).to have_content(email)
       expect(page).to have_content(uid)
@@ -46,7 +46,7 @@ describe "A new user authorizes" do
 
     it "shows my authorized accounts" do
       visit root_path
-      click_link 'Sign up with Google Plus'
+      click_link 'Connect with Google+'
       expect(page).to have_content(provider)
       expect(page).to have_content(email)
       expect(page).to have_content(uid)
@@ -58,11 +58,11 @@ describe "A new user authorizes" do
 
     it "shows my authorized accounts" do
       visit root_path
-      click_link 'Sign up with Facebook'
+      click_link 'Connect with Facebook'
       visit root_path
-      click_link 'Sign up with Twitter'
+      click_link 'Connect with Twitter'
       visit root_path
-      click_link 'Sign up with LinkedIn'
+      click_link 'Connect with LinkedIn'
       providers.each do |provider|
         expect(page).to have_content(provider)
       end

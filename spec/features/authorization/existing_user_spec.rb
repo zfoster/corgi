@@ -9,12 +9,12 @@ describe 'an existing user' do
 
     it 'signs out' do
       visit root_path
-      click_link 'Sign up with Facebook'
+      click_link 'Connect with Facebook'
       expect(page).to have_content(email)
       expect(page).to have_content(provider)
       expect(page).to have_content(uid)
       visit root_path
-      click_link 'Sign Out'
+      visit '/logout'
       expect(page).to have_content('Signed out!')
     end
   end
