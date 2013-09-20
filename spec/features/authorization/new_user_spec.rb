@@ -42,11 +42,14 @@ describe "A new user authorizes" do
 
   context 'with googleplus' do
     let(:provider) { 'google_oauth2' }
+    let(:email) { 'captain@firefly.com' }
 
     it "shows my authorized accounts" do
       visit root_path
       click_link 'Sign up with Google Plus'
       expect(page).to have_content(provider)
+      expect(page).to have_content(email)
+      expect(page).to have_content(uid)
     end
   end
 
