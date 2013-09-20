@@ -13,6 +13,6 @@ module ApplicationHelper
   end
 
   def googleplus_auth_path
-    '/auth/googleplus'
+    '/auth/google_oauth2'
   end
 end

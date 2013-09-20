@@ -41,7 +41,7 @@ describe "A new user authorizes" do
   end
 
   context 'with googleplus' do
-    let(:provider) { 'googleplus' }
+    let(:provider) { 'google_oauth2' }
 
     it "shows my authorized accounts" do
       visit root_path
