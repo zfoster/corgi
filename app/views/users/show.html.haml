@@ -4,11 +4,3 @@
 %ul
   - @identities.each do |identity|
     %li #{identity.provider} - #{identity.uid}
-
-%p
-  Choose an email
-
-%ul
-  - @identities.each do |i|
-    - if i.info["email"]
-      %li #{i.info["email"]}

@@ -27,7 +27,9 @@
         %a.button.googleplus.large.expand= current_user.googleplus_identity.info['email']
       - else
         = link_to "Connect with Google+", googleplus_auth_path, :class => "button googleplus expand large"
-      / = form_tag() do
-      /   = label_tag('email', 'Email Address')
-      /   = text_field_tag('email', :placeholder => "Email Address")
-      /   = submit_tag("Connect", :class => "button submit")
+
+      - if current_user
+        = form_for current_user do |f|
+          = f.label('email', 'Email Address')
+          = f.text_field('email', :placeholder => "Email Address")
+          = f.submit("Connect", :class => "button submit")
