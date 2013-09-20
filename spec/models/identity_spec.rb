@@ -20,7 +20,7 @@ describe Identity do
 
       it 'creates a new user' do
         User.should_receive(:create).with(hash_including(:email, :first_name, :last_name))
-        identity = Identity.new( auth_response: auth_response ).find_or_create_user
+        identity = Identity.new( info: {} ).find_or_create_user
       end
     end
 
