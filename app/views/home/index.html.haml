@@ -1,6 +1,6 @@
 .columns
   .row.main-content
-    .small-12.large-6.columns
+    .small-12.large-7.columns
       .header
         = image_tag "madi-logo.png", title: "MADi logo"
       %h2.subheader
@@ -31,3 +31,5 @@
       /   = label_tag('email', 'Email Address')
       /   = text_field_tag('email', :placeholder => "Email Address")
       /   = submit_tag("Connect", :class => "button submit")
+      %br
+      = link_to "Sign Out", sessions_destroy_path
