@@ -47,7 +47,12 @@ end
 
 OmniAuth.config.test_mode = true
 
-OmniAuth.config.add_mock(:twitter, {:uid => '12345'})
+OmniAuth.config.add_mock(:twitter, {:uid => '12345',
+  :info => {
+    :nickname => 'twitterhandle'
+    }
+  }
+)
 
 OmniAuth.config.add_mock(:linkedin, {:uid => '12345',
   :info => {

@@ -9,18 +9,24 @@
         Connect. Find the tread. Get involved. Involve yourself. Dig in. Get tied in. Red thread. Discover Madison. Find the thread. Follow the thread. Madison business connections. Join Madison's innovation network
     .small-12.large-4.columns.pull-1
       - if current_user && current_user.twitter_identity
-        %a.button.twitter.large.expand Twitter - @handle
+        %a.button.twitter.large.expand= "@" + current_user.twitter_identity.info['nickname']
       - else
         = link_to "Connect with Twitter", twitter_auth_path, :class => "button twitter expand large"
       %br
-      = link_to "Connect with LinkedIn", linkedin_auth_path, :class => "button linkedin expand large"
+      - if current_user && current_user.linkedin_identity
+        %a.button.linkedin.large.expand= current_user.linkedin_identity.info['nickname']
+      - else
+        = link_to "Connect with LinkedIn", linkedin_auth_path, :class => "button linkedin expand large"
       %br
       - if current_user && current_user.facebook_identity
-        %a.button.twitter.large.expand Facebook - @handle
+        %a.button.facebook.large.expand= current_user.facebook_identity.info['nickname']
       - else
         = link_to "Connect with Facebook", facebook_auth_path, :class => "button facebook expand large"
       %br
-      = link_to "Connect with Google+", googleplus_auth_path, :class => "button googleplus expand large"
+      - if current_user && current_user.linkedin_identity
+        %a.button.googleplus.large.expand= current_user.googleplus_identity.info['email']
+      - else
+        = link_to "Connect with Google+", googleplus_auth_path, :class => "button googleplus expand large"
       / = form_tag() do
       /   = label_tag('email', 'Email Address')
       /   = text_field_tag('email', :placeholder => "Email Address")
