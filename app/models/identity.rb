@@ -5,8 +5,8 @@ class Identity < ActiveRecord::Base
   validates_uniqueness_of :uid, scope: :provider
 
   def self.find_or_create_with_omniauth(auth)
-    identity = self.where(provider: auth['provider'], uid: auth['uid']).first_or_create
-    identity.update_attributes auth_response: auth.to_hash
+    identity = self.where(provider: auth.provider, uid: auth.uid).first_or_create
+    identity.update_attributes AuthExtractor.new(auth).extract
     identity
   end
 
@@ -21,9 +21,9 @@ class Identity < ActiveRecord::Base
   private
 
   def build_user_from_auth
-    new_user = User.create email: auth_response['info']['email'], 
-      first_name: auth_response['info']['first_name'],
-      last_name: auth_response['info']['last_name']
+    new_user = User.create email: info['email'], 
+      first_name: info['first_name'],
+      last_name: info['last_name']
     self.user = new_user
   end
 

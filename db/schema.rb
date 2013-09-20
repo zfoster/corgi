@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130918185934) do
+ActiveRecord::Schema.define(version: 20130920200238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,8 @@ ActiveRecord::Schema.define(version: 20130918185934) do
     t.string   "provider"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.hstore   "auth_response"
+    t.hstore   "info"
+    t.hstore   "credentials"
   end
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
