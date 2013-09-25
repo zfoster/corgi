@@ -1310,10 +1310,25 @@ $button-border-color: darken($primary-color, $button-function-factor);
 
 @import 'foundation';
 
+// clearing
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+
 // Social Media Buttons
 
 .social-media {
   @include button;
+  &:hover,
+  &:active {
+    box-shadow: 0 0 5px 1px #9f9f9f;
+  }
 }
 
 .twitter {
@@ -1324,7 +1339,6 @@ $button-border-color: darken($primary-color, $button-function-factor);
   &:hover,
   &:active {
     background-color: #00aced;
-    box-shadow: 0 0 5px 1px #9f9f9f;
   }
 }
 
@@ -1336,7 +1350,6 @@ $button-border-color: darken($primary-color, $button-function-factor);
   &:hover,
   &:active {
     background-color: #3b5998;
-    box-shadow: 0 0 5px 1px #9f9f9f;
   }
 }
 
@@ -1348,7 +1361,6 @@ $button-border-color: darken($primary-color, $button-function-factor);
   &:hover,
   &:active {
     background-color: #007bb6;
-    box-shadow: 0 0 5px 1px #9f9f9f;
   }
 }
 
@@ -1360,7 +1372,43 @@ $button-border-color: darken($primary-color, $button-function-factor);
   &:hover,
   &:active {
     background-color: #dd4b39;
-    box-shadow: 0 0 5px 1px #9f9f9f;
+  }
+}
+
+.identity {
+  color: white;
+  position: relative;
+  .image {
+    float: left;
+    padding-right:10px;
+    img {
+      width: 61px;
+      height: 61px;
+    }
+  }
+  .names {
+    padding: 5px 0 5px 10px;
+    .name {
+      font-size: 1.2em;
+      padding: 3px 0;
+    }
+    .nickname {
+      padding: 3px 0;
+    }
+  }
+  .disconnect {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    background-image: url('tinyx.png');
+    background-repeat: no-repeat;
+    width: 11px;
+    height: 11px;
+  }
+  .icon {
+    position: absolute;
+    right: 0;
+    bottom: 0;
   }
 }
 
