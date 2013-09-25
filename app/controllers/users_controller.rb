@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @identities.each do |i|
       email_identities << i unless i.info['email'].nil?
     end
-    @unique_email_identities = email_identities.uniq_by { |i| i.info['email']}
+    @unique_email_identities = email_identities.uniq { |i| i.info['email']}
   end
 
   def update

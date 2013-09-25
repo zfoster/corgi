@@ -12,7 +12,7 @@
     Choose your default email
     - @unique_email_identities.each do |i|
       %li
-        = label 'email', i.info['email']
+        = label :email, 'email', i.info['email']
         = radio_button_tag "email_#{@user.id}", i.info['email'], i.info['email'] == current_user.email ? true : false, class: 'user-choose-email'
   %li Or enter a new email
 - if current_user == @user
