@@ -3,10 +3,12 @@
     .small-12.large-7.columns
       .header{ :height => "56px"}
         = image_tag "madi-logo.png", title: "MADi logo", :height => "56px", :width => "146px"
-      %h2.subheader
-        Discover Madison Innovation
-      %p
-        Connect. Find the tread. Get involved. Involve yourself. Dig in. Get tied in. Red thread. Discover Madison. Find the thread. Follow the thread. Madison business connections. Join Madison's innovation network
+      .left-content
+        - if !current_user
+          %h2.subheader
+            Discover Madison Innovation
+          %p
+            Connect. Find the tread. Get involved. Involve yourself. Dig in. Get tied in. Red thread. Discover Madison. Find the thread. Follow the thread. Madison business connections. Join Madison's innovation network
     .small-12.large-4.columns
       - if current_user && current_user.twitter_identity
         %a.button.twitter.large.expand= "@" + current_user.twitter_identity.info['nickname']
@@ -27,9 +29,9 @@
         %a.button.googleplus.large.expand= current_user.googleplus_identity.info['email']
       - else
         = link_to "Connect with Google+", googleplus_auth_path, :class => "button googleplus expand large"
-      / = form_tag() do
-      /   = label_tag('email', 'Email Address')
-      /   = text_field_tag('email', :placeholder => "Email Address")
-      /   = submit_tag("Connect", :class => "button submit")
       %br
-      = link_to "Sign Out", sessions_destroy_path, :class => "right"
+      = form_tag() do
+        // = label_tag('email', 'Email Address')
+        = text_field_tag('email')
+      / %br
+      / = link_to "Sign Out", sessions_destroy_path, :class => "right"

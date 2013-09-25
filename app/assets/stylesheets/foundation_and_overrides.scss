@@ -1318,6 +1318,9 @@ $button-border-color: darken($primary-color, $button-function-factor);
 
 .twitter {
   background-color: #00aced;
+  background-image: url("twitter-logo.jpg");
+  background-repeat: no-repeat;
+  background-position: 1px 12px;
   &:hover,
   &:active {
     background-color: #00aced;
@@ -1327,6 +1330,9 @@ $button-border-color: darken($primary-color, $button-function-factor);
 
 .facebook {
   background-color: #3b5998;
+  background-image: url("fb-logo.jpg");
+  background-repeat: no-repeat;
+  background-position: 1px 12px;
   &:hover,
   &:active {
     background-color: #3b5998;
@@ -1336,6 +1342,9 @@ $button-border-color: darken($primary-color, $button-function-factor);
 
 .linkedin {
   background-color: #007bb6;
+  background-image: url("linkedin-logo.jpg");
+  background-repeat: no-repeat;
+  background-position: 1px 12px;
   &:hover,
   &:active {
     background-color: #007bb6;
@@ -1345,6 +1354,9 @@ $button-border-color: darken($primary-color, $button-function-factor);
 
 .googleplus {
   background-color: #dd4b39;
+  background-image: url("gplus-logo.jpg");
+  background-repeat: no-repeat;
+  background-position: 1px 12px;
   &:hover,
   &:active {
     background-color: #dd4b39;
@@ -1354,6 +1366,21 @@ $button-border-color: darken($primary-color, $button-function-factor);
 
 // Front page content
 
+html,
+body {
+  height: 100%;
+}
+
+body > .columns {
+  // min-height: 100%;
+  // margin-bottom: -60px;
+  &:after {
+    content: "";
+    display: block;
+    // height: 60px;
+  }
+}
+
 body.home.index {
   background-color: #555;
   background-image: url('madison.jpg');
@@ -1362,10 +1389,42 @@ body.home.index {
 }
 
 .main-content {
-  margin-top: 2em;
+  margin-top: 1em;
   padding:2em;
   background-color: rgba(55,55,55,0.8);
   p {
     color: white;
+  }
+}
+
+input#email {
+  height:2em;
+  font-size: 1.4em;
+}
+
+.footer {
+  // height: 60px;
+  img {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    width: 80px;
+  }
+}
+
+// Crappy paypal form
+
+form#paypal {
+  text-align: center;
+  table {
+    width :100%;
+    background: none;
+    font-size: 1.5em;
+    border: none;
+    tbody {
+      tr {
+        background: none;
+      }
+    }
   }
 }

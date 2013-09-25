@@ -1,12 +1,14 @@
 %nav.top-bar
   %ul.title-area
-    %li.name
-      %h1
-        = link_to "MADi", root_path
+    / %li.name
+    /   %h1
+    /     = link_to "Connect", root_path
     %li.toggle-topbar.menu-icon
       = link_to content_tag(:span, "Menu"), "#"
   %section.top-bar-section
     %ul.left
+      %li
+        = link_to "Connect", root_path
       %li
         = link_to "Support and Contribute", support_path
     // - if current_user
