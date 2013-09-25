@@ -1377,6 +1377,7 @@ $button-border-color: darken($primary-color, $button-function-factor);
 
 .identity {
   color: white;
+  position: relative;
   .image {
     float: left;
     padding-right:10px;
@@ -1385,8 +1386,29 @@ $button-border-color: darken($primary-color, $button-function-factor);
       height: 61px;
     }
   }
-  .nickname {
-
+  .names {
+    padding: 5px 0 5px 10px;
+    .name {
+      font-size: 1.2em;
+      padding: 3px 0;
+    }
+    .nickname {
+      padding: 3px 0;
+    }
+  }
+  .disconnect {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    background-image: url('tinyx.png');
+    background-repeat: no-repeat;
+    width: 11px;
+    height: 11px;
+  }
+  .icon {
+    position: absolute;
+    right: 0;
+    bottom: 0;
   }
 }
 
