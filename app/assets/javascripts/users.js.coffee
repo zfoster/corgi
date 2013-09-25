@@ -6,8 +6,6 @@ $(document).ready ->
    $(".avatar").click ->
     avatar = $(this).attr("value")
     userId = $(this).attr("data-id")
-    alert userId
-    alert avatar
     setDefaultAvatar(avatar, userId)
     
 
