@@ -17,6 +17,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
 gem "omniauth-google-oauth2"
 gem 'pg'
+gem 'gravatar_image_tag'
 
 group :development, :test do
   gem 'rspec-rails'
