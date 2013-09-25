@@ -17,5 +17,17 @@ describe 'an existing user' do
       visit '/logout'
       expect(page).to have_content('Signed out!')
     end
+
+    it 'updates their email' do
+      visit root_path
+      click_link 'Connect with Facebook'
+      expect(page).to have_content(email)
+      expect(page).to have_content(provider)
+      expect(page).to have_content(uid)
+      visit root_path
+      fill_in 'Email Address', with: 'notbob@example.com'
+      click_on 'Update Email'
+      page.should have_content('notbob@example.com')
+    end
   end
 end
