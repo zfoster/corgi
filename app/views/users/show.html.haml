@@ -3,4 +3,4 @@
 
 %ul
   - @user.identities.each do |identity|
-    %li #{identity.provider} - #{identity.uid}
+    %li #{identity.provider} - #{identity.uid} - #{link_to "Remove", identity_path(identity), method: :delete }

@@ -29,7 +29,6 @@ describe "A new user authorizes" do
     it "does not ask for email if it already exists" do
       visit root_path
       click_link 'Connect with LinkedIn'
-      visit root_path
       click_link 'Connect with Twitter'
       expect(current_path).to eq(root_path)
     end
@@ -61,9 +60,7 @@ describe "A new user authorizes" do
     it "shows my authorized accounts" do
       visit root_path
       click_link 'Connect with Facebook'
-      visit root_path
       click_link 'Connect with Twitter'
-      visit root_path
       click_link 'Connect with LinkedIn'
       providers.each do |provider|
         expect(page.find(".facebook")).to have_content(OmniAuth.config.mock_auth[provider.intern].info.name)
