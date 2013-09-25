@@ -1,27 +1,28 @@
-.columns
-  %header
-    .row
-      %h1 Support and Contribute
-  .row.supporters
-    .small-12.large-6.columns
-      %h4 MADi is brought to you by:
-      %p
-        = link_to "Horizon Coworking", "http://horizoncw.com"
-        %br
-        = link_to "Murfie", "http://murfie.com"
-        %br
-        = link_to image_tag("madisonium.png", title: "Madisonium"), "http://madisonium.org"
-    .small-12.large-5.pull-1.columns.paypal
-      %h4 Help support MADi
-      %p
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top", class="custom", id="paypal">
-        <input type="hidden" name="cmd" value="_s-xclick">
-        <input type="hidden" name="hosted_button_id" value="MPWCWKF92RN4W">
-        <table>
-        <tr><td><input type="hidden" name="on0" value="Contribute to MADi"></td></tr>
-        <tr><td><select name="os0" id="customDropdown"><option value="Individual">Individual : $5.00 USD - monthly</option><option value="Organization">Organization : $20.00 USD - monthly</option></select></td></tr>
-        </table>
-        <input type="hidden" name="currency_code" value="USD">
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-        </form>
+.header.columns
+  %h1 Support and Contribute
+.small-12.large-7.columns
+  .left-content.supporters
+    %h4 MADi is brought to you by:
+    %p
+      = link_to "Horizon Coworking", "http://horizoncw.com"
+      %br
+      = link_to "Murfie", "http://murfie.com"
+      %br
+      = link_to image_tag("madisonium.png", title: "Madisonium"), "http://madisonium.org"
+.small-12.large-5.columns.paypal
+  %h4 Help support MADi
+  %p
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top", class="custom", id="paypal">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="hosted_button_id" value="MPWCWKF92RN4W">
+    <table>
+    <tr><td><input type="hidden" name="on0" value="Contribute to MADi"></td></tr><tr><td><select name="os0">
+    <option value="Individual">Individual : $5.00 USD - monthly</option>
+    <option value="Business">Business : $20.00 USD - monthly</option>
+    <option value="Institution">Institution : $200.00 USD - monthly</option>
+    </select> </td></tr>
+    </table>
+    <input type="hidden" name="currency_code" value="USD">
+    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    </form>
