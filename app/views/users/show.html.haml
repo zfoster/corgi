@@ -4,3 +4,7 @@
 %ul
   - @identities.each do |identity|
     %li #{identity.provider} - #{identity.uid}
+
+%ul
+  - @emails.uniq.each do |e|
+    %li #{e}
