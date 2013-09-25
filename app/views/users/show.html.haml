@@ -1,10 +1,19 @@
 %h1 Users#show
-%p= @user.email
+%p
+  .user-show-email
+    = render 'users/email', user: @user
 
 %ul
   - @identities.each do |identity|
     %li #{identity.provider} - #{identity.uid}
 
 %ul
-  - @emails.uniq.each do |e|
-    %li #{e}
+  %li
+    Choose your default email
+    - @unique_email_identities.each do |i|
+      %li
+        = label 'email', i.info['email']
+        = radio_button_tag "email_#{@user.id}", i.info['email'], i.info['email'] == current_user.email ? true : false, class: 'user-choose-email'
+  %li Or enter a new email
+- if current_user == @user
+  = text_field_tag 'Email Address', '', class: 'user-write-in-email'

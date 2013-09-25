@@ -2,17 +2,22 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @identities = @user.identities
-    @emails = []
+    email_identities = []
     @identities.each do |i|
-      if i.info['email']
-        @emails << i.info['email']
-      end
+      email_identities << i unless i.info['email'].nil?
     end
+    @unique_email_identities = email_identities.uniq_by { |i| i.info['email']}
   end
 
   def update
     @user = User.find(params[:id])
     @user.update_attributes(email: params[:user][:email])
     redirect_to @user
+  end
+
+  def set_email
+    @user = User.find(params[:id])
+    @user.update_attributes(email: params[:user][:email])
+    render nothing: true
   end
 end
