@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+
   def twitter_email
     @user = User.find(params[:id])
   end
@@ -11,5 +12,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update_attributes(email: params[:user][:email])
     redirect_to @user
+
+  def set_default_avatar
+
   end
 end
