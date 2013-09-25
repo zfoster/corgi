@@ -4,12 +4,13 @@
 %ul
   - @user.identities.each do |identity|
     %li 
-      #{identity.provider} - #{identity.uid} 
+      = identity.provider
+      = identity.uid 
       = image_tag "#{identity.info['image']}"
-      = radio_button_tag 'default_avatar', "#{identity.info['image']}", :class => 'avatar', "data-userid" => "#{@user.id}"
+      = radio_button_tag "default_avatar", "#{identity.info['image']}", false, id: "#{identity.uid}", class: 'avatar', "data-id" => "#{@user.id}"
   %li
     = image_tag "http://www.gravatar.com/avatar/#{@hash}"
-    = radio_button_tag 'default_avatar', "http://www.gravatar.com/avatar/#{@hash}", :class => 'avatar', "data-userid" => "#{@user.id}"
+    = radio_button_tag "default_avatar", "http://www.gravatar.com/avatar/#{@hash}", false, id: "gravatar", class: "avatar", "data-id" => "#{@user.id}"
 
 %p 
   Choose a default image to use on MADi, or set your own with

@@ -16,9 +16,10 @@ class UsersController < ApplicationController
 
   def set_default_avatar
     @user = User.find(params[:id])
-    @user.avatar = params[:avatarUrl]
-    @user.save
+    binding.pry
+    @user.update_attributes(avatar: params[:avatar])
     render nothing: true
+    return
   end
 
   protected

@@ -2,15 +2,19 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
+$(document).ready ->
    $(".avatar").click ->
-    avatarUrl = $(this).attr("name")
+    avatar = $(this).attr("value")
+    userId = $(this).attr("data-id")
+    alert userId
+    alert avatar
+    setDefaultAvatar(avatar, userId)
     
 
-setDefaultAvatar = (avatarUrl) ->
+setDefaultAvatar = (avatar, userId) ->
   $.ajax
-    url: "/users/" + current_user.id + "/set_default_avatar"
+    url: "/users/" + userId + "/set_default_avatar"
     type: "POST"
     contentType: "application/x-www-form-urlencoded; charset=UTF-8"
-    data:
-      avatar: avatarUrl 
+    data: 
+      avatar: avatar
