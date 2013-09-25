@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @hash = Digest::MD5.hexdigest(downcase_email)
   end
 
 
@@ -15,5 +16,11 @@ class UsersController < ApplicationController
 
   def set_default_avatar
 
+  end
+
+  protected
+
+  def downcase_email
+    @user.email.downcase
   end
 end

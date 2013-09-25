@@ -7,3 +7,6 @@
       #{identity.provider} - #{identity.uid} 
       = image_tag "#{identity.info['image']}"
       - radio_button_tag 'default_avatar', "#{identity.info['image']}"
+  %li
+    = image_tag "http://www.gravatar.com/avatar/#{hash}"
+    - radio_button_tag 'default_avatar', "http://www.gravatar.com/avatar/#{@hash}"
