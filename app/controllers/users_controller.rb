@@ -15,7 +15,10 @@ class UsersController < ApplicationController
     redirect_to @user
 
   def set_default_avatar
-
+    @user = User.find(params[:id])
+    # @user.avatar = params[:avatarUrl]
+    @user.save
+    render nothing: true
   end
 
   protected
