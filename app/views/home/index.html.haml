@@ -29,7 +29,7 @@
         = link_to "Connect with Google+", googleplus_auth_path, :class => "button googleplus expand large"
 
       - if current_user
-        = form_for current_user do |f|
+        = form_for current_user, method: :put do |f|
           = f.label('email', 'Email Address')
           = f.text_field('email', :placeholder => "Email Address")
           = f.submit("Connect", :class => "button submit")

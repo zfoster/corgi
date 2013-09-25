@@ -5,7 +5,7 @@ Corgi::Application.routes.draw do
   get '/support' => 'content#support', :as => :support
   root "home#index"
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :update]
 
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match '/logout', to: 'sessions#destroy', via: [:get, :destroy]
