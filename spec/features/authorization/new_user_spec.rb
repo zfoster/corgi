@@ -59,7 +59,7 @@ describe "A new user authorizes" do
 
     it "shows my authorized accounts" do
       visit root_path
-      click_link 'Connect with Google+'
+      click_link 'Connect with Google'
       expect(page).to have_content(provider)
       expect(page).to have_content(email)
       expect(page).to have_content(uid)

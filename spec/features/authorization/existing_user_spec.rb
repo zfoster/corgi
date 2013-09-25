@@ -29,18 +29,5 @@ describe 'an existing user' do
       click_on 'Update Email'
       expect(page).to have_content('notbob@example.com')
     end
-
-    content 'from users#show page' do
-
-      it 'chooses an existing email' do
-        visit root_path
-        click_link 'Connect with Facebook'
-        expect(page).to have_content(email)
-        expect(page).to have_content(provider)
-        expect(page).to have_content(uid)
-        fill_in('user-write-in-email'), with: 'new_email@example.com'
-        expect('user-show-email').to have_content('new_email@example.com')
-      end
-    end
   end
 end
