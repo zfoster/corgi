@@ -16,8 +16,12 @@
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/custom.modernizr"
     = csrf_meta_tags
-  %body
+  %body{ class: "#{controller_name} #{action_name}" }
     = render 'shared/nav'
     = render 'layouts/flashes'
-    = yield
+    .columns
+      .row.main-content
+        = yield
+    .footer
+      = link_to image_tag("mom-small.png", title: "Made of Madison"), "http://www.madeofmadison.com"
     = javascript_include_tag "application"

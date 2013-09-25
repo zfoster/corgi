@@ -20,4 +20,8 @@ class UsersController < ApplicationController
     @user.update_attributes(email: params[:user][:email])
     render nothing: true
   end
+
+  def twitter_email
+    @user = User.find(params[:id])
+  end
 end

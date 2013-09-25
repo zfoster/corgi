@@ -1,35 +1,75 @@
-.columns
-  .row.main-content
-    .small-12.large-6.columns
-      .header
-        = image_tag "madi-logo.png", title: "MADi logo"
-      %h2.subheader
-        Discover Madison Innovation
-      %p
-        Connect. Find the tread. Get involved. Involve yourself. Dig in. Get tied in. Red thread. Discover Madison. Find the thread. Follow the thread. Madison business connections. Join Madison's innovation network
-    .small-12.large-4.columns.pull-1
-      - if current_user && current_user.twitter_identity
-        %a.button.twitter.large.expand= "@" + current_user.twitter_identity.info['nickname']
-      - else
-        = link_to "Connect with Twitter", twitter_auth_path, :class => "button twitter expand large"
-      %br
-      - if current_user && current_user.linkedin_identity
-        %a.button.linkedin.large.expand= current_user.linkedin_identity.info['nickname']
-      - else
-        = link_to "Connect with LinkedIn", linkedin_auth_path, :class => "button linkedin expand large"
-      %br
-      - if current_user && current_user.facebook_identity
-        %a.button.facebook.large.expand= current_user.facebook_identity.info['nickname']
-      - else
-        = link_to "Connect with Facebook", facebook_auth_path, :class => "button facebook expand large"
-      %br
-      - if current_user && current_user.googleplus_identity
-        %a.button.googleplus.large.expand= current_user.googleplus_identity.info['email']
-      - else
-        = link_to "Connect with Google+", googleplus_auth_path, :class => "button googleplus expand large"
-
-      - if current_user
-        = form_for current_user, method: :put do |f|
-          = f.label('email', 'Email Address')
-          = f.text_field('email', :placeholder => "Email Address")
-          = f.submit('Update Email', :class => "button submit")
+.small-12.large-7.columns
+  .header{ :height => "56px"}
+    = image_tag "madi-logo.png", title: "MADi logo", :height => "56px", :width => "146px"
+  .left-content
+    // - if !current_user
+    %h2.subheader
+      Discover Madison Innovation
+    %p
+      Connect. Find the thread. Get involved. Involve yourself. Dig in. Get tied in. Red thread. Discover Madison. Find the thread. Follow the thread. Madison business connections. Join Madison's innovation network
+.small-12.large-4.columns
+  - if current_user && current_user.twitter_identity
+    .identity.twitter
+      .image
+        = image_tag current_user.twitter_identity.info['image']
+      .names
+        .name
+          = current_user.twitter_identity.info['name']
+        .nickname
+          = "@" + current_user.twitter_identity.info['nickname']
+      .disconnect
+      .icon
+        = image_tag "smi_twitter-logo.png", title: "Twitter"
+      .clearfix
+  - else
+    = link_to "Connect with Twitter", twitter_auth_path, :class => "button twitter expand large social-media"
+  %br
+  - if current_user && current_user.linkedin_identity
+    .identity.linkedin
+      .image
+        = image_tag current_user.linkedin_identity.info['image']
+      .names
+        .name
+          = current_user.linkedin_identity.info['name']
+      .disconnect
+      .icon
+        = image_tag "smi_linkedin-logo.png", title: "LinkedIn"
+      .clearfix
+  - else
+    = link_to "Connect with LinkedIn", linkedin_auth_path, :class => "button linkedin expand large social-media"
+  %br
+  - if current_user && current_user.facebook_identity
+    .identity.facebook
+      .image
+        = image_tag current_user.facebook_identity.info['image']
+      .names
+        .name
+          = current_user.facebook_identity.info['name']
+      .disconnect
+      .icon
+        = image_tag "smi_fb-logo.png", title: "Facebook"
+      .clearfix
+  - else
+    = link_to "Connect with Facebook", facebook_auth_path, :class => "button facebook expand large social-media"
+  %br
+  - if current_user && current_user.googleplus_identity
+    .identity.googleplus
+      .image
+        = image_tag current_user.googleplus_identity.info['image']
+      .names
+        .name
+          = current_user.googleplus_identity.info['name']
+      .disconnect
+      .icon
+        = image_tag "smi_gplus-logo.png", title: "Google"
+      .clearfix
+  - else
+    = link_to "Connect with Google", googleplus_auth_path, :class => "button googleplus expand large social-media"
+  %br
+    - if current_user
+      = form_for current_user, method: :put do |f|
+        = f.label('email', 'Email Address')
+        = f.text_field('email', :placeholder => "Email Address")
+        = f.submit('Update Email', :class => "button submit")
+  / %br
+  / = link_to "Sign Out", sessions_destroy_path, :class => "right"

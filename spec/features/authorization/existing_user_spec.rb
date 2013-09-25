@@ -38,6 +38,8 @@ describe 'an existing user' do
         expect(page).to have_content(email)
         expect(page).to have_content(provider)
         expect(page).to have_content(uid)
+        fill_in('user-write-in-email'), with: 'new_email@example.com'
+        expect('user-show-email').to have_content('new_email@example.com')
       end
     end
   end

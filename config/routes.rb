@@ -9,6 +9,9 @@ Corgi::Application.routes.draw do
     collection do
       post :set_email
     end
+    member do
+      get :twitter_email
+    end
   end
 
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
