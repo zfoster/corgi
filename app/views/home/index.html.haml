@@ -66,8 +66,7 @@
   - else
     = link_to "Connect with Google", googleplus_auth_path, :class => "button googleplus expand large social-media"
   %br
-  = form_tag() do
-    // = label_tag('email', 'Email Address')
-    = text_field_tag('email')
-  / %br
-  / = link_to "Sign Out", sessions_destroy_path, :class => "right"
+  - if current_user
+    = form_tag() do
+      // = label_tag('email', 'Email Address')
+      = text_field_tag('email')
