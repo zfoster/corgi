@@ -1493,13 +1493,16 @@ input#email {
 body.support {
   .supporters {
     .s-logo {
-      max-width: 200px;
       float: left;
-      margin-right: 20px;
-      margin-bottom:13px;
+      height: 80px;
+      line-height: 80px;
+      text-align: center;
       img {
+        vertical-align: middle;
         max-width:120px;
         max-height:65px;
+        margin: auto;
+        padding: 0;
       }
     }
   }
@@ -1524,6 +1527,9 @@ form#paypal {
       }
     }
   }
+  input[name="submit"] {
+    margin-top: -2em;
+  }
 }
 
 div.contribute {
@@ -1545,11 +1551,3 @@ div.contribute {
 
 
 //support page
-
-.supporters {
-  img {
-      max-width:120px;
-      max-height:65px;
-      margin-bottom: 13px;
-  }
-}
