@@ -18,6 +18,8 @@ gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
 gem "omniauth-google-oauth2"
 gem 'pg'
+gem 'sentry-raven'
+
 
 group :production do
   gem 'rails_12factor'
