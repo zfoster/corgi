@@ -1,0 +1,61 @@
+- if current_user && current_user.twitter_identity
+  .identity.twitter
+    .image
+      = image_tag current_user.twitter_identity.info['image']
+    .names
+      .name
+        = current_user.twitter_identity.info['name']
+      .nickname
+        = "@" + current_user.twitter_identity.info['nickname']
+        = f.radio_button :avatar, current_user.twitter_identity.info['image']
+    = link_to "", identity_path(current_user.twitter_identity), method: 'delete', class: 'disconnect'
+    .icon
+      = image_tag "smi_twitter-logo.png", title: "Twitter"
+    .clearfix
+- else
+  = link_to "Connect with Twitter", twitter_auth_path, :class => "button twitter expand large social-media"
+%br
+- if current_user && current_user.linkedin_identity
+  .identity.linkedin
+    .image
+      = image_tag current_user.linkedin_identity.info['image']
+    .names
+      .name
+        = current_user.linkedin_identity.info['name']
+    = link_to "", identity_path(current_user.linkedin_identity), method: 'delete', class: 'disconnect'
+    = f.radio_button :avatar, current_user.linkedin_identity.info['image']
+    .icon
+      = image_tag "smi_linkedin-logo.png", title: "LinkedIn"
+    .clearfix
+- else
+  = link_to "Connect with LinkedIn", linkedin_auth_path, :class => "button linkedin expand large social-media"
+%br
+- if current_user && current_user.facebook_identity
+  .identity.facebook
+    .image
+      = image_tag current_user.facebook_identity.info['image']
+    .names
+      .name
+        = current_user.facebook_identity.info['name']
+    = link_to "", identity_path(current_user.facebook_identity), method: 'delete', class: 'disconnect'
+    = f.radio_button :avatar, current_user.facebook_identity.info['image']
+    .icon
+      = image_tag "smi_fb-logo.png", title: "Facebook"
+    .clearfix
+- else
+  = link_to "Connect with Facebook", facebook_auth_path, :class => "button facebook expand large social-media"
+%br
+- if current_user && current_user.googleplus_identity
+  .identity.googleplus
+    .image
+      = image_tag current_user.googleplus_identity.info['image']
+    .names
+      .name
+        = current_user.googleplus_identity.info['name']
+    = link_to "", identity_path(current_user.googleplus_identity), method: 'delete', class: 'disconnect'
+    = f.radio_button :avatar, current_user.googleplus_identity.info['image']
+    .icon
+      = image_tag "smi_gplus-logo.png", title: "Google"
+    .clearfix
+- else
+  = link_to "Connect with Google", googleplus_auth_path, :class => "button googleplus expand large social-media"
