@@ -69,17 +69,21 @@
   - if current_user
 
     = form_for current_user do |f|
+      = f.label :email
       = f.text_field :email
+      = f.label :mobile_num, "Mobile Number"
+      = f.text_field :mobile_num
       %ul
         - current_user.identities.each do |identity|
           %li
             = f.label :avatar, value: "#{identity.info['image']}" do
               = image_tag "#{identity.info['image']}"
             = f.radio_button :avatar, "#{identity.info['image']}"
-        %li
-          = f.label :avatar, value: "http://www.gravatar.com/avatar/#{gravatar(current_user.email)}" do
-            = image_tag "http://www.gravatar.com/avatar/#{@hash}"
-          = f.radio_button :avatar, "http://www.gravatar.com/avatar/#{gravatar(current_user.email)}"
+        - if current_user.email
+          %li
+            = f.label :avatar, value: "http://www.gravatar.com/avatar/#{gravatar(current_user.email)}" do
+              = image_tag "http://www.gravatar.com/avatar/#{@hash}"
+            = f.radio_button :avatar, "http://www.gravatar.com/avatar/#{gravatar(current_user.email)}"
       = f.submit 'Save Info'
 
     %p 
