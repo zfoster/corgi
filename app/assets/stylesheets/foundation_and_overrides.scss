@@ -55,7 +55,7 @@ $em-base: 16 !default;
 
 $default-float: left;
 
-$body-bg: #0d0b16;
+$body-bg: #607799;
 $body-font-color: #4D4D4D;
 $body-font-family: "Cabin", Helvetica, Arial, sans-serif;
 $body-font-weight: normal;
@@ -1438,9 +1438,9 @@ body.home.index {
 .main-content {
   margin-top: 1em;
   padding:2em;
-  background-color: rgba(55,55,55,0.8);
+  background-color: rgba(255,255,255,0.4);
   p {
-    color: white;
+    color: black;
   }
 }
 
@@ -1477,5 +1477,16 @@ form#paypal {
         background: none;
       }
     }
+  }
+}
+
+
+//support page
+
+.supporters {
+  img {
+      max-width:120px;
+      max-height:65px;
+      margin-bottom: 13px;
   }
 }
