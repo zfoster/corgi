@@ -1,21 +1,25 @@
 .header.columns
   %h1 Support and Contribute
-.small-12.large-5.columns.support
-  %h4 Support MADi
-  .paypal
+.small-12.large-5.columns.supporters
+  %h4 MADi is brought to you by:
+  .s-logo.horizon
+    = link_to image_tag("horizon-new.png", title: "Horizon Coworking"), "http://horizoncw.com"
+  .s-logo.murfie
+    = link_to image_tag("murfie_pink.png", title: "Murfie"), "http://murfie.com"
+  .s-logo.madisonium
+    = link_to image_tag("madisonium.png", title: "Madisonium"), "http://madisonium.org"
+  .s-logo.gmcc
+    = link_to image_tag("gmcc.png", title: "Greater Madison Chamber of Commerce"), "http://greatermadisonchamber.com/"
+
+.small-12.large-5.columns.support-contrib
+  .support
+    %h4 Support MADi development
     = render "paypal_button"
-.small-12.large-5.push-2.columns.contribute
-  = form_tag() do
-    = label_tag('email', 'Email Address')
-    = text_field_tag('email')
-.small-12.large-12.columns
-  .bottom-content.supporters
-    %h4 MADi is brought to you by:
-    .s-logo.horizon
-      = link_to image_tag("horizon-new.png", title: "Horizon Coworking"), "http://horizoncw.com"
-    .s-logo.murfie
-      = link_to image_tag("murfie_pink.png", title: "Murfie"), "http://murfie.com"
-    .s-logo.madisonium
-      = link_to image_tag("madisonium.png", title: "Madisonium"), "http://madisonium.org"
-    .s-logo.gmcc
-      = link_to image_tag("gmcc.png", title: "Greater Madison Chamber of Commerce"), "http://greatermadisonchamber.com/"
+  .contribute
+    %h4 Contribute to MADi development
+    = form_tag() do
+      = label_tag('contribution', 'Contribution')
+      = text_area_tag('contribution')
+      = label_tag('email', 'Email Address')
+      = text_field_tag('email')
+      = submit_tag 'Contribute', class: "button contribute right"
