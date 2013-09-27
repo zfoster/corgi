@@ -1463,6 +1463,23 @@ input#email {
   }
 }
 
+// Support & contribute page
+
+body.support {
+  .supporters {
+    .s-logo {
+      float: left;
+      max-width: 200px;
+      margin-right: 20px;
+      img {
+        max-width: 200px;
+        max-height: 100px;
+      }
+    }
+  }
+}
+
+
 // Crappy paypal form
 
 form#paypal {
@@ -1475,6 +1492,9 @@ form#paypal {
     tbody {
       tr {
         background: none;
+      }
+      td {
+        padding: 0;
       }
     }
   }

@@ -1,7 +1,16 @@
 .header.columns
   %h1 Support and Contribute
-.small-12.large-7.columns
-  .left-content.supporters
+
+.small-12.large-5.columns.paypal
+  %h4 Support MADi
+  %p
+    = render "paypal_button"
+.small-12.large-5.push-2.columns.contribute
+  = form_tag do
+    = label_tag('email', 'Email Address')
+    = text_field_tag('email')
+.small-12.large-12.columns
+  .bottom-content.supporters
     %h4 MADi is brought to you by:
     .s-logo.horizon
       = link_to image_tag("horizon-new.png", title: "Horizon Coworking"), "http://horizoncw.com"
@@ -9,7 +18,5 @@
       = link_to image_tag("murfie_pink.png", title: "Murfie"), "http://murfie.com"
     .s-logo.madisonium
       = link_to image_tag("madisonium.png", title: "Madisonium"), "http://madisonium.org"
-.small-12.large-5.columns.paypal
-  %h4 Support MADi
-  %p
-    = render "paypal_button"
+    .s-logo.gmcc
+      = link_to image_tag('gmcc.png', title: "Greater Madison Chamber of Commerce"), "http://greatermadisonchamber.com/"
