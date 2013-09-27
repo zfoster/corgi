@@ -7,6 +7,7 @@ Corgi::Application.routes.draw do
       post '/set_default_avatar' => 'users#set_default_avatar'
     end
   end
+  resources :contributions, only: [:create]
   resources :identities, only: [:destroy]
   resources :sessions, only: [:create, :destroy]
   resources :content, only: [:index] do
