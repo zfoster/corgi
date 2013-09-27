@@ -1,12 +1,11 @@
 .header.columns
   %h1 Support and Contribute
-
-.small-12.large-5.columns.paypal
+.small-12.large-5.columns.support
   %h4 Support MADi
-  %p
+  .paypal
     = render "paypal_button"
 .small-12.large-5.push-2.columns.contribute
-  = form_tag do
+  = form_tag() do
     = label_tag('email', 'Email Address')
     = text_field_tag('email')
 .small-12.large-12.columns
@@ -19,4 +18,4 @@
     .s-logo.madisonium
       = link_to image_tag("madisonium.png", title: "Madisonium"), "http://madisonium.org"
     .s-logo.gmcc
-      = link_to image_tag('gmcc.png', title: "Greater Madison Chamber of Commerce"), "http://greatermadisonchamber.com/"
+      = link_to image_tag("gmcc.png", title: "Greater Madison Chamber of Commerce"), "http://greatermadisonchamber.com/"
