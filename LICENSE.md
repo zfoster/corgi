@@ -1,0 +1,1 @@
+This project is licensed under the terms of the CC BY license.
