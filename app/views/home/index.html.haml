@@ -11,10 +11,10 @@
   - if current_user && current_user.twitter_identity
     .identity.twitter
       .image
-        = image_tag current_user.twitter_identity.info['image']
+        = link_to image_tag(current_user.twitter_identity.info['image']), 'http://www.twitter.com/' + current_user.twitter_identity.info['nickname']
       .names
         .name
-          = current_user.twitter_identity.info['name']
+          = link_to current_user.twitter_identity.info['name'], 'http://www.twitter.com/' + current_user.twitter_identity.info['nickname']
         .nickname
           = "@" + current_user.twitter_identity.info['nickname']
       = link_to "", identity_path(current_user.twitter_identity), method: 'delete', class: 'disconnect'
@@ -27,10 +27,10 @@
   - if current_user && current_user.linkedin_identity
     .identity.linkedin
       .image
-        = image_tag current_user.linkedin_identity.info['image']
+        = link_to image_tag(current_user.linkedin_identity.info['image']), 'http://www.linkedin.com/profile/view?id=' + current_user.linkedin_identity.uid
       .names
         .name
-          = current_user.linkedin_identity.info['name']
+          = link_to current_user.linkedin_identity.info['name'], 'http://www.linkedin.com/profile/view?id=' + current_user.linkedin_identity.uid
       = link_to "", identity_path(current_user.linkedin_identity), method: 'delete', class: 'disconnect'
       .icon
         = image_tag "smi_linkedin-logo.png", title: "LinkedIn"
@@ -41,10 +41,10 @@
   - if current_user && current_user.facebook_identity
     .identity.facebook
       .image
-        = image_tag current_user.facebook_identity.info['image']
+        = link_to image_tag(current_user.facebook_identity.info['image']), 'http://www.facebook.com/profile.php?id=' + current_user.facebook_identity.uid
       .names
         .name
-          = current_user.facebook_identity.info['name']
+          = link_to current_user.facebook_identity.info['name'], 'http://www.facebook.com/profile.php?id=' + current_user.facebook_identity.uid
       = link_to "", identity_path(current_user.facebook_identity), method: 'delete', class: 'disconnect'
       .icon
         = image_tag "smi_fb-logo.png", title: "Facebook"
@@ -55,10 +55,10 @@
   - if current_user && current_user.googleplus_identity
     .identity.googleplus
       .image
-        = image_tag current_user.googleplus_identity.info['image']
+        = link_to image_tag(current_user.googleplus_identity.info['image']), 'http://plus.google.com/' + current_user.googleplus_identity.uid
       .names
         .name
-          = current_user.googleplus_identity.info['name']
+          = link_to current_user.googleplus_identity.info['name'], 'http://plus.google.com/' + current_user.googleplus_identity.uid
       = link_to "", identity_path(current_user.googleplus_identity), method: 'delete', class: 'disconnect'
       .icon
         = image_tag "smi_gplus-logo.png", title: "Google"
@@ -79,13 +79,4 @@
             = f.label :avatar, value: "#{identity.info['image']}" do
               = image_tag "#{identity.info['image']}"
             = f.radio_button :avatar, "#{identity.info['image']}"
-        - if current_user.email
-          %li
-            = f.label :avatar, value: "http://www.gravatar.com/avatar/#{gravatar(current_user.email)}" do
-              = image_tag "http://www.gravatar.com/avatar/#{@hash}"
-            = f.radio_button :avatar, "http://www.gravatar.com/avatar/#{gravatar(current_user.email)}"
       = f.submit 'Save Info'
-
-    %p 
-      Choose a default image to use on MADi, or set your own with
-      = link_to "Gravatar.com", "http://www.gravatar.com"
