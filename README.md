@@ -4,7 +4,10 @@
 ## Setup
 
 - Deploy to heroku
+- Add sentry
 - Migrat database on heroku
+- Add hstore to database
+- Setup config
 
 ### Configuration
 
