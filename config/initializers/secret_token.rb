@@ -11,9 +11,9 @@
 # if you're sharing your code publicly.
 
 if Rails.env.test?
-  token = 'a_token_for_testing'
+  token = 'a_token_for_testing' * 2
 else
-  token = ENV['RAILS_SECRET'] 
+  token = ENV['RAILS_SECRET']
 end
 
 
