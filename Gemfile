@@ -21,6 +21,7 @@ gem 'pg'
 group :development, :test do
   gem 'rspec-rails'
   gem 'figaro'
+  gem 'factory_girl_rails'
 end
 
 group :test do

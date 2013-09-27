@@ -1,5 +1,4 @@
 Corgi::Application.routes.draw do
-
   root "home#index"
 
   resources :users, only: [:show, :update] do
@@ -7,10 +6,8 @@ Corgi::Application.routes.draw do
       get :twitter_email
     end
   end
-
-  resources :sessions, only: [:create, :destroy] do
-  end
-
+  resources :identities, only: [:destroy]
+  resources :sessions, only: [:create, :destroy]
   resources :content, only: [:index] do
     collection do
       get :support
