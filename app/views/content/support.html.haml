@@ -1,25 +1,32 @@
 .header.columns
   %h1 Support and Contribute
-.small-12.large-5.columns.supporters
-  %h4 MADi is brought to you by:
-  .s-logo.horizon
-    = link_to image_tag("horizon-new.png", title: "Horizon Coworking"), "http://horizoncw.com"
-  .s-logo.murfie
-    = link_to image_tag("murfie_pink.png", title: "Murfie"), "http://murfie.com"
-  .s-logo.madisonium
-    = link_to image_tag("madisonium.png", title: "Madisonium"), "http://madisonium.org"
-  .s-logo.gmcc
-    = link_to image_tag("gmcc.png", title: "Greater Madison Chamber of Commerce"), "http://greatermadisonchamber.com/"
+.small-12.large-6.columns.supporters
+  %h4.subheader These people and organizations support MADi
+  .row
+    .small-4.large-4.columns
+      .s-logo
+        = link_to image_tag("horizon-new.png", title: "Horizon Coworking"), "http://horizoncw.com"
+    .small-4.large-4.columns
+      .s-logo
+        = link_to image_tag("murfie_pink.png", title: "Murfie"), "http://murfie.com"
+    .small-4.large-4.columns
+      .s-logo
+        = link_to image_tag("madisonium.png", title: "Madisonium"), "http://madisonium.org"
+  .row
+    .small-4.large-4.columns
+      .s-logo
+        = link_to image_tag("gmcc.png", title: "Greater Madison Chamber of Commerce"), "http://greatermadisonchamber.com/"
 
 .small-12.large-5.columns.support-contrib
   .support
-    %h4 Support MADi development
+    %h4.subheader Support MADi development
     = render "paypal_button"
   .contribute
-    %h4 Contribute to MADi development
+    %h4.subheader Contribute to MADi
     = form_tag() do
-      = label_tag('contribution', 'Contribution')
+      = label_tag('contribution', 'How would you like to contribute?')
       = text_area_tag('contribution')
       = label_tag('email', 'Email Address')
       = text_field_tag('email')
-      = submit_tag 'Contribute', class: "button contribute right"
+      = submit_tag 'Save', class: "button contribute right secondary"
+    .clearfix
