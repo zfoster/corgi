@@ -4,6 +4,7 @@ Corgi::Application.routes.draw do
   resources :users, only: [:show, :update] do
     member do
       get :twitter_email
+      post '/set_default_avatar' => 'users#set_default_avatar'
     end
   end
   resources :identities, only: [:destroy]

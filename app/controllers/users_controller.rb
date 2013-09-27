@@ -9,7 +9,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update_attributes(email: params[:user][:email])
+    @user.update_attributes(user_params)
     redirect_to root_path
   end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :avatar)
+  end 
+
 end
