@@ -9,4 +9,12 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Corgi::Application.config.secret_key_base = '12125fb188ef8ddef8c9ba231ddd87fe1cb3f96a9cc58f93a23beb084a93db9cc4fe5a474fc1a400725286fc36de2daebc13e8048bf1fcc2a2433a70a12bfe50'
+
+if Rails.env.test?
+  token = 'a_token_for_testing'
+else
+  token = ENV['RAILS_SECRET'] 
+end
+
+
+Corgi::Application.config.secret_key_base = token
