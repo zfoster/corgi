@@ -1420,12 +1420,9 @@ body {
 }
 
 body > .columns {
-  // min-height: 100%;
-  // margin-bottom: -60px;
   &:after {
     content: "";
     display: block;
-    // height: 60px;
   }
 }
 
@@ -1454,7 +1451,15 @@ input#email {
 }
 
 .footer {
-  // height: 60px;
+  .photo-credit {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: white;
+    padding: 10px;
+    background-color: rgba(155, 155, 155, 0.2);
+    font-size: 0.8em;
+  }
   img {
     position: absolute;
     bottom: 10px;
@@ -1462,6 +1467,23 @@ input#email {
     width: 80px;
   }
 }
+
+// Support & contribute page
+
+body.support {
+  .supporters {
+    .s-logo {
+      float: left;
+      max-width: 200px;
+      margin-right: 20px;
+      img {
+        max-width: 200px;
+        max-height: 100px;
+      }
+    }
+  }
+}
+
 
 // Crappy paypal form
 
@@ -1475,6 +1497,9 @@ form#paypal {
     tbody {
       tr {
         background: none;
+      }
+      td {
+        padding: 0;
       }
     }
   }
