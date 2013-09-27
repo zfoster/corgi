@@ -1464,6 +1464,9 @@ input#email {
     padding: 10px;
     background-color: rgba(155, 155, 155, 0.2);
     font-size: 0.8em;
+    a {
+      color:#20d788;
+    }
   }
   img {
     position: absolute;
@@ -1478,12 +1481,13 @@ input#email {
 body.support {
   .supporters {
     .s-logo {
-      float: left;
+      clear:float;
       max-width: 200px;
       margin-right: 20px;
+      margin-bottom:13px;
       img {
-        max-width: 200px;
-        max-height: 100px;
+        max-width:120px;
+        max-height:65px;
       }
     }
   }
@@ -1507,16 +1511,5 @@ form#paypal {
         padding: 0;
       }
     }
-  }
-}
-
-
-//support page
-
-.supporters {
-  img {
-      max-width:120px;
-      max-height:65px;
-      margin-bottom: 13px;
   }
 }
