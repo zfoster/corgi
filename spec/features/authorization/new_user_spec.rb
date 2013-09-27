@@ -22,7 +22,7 @@ describe "A new user authorizes" do
       click_link 'Connect with Twitter'
       fill_in 'twitter-email', with: 'bob@example.com'
       click_on 'Save Email'
-      expect(page.find('.twitter' )).to have_content(nickname)
+      expect(page.find('.twitter')).to have_content(nickname)
       expect(page.find('.twitter')).to have_content(name)
     end
 
