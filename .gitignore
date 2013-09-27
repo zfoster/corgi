@@ -12,4 +12,4 @@
 /tmp
 /config/application.yml
 /coverage
-.DS_Store
+*/.DS_Store
