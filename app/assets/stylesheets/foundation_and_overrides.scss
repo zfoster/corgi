@@ -1393,7 +1393,7 @@ $button-border-color: darken($primary-color, $button-function-factor);
       padding: 3px 0;
     }
     .nickname {
-      padding: 3px 0;
+      padding: 3px 3px;
     }
   }
   .disconnect {
@@ -1410,6 +1410,10 @@ $button-border-color: darken($primary-color, $button-function-factor);
     right: 0;
     bottom: 0;
   }
+}
+
+input[type="radio"] {
+  margin: 0;
 }
 
 // Front page content
@@ -1453,6 +1457,14 @@ body.support .main-content {
 input#email {
   height:2em;
   font-size: 1.4em;
+}
+
+.default-avatar {
+  color: black;
+  img {
+    width: 61px;
+    padding: 5px 5px 5px 0;
+  }
 }
 
 .footer {
