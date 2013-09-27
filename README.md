@@ -3,6 +3,9 @@
 
 ## Setup
 
+- Deploy to heroku
+- Migrat database on heroku
+
 ### Configuration
 
 Corgi stores all configuration in environment variables on heroku.
