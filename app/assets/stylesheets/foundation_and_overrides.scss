@@ -1333,7 +1333,7 @@ $button-border-color: darken($primary-color, $button-function-factor);
 
 .twitter {
   background-color: #00aced;
-  background-image: url("smi_twitter-logo.png");
+  background-image: asset-url("smi_twitter-logo.png");
   background-repeat: no-repeat;
   background-position: 4px 13px;
   &:hover,
@@ -1344,7 +1344,7 @@ $button-border-color: darken($primary-color, $button-function-factor);
 
 .facebook {
   background-color: #3b5998;
-  background-image: url("smi_fb-logo.png");
+  background-image: asset-url("smi_fb-logo.png");
   background-repeat: no-repeat;
   background-position: 3px 12px;
   &:hover,
@@ -1355,7 +1355,7 @@ $button-border-color: darken($primary-color, $button-function-factor);
 
 .linkedin {
   background-color: #007bb6;
-  background-image: url("smi_linkedin-logo.png");
+  background-image: asset-url("smi_linkedin-logo.png");
   background-repeat: no-repeat;
   background-position: 5px 12px;
   &:hover,
@@ -1366,7 +1366,7 @@ $button-border-color: darken($primary-color, $button-function-factor);
 
 .googleplus {
   background-color: #dd4b39;
-  background-image: url("smi_gplus-logo.png");
+  background-image: asset-url("smi_gplus-logo.png");
   background-repeat: no-repeat;
   background-position: 7px 13px;
   &:hover,
@@ -1400,7 +1400,7 @@ $button-border-color: darken($primary-color, $button-function-factor);
     position: absolute;
     right: 3px;
     top: 3px;
-    background-image: url('tinyx.png');
+    background-image: asset-url('tinyx.png');
     background-repeat: no-repeat;
     width: 11px;
     height: 11px;
