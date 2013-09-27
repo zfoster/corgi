@@ -1,32 +1,29 @@
 require 'spec_helper'
 
 describe "A new user authorizes" do
-  let(:uid) { '12345' }
+  let(:name) { OmniAuth.config.mock_auth[provider.intern].info.name }
+  let(:nickname) { OmniAuth.config.mock_auth[provider.intern].info.nickname }
 
   context 'with facebook' do
     let(:provider) { 'facebook' }
-    let(:email) { 'bob@example.com' }
 
     it "shows my authorized accounts" do
       visit root_path
       click_link 'Connect with Facebook'
-      expect(page).to have_content(email)
-      expect(page).to have_content(provider)
-      expect(page).to have_content(uid)
+      expect(page.find('.facebook')).to have_content(name)
     end
   end
 
   context 'with twitter' do
     let(:provider) { 'twitter' }
-    let(:email) { 'wash@firefly.com' }
 
     it "asks for email if needed" do
       visit root_path
       click_link 'Connect with Twitter'
-      expect(page).to have_content('Please provide an email address')
-      fill_in 'twitter-email', with: 'wash@firefly.com'
+      fill_in 'twitter-email', with: 'bob@example.com'
       click_on 'Save Email'
-      expect(page).to have_content(email)
+      expect(page.find('.twitter' )).to have_content(nickname)
+      expect(page.find('.twitter')).to have_content(name)
     end
 
     it "does not ask for email if it already exists" do
@@ -34,35 +31,27 @@ describe "A new user authorizes" do
       click_link 'Connect with LinkedIn'
       visit root_path
       click_link 'Connect with Twitter'
-      expect(page).to have_content(provider)
-      expect(page).to have_content(uid)
-      expect(page).to have_content(email)
+      expect(current_path).to eq(root_path)
     end
   end
 
   context 'with linkedin' do
     let(:provider) { 'linkedin' }
-    let(:email) { 'wash@firefly.com' }
 
     it "shows my authorized accounts" do
       visit root_path
       click_link 'Connect with LinkedIn'
-      expect(page).to have_content(provider)
-      expect(page).to have_content(email)
-      expect(page).to have_content(uid)
+      expect(page.find('.linkedin')).to have_content(name)
     end
   end
 
   context 'with googleplus' do
     let(:provider) { 'google_oauth2' }
-    let(:email) { 'captain@firefly.com' }
 
     it "shows my authorized accounts" do
       visit root_path
-      click_link 'Connect with Google+'
-      expect(page).to have_content(provider)
-      expect(page).to have_content(email)
-      expect(page).to have_content(uid)
+      click_link 'Connect with Google'
+      expect(page.find('.googleplus')).to have_content(name)
     end
   end
 
@@ -77,7 +66,9 @@ describe "A new user authorizes" do
       visit root_path
       click_link 'Connect with LinkedIn'
       providers.each do |provider|
-        expect(page).to have_content(provider)
+        expect(page.find(".facebook")).to have_content(OmniAuth.config.mock_auth[provider.intern].info.name)
+        expect(page.find(".twitter")).to have_content(OmniAuth.config.mock_auth[provider.intern].info.name)
+        expect(page.find(".linkedin")).to have_content(OmniAuth.config.mock_auth[provider.intern].info.name)
       end
     end
   end

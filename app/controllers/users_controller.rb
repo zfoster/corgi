@@ -10,6 +10,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update_attributes(email: params[:user][:email])
-    redirect_to @user
+    redirect_to root_path
   end
 end
