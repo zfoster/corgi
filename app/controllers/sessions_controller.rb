@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     unless @identity.user.email.present?
       redirect_to twitter_email_user_path(@identity.user.id) and return
     end
-    redirect_to @identity.user
+    redirect_to root_path
 
     # if signed_in?
     #   if @identity.user == current_user

@@ -17,7 +17,7 @@
           = current_user.twitter_identity.info['name']
         .nickname
           = "@" + current_user.twitter_identity.info['nickname']
-      .disconnect
+      = link_to "", identity_path(current_user.twitter_identity), method: 'delete', class: 'disconnect'
       .icon
         = image_tag "smi_twitter-logo.png", title: "Twitter"
       .clearfix
@@ -31,7 +31,7 @@
       .names
         .name
           = current_user.linkedin_identity.info['name']
-      .disconnect
+      = link_to "", identity_path(current_user.linkedin_identity), method: 'delete', class: 'disconnect'
       .icon
         = image_tag "smi_linkedin-logo.png", title: "LinkedIn"
       .clearfix
@@ -45,7 +45,7 @@
       .names
         .name
           = current_user.facebook_identity.info['name']
-      .disconnect
+      = link_to "", identity_path(current_user.facebook_identity), method: 'delete', class: 'disconnect'
       .icon
         = image_tag "smi_fb-logo.png", title: "Facebook"
       .clearfix
@@ -59,15 +59,29 @@
       .names
         .name
           = current_user.googleplus_identity.info['name']
-      .disconnect
+      = link_to "", identity_path(current_user.googleplus_identity), method: 'delete', class: 'disconnect'
       .icon
         = image_tag "smi_gplus-logo.png", title: "Google"
       .clearfix
   - else
     = link_to "Connect with Google", googleplus_auth_path, :class => "button googleplus expand large social-media"
   %br
-  = form_tag() do
-    // = label_tag('email', 'Email Address')
-    = text_field_tag('email')
-  / %br
-  / = link_to "Sign Out", sessions_destroy_path, :class => "right"
+  - if current_user
+
+    = form_for current_user do |f|
+      = f.text_field :email
+      %ul
+        - current_user.identities.each do |identity|
+          %li
+            = f.label :avatar, value: "#{identity.info['image']}" do
+              = image_tag "#{identity.info['image']}"
+            = f.radio_button :avatar, "#{identity.info['image']}"
+        %li
+          = f.label :avatar, value: "http://www.gravatar.com/avatar/#{gravatar(current_user.email)}" do
+            = image_tag "http://www.gravatar.com/avatar/#{@hash}"
+          = f.radio_button :avatar, "http://www.gravatar.com/avatar/#{gravatar(current_user.email)}"
+      = f.submit 'Save Info'
+
+    %p 
+      Choose a default image to use on MADi, or set your own with
+      = link_to "Gravatar.com", "http://www.gravatar.com"

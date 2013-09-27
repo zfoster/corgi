@@ -15,4 +15,8 @@ module ApplicationHelper
   def googleplus_auth_path
     '/auth/google_oauth2'
   end
+
+  def gravatar(email)
+    Digest::MD5.hexdigest email.downcase 
+  end
 end

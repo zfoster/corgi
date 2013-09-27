@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @hash = Digest::MD5.hexdigest(downcase_email)
   end
-
 
   def twitter_email
     @user = User.find(params[:id])
@@ -11,19 +9,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update_attributes(email: params[:user][:email])
-    redirect_to @user
-
-  def set_default_avatar
-    @user = User.find(params[:id])
-    @user.update_attributes(avatar: params[:avatar])
-    render nothing: true
-    return
+    @user.update_attributes(user_params)
+    redirect_to root_path
   end
 
-  protected
+  private
 
-  def downcase_email
-    @user.email.downcase
-  end
+  def user_params
+    params.require(:user).permit(:email, :avatar)
+  end 
+
 end
