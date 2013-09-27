@@ -25,10 +25,8 @@
     .footer
       - if (params[:controller] == 'home')
         .photo-credit
-          Photograph by
+          Photo credit: 
           = link_to "Richard Hurd", "http://www.flickr.com/photos/rahimageworks/"
-          ,
-          = link_to "CC BY 2.0", "http://creativecommons.org/licenses/by/2.0/deed.en"
       = link_to image_tag("mom-small.png", title: "Made of Madison", class: "top"), "http://www.madeofmadison.com"
       = link_to image_tag("cc-sa.png", title: "CC license", class: "bottom"), "http://creativecommons.org/licenses/by/3.0/"
     = javascript_include_tag "application"
