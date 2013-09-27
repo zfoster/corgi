@@ -16,10 +16,13 @@
     %h4 Support MADi development
     = render "paypal_button"
   .contribute
-    %h4 Contribute to MADi development
+    %h4 Contribute to MADi
+    %p
+      MADi is
     = form_tag() do
-      = label_tag('contribution', 'Contribution')
+      = label_tag('contribution', 'How would you like to contribute?')
       = text_area_tag('contribution')
       = label_tag('email', 'Email Address')
       = text_field_tag('email')
-      = submit_tag 'Contribute', class: "button contribute right"
+      = submit_tag 'Save', class: "button contribute right secondary"
+    .clearfix
