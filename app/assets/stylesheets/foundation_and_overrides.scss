@@ -1482,9 +1482,14 @@ input#email {
   }
   img {
     position: absolute;
-    bottom: 10px;
     right: 20px;
     width: 80px;
+    &.top {
+      bottom: 50px;
+    }
+    &.bottom {
+      bottom: 10px;
+    }
   }
 }
 
