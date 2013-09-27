@@ -19,6 +19,10 @@ gem 'omniauth-linkedin'
 gem "omniauth-google-oauth2"
 gem 'pg'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'figaro'
