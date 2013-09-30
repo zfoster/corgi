@@ -1484,10 +1484,10 @@ input#email {
     position: absolute;
     right: 20px;
     width: 80px;
-    &.top {
-      bottom: 50px;
+    &.center {
+      margin:0 auto;
     }
-    &.bottom {
+    &.right {
       bottom: 10px;
     }
   }
@@ -1553,7 +1553,7 @@ div.contribute {
   margin-top:1em;
   padding-top: 1em;
   textarea {
-    height: 150px
+    height: 65px;
   }
   input[id="contribution_email"] {
     width: 70%;
