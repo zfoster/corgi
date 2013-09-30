@@ -1,4 +1,6 @@
 .default-avatar
   = image_tag "#{user.avatar}"
   = user.email
+  = label_tag :mobile_num, 'Mobile Number'
+  = text_field_tag :mobile_num, user.mobile_num.present? ? user.mobile_num : '', id: user.id, class: 'user-mobile-num'
 Your MADi identity
