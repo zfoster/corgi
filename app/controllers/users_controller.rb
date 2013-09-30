@@ -13,12 +13,6 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def set_email
-    @user = User.find(user_params)
-    @user.update_attributes(user_params)
-    render nothing: true
-  end
-
   def set_madi_identity
     @identity = Identity.find(params[:identity_id])
     @user = @identity.user
