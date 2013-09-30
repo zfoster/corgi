@@ -3,8 +3,9 @@ Corgi::Application.routes.draw do
 
   resources :users, only: [:show, :update] do
     member do
+      get :set_madi_identity
       get :twitter_email
-      post '/set_default_avatar' => 'users#set_default_avatar'
+      get :set_mobile_num
     end
   end
   resources :contributions, only: [:create]
