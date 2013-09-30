@@ -6,8 +6,8 @@
       .name
         = current_user.twitter_identity.info['name']
       .nickname
-        = "@" + current_user.twitter_identity.info['nickname']
         = radio_button_tag current_user.id, current_user.twitter_identity.id, current_user.twitter_identity.info['image'] == current_user.avatar ? true : false, class: 'user-choose-madi-identity'
+        = "@" + current_user.twitter_identity.info['nickname']
     = link_to "", identity_path(current_user.twitter_identity), method: 'delete', class: 'disconnect'
     .icon
       = image_tag "smi_twitter-logo.png", title: "Twitter"
