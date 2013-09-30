@@ -7,7 +7,7 @@
         = current_user.twitter_identity.info['name']
       .nickname
         = "@" + current_user.twitter_identity.info['nickname']
-        = f.radio_button :avatar, current_user.twitter_identity.info['image']
+        = radio_button_tag current_user.id, current_user.twitter_identity.id, current_user.twitter_identity.info['image'] == current_user.avatar ? true : false, class: 'user-choose-madi-identity'
     = link_to "", identity_path(current_user.twitter_identity), method: 'delete', class: 'disconnect'
     .icon
       = image_tag "smi_twitter-logo.png", title: "Twitter"
@@ -23,7 +23,7 @@
       .name
         = current_user.linkedin_identity.info['name']
     = link_to "", identity_path(current_user.linkedin_identity), method: 'delete', class: 'disconnect'
-    = f.radio_button :avatar, current_user.linkedin_identity.info['image']
+    = radio_button_tag current_user.id, current_user.linkedin_identity.id, current_user.linkedin_identity.info['image'] == current_user.avatar ? true : false, class: 'user-choose-madi-identity'
     .icon
       = image_tag "smi_linkedin-logo.png", title: "LinkedIn"
     .clearfix
@@ -38,7 +38,7 @@
       .name
         = current_user.facebook_identity.info['name']
     = link_to "", identity_path(current_user.facebook_identity), method: 'delete', class: 'disconnect'
-    = f.radio_button :avatar, current_user.facebook_identity.info['image']
+    = radio_button_tag current_user.id, current_user.facebook_identity.id, current_user.facebook_identity.info['image'] == current_user.avatar ? true : false, class: 'user-choose-madi-identity'
     .icon
       = image_tag "smi_fb-logo.png", title: "Facebook"
     .clearfix
@@ -53,7 +53,7 @@
       .name
         = current_user.googleplus_identity.info['name']
     = link_to "", identity_path(current_user.googleplus_identity), method: 'delete', class: 'disconnect'
-    = f.radio_button :avatar, current_user.googleplus_identity.info['image']
+    = radio_button_tag current_user.id, current_user.googleplus_identity.id, current_user.googleplus_identity.info['image'] == current_user.avatar ? true : false, class: 'user-choose-madi-identity'
     .icon
       = image_tag "smi_gplus-logo.png", title: "Google"
     .clearfix

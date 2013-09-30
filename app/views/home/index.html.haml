@@ -10,14 +10,7 @@
   - if current_user
     = form_for current_user do |f|
       = render "shared/social_buttons", f: f
-      .default-avatar
-        = image_tag "#{current_user.avatar}"
-        Your MADi identity
-      %br
-      = f.label :email, "Default Email"
-      = f.text_field :email
-      = f.label :mobile_num, "Mobile Number"
-      = f.text_field :mobile_num
-      = f.submit 'Set your MADi identity', class: 'button'
+      .default-identity
+        = render 'users/default_identity', user: current_user
   - else
     = render "shared/social_buttons"
