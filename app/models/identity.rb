@@ -21,9 +21,10 @@ class Identity < ActiveRecord::Base
   private
 
   def build_user_from_auth
-    new_user = User.create email: info['email'], 
+    new_user = User.create email: info['email'],
       first_name: info['first_name'],
-      last_name: info['last_name']
+      last_name: info['last_name'],
+      avatar: info['image']
     self.user = new_user
   end
 
