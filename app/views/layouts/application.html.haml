@@ -18,7 +18,10 @@
     = csrf_meta_tags
   %body{ class: "#{controller_name} #{action_name}" }
     = render 'shared/nav'
-    = render 'layouts/flashes'
+    .row
+      .12-small.6-large.columns
+        .alert-box
+          = render 'layouts/flashes'
     #main-content
       .columns
         .row.main-content
