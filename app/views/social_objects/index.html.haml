@@ -13,11 +13,11 @@
   .go-left
     Uri
   .go-left
-    Uri
+    %br
   .go-left
-    Uri
+    %br
   .go-left
-    Uri 
+    %br
 
 .small-12.large-12.columns
   - @social_objects.each do |social_object|
@@ -38,7 +38,8 @@
     .go-left
       = link_to 'Edit', edit_social_object_path(social_object)
     .go-left
-      = link_to 'Destroy', social_object, :method => :delete, :data => { :confirm => 'Are you sure?' }
-%p
+      = link_to 'Delete', social_object, :method => :delete, :data => { :confirm => 'Are you sure?' }
 .small-12.large-12.columns
+  %p
+.small-12.large-2.columns.button
   = link_to 'New Social object', new_social_object_path
