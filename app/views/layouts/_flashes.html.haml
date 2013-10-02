@@ -1,7 +1,7 @@
 - flash.each do |name, msg|
   .columns
     .row
-    .alert-box.secondary
-      - if msg.is_a?(String)
-        = content_tag :div, msg, :id => "flash_#{name}"
-      = link_to "&times;".html_safe, "#", :class => "close"
+      .alert-box.secondary
+        - if msg.is_a?(String)
+          = content_tag :div, msg, :id => "flash_#{name}"
+        = link_to "&times;".html_safe, "#", :class => "close"
