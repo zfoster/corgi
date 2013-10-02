@@ -1,23 +1,24 @@
-.small-12.large-7.columns
-  .header{ :height => "56px"}
-    = image_tag "madi-logo.png", title: "MADi logo", :height => "56px", :width => "146px"
-  .left-content
-    %h2.subheader
-      Discover Madison Innovation
-    %p
-      Innovation threads together the future of Madison's businesses, and we all need to connect to that thread. Madison Innovation is a network to help us do it. MADi helps Madison's businesspeople and entrepreneurs find the people, events, and opportunities we need to know about, rapidly and easily.
-    %p
-      Help build Madison Innovation. Connect your networks now!
-    %p
-      We'll be in touch,
-      %br
-      The MADi Team
-.small-12.large-4.columns
-  - if current_user
-    = form_for current_user do |f|
-      = render "shared/social_buttons", f: f
-      %br
-      .identity.default-identity
-        = render 'users/default_identity', user: current_user
-  - else
-    = render "shared/social_buttons"
+.row.main-content
+  .small-12.large-7.columns
+    .header{ :height => "56px"}
+      = image_tag "madi-logo.png", title: "MADi logo", :height => "56px", :width => "146px"
+    .left-content
+      %h2.subheader
+        Discover Madison Innovation
+      %p
+        Innovation threads together the future of Madison's businesses, and we all need to connect to that thread. Madison Innovation is a network to help us do it. MADi helps Madison's businesspeople and entrepreneurs find the people, events, and opportunities we need to know about, rapidly and easily.
+      %p
+        Help build Madison Innovation. Connect your networks now!
+      %p
+        We'll be in touch,
+        %br
+        The MADi Team
+  .small-12.large-4.columns
+    - if current_user
+      = form_for current_user do |f|
+        = render "shared/social_buttons", f: f
+        %br
+        .identity.default-identity
+          = render 'users/default_identity', user: current_user
+    - else
+      = render "shared/social_buttons"
