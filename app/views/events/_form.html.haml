@@ -1,11 +1,4 @@
-= form_for @social_object do |f|
-  - if @social_object.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@social_object.errors.count, "error")} prohibited this social_object from being saved:"
-      %ul
-        - @social_object.errors.full_messages.each do |msg|
-          %li= msg
-
+= form_for @event do |f|
   .field
     = f.label :corgi_foreign_key
     = f.number_field :corgi_foreign_key

@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Corgi foreign key:
+  = @event.corgi_foreign_key
+%p
+  %b Corgi create date:
+  = @event.corgi_create_date
+%p
+  %b Type:
+  = @event.type
+%p
+  %b Title:
+  = @event.title
+%p
+  %b Description:
+  = @event.description
+%p
+  %b Uri:
+  = @event.uri
+
+= link_to 'Edit', edit_event_path(@event)
+\|
+= link_to 'Back', events_path

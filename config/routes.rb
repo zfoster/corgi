@@ -1,7 +1,7 @@
 Corgi::Application.routes.draw do
   resources :shares
 
-  resources :social_objects
+  resources :events
 
   root "home#index"
 
