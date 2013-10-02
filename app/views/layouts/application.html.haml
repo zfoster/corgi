@@ -24,8 +24,8 @@
         .row.main-content
           = yield
     .clearfix
-    .footer-wrapper.columns
-      .footer.row
+    .footer-wrapper.row
+      .footer.columns
         - if (params[:controller] == 'home')
           .photo-credit
             Photo credit:

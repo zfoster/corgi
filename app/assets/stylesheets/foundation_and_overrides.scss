@@ -1516,19 +1516,6 @@ body.support {
   }
 }
 
-
-// put flash into box on support page
-#flash_notice {   // this needs to be redone
-  max-width: 62.5em;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 16%;
-  padding-top: 2%;
-  position: absolute;
-  z-index: 100;
-  color: red;
-}
-
 // Crappy paypal form
 
 form#paypal {
@@ -1566,7 +1553,7 @@ div.contribute {
   input[type="submit"] {
     width: 27%;
     float: right;
-    padding: 0.5em 0;
+    padding: 0.57em 0;
   }
 }
 
