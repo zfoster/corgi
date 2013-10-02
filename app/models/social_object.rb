@@ -4,13 +4,6 @@ class SocialObject < ActiveRecord::Base
   has_many :sharers, class_name: 'User'
   has_many :shares
 
-  before_create :instantiate_share
-
-  def instantiate_share(user)
-    share = Share.new(user: user)
-    shares << share
-  end
-
   def new_member(user)
     self.members << user
     share = Share.new(user: user)
