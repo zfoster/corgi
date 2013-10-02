@@ -1325,6 +1325,47 @@ nav section.top-bar-section ul li a:hover {
 }
 
 // Social Media Buttons
+.identity {
+  color: white;
+  position: relative;
+  .image {
+    float: left;
+    padding-right:10px;
+    img {
+      width: 61px;
+      height: 61px;
+    }
+  }
+  .names {
+    padding: 5px 0 5px 10px;
+    .name {
+      font-size: 1.2em;
+      padding: 3px 0;
+    }
+    .nickname {
+      padding: 3px 3px;
+    }
+    .mobile {
+      label {
+        color: white;
+      }
+    }
+  }
+  .disconnect {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    background-image: asset-url('tinyx.png');
+    background-repeat: no-repeat;
+    width: 11px;
+    height: 11px;
+  }
+  .icon {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
 
 .social-media {
   @include button;
@@ -1377,41 +1418,17 @@ nav section.top-bar-section ul li a:hover {
     background-color: #dd4b39;
   }
 }
-
-.identity {
-  color: white;
-  position: relative;
-  .image {
-    float: left;
-    padding-right:10px;
-    img {
-      width: 61px;
-      height: 61px;
-    }
-  }
-  .names {
-    padding: 5px 0 5px 10px;
-    .name {
-      font-size: 1.2em;
-      padding: 3px 0;
-    }
-    .nickname {
-      padding: 3px 3px;
-    }
-  }
-  .disconnect {
-    position: absolute;
-    right: 3px;
-    top: 3px;
-    background-image: asset-url('tinyx.png');
-    background-repeat: no-repeat;
-    width: 11px;
-    height: 11px;
+.default-identity {
+  background-color: #595c5c;
+  background-image: asset-url("smi_madi-logo.png");
+  background-repeat: no-repeat;
+  background-position: 7px 13px;
+  &:hover, &:active {
+    background-color: #595c5c;
   }
   .icon {
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 4px;
+    bottom: 4px;
   }
 }
 
@@ -1420,18 +1437,6 @@ input[type="radio"] {
 }
 
 // Front page content
-
-// html,
-// body {
-//   height: 100%;
-// }
-
-// body > .columns {
-//   &:after {
-//     content: "";
-//     display: block;
-//   }
-// }
 
 body.home.index {
   background-image: asset-url('madison.jpg');
@@ -1461,14 +1466,6 @@ body.support .main-content {
 input#email {
   height:2em;
   font-size: 1.4em;
-}
-
-.default-avatar {
-  color: black;
-  img {
-    width: 61px;
-    padding: 5px 5px 5px 0;
-  }
 }
 
 .footer-wrapper {
