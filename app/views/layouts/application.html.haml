@@ -18,17 +18,16 @@
     = csrf_meta_tags
   %body{ class: "#{controller_name} #{action_name}" }
     = render 'shared/nav'
-    .row
-      .12-small.6-large.columns
-        .alert-box
-          = render 'layouts/flashes'
+    .columns
+      .row
+        = render 'layouts/flashes'
     #main-content
       .columns
         .row.main-content
           = yield
     .clearfix
-    .footer-wrapper.columns
-      .footer.row
+    .footer-wrapper.row
+      .footer.columns
         - if (params[:controller] == 'home')
           .photo-credit
             Photo credit:
