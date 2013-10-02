@@ -1,4 +1,8 @@
 Corgi::Application.routes.draw do
+  resources :shares
+
+  resources :social_objects
+
   root "home#index"
 
   resources :users, only: [:show, :update] do

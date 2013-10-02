@@ -1,0 +1,29 @@
+%h1 Listing social_objects
+
+%table
+  %tr
+    %th Corgi foreign key
+    %th Corgi create date
+    %th Type
+    %th Title
+    %th Description
+    %th Uri
+    %th
+    %th
+    %th
+
+  - @social_objects.each do |social_object|
+    %tr
+      %td= social_object.corgi_foreign_key
+      %td= social_object.corgi_create_date
+      %td= social_object.type
+      %td= social_object.title
+      %td= social_object.description
+      %td= social_object.uri
+      %td= link_to 'Show', social_object
+      %td= link_to 'Edit', edit_social_object_path(social_object)
+      %td= link_to 'Destroy', social_object, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Social object', new_social_object_path
