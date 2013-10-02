@@ -19,14 +19,16 @@
   %body{ class: "#{controller_name} #{action_name}" }
     = render 'shared/nav'
     = render 'layouts/flashes'
-    .columns
-      .row.main-content
-        = yield
-    .footer
-      - if (params[:controller] == 'home')
-        .photo-credit
-          Photo credit: 
-          = link_to "Richard Hurd", "http://www.flickr.com/photos/rahimageworks/"
-      = link_to image_tag("cc-sa.png", title: "CC license", class: "center"), "http://creativecommons.org/licenses/by/3.0/"
-      = link_to image_tag("mom-small.png", title: "Made of Madison", class: "right"), "http://www.madeofmadison.com"
-    = javascript_include_tag "application"
+    #main-content
+      .columns
+        .row.main-content
+          = yield
+    .clearfix
+    .footer-wrapper.columns
+      .footer.row
+        - if (params[:controller] == 'home')
+          .photo-credit
+            Photo credit:
+            = link_to "Richard Hurd", "http://www.flickr.com/photos/rahimageworks/"
+        = link_to image_tag("cc-sa.png", title: "CC license", class: "center"), "http://creativecommons.org/licenses/by/3.0/"
+        = link_to image_tag("mom-small.png", title: "Made of Madison", class: "right"), "http://www.madeofmadison.com"
