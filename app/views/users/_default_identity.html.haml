@@ -1,6 +1,11 @@
-.default-avatar
+.image.default-avatar
   = image_tag "#{user.avatar}"
-  = user.email
-  = label_tag :mobile_num, 'Mobile Number'
-  = text_field_tag :mobile_num, user.mobile_num.present? ? user.mobile_num : '', id: user.id, class: 'user-mobile-num'
-Your MADi identity
+.names
+  .name
+    = user.email
+  .mobile
+    = label_tag :mobile_num, 'Add a Mobile Number'
+  / = text_field_tag :mobile_num, user.mobile_num.present? ? user.mobile_num : '', id: user.id, class: 'user-mobile-num'
+.icon
+  = image_tag "smi_madi-logo.png", title: "MADi"
+.clearfix
