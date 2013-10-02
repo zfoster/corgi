@@ -1331,6 +1331,10 @@ a:hover {
   color:rgba(255, 255, 255, 0.7);
 }
 
+.bold {
+  font-weight: bold;
+}
+
 // Social Media Buttons
 .identity {
   color: white;
@@ -1570,6 +1574,8 @@ div.contribute {
 
 //SOCIAL OBJECTS INDEX
 
-.small-12.large-12.columns {
-  font-size: .8em;
+.go-left {
+  float:left;
+  margin:10px;
+  width:8%;
 }
