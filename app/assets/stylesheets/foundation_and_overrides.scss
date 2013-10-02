@@ -1320,6 +1320,9 @@ $button-border-color: darken($primary-color, $button-function-factor);
   visibility: hidden;
 }
 
+nav section.top-bar-section ul li a:hover {
+  background-color: rgb(35,35,35)
+}
 
 // Social Media Buttons
 
@@ -1418,17 +1421,17 @@ input[type="radio"] {
 
 // Front page content
 
-html,
-body {
-  height: 100%;
-}
+// html,
+// body {
+//   height: 100%;
+// }
 
-body > .columns {
-  &:after {
-    content: "";
-    display: block;
-  }
-}
+// body > .columns {
+//   &:after {
+//     content: "";
+//     display: block;
+//   }
+// }
 
 body.home.index {
   background-image: asset-url('madison.jpg');
@@ -1441,7 +1444,8 @@ body.home.index {
   padding:2em;
   background-color: rgba(255,255,255,0.4);
   p {
-    color: black;
+    color: #222222;
+    font-size: 1.1em;
   }
   .name {
     a {
@@ -1467,8 +1471,9 @@ input#email {
   }
 }
 
-.footer {
-  .photo-credit {
+.footer-wrapper {
+  margin-top: 110px;
+ .photo-credit {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -1559,6 +1564,7 @@ div.contribute {
   input[id="contribution_email"] {
     width: 70%;
     float: left;
+    font-size: 1.1em;
   }
   input[type="submit"] {
     width: 27%;
