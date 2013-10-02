@@ -4,10 +4,10 @@
       = link_to image_tag(current_user.twitter_identity.info['image']), 'http://www.twitter.com/' + current_user.twitter_identity.info['nickname']
     .names
       .name
-        = link_to current_user.twitter_identity.info['name'], 'http://www.twitter.com/' + current_user.twitter_identity.info['nickname']
+        = link_to current_user.twitter_identity.info['name'].truncate(25), 'http://www.twitter.com/' + current_user.twitter_identity.info['nickname']
       .nickname
         = radio_button_tag current_user.id, current_user.twitter_identity.id, current_user.twitter_identity.info['image'] == current_user.avatar ? true : false, class: 'user-choose-madi-identity'
-        = "@" + current_user.twitter_identity.info['nickname']
+        = "@" + current_user.twitter_identity.info['nickname'].truncate(20)
     = link_to "", identity_path(current_user.twitter_identity), method: 'delete', class: 'disconnect'
     .icon
       = image_tag "smi_twitter-logo.png", title: "Twitter"
@@ -21,7 +21,7 @@
       = link_to image_tag(current_user.linkedin_identity.info['image']), 'http://www.linkedin.com/profile/view?id=' + current_user.linkedin_identity.uid
     .names
       .name
-        = link_to current_user.linkedin_identity.info['name'], 'http://www.linkedin.com/profile/view?id=' + current_user.linkedin_identity.uid
+        = link_to current_user.linkedin_identity.info['name'].truncate(25), 'http://www.linkedin.com/profile/view?id=' + current_user.linkedin_identity.uid
     = link_to "", identity_path(current_user.linkedin_identity), method: 'delete', class: 'disconnect'
     = radio_button_tag current_user.id, current_user.linkedin_identity.id, current_user.linkedin_identity.info['image'] == current_user.avatar ? true : false, class: 'user-choose-madi-identity'
     .icon
@@ -36,7 +36,7 @@
       = link_to image_tag(current_user.facebook_identity.info['image']), 'http://www.facebook.com/profile.php?id=' + current_user.facebook_identity.uid
     .names
       .name
-        = link_to current_user.facebook_identity.info['name'], 'http://www.facebook.com/profile.php?id=' + current_user.facebook_identity.uid
+        = link_to current_user.facebook_identity.info['name'].truncate(25), 'http://www.facebook.com/profile.php?id=' + current_user.facebook_identity.uid
     = link_to "", identity_path(current_user.facebook_identity), method: 'delete', class: 'disconnect'
     = radio_button_tag current_user.id, current_user.facebook_identity.id, current_user.facebook_identity.info['image'] == current_user.avatar ? true : false, class: 'user-choose-madi-identity'
     .icon
@@ -51,7 +51,7 @@
       = link_to image_tag(current_user.googleplus_identity.info['image']), 'http://plus.google.com/' + current_user.googleplus_identity.uid
     .names
       .name
-        = link_to current_user.googleplus_identity.info['name'], 'http://plus.google.com/' + current_user.googleplus_identity.uid
+        = link_to current_user.googleplus_identity.info['name'].truncate(25), 'http://plus.google.com/' + current_user.googleplus_identity.uid
     = link_to "", identity_path(current_user.googleplus_identity), method: 'delete', class: 'disconnect'
     = radio_button_tag current_user.id, current_user.googleplus_identity.id, current_user.googleplus_identity.info['image'] == current_user.avatar ? true : false, class: 'user-choose-madi-identity'
     .icon

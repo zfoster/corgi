@@ -1345,11 +1345,6 @@ nav section.top-bar-section ul li a:hover {
     .nickname {
       padding: 3px 3px;
     }
-    .mobile {
-      label {
-        color: white;
-      }
-    }
   }
   .disconnect {
     position: absolute;
@@ -1423,12 +1418,35 @@ nav section.top-bar-section ul li a:hover {
   background-image: asset-url("smi_madi-logo.png");
   background-repeat: no-repeat;
   background-position: 7px 13px;
+  font-size: 0.8em;
   &:hover, &:active {
     background-color: #595c5c;
+  }
+  .name-name, .number-number {
+    display: inline;
+    font-size: 1.3em;
   }
   .icon {
     right: 4px;
     bottom: 4px;
+  }
+  #default-email-edit, #default-mobile-edit {
+    display: none;
+    .blank-card {
+      height: 61px;
+      background-color: #595c5c;
+      input[type="text"] {
+        width: 75%;
+        margin: 0 1em;
+        height: 1.5em;
+      }
+      label {
+        display: inline-block;
+        color: white;
+        float: right;
+        margin: -20px 15px 10px 5px;
+      }
+    }
   }
 }
 
@@ -1452,8 +1470,12 @@ body.home.index {
     color: #222222;
     font-size: 1.1em;
   }
-  .name {
+  .name, .number {
     a {
+      color: white;
+    }
+    .edit-default-email, edit-default-mobile {
+      font-size: 0.8em;
       color: white;
     }
   }
