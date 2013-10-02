@@ -4,8 +4,6 @@ class SocialObject < ActiveRecord::Base
   has_many :sharers, class_name: 'User'
   has_many :shares
 
-  validates_presence_of :admin, :members
-
   before_create :instantiate_share
 
   def instantiate_share(user)
