@@ -1,11 +1,30 @@
-.image.default-avatar
-  = image_tag "#{user.avatar}"
-.names
-  .name
-    = user.email
-  .mobile
-    / = label_tag :mobile_num, 'Add a Mobile Number'
-  / = text_field_tag :mobile_num, user.mobile_num.present? ? user.mobile_num : '', id: user.id, class: 'user-mobile-num'
-.icon
-  = image_tag "smi_madi-logo.png", title: "MADi"
-.clearfix
+.default-card-info
+  .image.default-avatar
+    = image_tag "#{user.avatar}"
+  .names
+    .name
+      .name-name
+        = user.email
+      = link_to 'edit', '#', class: 'edit-default-email'
+    .number
+      - if user.mobile_num.present?
+        .number-number
+          = user.mobile_num
+        = link_to 'edit', '#', class: 'edit-default-mobile'
+      - else
+        = link_to 'add mobile number', '', class: 'edit-default-mobile'
+  .icon
+    = image_tag "smi_madi-logo.png", title: "MADi"
+  .clearfix
+
+#default-email-edit
+  .blank-card
+    %br
+    = text_field_tag :email, user.email.present? ? user.email : 'you@domain.com', id: 'edited-email'
+    = label_tag :email, 'save', class: 'save-email', 'user-id' => "#{user.id}"
+
+#default-mobile-edit
+  .blank-card
+    %br
+    = text_field_tag :mobile_num, user.mobile_num.present? ? user.mobile_num : '608-555-1212', id: 'edited-mobile'
+    = label_tag :mobile_num, 'save', class: 'save-mobile', 'user-id' => "#{user.id}"
