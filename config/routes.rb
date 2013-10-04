@@ -13,7 +13,7 @@ Corgi::Application.routes.draw do
     member do
       get :set_madi_identity
       get :twitter_email
-      get :set_mobile_num
+      post :update_user_data
     end
   end
   resources :contributions, only: [:create]

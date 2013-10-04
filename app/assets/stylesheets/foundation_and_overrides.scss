@@ -603,7 +603,7 @@ $button-border-color: darken($primary-color, $button-function-factor);
 // $custom-form-input-size: 16px;
 // $custom-form-check-color: #222;
 // $custom-form-check-size: 16px;
-// $custom-form-radio-size: 8px;
+$custom-form-radio-size: 8px;
 // $custom-form-checkbox-radius: 0px;
 
 // We use these to style the custom select form element.
@@ -1336,9 +1336,13 @@ a:hover {
 }
 
 // Social Media Buttons
+
 .identity {
   color: white;
   position: relative;
+  a {
+    color:white;
+  }
   .image {
     float: left;
     padding-right:10px;
@@ -1356,25 +1360,29 @@ a:hover {
     .nickname {
       padding: 3px 3px;
     }
-    .mobile {
-      label {
-        color: white;
-      }
-    }
   }
+  input.user-choose-madi-identity {
+    position: absolute;
+    left: 3px;
+    bottom: 3px;
+    margin: 0;
+  }
+
   .disconnect {
     position: absolute;
-    right: 3px;
-    top: 3px;
-    background-image: asset-url('tinyx.png');
+    right: 5px;
+    top: 5px;
+    background-image: asset-url("toggle-2.png");
     background-repeat: no-repeat;
-    width: 11px;
-    height: 11px;
+    background-size: 32px auto;
+    height: 15px;
+    width: 32px;
   }
   .icon {
     position: absolute;
     right: 0;
     bottom: 0;
+    width: 24px;
   }
 }
 
@@ -1434,17 +1442,36 @@ a:hover {
   background-image: asset-url("smi_madi-logo.png");
   background-repeat: no-repeat;
   background-position: 7px 13px;
+  font-size: 0.8em;
   &:hover, &:active {
     background-color: #595c5c;
+  }
+  .name-name, .number-number {
+    display: inline;
+    font-size: 1.3em;
   }
   .icon {
     right: 4px;
     bottom: 4px;
   }
-}
-
-input[type="radio"] {
-  margin: 0;
+  #default-email-edit, #default-mobile-edit {
+    display: none;
+    .blank-card {
+      height: 61px;
+      background-color: #595c5c;
+      input[type="text"] {
+        width: 75%;
+        margin: 0 1em;
+        height: 2em;
+      }
+      label {
+        display: inline-block;
+        color: white;
+        float: right;
+        margin: -20px 15px 10px 5px;
+      }
+    }
+  }
 }
 
 // Front page content
@@ -1457,14 +1484,18 @@ body.home.index {
 
 .main-content {
   margin-top: 1em;
-  padding:2em;
+  padding: 1em 0;
   background-color: rgba(255,255,255,0.4);
   p {
     color: #222222;
     font-size: 1.1em;
   }
-  .name {
+  .name, .number {
     a {
+      color: white;
+    }
+    .edit-default-email, edit-default-mobile {
+      font-size: 0.8em;
       color: white;
     }
   }

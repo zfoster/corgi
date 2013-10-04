@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def set_mobile_num
+  def update_user_data
     @user = User.find(params[:id])
     @user.update_attributes(user_params)
     render nothing: true
