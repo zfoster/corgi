@@ -1,20 +1,22 @@
-%h1 Listing shares
+.row.main-content
+  .small-12.large-7.columns
+    %h1 Listing shares
 
-%table
-  %tr
-    %th Message
-    %th
-    %th
-    %th
+    %table
+      %tr
+        %th Message
+        %th
+        %th
+        %th
 
-  - @shares.each do |share|
-    %tr
-      %td= share.message
-      %td= share.event.title
-      %td= link_to 'Show', share
-      %td= link_to 'Edit', edit_share_path(share)
-      %td= link_to 'Destroy', share, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      - @shares.each do |share|
+        %tr
+          %td= share.message
+          %td= share.event.title
+          %td= link_to 'Show', share
+          %td= link_to 'Edit', edit_share_path(share)
+          %td= link_to 'Destroy', share, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
+    %br
 
-= link_to 'New Share', new_share_path
+    = link_to 'New Share', new_share_path

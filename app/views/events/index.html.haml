@@ -1,44 +1,45 @@
-.small-12.large-12.columns.bold
-  %h3 Listing events
-  .go-left
-    Corgi foreign key
-  .go-left
-    Corgi create date
-  .go-left
-    Type
-  .go-left
-    Title
-  .go-left
-    Description
-  .go-left
-    Uri
-  .go-left
-    Uri
-  .go-left
-    Uri
-  .go-left
-    Uri
+.row.main-content
+  .small-12.large-12.columns.bold
+    %h3 Listing events
+    .go-left
+      Corgi foreign key
+    .go-left
+      Corgi create date
+    .go-left
+      Type
+    .go-left
+      Title
+    .go-left
+      Description
+    .go-left
+      Uri
+    .go-left
+      Uri
+    .go-left
+      Uri
+    .go-left
+      Uri
 
-.small-12.large-12.columns
-  - @events.each do |event|
-    .go-left
-      = event.corgi_foreign_key
-    .go-left
-      = event.corgi_create_date
-    .go-left
-      = event.type
-    .go-left
-      = event.title
-    .go-left
-      = event.description
-    .go-left
-      = event.uri
-    .go-left
-      = link_to 'Show', event
-    .go-left
-      = link_to 'Edit', edit_event_path(event)
-    .go-left
-      = link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
-%p
-.small-12.large-12.columns
-  = link_to 'New Event', new_event_path
+  .small-12.large-12.columns
+    - @events.each do |event|
+      .go-left
+        = event.corgi_foreign_key
+      .go-left
+        = event.corgi_create_date
+      .go-left
+        = event.type
+      .go-left
+        = event.title
+      .go-left
+        = event.description
+      .go-left
+        = event.uri
+      .go-left
+        = link_to 'Show', event
+      .go-left
+        = link_to 'Edit', edit_event_path(event)
+      .go-left
+        = link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %p
+  .small-12.large-12.columns
+    = link_to 'New Event', new_event_path
