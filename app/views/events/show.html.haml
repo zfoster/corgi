@@ -2,16 +2,6 @@
   .small-12.large-7.columns
 
     %p#notice= notice
-
-    %p
-      %b Corgi foreign key:
-      = @event.corgi_foreign_key
-    %p
-      %b Corgi create date:
-      = @event.corgi_create_date
-    %p
-      %b Type:
-      = @event.type
     %p
       %b Title:
       = @event.title
@@ -19,7 +9,7 @@
       %b Description:
       = @event.description
     %p
-      %b Uri:
+      %b Website:
       = @event.uri
 
     = link_to 'Become a member', new_member_event_path(@event)
