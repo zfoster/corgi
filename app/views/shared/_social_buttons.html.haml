@@ -6,9 +6,9 @@
       .name
         = link_to current_user.twitter_identity.info['name'].truncate(25), 'http://www.twitter.com/' + current_user.twitter_identity.info['nickname']
       .nickname
-        = radio_button_tag current_user.id, current_user.twitter_identity.id, current_user.twitter_identity.info['image'] == current_user.avatar ? true : false, class: 'user-choose-madi-identity'
         = "@" + current_user.twitter_identity.info['nickname'].truncate(20)
     = link_to "", identity_path(current_user.twitter_identity), method: 'delete', class: 'disconnect'
+    = radio_button_tag current_user.id, current_user.twitter_identity.id, current_user.twitter_identity.info['image'] == current_user.avatar ? true : false, class: 'user-choose-madi-identity'
     .icon
       = image_tag "smi_twitter-logo.png", title: "Twitter"
     .clearfix

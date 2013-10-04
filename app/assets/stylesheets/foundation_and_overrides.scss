@@ -603,7 +603,7 @@ $button-border-color: darken($primary-color, $button-function-factor);
 // $custom-form-input-size: 16px;
 // $custom-form-check-color: #222;
 // $custom-form-check-size: 16px;
-// $custom-form-radio-size: 8px;
+$custom-form-radio-size: 8px;
 // $custom-form-checkbox-radius: 0px;
 
 // We use these to style the custom select form element.
@@ -1356,6 +1356,7 @@ nav section.top-bar-section ul li a:hover {
     bottom: 3px;
     margin: 0;
   }
+
   .disconnect {
     position: absolute;
     right: 5px;
