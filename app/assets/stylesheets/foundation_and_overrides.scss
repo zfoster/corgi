@@ -603,7 +603,7 @@ $button-border-color: darken($primary-color, $button-function-factor);
 // $custom-form-input-size: 16px;
 // $custom-form-check-color: #222;
 // $custom-form-check-size: 16px;
-// $custom-form-radio-size: 8px;
+$custom-form-radio-size: 8px;
 // $custom-form-checkbox-radius: 0px;
 
 // We use these to style the custom select form element.
@@ -1325,9 +1325,13 @@ nav section.top-bar-section ul li a:hover {
 }
 
 // Social Media Buttons
+
 .identity {
   color: white;
   position: relative;
+  a {
+    color:white;
+  }
   .image {
     float: left;
     padding-right:10px;
@@ -1346,19 +1350,28 @@ nav section.top-bar-section ul li a:hover {
       padding: 3px 3px;
     }
   }
+  input.user-choose-madi-identity {
+    position: absolute;
+    left: 3px;
+    bottom: 3px;
+    margin: 0;
+  }
+
   .disconnect {
     position: absolute;
-    right: 3px;
-    top: 3px;
-    background-image: asset-url('tinyx.png');
+    right: 5px;
+    top: 5px;
+    background-image: asset-url("toggle-2.png");
     background-repeat: no-repeat;
-    width: 11px;
-    height: 11px;
+    background-size: 32px auto;
+    height: 15px;
+    width: 32px;
   }
   .icon {
     position: absolute;
     right: 0;
     bottom: 0;
+    width: 24px;
   }
 }
 
@@ -1448,10 +1461,6 @@ nav section.top-bar-section ul li a:hover {
       }
     }
   }
-}
-
-input[type="radio"] {
-  margin: 0;
 }
 
 // Front page content
