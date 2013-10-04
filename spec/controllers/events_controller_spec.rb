@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe EventsController do
-  let(:valid_attributes) { {} }
+  let(:valid_attributes) { {:num_of_seats => 100} }
   let(:valid_session) { {} }
 
   describe "GET index" do

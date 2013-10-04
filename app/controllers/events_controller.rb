@@ -47,6 +47,6 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:corgi_create_date, :title, :description, :uri)
+      params.require(:event).permit(:corgi_create_date, :title, :description, :uri, :num_of_seats, :start_time, :end_time, :venue_id, :all_day)
     end
 end
