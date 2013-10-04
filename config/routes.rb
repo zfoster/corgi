@@ -1,7 +1,11 @@
 Corgi::Application.routes.draw do
   resources :shares
 
-  resources :events
+  resources :events do
+    member do
+      get :new_member
+    end
+  end
 
   root "home#index"
 

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :new_member]
 
   def index
     @events = Event.all
@@ -37,13 +37,22 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
+  def new_member
+    if current_user
+      @event.members << current_user
+      redirect_to new_shares_path
+    else
+      render action: 'show', notice: 'Please sign in before continuing'
+    end
+
+  end
+
   private
-    def set_social_object
+    def set_event
       @event = Event.find(params[:id])
     end
 
-    def social_object_params
+    def event_params
       params.require(:event).permit(:corgi_foreign_key, :corgi_create_date, :type, :title, :description, :uri)
     end
-
 end
