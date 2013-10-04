@@ -4,7 +4,7 @@
   .names
     .name
       .name-name
-        = user.email.truncate(20)
+        = user.email.truncate(17)
       = link_to 'edit', '#', class: 'edit-default-email'
     .number
       - if user.mobile_num.present?

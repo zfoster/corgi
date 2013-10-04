@@ -26,7 +26,7 @@ setEmailAddress = (id, email) ->
       user:
         email: email
     success: 
-      $('.default-card-info .name-name').text(email)
+      $('.default-card-info .name-name').text(email.substring(0,17) + "...")
 
 $(document).ready ->
   $(".user-choose-madi-identity").click ->
