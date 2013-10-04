@@ -1,0 +1,7 @@
+= form_for @share do |f|
+  .field
+    = f.label :message
+    = f.text_area :message
+    = f.hidden_field :event_id, value: @event.id
+  .actions
+    = f.submit 'Save'

@@ -1,4 +1,12 @@
 Corgi::Application.routes.draw do
+  resources :shares
+
+  resources :events do
+    member do
+      get :new_member
+    end
+  end
+
   root "home#index"
 
   resources :users, only: [:show, :update] do

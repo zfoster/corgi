@@ -1324,6 +1324,17 @@ nav section.top-bar-section ul li a:hover {
   background-color: rgb(35,35,35)
 }
 
+a {
+  color:white;
+}
+a:hover {
+  color:rgba(255, 255, 255, 0.7);
+}
+
+.bold {
+  font-weight: bold;
+}
+
 // Social Media Buttons
 
 .identity {
@@ -1590,3 +1601,13 @@ div.contribute {
 
 
 //support page
+
+
+//SOCIAL OBJECTS INDEX
+
+.go-left {
+  float:left;
+  margin:10px;
+  width:8%;
+}
+
