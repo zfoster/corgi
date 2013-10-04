@@ -3,7 +3,7 @@
     = image_tag "#{user.avatar}"
   .names
     .name
-      .name-name
+      .email
         = user.email.truncate(20)
       = link_to 'edit', '#', class: 'edit-default-email'
     .number

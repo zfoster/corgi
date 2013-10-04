@@ -1325,9 +1325,13 @@ nav section.top-bar-section ul li a:hover {
 }
 
 // Social Media Buttons
+
 .identity {
   color: white;
   position: relative;
+  a {
+    color:white;
+  }
   .image {
     float: left;
     padding-right:10px;
@@ -1346,19 +1350,27 @@ nav section.top-bar-section ul li a:hover {
       padding: 3px 3px;
     }
   }
+  input.user-choose-madi-identity {
+    position: absolute;
+    left: 3px;
+    bottom: 3px;
+    margin: 0;
+  }
   .disconnect {
     position: absolute;
-    right: 3px;
-    top: 3px;
-    background-image: asset-url('tinyx.png');
+    right: 5px;
+    top: 5px;
+    background-image: asset-url("on-toggle.png");
     background-repeat: no-repeat;
-    width: 11px;
-    height: 11px;
+    background-size: 32px auto;
+    height: 15px;
+    width: 32px;
   }
   .icon {
     position: absolute;
     right: 0;
     bottom: 0;
+    width: 24px;
   }
 }
 
@@ -1448,10 +1460,6 @@ nav section.top-bar-section ul li a:hover {
       }
     }
   }
-}
-
-input[type="radio"] {
-  margin: 0;
 }
 
 // Front page content
