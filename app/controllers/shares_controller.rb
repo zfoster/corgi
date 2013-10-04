@@ -1,8 +1,9 @@
 class SharesController < ApplicationController
   before_action :set_share, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:new]
 
   def index
-    @share = Share.all
+    @shares = Share.all
   end
 
   def show
@@ -13,6 +14,7 @@ class SharesController < ApplicationController
   end
 
   def edit
+    @event = @share.event
   end
 
   def create
@@ -38,11 +40,16 @@ class SharesController < ApplicationController
   end
 
   private
+
+    def set_event
+      @event = Event.find(params[:id])
+    end
+
     def set_share
       @share = Share.find(params[:id])
     end
 
     def share_params
-      params.require(:share).permit(:message)
+      params.require(:share).permit(:message, :event_id)
     end
 end

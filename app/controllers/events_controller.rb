@@ -38,13 +38,7 @@ class EventsController < ApplicationController
   end
 
   def new_member
-    if current_user
-      @event.members << current_user
-      redirect_to new_shares_path
-    else
-      render action: 'show', notice: 'Please sign in before continuing'
-    end
-
+    redirect_to new_share_path(id: @event.id)
   end
 
   private
