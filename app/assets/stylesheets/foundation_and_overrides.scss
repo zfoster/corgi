@@ -1480,6 +1480,7 @@ body.home.index {
   background-image: asset-url('madison.jpg');
   background-repeat: no-repeat;
   background-size:100%;
+  background-color: rgba(56, 73, 119,1);
 }
 
 .home-bg {
@@ -1527,7 +1528,10 @@ input#email {
 }
 
 .footer-wrapper {
-  margin-top: 110px;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
  .photo-credit {
     position: absolute;
     bottom: 0;
