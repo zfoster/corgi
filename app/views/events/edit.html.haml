@@ -1,7 +1,9 @@
-%h1 Editing social_object
+.row.main-content
+  .small-12.large-5.columns
+    %h1 Edit
 
-= render 'form'
+    = render 'form'
 
-= link_to 'Show', @event
-\|
-= link_to 'Back', events_path
+    = link_to 'Show', @event
+    \|
+    = link_to 'Back', events_path

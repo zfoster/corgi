@@ -1,26 +1,19 @@
-%p#notice= notice
+.row.main-content
+  .small-12.large-7.columns
 
-%p
-  %b Corgi foreign key:
-  = @event.corgi_foreign_key
-%p
-  %b Corgi create date:
-  = @event.corgi_create_date
-%p
-  %b Type:
-  = @event.type
-%p
-  %b Title:
-  = @event.title
-%p
-  %b Description:
-  = @event.description
-%p
-  %b Uri:
-  = @event.uri
+    %p#notice= notice
+    %p
+      %b Title:
+      = @event.title
+    %p
+      %b Description:
+      = @event.description
+    %p
+      %b Website:
+      = @event.uri
 
-= link_to 'Become a member', new_member_event_path(@event)
-\|
-= link_to 'Edit', edit_event_path(@event)
-\|
-= link_to 'Back', events_path
+    = link_to 'Become a member', new_member_event_path(@event)
+    \|
+    = link_to 'Edit', edit_event_path(@event)
+    \|
+    = link_to 'Back', events_path
