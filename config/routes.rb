@@ -1,4 +1,8 @@
 Corgi::Application.routes.draw do
+  resources :organizations
+
+  resources :venues
+
   resources :shares
 
   resources :events do

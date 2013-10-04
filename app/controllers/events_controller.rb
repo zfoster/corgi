@@ -47,6 +47,6 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:corgi_foreign_key, :corgi_create_date, :type, :title, :description, :uri)
+      params.require(:event).permit(:corgi_create_date, :title, :description, :uri)
     end
 end
