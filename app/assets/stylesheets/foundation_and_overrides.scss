@@ -55,7 +55,7 @@ $em-base: 16 !default;
 
 $default-float: left;
 
-$body-bg: #384977;
+$body-bg: #ebeef6;
 $body-font-color: #4D4D4D;
 $body-font-family: "Cabin", Helvetica, Arial, sans-serif;
 $body-font-weight: normal;
@@ -1482,10 +1482,14 @@ body.home.index {
   background-size:100%;
 }
 
+.home-bg {
+  background-color: rgba(255, 255, 255,0.4);
+}
+
 .main-content {
   margin-top: 1em;
   padding: 1em 0;
-  background-color: rgba(255,255,255,0.4);
+  background-color: rgba(56, 73, 119,0.4);
   p {
     color: #222222;
     font-size: 1.1em;
@@ -1499,10 +1503,6 @@ body.home.index {
       color: white;
     }
   }
-}
-
-body.support .main-content {
-  background-color: rgba(245,245,245,0.75);
 }
 
 input#email {
