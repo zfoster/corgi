@@ -1483,13 +1483,29 @@ body.home.index {
 }
 
 .home-bg {
-  background-color: rgba(255, 255, 255,0.4);
+  margin-top: 1em;
+  padding: 1em 0;
+  background-color: rgba(255,255,255,0.4);
+  p {
+    color: #222222;
+    font-size: 1.1em;
+  }
+  .name, .number {
+    a {
+      color: white;
+    }
+    .edit-default-email, edit-default-mobile {
+      font-size: 0.8em;
+      color: white;
+    }
+  }
 }
+
 
 .main-content {
   margin-top: 1em;
   padding: 1em 0;
-  background-color: rgba(56, 73, 119,0.4);
+  background-color: rgba(56, 73, 119,0.2);
   p {
     color: #222222;
     font-size: 1.1em;
