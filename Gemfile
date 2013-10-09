@@ -19,7 +19,6 @@ gem 'omniauth-linkedin'
 gem "omniauth-google-oauth2"
 gem 'pg'
 gem 'sentry-raven'
-gem "mail_view"
 
 
 group :production do
@@ -42,6 +41,7 @@ group :development do
   gem 'thin'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem "mail_view"
 end
 
 
