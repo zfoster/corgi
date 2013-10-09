@@ -41,6 +41,13 @@ class EventsController < ApplicationController
     redirect_to new_share_path(id: @event.id)
   end
 
+  def attendee_csv
+    csv = Event.to_csv
+    respond_to do |format|
+      format.csv { send_data csv }
+    end
+  end
+
   private
     def set_event
       @event = Event.find(params[:id])

@@ -8,6 +8,7 @@ Corgi::Application.routes.draw do
   resources :events do
     member do
       get :new_attendee
+      get :attendee_csv
     end
   end
 
