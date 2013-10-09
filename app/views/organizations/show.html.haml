@@ -1,40 +1,43 @@
-%p#notice= notice
 
-%p
-  %b Name:
-  = @organization.name
-%p
-  %b Description:
-  = @organization.description
-%p
-  %b Street address 1:
-  = @organization.street_address_1
-%p
-  %b Street address 2:
-  = @organization.street_address_2
-%p
-  %b City:
-  = @organization.city
-%p
-  %b State:
-  = @organization.state
-%p
-  %b Zip:
-  = @organization.zip
-%p
-  %b Uri:
-  = @organization.uri
-%p
-  %b Contact name:
-  = @organization.contact_name
-%p
-  %b Contact email:
-  = @organization.contact_email
-%p
-  %b Contact phone:
-  = @organization.contact_phone
-%p
-  %b Type:
-  = @organization.type
+.row.main-content
+  .small-12.large-5.columns
+    %p#notice= notice
 
-= link_to 'Edit', edit_organization_path(@organization)
+    %p
+      %b Name:
+      = @organization.name
+    %p
+      %b Description:
+      = @organization.description
+    %p
+      %b Street address 1:
+      = @organization.street_address_1
+    %p
+      %b Street address 2:
+      = @organization.street_address_2
+    %p
+      %b City:
+      = @organization.city
+    %p
+      %b State:
+      = @organization.state
+    %p
+      %b Zip:
+      = @organization.zip
+    %p
+      %b Uri:
+      = @organization.uri
+    %p
+      %b Contact name:
+      = @organization.contact_name
+    %p
+      %b Contact email:
+      = @organization.contact_email
+    %p
+      %b Contact phone:
+      = @organization.contact_phone
+    %p
+      %b Type:
+      = @organization.type
+
+    = link_to 'Edit', edit_organization_path(@organization)

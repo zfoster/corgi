@@ -1,41 +1,43 @@
-%h1 Listing organizations
+.row.main-content
+  .small-6.large-2.right.columns
+    %h1 Listing organizations
 
-%table
-  %tr
-    %th Name
-    %th Description
-    %th Street address 1
-    %th Street address 2
-    %th City
-    %th State
-    %th Zip
-    %th Uri
-    %th Contact name
-    %th Contact email
-    %th Contact phone
-    %th Type
-    %th
-    %th
-    %th
+    %table
+      %tr
+        %th Name
+        %th Description
+        %th Street address 1
+        %th Street address 2
+        %th City
+        %th State
+        %th Zip
+        %th Uri
+        %th Contact name
+        %th Contact email
+        %th Contact phone
+        %th Type
+        %th
+        %th
+        %th
 
-  - @organizations.each do |organization|
-    %tr
-      %td= organization.name
-      %td= organization.description
-      %td= organization.street_address_1
-      %td= organization.street_address_2
-      %td= organization.city
-      %td= organization.state
-      %td= organization.zip
-      %td= organization.uri
-      %td= organization.contact_name
-      %td= organization.contact_email
-      %td= organization.contact_phone
-      %td= organization.type
-      %td= link_to 'Show', organization
-      %td= link_to 'Edit', edit_organization_path(organization)
-      %td= link_to 'Destroy', organization, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      - @organizations.each do |organization|
+        %tr
+          %td= organization.name
+          %td= organization.description
+          %td= organization.street_address_1
+          %td= organization.street_address_2
+          %td= organization.city
+          %td= organization.state
+          %td= organization.zip
+          %td= organization.uri
+          %td= organization.contact_name
+          %td= organization.contact_email
+          %td= organization.contact_phone
+          %td= organization.type
+          %td= link_to 'Show', organization
+          %td= link_to 'Edit', edit_organization_path(organization)
+          %td= link_to 'Destroy', organization, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
+    %br
 
-= link_to 'New Organization', new_organization_path
+    = link_to 'New Organization', new_organization_path
