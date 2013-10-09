@@ -1,12 +1,69 @@
 = form_for @event do |f|
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :website
-    = f.text_field :uri
-  .actions
-    = f.submit 'Save'
+  .small-12.large-7.columns
+    .event-title
+      %h1.field.title
+        = f.label :title
+        = f.text_field :title, placeholder: "Title"
+    .field.website
+      = f.label :website
+      = f.text_field :uri, placeholder: "Website"
+    .field.description
+      = f.label :description
+      = f.text_area :description, rows: "20"
+  .small-12.large-5.columns
+    / .event-actions
+    /   = link_to 'Attend', new_attendee_event_path(@event), :class => "button"
+    /   = link_to 'Edit', edit_event_path(@event)
+    /   = link_to 'Edit', '#', class: 'edit-event'
+    .event-price
+      - if @event.price == 0
+        %p Free
+      - else
+        %p
+          = "$" + @event.price
+    .fields.date-time
+      = f.label :start_time
+      = f.datetime_select :start_time, ampm: true
+      = f.label :end_time
+      = f.datetime_select :end_time, ampm: true
+    .fields.location
+      .field.address_1
+        = f.label :address_line_1
+        = f.text_field :address_line_1, placeholder: "Address line 1"
+      .field.address_2
+        = f.label :address_line_2
+        = f.text_field :address_line_2, placeholder: "Address line 2"
+      .field.city
+        = f.label :city
+        = f.text_field :city, placeholder: "City"
+      .field.state
+        = f.label :state
+        = f.text_field :state, placeholder: "State"
+      .field.zip-code
+        = f.label :zip_code
+        = f.text_field :zip_code, placeholder: "Zip code"
+      .clearfix
+    .field.attendance-limit
+      = f.label :num_of_seats, "Attendance limit"
+      = f.number_field :num_of_seats, placeholder: "Attendance limit"
+
+    .actions
+      = f.submit 'Save', :class => "button"
+
+/ t.string   "title"
+/ t.text     "description"
+/ t.datetime "start_time"
+/ t.datetime "end_time"
+/ t.boolean  "all_day"
+/ t.integer  "venue_id"
+/ t.datetime "corgi_create_date"
+/ t.string   "uri"
+/ t.integer  "num_of_seats"
+/ t.datetime "created_at"
+/ t.datetime "updated_at"
+/ t.integer  "price",             default: 0
+/ t.string   "address_line_1"
+/ t.string   "address_line_2"
+/ t.string   "city"
+/ t.string   "state"
+/ t.string   "zip_code"

@@ -1,7 +1,7 @@
 .row.main-content
-  .small-6.large-2.right.columns
-    = link_to 'List an Event', new_event_path
-    .clearfix
+  %h1 Events List
+  = link_to 'Create an Event', new_event_path
+  .clearfix
   .small-12.large-7.columns.event-list-wrapper
     - @events.each do |event|
       .event-wrapper.row
@@ -12,15 +12,14 @@
           .description
             %p
               = event.description.truncate(60)
-          .event-uri
-            = link_to event.uri, event.uri
+
         .event-actions.small-2.columns
           .signup
-            = link_to 'Attend', new_member_event_path(@event), class: "button small expand"
+            = link_to 'Attend', new_attendee_event_path(@event), class: "button small expand"
           .view-event
             = link_to 'View', event, class: "button small secondary expand"
           .edit
-            = link_to 'Edit', edit_event_path(@event)
+            = link_to 'Edit', edit_event_path(@event), class: "button small secondary expand"
         .clearfix
       / .go-left
       /   = link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
