@@ -1,14 +1,7 @@
 require 'spec_helper'
 
 describe EventsController do
-
-  # This should return the minimal set of attributes required to create a valid
-  # Event. As you add validations to Event, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) { { "corgi_foreign_key" => "1" } }
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # EventsController. Be sure to keep this updated too.
+  let(:valid_attributes) { {:num_of_seats => 100} }
   let(:valid_session) { {} }
 
   describe "GET index" do
@@ -61,22 +54,6 @@ describe EventsController do
         response.should redirect_to(Event.last)
       end
     end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved event as @event" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Event.any_instance.stub(:save).and_return(false)
-        post :create, {:event => { "corgi_foreign_key" => "invalid value" }}, valid_session
-        assigns(:event).should be_a_new(Event)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Event.any_instance.stub(:save).and_return(false)
-        post :create, {:event => { "corgi_foreign_key" => "invalid value" }}, valid_session
-        response.should render_template("new")
-      end
-    end
   end
 
   describe "PUT update" do
@@ -87,8 +64,8 @@ describe EventsController do
         # specifies that the Event created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Event.any_instance.should_receive(:update).with({ "corgi_foreign_key" => "1" })
-        put :update, {:id => event.to_param, :event => { "corgi_foreign_key" => "1" }}, valid_session
+        Event.any_instance.should_receive(:update)
+        put :update, {:id => event.to_param, :event => valid_attributes}, valid_session
       end
 
       it "assigns the requested event as @event" do
@@ -109,16 +86,8 @@ describe EventsController do
         event = Event.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Event.any_instance.stub(:save).and_return(false)
-        put :update, {:id => event.to_param, :event => { "corgi_foreign_key" => "invalid value" }}, valid_session
+        put :update, {:id => event.to_param, :event => valid_attributes}, valid_session
         assigns(:event).should eq(event)
-      end
-
-      it "re-renders the 'edit' template" do
-        event = Event.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Event.any_instance.stub(:save).and_return(false)
-        put :update, {:id => event.to_param, :event => { "corgi_foreign_key" => "invalid value" }}, valid_session
-        response.should render_template("edit")
       end
     end
   end
