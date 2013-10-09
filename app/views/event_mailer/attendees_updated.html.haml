@@ -1,0 +1,15 @@
+%p
+  = "Hello #{@user.first_name}!"
+%p
+  = "This is your daily update for #{@event.title} on MADi."
+%p
+  You can get back to your event to view it, edit it, or share it with others.
+%p
+  = link_to "#{@event.title}", event_url(@event)
+%p
+  Your updated list of attendees is:
+
+%p
+  Print nametags for your event.
+%p
+  Close registration to your event.

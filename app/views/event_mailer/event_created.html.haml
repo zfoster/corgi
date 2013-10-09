@@ -1,0 +1,8 @@
+%p
+  = "Hello #{@user.first_name}!"
+%p
+  Thank you for creating an event on MADi.
+%p
+  You can get back to your event to view it, edit it, or share it with others.
+%p
+  = link_to "#{@event.title}", event_url(@event)
