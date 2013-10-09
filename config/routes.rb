@@ -34,4 +34,8 @@ Corgi::Application.routes.draw do
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match '/logout', to: 'sessions#destroy', via: [:get, :destroy]
 
+  if Rails.env.development?
+    mount MailPreview => 'mail_view'
+  end
+
 end
