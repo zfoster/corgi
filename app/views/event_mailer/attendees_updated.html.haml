@@ -1,23 +1,13 @@
-.email-body
-  = render :partial => 'shared/email_header', :locals => {:user => @user}
-  .email-message
-    .greeting
-      = "Howdy #{@user.first_name}!"
-    %p
-      Woo-hoo! You successfully requested a check with your Murfie balance.
-    %p
-      This is where it’s going:
-    %p
-      %ul
-        %li.no-style #{@user.shipping_street_address}
-        %li.no-style #{@user.shipping_locality}, #{@user.shipping_region} #{@user.shipping_postal_code}
-    %p 
-      and here’s what it will look like:
-    %p
-      = image_tag "email_check.png", title: "Envelope from Murfie"
-    %p
-      Please allow up to 2 weeks for your check to be delivered in the mail.
-    %p
-      Hope it doesn’t burn a hole in your pocket! ;-)
+%p
+  = "Hello #{@user.first_name}!"
+%p
+  = "This is your daily update for #{@event.title} on MADi."
+%p
+  You can get back to your event to view it, edit it, or share it with others.
+%p
+  = link_to "#{@event.title}", event_url(@event)
+%p
+  Your updated list of attendees is:
 
-= render :partial => 'shared/email_footer'
+%p
+  Print nametags for your event.
