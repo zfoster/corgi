@@ -3,12 +3,13 @@ class EventMailer < ActionMailer::Base
 
   def event_created(event)
     @event = event
-    @user = event.owner
+    @user = @event.owner
     mail(to: @user.email, subject: 'Thank you for creating an event!')
   end
 
   def attendees_updated(event)
     @event = event
-    @user = event.owner
+    @user = @event.owner
     mail(to: @user.email, subject: 'Updates about your event')
+  end
 end
