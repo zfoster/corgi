@@ -19,6 +19,7 @@ gem 'omniauth-linkedin'
 gem "omniauth-google-oauth2"
 gem 'pg'
 gem 'sentry-raven'
+gem "mail_view"
 
 
 group :production do

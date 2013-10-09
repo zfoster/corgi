@@ -8,8 +8,11 @@
   = link_to "#{@event.title}", event_url(@event)
 %p
   Your updated list of attendees is:
-
+  = @event.attendees.each do |attendee|
+    %li= attendee.name
 %p
-  Print nametags for your event.
+  Print nametags for your event with a 
+  = link_to 'CSV file', attendee_csv_event_url
+  of attendees.
 %p
   Close registration to your event.
