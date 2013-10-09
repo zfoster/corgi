@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :new_member]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :new_attendee]
 
   def index
     @events = Event.all
@@ -37,7 +37,7 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
-  def new_member
+  def new_attendee
     redirect_to new_share_path(id: @event.id)
   end
 

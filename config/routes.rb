@@ -7,7 +7,7 @@ Corgi::Application.routes.draw do
 
   resources :events do
     member do
-      get :new_member
+      get :new_attendee
     end
   end
 
