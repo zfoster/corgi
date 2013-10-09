@@ -1,17 +1,53 @@
 .row.main-content
-  .small-12.large-5.columns
+  .small-12.large-7.columns
+    .event-title
+      %h1
+        = @event.title
+    .event-time
+      = @event.start_time.to_formatted_s(:long)
+      = @event.end_time.to_formatted_s(:long)
+    .event-description
+      %p
+        = @event.description
+    .event-link
+      = link_to "#{@event.uri}", @event.uri
 
-    %p#notice= notice
-    %p
-      %b Title:
-      = @event.title
-    %p
-      %b Description:
-      = @event.description
-    %p
-      %b Website:
-      = @event.uri
-
-    = link_to 'Attend', new_attendee_event_path(@event)
-    \|
+  .small-12.large-3.columns
+    .event-price
+    %h5 Cost
+    - if @event.price == 0
+      %p Free
+    - else
+      %p
+        = "$" + @event.price
+    = link_to 'Attend', new_attendee_event_path(@event), :class => "button"
     = link_to 'Edit', edit_event_path(@event)
+    = link_to 'Edit', '#', class: 'edit-event'
+    .clearfix
+  .event-location
+    %p
+      = @event.address_line_1
+      = @event.address_line_2
+      = @event.city
+      = @event.state
+      = @event.zip_code
+
+
+
+    / t.string   "title"
+    / t.text     "description"
+    / t.datetime "start_time"
+    / t.datetime "end_time"
+    / t.boolean  "all_day"
+    / t.integer  "venue_id"
+    / t.datetime "corgi_create_date"
+    / t.string   "uri"
+    / t.integer  "num_of_seats"
+    / t.datetime "created_at"
+    / t.datetime "updated_at"
+    / t.integer  "price",             default: 0
+    / t.string   "address_line_1"
+    / t.string   "address_line_2"
+    / t.string   "city"
+    / t.string   "state"
+    / t.string   "zip_code"
