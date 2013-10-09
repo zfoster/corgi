@@ -7,42 +7,30 @@
       .event-wrapper.row
         .event-details.small-10.columns
           .event-title
-            %h4
+            %h4.description
               = venue.name
-                .description
-            %p
+            %p.description
               = venue.description
-                .description
-            %p
-              = venue.capacity
-                .description
-            %p
+            %p.description
+              = venue.capacity  
+            %p.description
               = venue.street_address_1
-                .description
-            %p
+            %p.description
               = venue.street_address_2
-                .description
-            %p
+            %p.description
               = venue.city
-                .description
-            %p
+            %p.description
               = venue.state
-                .description
-            %p
-              = venue.zip
-                .description
-            %p
+            %p.description
+              = venue.zip 
+            %p.description
               = venue.uri
-                .description
-            %p
+            %p.description
               = venue.contact_name
-                .description
-            %p
-              = venue.contact_email
-                .description
-            %p
+            %p.description
+              = venue.contact_email 
+            %p.description
               = venue.contact_phone
-                .description
 
         .event-actions.small-2.columns
           .edit
