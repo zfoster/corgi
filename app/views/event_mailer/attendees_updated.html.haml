@@ -1,0 +1,23 @@
+.email-body
+  = render :partial => 'shared/email_header', :locals => {:user => @user}
+  .email-message
+    .greeting
+      = "Howdy #{@user.first_name}!"
+    %p
+      Woo-hoo! You successfully requested a check with your Murfie balance.
+    %p
+      This is where it’s going:
+    %p
+      %ul
+        %li.no-style #{@user.shipping_street_address}
+        %li.no-style #{@user.shipping_locality}, #{@user.shipping_region} #{@user.shipping_postal_code}
+    %p 
+      and here’s what it will look like:
+    %p
+      = image_tag "email_check.png", title: "Envelope from Murfie"
+    %p
+      Please allow up to 2 weeks for your check to be delivered in the mail.
+    %p
+      Hope it doesn’t burn a hole in your pocket! ;-)
+
+= render :partial => 'shared/email_footer'
