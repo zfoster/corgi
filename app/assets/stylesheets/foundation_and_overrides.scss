@@ -1631,3 +1631,48 @@ div.contribute {
   width:8%;
 }
 
+// EVENTS FORM
+
+body.events.edit {
+  textarea {
+    height: auto;
+  }
+  select {
+    width: auto;
+  }
+  label {
+    height: 0px;
+    width: 0px;
+    overflow: hidden;
+  }
+  .location {
+    .field {
+      &.city {
+        width: auto;
+        float: left;
+        margin-right: 10px;
+        input {
+          width: 100px;
+        }
+      }
+      &.state {
+        width: auto;
+        float: left;
+        margin-right: 10px;
+        input {
+          width: 50px;
+        }
+      }
+      &.zip-code {
+        width: auto;
+        float: left;
+        input {
+          width: 110px;
+        }
+      }
+    }
+  }
+}
+
+
+
