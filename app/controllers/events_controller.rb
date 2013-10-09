@@ -38,7 +38,8 @@ class EventsController < ApplicationController
   end
 
   def new_attendee
-    redirect_to new_share_path(id: @event.id)
+    Registration.create(event_id: @event.id, user_id: current_user)
+    redirect_to @event, notice: "Congrats! You're attending this event!"
   end
 
   def attendee_csv
