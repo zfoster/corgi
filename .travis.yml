@@ -4,3 +4,5 @@ rvm:
 before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database corgi_test' -U postgres
+notifications:
+  email: false
