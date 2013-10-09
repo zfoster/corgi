@@ -6,9 +6,10 @@ Corgi::Application.routes.draw do
   resources :shares
 
   resources :events do
+    get :attendee_csv
     member do
       get :new_attendee
-      get :attendee_csv
+      get :close_registration
     end
   end
 

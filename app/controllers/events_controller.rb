@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :new_attendee]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :new_attendee, :close_registration]
 
   def index
     @events = Event.all
@@ -40,6 +40,11 @@ class EventsController < ApplicationController
   def new_attendee
     Registration.create(event_id: @event.id, user_id: current_user)
     redirect_to @event, notice: "Congrats! You're attending this event!"
+  end
+
+  def close_registration
+    @event.update_attribute(:closed, true)
+    redirect_to @event, notice: 'Registration closed.'
   end
 
   def attendee_csv
