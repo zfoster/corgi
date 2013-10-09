@@ -1,5 +1,5 @@
 class EventMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "madi@meetmadi.com"
 
   def event_created(event)
     @event = event
