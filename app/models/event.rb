@@ -5,5 +5,6 @@ class Event < ActiveRecord::Base
   has_many :members, class_name: 'User'
   has_many :sharers, class_name: 'User'
   has_many :shares
+  has_one :owner, class_name: 'User'
 
 end
