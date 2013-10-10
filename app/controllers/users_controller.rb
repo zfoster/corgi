@@ -10,26 +10,15 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.update_attributes(user_params)
-    redirect_to root_path
-  end
-
-  def update_user_data
-    @user = User.find(params[:id])
-    @user.update_attributes(user_params)
-    render nothing: true
-  end
-
-  def set_madi_identity
-    @identity = Identity.find(params[:identity_id])
-    @user = @identity.user
-    @user.update_attributes(avatar: @identity.info['image'])
-    @user.update_attributes(email: @identity.info['email']) unless @identity.provider == 'twitter'
-    render :partial => 'default_identity', :locals => {:user => @user}, :layout => false
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :avatar, :mobile_num)
+    params.require(:user).permit(:email, :avatar, :mobile_num, :default_identity_id)
   end
 end

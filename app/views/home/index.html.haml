@@ -17,8 +17,5 @@
     - if current_user
       = form_for current_user do |f|
         = render "shared/social_buttons", f: f
-        %br
-        .identity.default-identity
-          = render 'users/default_identity', user: current_user
     - else
       = render "shared/social_buttons"

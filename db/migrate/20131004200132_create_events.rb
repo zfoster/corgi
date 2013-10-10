@@ -5,15 +5,14 @@ class CreateEvents < ActiveRecord::Migration
       t.text :description
       t.datetime :start_time
       t.datetime :end_time
-      t.boolean :all_day
-      t.integer :venue_id
-      t.datetime :corgi_create_date
-      t.string :uri
-      t.integer :num_of_seats
-
+      t.string :address_line_1
+      t.string :address_line_2
+      t.string :city
+      t.string :state
+      t.string :zip_code
+      t.integer :price, default: 0
 
       t.timestamps
     end
-    drop_table :social_objects
   end
 end

@@ -1361,7 +1361,7 @@ a:hover {
       padding: 3px 3px;
     }
   }
-  input.user-choose-madi-identity {
+  input[type=radio] {
     position: absolute;
     left: 3px;
     bottom: 3px;
@@ -1674,5 +1674,6 @@ body.events.edit {
   }
 }
 
-
-
+.hidden {
+  display: none;
+}
