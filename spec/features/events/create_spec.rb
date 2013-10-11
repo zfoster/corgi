@@ -24,8 +24,8 @@ describe "An anonymous user registers to attend event" do
   it "chooses an event to attend" do
     visit root_path
     click_link 'EVENTS'
-    expect(page).to have_content "#{event.title}"
-    click 'Attend'
+    expect(page).to have_content "CityCamp"
+    click_on 'Attend'
     click_link 'Connect with Facebook'
     expect(page).to have_content "CityCamp"
     expect(page).to have_content 'Attending'

@@ -4,8 +4,8 @@ class RegistrationsController < ApplicationController
   def create
     @registration = Registration.new registration_params
     if @registration.save
-      RegistrationMailer.created(self).deliver
-      redirect_to @registration.event, notice: 'Sweet! You are attending this event'
+      RegistrationMailer.created(@registration).deliver
+      redirect_to events_path, notice: 'Sweet! You are attending this event'
     else
       redirect_to @registration.event, notice: 'There was an issue registering'
     end
@@ -23,6 +23,6 @@ class RegistrationsController < ApplicationController
     end
 
     def registration_params
-      params.require(:registration).permit(:event_id, :user_id)
+      params.permit(:event_id, :user_id)
     end
 end

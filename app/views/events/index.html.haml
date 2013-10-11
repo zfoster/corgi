@@ -1,3 +1,8 @@
 .row.main-content
-  - @events.each do |event|
+  - @attending_events.each do |attending|
+    = attending.title
+    Attending
+    / = link_to 'Cancel registration', registration_path( ), method: :delete
+  - @events.each do |event|  
     = event.title
+    = link_to 'Attend', registrations_path(event_id: event.id, user_id: current_user.id), method: :post
