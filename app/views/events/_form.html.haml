@@ -1,5 +1,5 @@
 = form_for @event do |f|
-  .small-12.large-7.columns
+  .small-12.large-12.columns
     .event-title
       .field.title
         = f.label :title
@@ -10,7 +10,7 @@
     .field.description
       = f.label :description
       = f.text_area :description, rows: "20"
-  .small-12.large-5.columns
+  .small-12.large-6.columns
     .event-price
       - if @event.price == 0
         %p Free
