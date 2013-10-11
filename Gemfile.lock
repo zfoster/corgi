@@ -28,6 +28,8 @@ GEM
     addressable (2.3.5)
     arel (4.0.0)
     atomic (1.1.14)
+    best_in_place (0.2.3)
+      rails (>= 3.0.0)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -218,6 +220,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  best_in_place
   better_errors
   binding_of_caller
   capybara
