@@ -20,7 +20,6 @@ gem "omniauth-google-oauth2"
 gem 'pg'
 gem 'sentry-raven'
 
-
 group :production do
   gem 'rails_12factor'
 end
@@ -33,6 +32,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'email_spec'
   gem 'simplecov', :require => false
 end
 

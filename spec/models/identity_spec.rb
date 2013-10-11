@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Identity do
   describe "self.find_or_create_with_omniauth" do
-
   end
 
   describe "find_or_create_user" do

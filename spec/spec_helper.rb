@@ -9,6 +9,9 @@ require 'capybara/rspec'
 require 'capybara/rails'
 require 'factory_girl'
 
+# require 'capybara/poltergeist'
+# Capybara.javascript_driver = :poltergeist
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -46,13 +49,17 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include FactoryGirl::Syntax::Methods
+  config.include EmailSpec::Helpers
+  config.include EmailSpec::Matchers
+  config.include Rails.application.routes.url_helpers, type: :mailer
 end
 
 OmniAuth.config.test_mode = true
 
 OmniAuth.config.add_mock(:twitter, {:uid => '12345',
   :info => {
-    :nickname => 'twitterhandle'
+    :nickname => 'twitterhandle',
+    :image => 'twitter_image'
     }
   }
 )
@@ -61,7 +68,8 @@ OmniAuth.config.add_mock(:linkedin, {:uid => '12345',
   :info => {
     :email => 'wash@firefly.com',
     :first_name => 'Wash',
-    :last_name => 'Hoburne'
+    :last_name => 'Hoburne',
+    :image => 'linkedin_image'
     }
   }
 )
@@ -79,7 +87,8 @@ OmniAuth.config.add_mock(:facebook, {:uid => '12345',
   :info => { 
     :email => 'bob@example.com', 
     :first_name => 'Bob',
-    :last_name => 'Loblaw'
+    :last_name => 'Loblaw',
+    :image => 'facebook_image'
     }
   }
 )

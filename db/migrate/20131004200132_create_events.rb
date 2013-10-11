@@ -11,6 +11,8 @@ class CreateEvents < ActiveRecord::Migration
       t.string :state
       t.string :zip_code
       t.integer :price, default: 0
+      t.references :creator
+      t.boolean :closed, default: false
 
       t.timestamps
     end

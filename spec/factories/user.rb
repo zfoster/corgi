@@ -5,7 +5,7 @@ FactoryGirl.define do
     email 'bob@example.com'
 
     ignore do
-      services []
+      services [ :facebook ]
     end
 
     after(:create) do |user, evaluator|

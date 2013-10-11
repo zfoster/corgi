@@ -12,10 +12,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = current_user.created_events.new(event_params)
     @event.hosts << current_user
     @event.attendees << current_user
     if @event.save
+      EventMailer.created(@event).deliver
       redirect_to @event, notice: 'Event was successfully created.'
     else
       render action: 'new'
