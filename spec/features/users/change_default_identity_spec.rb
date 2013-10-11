@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "A new user authorizes and then changes their default identity" do
 
+    # FOR WHEN WE HAVE MORE TIME
     # it "changes the identity", js: true do
     #   visit root_path
     #   click_link 'Connect with LinkedIn'
