@@ -11,10 +11,18 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.ui.all
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
 //= require users
 //= require_tree .
 
+
 $(function(){ $(document).foundation(); });
+
+
+$(document).ready(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();ßß
+});
