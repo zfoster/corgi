@@ -1,7 +1,17 @@
 class RegistrationsController < ApplicationController
-  before_filter :set_registration, only: [:cancel_registration]
+  before_filter :set_registration, only: [:destroy]
 
-  def cancel
+  def create
+    @registration = Registration.new registration_params
+    if @registration.save
+      RegistrationMailer.created(self).deliver
+      redirect_to @registration.event
+    else
+      redirect_to @registration.event, notice: 'There was an issue registering'
+    end
+  end
+
+  def destroy
     @registration.cancel
     redirect_to event_path(@registration.event), notice: 'Successfully removed you from this event.'
   end
@@ -12,4 +22,7 @@ class RegistrationsController < ApplicationController
       @registration = Registration.find(params[:id])
     end
 
+    def registration_params
+      params.require(:registration).permit(:event_id, :user_id)
+    end
 end
