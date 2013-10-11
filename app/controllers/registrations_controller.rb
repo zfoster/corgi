@@ -19,7 +19,7 @@ class RegistrationsController < ApplicationController
   private
 
     def set_registration
-      @registration = Registration.find(params[:id])
+      @registration = current_user.registrations.find(params[:id])
     end
 
     def registration_params
