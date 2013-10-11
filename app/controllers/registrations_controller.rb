@@ -2,7 +2,8 @@ class RegistrationsController < ApplicationController
   before_filter :set_registration, only: [:cancel_registration]
 
   def cancel_registration
-    @registration.cancel, notice: 'Successfully removed you from this event.'
+    @registration.cancel
+    redirect_to event_path(@registration.event), notice: 'Successfully removed you from this event.'
   end
 
   private
