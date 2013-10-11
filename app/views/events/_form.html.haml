@@ -9,11 +9,15 @@
       = f.text_area :description, rows: "20"
   .small-12.large-5.columns
     .event-price
-      - if @event.price == 0
-        %p Free
-      - else
-        %p
-          = "$" + @event.price
+      .radio-buttons
+        .field-and-label
+          = radio_button_tag "fee", "no_charge"
+          = label_tag "fee_no_charge", "No fee"
+        .field-and-label
+          = radio_button_tag "fee", "has_charge"
+          = label_tag "fee_has_charge", "Has a fee"
+      = f.label :price
+      = f.number_field :price
     .fields.date-time
       = f.label :start_time
       = f.datetime_select :start_time, ampm: true

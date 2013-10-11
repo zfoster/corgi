@@ -1633,7 +1633,13 @@ div.contribute {
 
 // EVENTS FORM
 
-body.events.edit {
+body.events.edit,
+body.events.new {
+  .field-and-label {
+    float: left;
+    clear: left;
+    margin: 5px 0;
+  }
   textarea {
     height: auto;
   }
@@ -1644,6 +1650,17 @@ body.events.edit {
     height: 0px;
     width: 0px;
     overflow: hidden;
+  }
+  .radio-buttons {
+    input {
+      float: left;
+      margin-right: 5px;
+    }
+    label {
+      height: auto;
+      width: auto;
+      float: left;
+    }
   }
   .location {
     .field {

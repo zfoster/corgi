@@ -15,6 +15,7 @@
 //= require foundation
 //= require turbolinks
 //= require users
+//= require events
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
