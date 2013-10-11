@@ -10,7 +10,7 @@ Corgi::Application.routes.draw do
   end
   resources :registrations do
     member do
-      get :cancel_registration
+      get :cancel
     end
   end
   resources :contributions, only: [:create]
