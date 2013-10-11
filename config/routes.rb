@@ -8,11 +8,7 @@ Corgi::Application.routes.draw do
       post :update_user_data
     end
   end
-  resources :registrations do
-    member do
-      get :cancel_registration
-    end
-  end
+  resources :registrations, only: [:destroy]
   resources :contributions, only: [:create]
   resources :identities, only: [:destroy]
   resources :sessions, only: [:create, :destroy]

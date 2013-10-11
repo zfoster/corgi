@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :identity do
     provider 'facebook'
-    uid '12345'
+    sequence(:uid) { |n| "#{n}" }
   end
 end
