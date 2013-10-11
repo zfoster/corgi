@@ -19,6 +19,8 @@ end
 
 describe "An anonymous user registers to attend event" do
 
+  let(:event) { Factory.create :event }
+
   it "chooses an event to attend" do
     visit root_path
     click_link 'EVENTS'
