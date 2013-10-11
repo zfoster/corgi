@@ -8,7 +8,7 @@ Corgi::Application.routes.draw do
       post :update_user_data
     end
   end
-  resources :registrations, only: [:destroy]
+  resources :registrations, only: [:destroy, :create]
   resources :contributions, only: [:create]
   resources :identities, only: [:destroy]
   resources :sessions, only: [:create, :destroy]

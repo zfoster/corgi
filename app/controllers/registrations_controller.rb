@@ -5,7 +5,7 @@ class RegistrationsController < ApplicationController
     @registration = Registration.new registration_params
     if @registration.save
       RegistrationMailer.created(self).deliver
-      redirect_to @registration.event
+      redirect_to @registration.event, notice: 'Sweet! You are attending this event'
     else
       redirect_to @registration.event, notice: 'There was an issue registering'
     end
