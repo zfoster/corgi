@@ -1,9 +1,9 @@
 = form_for @event do |f|
   .small-12.large-7.columns
     .event-title
-      %h1.field.title
+      .field.title
         = f.label :title
-        %span
+        %span.best_in_place
           = best_in_place @event, :title, :type => :input
           = best_in_place @event, :title, :type => :input, :nil => "Click me to add content!"
           = best_in_place @event, :title, :activator => "#activator" 
