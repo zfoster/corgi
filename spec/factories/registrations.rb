@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :registration do
-    event nil
-    user nil
+    association :event
+    assocation :user
   end
 end
