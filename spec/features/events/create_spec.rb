@@ -17,7 +17,7 @@ describe "A new user creates an event" do
 
 end
 
-describe "An anonymous user registers to attend event"
+describe "An anonymous user registers to attend event" do
 
   it "chooses an event to attend" do
     visit root_path

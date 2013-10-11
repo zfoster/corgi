@@ -8,7 +8,7 @@ Corgi::Application.routes.draw do
       post :update_user_data
     end
   end
-  recources :registrations do
+  resources :registrations do
     member do
       get :cancel_registration
     end
