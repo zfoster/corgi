@@ -16,15 +16,23 @@
   .icon
     = image_tag "smi_madi-logo.png", title: "MADi"
   .clearfix
+  .email.hidden
+    = f.text_field :email
+  .mobile_num.hidden
+    = f.text_field :mobile_num
+  .save.hidden
+    = f.submit "Save"
 
-#default-email-edit
-  .blank-card
-    %br
-    = text_field_tag :email, user.email.present? ? user.email : 'you@domain.com', id: 'edited-email'
-    = label_tag :email, 'save', class: 'save-email', 'user-id' => "#{user.id}"
 
-#default-mobile-edit
-  .blank-card
-    %br
-    = text_field_tag :mobile_num, user.mobile_num.present? ? user.mobile_num : '608-555-1212', id: 'edited-mobile'
-    = label_tag :mobile_num, 'save', class: 'save-mobile', 'user-id' => "#{user.id}"
+
+/ #default-email-edit
+/   .blank-card
+/     %br
+/     = text_field_tag :email, user.email.present? ? user.email : 'you@domain.com', id: 'edited-email'
+/     = label_tag :email, 'save', class: 'save-email', 'user-id' => "#{user.id}"
+
+/ #default-mobile-edit
+/   .blank-card
+/     %br
+/     = text_field_tag :mobile_num, user.mobile_num.present? ? user.mobile_num : '608-555-1212', id: 'edited-mobile'
+/     = label_tag :mobile_num, 'save', class: 'save-mobile', 'user-id' => "#{user.id}"

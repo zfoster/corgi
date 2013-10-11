@@ -7,14 +7,11 @@
     .event-description
       %p
         =simple_format h @event.description.html_safe
-    .event-link
-      = link_to "#{@event.uri}", @event.uri
 
   .small-12.large-4.columns
     .event-actions
-      = link_to 'Attend', new_attendee_event_path(@event), :class => "button"
+      = link_to 'Attend', '#', :class => "button"
       = link_to 'Edit', edit_event_path(@event)
-      = link_to 'Edit', '#', class: 'edit-event'
     .event-price
       - if @event.price == 0
         %p Free
@@ -31,3 +28,17 @@
           = @event.address_line_2
         %br
         = @event.city + ', ' + @event.state + ' ' + @event.zip_code
+
+    .hosts
+      %h3 Hosts
+      %ul
+        - @event.hosts.each do |user|
+          %li= user.email
+
+
+    .attendees
+      %h3 Attendees
+      %ul
+        - @event.attendees.each do |user|
+          %li= user.email
+

@@ -1,11 +1,11 @@
 class Identity < ActiveRecord::Base
   belongs_to :user
 
-  validates_presence_of :user_id, :uid, :provider
+  validates_presence_of :uid, :provider
   validates_uniqueness_of :uid, scope: :provider
 
   def self.find_or_create_with_omniauth(auth)
-    identity = self.where(provider: auth.provider, uid: auth.uid).first_or_create
+    identity = where(provider: auth.provider, uid: auth.uid).first_or_initialize
     identity.update_attributes AuthExtractor.new(auth).extract
     identity
   end
@@ -24,7 +24,8 @@ class Identity < ActiveRecord::Base
     new_user = User.create email: info['email'],
       first_name: info['first_name'],
       last_name: info['last_name'],
-      avatar: info['image']
+      avatar: info['image'],
+      default_identity: self
     self.user = new_user
   end
 

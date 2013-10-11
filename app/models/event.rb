@@ -1,9 +1,6 @@
 class Event < ActiveRecord::Base
-  has_one :venue
-  has_many :organizations
-  has_many :admins, class_name: 'User'
-  has_many :members, class_name: 'User'
-  has_many :sharers, class_name: 'User'
-  has_many :shares
-
+  has_many :hostings
+  has_many :registrations
+  has_many :hosts, -> { distinct }, through: :hostings, source: :user
+  has_many :attendees, -> { distinct }, through: :registrations, source: :user
 end

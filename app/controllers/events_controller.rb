@@ -1,10 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy, :new_attendee]
 
-  def index
-    @events = Event.all
-  end
-
   def show
   end
 
@@ -17,6 +13,8 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.hosts << current_user
+    @event.attendees << current_user
     if @event.save
       redirect_to @event, notice: 'Event was successfully created.'
     else
@@ -25,28 +23,21 @@ class EventsController < ApplicationController
   end
 
   def update
-    if @event.update(event_params)
+    @event.attributes(event_params)
+    if @event.save
       redirect_to @event, notice: 'Event was successfully updated.'
     else
       render action: 'edit'
     end
   end
 
-  def destroy
-    @event.destroy
-    redirect_to events_path
-  end
-
-  def new_attendee
-    redirect_to new_share_path(id: @event.id)
-  end
-
   private
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    def event_params
-      params.require(:event).permit(:corgi_create_date, :title, :description, :uri, :num_of_seats, :start_time, :end_time, :venue_id, :all_day, :address_line_1, :address_line_2, :city, :state, :zip_code)
-    end
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  def event_params
+    params.require(:event).permit(:title, :description, :start_time, :end_time, :address_line_1, :address_line_2, :city, :state, :zip_code)
+  end
 end

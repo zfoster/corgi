@@ -1,16 +1,4 @@
 Corgi::Application.routes.draw do
-  resources :organizations
-
-  resources :venues
-
-  resources :shares
-
-  resources :events do
-    member do
-      get :new_attendee
-    end
-  end
-
   root "home#index"
 
   resources :users, only: [:show, :update] do
@@ -27,6 +15,8 @@ Corgi::Application.routes.draw do
     collection do
       get :support
     end
+  end
+  resources :events , only: [:new, :show, :create, :edit, :update] do
   end
 
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
