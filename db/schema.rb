@@ -29,19 +29,16 @@ ActiveRecord::Schema.define(version: 20131009202513) do
     t.text     "description"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.boolean  "all_day"
-    t.integer  "venue_id"
-    t.datetime "corgi_create_date"
-    t.string   "uri"
-    t.integer  "num_of_seats"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "price",             default: 0
     t.string   "address_line_1"
     t.string   "address_line_2"
     t.string   "city"
     t.string   "state"
     t.string   "zip_code"
+    t.integer  "price",          default: 0
+    t.integer  "creator_id"
+    t.boolean  "closed",         default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "hostings", force: true do |t|
@@ -58,30 +55,13 @@ ActiveRecord::Schema.define(version: 20131009202513) do
     t.integer  "user_id"
     t.string   "uid"
     t.string   "provider"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.hstore   "info"
     t.hstore   "credentials"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
-
-  create_table "organizations", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "street_address_1"
-    t.string   "street_address_2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
-    t.string   "uri"
-    t.string   "contact_name"
-    t.string   "contact_email"
-    t.string   "contact_phone"
-    t.string   "type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "registrations", force: true do |t|
     t.integer  "event_id"
@@ -93,39 +73,17 @@ ActiveRecord::Schema.define(version: 20131009202513) do
   add_index "registrations", ["event_id"], name: "index_registrations_on_event_id", using: :btree
   add_index "registrations", ["user_id"], name: "index_registrations_on_user_id", using: :btree
 
-  create_table "shares", force: true do |t|
-    t.text     "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "event_id"
-    t.integer  "user_id"
-  end
-
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "mobile_num"
+    t.string   "avatar"
+    t.integer  "default_identity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "avatar"
   end
 
-  create_table "venues", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "capacity"
-    t.string   "street_address_1"
-    t.string   "street_address_2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
-    t.string   "uri"
-    t.string   "contact_name"
-    t.string   "contact_email"
-    t.string   "contact_phone"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "users", ["default_identity_id"], name: "index_users_on_default_identity_id", using: :btree
 
 end
