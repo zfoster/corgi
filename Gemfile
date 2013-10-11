@@ -19,6 +19,7 @@ gem 'omniauth-linkedin'
 gem "omniauth-google-oauth2"
 gem 'pg'
 gem 'sentry-raven'
+gem 'best_in_place'
 
 group :production do
   gem 'rails_12factor'
