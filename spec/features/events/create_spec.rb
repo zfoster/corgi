@@ -5,7 +5,7 @@ describe "A new user creates an event" do
   it "creates the event" do
     visit root_path
     click_link 'Connect with LinkedIn'
-    click_on 'EVENTS'
+    click_on 'CREATE EVENT'
     fill_in 'Title', with: 'CityCamp'
     fill_in 'Description', with: 'The best city camp event ever'
     click_on 'Save'
@@ -19,15 +19,15 @@ end
 
 describe "An anonymous user registers to attend event" do
 
-  let(:event) { Factory.create :event }
+  let!(:event) { create(:event) }
 
   it "chooses an event to attend" do
     visit root_path
     click_link 'EVENTS'
-    expect(page).to have_content #list of events
+    expect(page).to have_content "#{event.title}"
     click 'Attend'
     click_link 'Connect with Facebook'
-    expect(page).to have_content #list of events
+    expect(page).to have_content "CityCamp"
     expect(page).to have_content 'Attending'
     expect(page).to have_link("Cancel")
     #test for email?

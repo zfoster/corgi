@@ -17,7 +17,7 @@ Corgi::Application.routes.draw do
       get :support
     end
   end
-  resources :events , only: [:new, :show, :create, :edit, :update] do
+  resources :events , only: [:new, :show, :create, :edit, :update, :index] do
   end
 
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
