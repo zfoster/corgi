@@ -4,6 +4,6 @@ FactoryGirl.define do
     description "A place to discuss civic hacking things"
     start_time { 7.days.from_now }
     end_time { start_time + 1.hour }
-    association :creator
+    association :creator, factory: :user
   end
 end

@@ -15,20 +15,4 @@ FactoryGirl.define do
     end
 
   end
-
-  factory :creator, class: User do
-    first_name 'Mark'
-    last_name 'Clear'
-    email 'markexample@test.com'
-
-    ignore do
-      services [ :facebook ]
-    end
-
-    after(:create) do |user, evaluator|
-      evaluator.services.each do |service|
-        FactoryGirl.create :creator_identity, provider: service, user: user
-      end
-    end
-  end
 end
