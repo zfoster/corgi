@@ -8,11 +8,28 @@ describe "A new user creates and event" do
       click_on 'EVENTS'
       fill_in 'Title', with: 'CityCamp'
       fill_in 'Description', with: 'The best city camp event ever'
+      choose 'Has a fee'
+      select '2013', from: 'event[start_time(1i)]'
+      select 'December', from: 'event[start_time(2i)]'
+      select '10', from: 'event[start_time(3i)]'
+      select '06 PM', from: 'event[start_time(4i)]'
+      select '30', from: 'event[start_time(5i)]'
+      select '2013', from: 'event[end_time(1i)]'
+      select 'December', from: 'event[end_time(2i)]'
+      select '10', from: 'event[end_time(3i)]'
+      select '07 PM', from: 'event[end_time(4i)]'
+      select '30', from: 'event[end_time(5i)]'
+
+      fill_in 'event[price]', with: '10'
+
       click_on 'Save'
       expect(page.find('#flash_notice')).to have_content("Event was successfully created.")
       expect(page.find('.hosts')).to have_content("wash@firefly.com")
       expect(page.find('.attendees')).to have_content("wash@firefly.com")
       expect(page).to have_link("Edit")
+      expect(page).to have_content('CityCamp')
+      expect(page).to have_content('The best city camp event ever')
+      expect(page).to have_content('$10')
     end
 
 end
