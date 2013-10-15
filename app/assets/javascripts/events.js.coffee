@@ -1,8 +1,12 @@
 $(document).ready ->
   if $('body').hasClass('events') && ($('body').hasClass('new') || $('body').hasClass('edit'))
-    $('input[id="event_price"]').attr('disabled', true)
-    $('input[id="fee_has_charge"]').click ->
-      $('input[id="event_price"]').attr('disabled', false)
-    $('input[id="fee_no_charge"]').click ->
-      $('input[id="event_price"]').attr('disabled', true)
-      $('input[id="event_price"]').val(0)
+    price_field = $('#event_price')
+    fee_radio_button = $('#fee_has_charge')
+    no_fee_radio = $('#fee_no_charge')
+
+    price_field.attr('disabled', true)
+    fee_radio_button.click ->
+      price_field.attr('disabled', false)
+    no_fee_radio.click ->
+      price_field.attr('disabled', true)
+      price_field.val(0)
