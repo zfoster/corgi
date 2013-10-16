@@ -1,12 +1,11 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :new_attendee]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :cancel_registration]
 
   def show
   end
 
   def index
     @events = Event.all
-    @attending_events = current_user.registered_events
   end
 
   def new
@@ -37,6 +36,12 @@ class EventsController < ApplicationController
     end
   end
 
+  def cancel_registration
+    current_user.registrations.where(event_id: @event.id).destroy_all
+    flash[:notice] = "Your registration has been canceled"
+    redirect_to :back
+  end
+
   private
 
   def set_event
@@ -44,6 +49,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :start_time, :end_time, :address_line_1, :address_line_2, :city, :state, :zip_code)
+    params.require(:event).permit(:title, :description, :price, :start_time, :end_time, :address_line_1, :address_line_2, :city, :state, :zip_code)
   end
 end

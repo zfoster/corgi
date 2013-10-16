@@ -2,12 +2,12 @@ class RegistrationsController < ApplicationController
   before_filter :set_registration, only: [:destroy]
 
   def create
-    @registration = Registration.new registration_params
+    @registration = current_user.registrations.new registration_params
     if @registration.save
       RegistrationMailer.created(@registration).deliver
-      redirect_to events_path, notice: 'Sweet! You are attending this event'
+      redirect_to :back, notice: 'Sweet! You are attending this event'
     else
-      redirect_to @registration.event, notice: 'There was an issue registering'
+      redirect_to @registration.event, notice: 'There was an issue registering you for this event'
     end
   end
 
@@ -18,11 +18,12 @@ class RegistrationsController < ApplicationController
 
   private
 
-    def set_registration
-      @registration = current_user.registrations.find(params[:id])
-    end
+  def set_registration
+    @registration = current_user.registrations.find(params[:id])
+  end
 
-    def registration_params
-      params.permit(:event_id, :user_id)
-    end
+  def registration_params
+    params.permit(:event_id)
+  end
+
 end

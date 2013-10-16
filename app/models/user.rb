@@ -21,4 +21,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  def registered?(event)
+    registrations.exists? event_id: event.id
+  end
+
 end

@@ -8,31 +8,29 @@ describe "A new user creates an event" do
     click_on 'CREATE EVENT'
     fill_in 'Title', with: 'CityCamp'
     fill_in 'Description', with: 'The best city camp event ever'
+    choose 'Has a fee'
+    select '2013', from: 'event[start_time(1i)]'
+    select 'December', from: 'event[start_time(2i)]'
+    select '10', from: 'event[start_time(3i)]'
+    select '06 PM', from: 'event[start_time(4i)]'
+    select '30', from: 'event[start_time(5i)]'
+    select '2013', from: 'event[end_time(1i)]'
+    select 'December', from: 'event[end_time(2i)]'
+    select '10', from: 'event[end_time(3i)]'
+    select '07 PM', from: 'event[end_time(4i)]'
+    select '30', from: 'event[end_time(5i)]'
+
+    fill_in 'event[price]', with: '10'
+
     click_on 'Save'
     expect(page.find('#flash_notice')).to have_content("Event was successfully created.")
-    expect(page.find('.hosts')).to have_content("wash@firefly.com")
-    expect(page.find('.attendees')).to have_content("wash@firefly.com")
+    expect(page.find('.hosts')).to have_content("bob@example.com")
+    expect(page.find('.attendees')).to have_content("bob@example.com")
     expect(page).to have_link("Edit")
-  end
-
-end
-
-describe "An anonymous user registers to attend event" do
-
-  let!(:event) { create(:event) }
-
-  it "chooses an event to attend" do
-    visit root_path
-    click_link 'EVENTS'
-    expect(page).to have_content "CityCamp"
-    click_on 'Attend'
-    click_link 'Connect with Facebook'
-    expect(page).to have_content "CityCamp"
-    expect(page).to have_content 'Attending'
-    expect(page).to have_link("Cancel")
-    #test for email?
-    click_on #event page
-    expect(page).to have_content #users name
+    expect(page).to have_content('CityCamp')
+    expect(page).to have_content('The best city camp event ever')
+    expect(page).to have_content('$10')
+    expect(unread_emails_for("bob@example.com").size).to eq(1)
   end
 
 end

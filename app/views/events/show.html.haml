@@ -10,14 +10,14 @@
 
   .small-12.large-4.columns
     .event-actions
-      = link_to 'Attend', '#', :class => "button"
+      = link_to 'Attend', event_registrations_path(@event), method: :post, class: :button
       = link_to 'Edit', edit_event_path(@event)
     .event-price
       - if @event.price == 0
         %p Free
       - else
         %p
-          = "$" + @event.price
+          = "$" + @event.price.to_s
     .event-time
       = @event.start_time.to_formatted_s(:short) + " to " + @event.end_time.to_formatted_s(:short)
     .event-location
