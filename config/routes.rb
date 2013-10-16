@@ -3,22 +3,21 @@ Corgi::Application.routes.draw do
 
   resources :users, only: [:show, :update] do
     member do
-      get :set_madi_identity
       get :twitter_email
-      post :update_user_data
     end
   end
+  resources :registrations, only: [:destroy]
   resources :contributions, only: [:create]
   resources :identities, only: [:destroy]
-  resources :sessions, only: [:create, :destroy]
-  resources :content, only: [:index] do
-    collection do
-      get :support
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :events , only: [:new, :show, :create, :edit, :update, :index] do
+    resources :registrations, only: [:create]
+    member do
+      delete :cancel_registration
     end
   end
-  resources :events , only: [:new, :show, :create, :edit, :update] do
-  end
 
+  get '/support', to: 'content#support'
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match '/logout', to: 'sessions#destroy', via: [:get, :destroy]
 

@@ -48,6 +48,8 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  config.before(:each) { ActionMailer::Base.deliveries.clear }
+
   config.include FactoryGirl::Syntax::Methods
   config.include EmailSpec::Helpers
   config.include EmailSpec::Matchers
@@ -66,7 +68,7 @@ OmniAuth.config.add_mock(:twitter, {:uid => '12345',
 
 OmniAuth.config.add_mock(:linkedin, {:uid => '12345',
   :info => {
-    :email => 'wash@firefly.com',
+    :email => 'bob@example.com',
     :first_name => 'Wash',
     :last_name => 'Hoburne',
     :image => 'linkedin_image'
@@ -76,7 +78,7 @@ OmniAuth.config.add_mock(:linkedin, {:uid => '12345',
 
 OmniAuth.config.add_mock(:google_oauth2, {:uid => '12345',
   :info => {
-    :email => 'captain@firefly.com',
+    :email => 'bob@example.com',
     :first_name => 'Malcolm',
     :last_name => 'Reynolds'
     }

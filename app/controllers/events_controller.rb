@@ -1,7 +1,11 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :new_attendee]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :cancel_registration]
 
   def show
+  end
+
+  def index
+    @events = Event.all
   end
 
   def new
@@ -30,6 +34,12 @@ class EventsController < ApplicationController
     else
       render action: 'edit'
     end
+  end
+
+  def cancel_registration
+    current_user.registrations.where(event_id: @event.id).destroy_all
+    flash[:notice] = "Your registration has been canceled"
+    redirect_to :back
   end
 
   private
