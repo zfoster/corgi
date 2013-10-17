@@ -7,4 +7,4 @@
           Attending
           = link_to 'Cancel', cancel_registration_registration_path(event), method: :delete
         - else
-          = link_to 'Attend', event_registrations_path(event), method: :post
+          = link_to 'Attend', registrations_path(event_id: event.id), method: :post, class: :button
