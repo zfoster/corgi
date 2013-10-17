@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
   end
   
   def create
-    binding.pry
     auth = request.env['omniauth.auth']
     @identity = Identity.find_or_create_with_omniauth(auth)
     if signed_in?
