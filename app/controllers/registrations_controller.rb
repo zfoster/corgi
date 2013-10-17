@@ -19,11 +19,9 @@ class RegistrationsController < ApplicationController
   end
 
   def index
-    @registrations = @event.registrations
-    csv = Registration.event_attendees_csv(@registrations)
     respond_to do |format|
       format.html
-      format.csv { render csv: csv, filename: 'attendee_list' }
+      format.csv { render csv: @event.registrations }
     end
   end
 
