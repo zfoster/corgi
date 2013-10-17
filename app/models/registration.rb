@@ -4,11 +4,12 @@ class Registration < ActiveRecord::Base
 
   delegate :email, to: :user, prefix: true
 
-  def attendees_csv
-    csv = @event.attendees_csv
-    respond_to do |format|
-      format.html
-      format.csv { render csv: csv, filename: 'attendee_list' }
+  def self.event_attendees_csv(registrations)
+    CSV.generate do |csv|
+      csv << ['Name', 'Email']
+      registrations.each do |registration|
+        csv << ["#{registration.user.first_name}", "#{registration.user.email}"]
+      end
     end
   end
 

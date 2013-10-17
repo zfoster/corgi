@@ -1,6 +1,5 @@
-require 'csv'
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :cancel_registration, :attendees_csv]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :cancel_registration]
 
   def show
   end

@@ -1,3 +1,4 @@
+require 'csv'
 class RegistrationsController < ApplicationController
   before_filter :set_registration, only: [:destroy]
   before_filter :set_event, only: [:index]
@@ -19,9 +20,10 @@ class RegistrationsController < ApplicationController
 
   def index
     @registrations = @event.registrations
+    csv = Registration.event_attendees_csv(@registrations)
     respond_to do |format|
       format.html
-      format.csv { render csv: @registrations, filename: 'attendee_list' }
+      format.csv { render csv: csv, filename: 'attendee_list' }
     end
   end
 
