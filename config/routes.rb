@@ -10,8 +10,12 @@ Corgi::Application.routes.draw do
   resources :contributions, only: [:create]
   resources :identities, only: [:destroy]
   resources :sessions, only: [:new, :create, :destroy]
-  resources :events , only: [:new, :show, :create, :edit, :update, :index] do
-    resources :registrations, only: [:create]
+  resources :events, only: [:new, :show, :create, :edit, :update, :index] do
+    member do
+      get :attendees_csv
+    end
+  end
+  resources :registrations, only: [:create] do
     member do
       delete :cancel_registration
     end

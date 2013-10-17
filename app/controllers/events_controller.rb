@@ -1,5 +1,6 @@
+require 'csv'
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :cancel_registration]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :cancel_registration, :attendees_csv]
 
   def show
   end
@@ -40,6 +41,14 @@ class EventsController < ApplicationController
     current_user.registrations.where(event_id: @event.id).destroy_all
     flash[:notice] = "Your registration has been canceled"
     redirect_to :back
+  end
+
+  def attendees_csv
+    csv = @event.attendees_csv
+    respond_to do |format|
+      format.html
+      format.csv { render csv: csv, filename: 'attendee_list' }
+    end
   end
 
   private
