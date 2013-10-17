@@ -34,12 +34,12 @@
       %h3 Hosts
       %ul
         - @event.hosts.each do |user|
-          %li= user.email
+          %li= user.display_name
 
 
     .attendees
       %h3 Attendees
       %ul
         - @event.attendees.each do |user|
-          %li= user.email
+          %li= user.display_name
 

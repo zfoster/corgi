@@ -25,4 +25,8 @@ class User < ActiveRecord::Base
     registrations.exists? event_id: event.id
   end
 
+  def display_name
+    [first_name, last_name].join(" ") 
+  end
+
 end

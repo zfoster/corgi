@@ -1,5 +1,5 @@
 # Corgi!
-
+[![Build Status](https://travis-ci.org/southpolesteve/corgi.png?branch=csv)](https://travis-ci.org/southpolesteve/corgi)
 
 ## Setup
 
