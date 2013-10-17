@@ -12,7 +12,7 @@
     .event-actions
       = link_to 'Attend', registrations_path(event_id: @event.id), method: :post, class: :button
       = link_to 'Edit', edit_event_path(@event)
-      = link_to 'Attendee CSV', attendees_csv_event_path(@event, format: :csv)
+      = link_to 'Attendee CSV', registrations_path(event_id: @event.id, format: :csv)
     .event-price
       - if @event.price == 0
         %p Free

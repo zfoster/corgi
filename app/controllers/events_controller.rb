@@ -43,14 +43,6 @@ class EventsController < ApplicationController
     redirect_to :back
   end
 
-  def attendees_csv
-    csv = @event.attendees_csv
-    respond_to do |format|
-      format.html
-      format.csv { render csv: csv, filename: 'attendee_list' }
-    end
-  end
-
   private
 
   def set_event

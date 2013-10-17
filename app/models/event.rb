@@ -11,13 +11,4 @@ class Event < ActiveRecord::Base
 
   delegate :email, to: :creator, prefix: true
 
-  def attendees_csv
-    CSV.generate do |csv|
-      csv << ['Name', 'Email']
-      self.attendees.each do |attendee|
-        csv << ["#{attendee.first_name}", "#{attendee.email}"]
-      end
-    end
-  end
-
 end
