@@ -10,6 +10,7 @@ Corgi::Application.routes.draw do
   resources :contributions, only: [:create]
   resources :identities, only: [:destroy]
   resources :sessions, only: [:new, :create, :destroy]
+  resources :organizations, only: [:new, :create, :show]
   resources :events , only: [:new, :show, :create, :edit, :update, :index] do
     resources :registrations, only: [:create]
     member do
