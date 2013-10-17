@@ -24,8 +24,8 @@ describe "A new user creates an event" do
 
     click_on 'Save'
     expect(page.find('#flash_notice')).to have_content("Event was successfully created.")
-    expect(page.find('.hosts')).to have_content("bob@example.com")
-    expect(page.find('.attendees')).to have_content("bob@example.com")
+    expect(page.find('.hosts')).to have_content("Bob Loblaw")
+    expect(page.find('.attendees')).to have_content("Bob Loblaw")
     expect(page).to have_link("Edit")
     expect(page).to have_content('CityCamp')
     expect(page).to have_content('The best city camp event ever')

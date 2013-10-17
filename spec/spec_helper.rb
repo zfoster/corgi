@@ -69,8 +69,8 @@ OmniAuth.config.add_mock(:twitter, {:uid => '12345',
 OmniAuth.config.add_mock(:linkedin, {:uid => '12345',
   :info => {
     :email => 'bob@example.com',
-    :first_name => 'Wash',
-    :last_name => 'Hoburne',
+    :first_name => 'Bob',
+    :last_name => 'Loblaw',
     :image => 'linkedin_image'
     }
   }
@@ -79,8 +79,8 @@ OmniAuth.config.add_mock(:linkedin, {:uid => '12345',
 OmniAuth.config.add_mock(:google_oauth2, {:uid => '12345',
   :info => {
     :email => 'bob@example.com',
-    :first_name => 'Malcolm',
-    :last_name => 'Reynolds'
+    :first_name => 'Bob',
+    :last_name => 'Loblaw'
     }
   }
 )
