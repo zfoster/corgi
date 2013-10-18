@@ -15,7 +15,7 @@ describe RegistrationMailer do
     end
 
     it 'should have a cancel registration link' do
-      should have_body_text(/#{registration_url(registration)}/)
+      should have_body_text(/#{cancel_registration_event_path(registration.event)}/)
     end
 
   end
