@@ -5,7 +5,7 @@
         %h1
           = @event.title
       .event-actions.small-12.large-4.columns
-        - if current_user.registered?(@event)
+        - if current_user && current_user.registered?(@event)
           .row.attending
             .small-6.large-6.columns
               .attending.button.success.small.expand
