@@ -1,5 +1,6 @@
 # Corgi!
 [![Build Status](https://travis-ci.org/southpolesteve/corgi.png?branch=master)](https://travis-ci.org/southpolesteve/corgi)
+[![Dependency Status](https://gemnasium.com/southpolesteve/corgi.png)](https://gemnasium.com/southpolesteve/corgi)
 
 ## Setup
 
