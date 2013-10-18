@@ -6,17 +6,17 @@ Corgi::Application.routes.draw do
       get :twitter_email
     end
   end
-  resources :registrations, only: [:destroy]
+
   resources :contributions, only: [:create]
   resources :identities, only: [:destroy, :index]
   resources :sessions, only: [:new, :create, :destroy]
   resources :organizations, only: [:new, :create, :show]
-  resources :events, only: [:new, :show, :create, :edit, :update, :index]
-  resources :registrations, only: [:create, :index] do
+  resources :events, only: [:new, :show, :create, :edit, :update, :index] do
     member do
       delete :cancel_registration
     end
   end
+  resources :registrations, only: [:create, :index, :destory]
 
   get '/support', to: 'content#support'
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
