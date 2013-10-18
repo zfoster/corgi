@@ -17,7 +17,7 @@ describe "A new user is forced to authorize" do
     end
   end
 
-  context 'with facebook' do
+  context 'with twitter' do
     let(:provider) { 'twitter' }
 
     it 'clicks attend and redirects to authorizations' do
