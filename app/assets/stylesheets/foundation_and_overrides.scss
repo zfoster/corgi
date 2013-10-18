@@ -1703,8 +1703,9 @@ body.events.new {
 // list of events (events index)
 
 .an-event {
-  padding: 1em 0;
+  padding: 1em;
   border-bottom: 1px solid #ddd;
+  margin: 0;
   .short-date {
     text-align: center;
     padding-top: 1em;
@@ -1714,6 +1715,7 @@ body.events.new {
   }
   h3 {
     margin: 0;
+    font-size: 1.2em;
     a {
       color: $blue;
     }

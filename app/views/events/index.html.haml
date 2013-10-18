@@ -16,6 +16,11 @@
             %h3
               = link_to event.title, event
           .row.time
-            = l event.start_time, :format => "%a, %b %d"
+            = event.start_time.strftime("%a %b #{event.start_time.day.ordinalize}, %l:%M %p")
           .row.location
             = event.address_line_1 + ", " + event.city
+          .row.price
+            - if event.price == 0
+              No charge
+            - else
+              = "$" + event.price.to_s

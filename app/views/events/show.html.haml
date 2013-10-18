@@ -1,45 +1,59 @@
 .row.main-content
-  .small-12.large-7.columns
-    .event-title
-      %h1
-        = @event.title
-
-    .event-description
-      %p
-        =simple_format h @event.description.html_safe
-
-  .small-12.large-4.columns
-    .event-actions
-      = link_to 'Attend', registrations_path(event_id: @event.id), method: :post, class: :button
-      = link_to 'Edit', edit_event_path(@event)
-      = link_to 'Attendee CSV', registrations_path(event_id: @event.id, format: :csv)
-    .event-price
-      - if @event.price == 0
-        %p Free
-      - else
+  .small-12.columns
+    .row.top-event-content
+      .event-title.small-12.large-7.columns
+        %h1
+          = @event.title
+      .event-actions.small-12.large-4.columns
+        - if current_user.registered?(@event)
+          .row.attending
+            .small-6.large-6.columns
+              .attending.button.success.small.expand
+                Attending
+            .cancel.small-6.columns
+              = link_to 'Cancel', cancel_registration_event_path(@event), method: :delete, :class => "button small secondary expand"
+        - else
+          .row.attending
+            .small-6.large-6.columns
+              = link_to 'Attend', registrations_path(event_id: @event.id), method: :post, :class => "button small expand right"
+    .row
+      .event-description.small-12.large-7.columns
         %p
-          = "$" + @event.price.to_s
-    .event-time
-      = @event.start_time.to_formatted_s(:short) + " to " + @event.end_time.to_formatted_s(:short)
-    .event-location
-      %p
-        = @event.address_line_1
-        - if @event.address_line_2 != ""
-          %br
-          = @event.address_line_2
-        %br
-        = @event.city + ', ' + @event.state + ' ' + @event.zip_code
+          =simple_format h @event.description.html_safe
+      .event-details.small-12.large-4.columns
+        .event-price
+          - if @event.price == 0
+            %p No charge
+          - else
+            %p
+              = "$" + @event.price.to_s
+        .event-time
+          %p
+            = @event.start_time.strftime("%a %b #{@event.start_time.day.ordinalize}")
+            %br
+            = @event.start_time.strftime("%l:%M %p") + " to " + @event.end_time.strftime("%l:%M %p")
+        .event-location
+          %p
+            = @event.address_line_1
+            - if @event.address_line_2 != ""
+              %br
+              = @event.address_line_2
+            %br
+            = @event.city + ', ' + @event.state + ' ' + @event.zip_code
 
-    .hosts
-      %h3 Hosts
-      %ul
-        - @event.hosts.each do |user|
-          %li= user.display_name
+        .hosts
+          %h3 Hosts
+          %ul
+            - @event.hosts.each do |user|
+              %li= user.display_name
 
+        .attendees
+          %h3 Attendees
+          %ul
+            - @event.attendees.each do |user|
+              %li= user.display_name
 
-    .attendees
-      %h3 Attendees
-      %ul
-        - @event.attendees.each do |user|
-          %li= user.display_name
-
+        .row.edit
+          .small-6.large-6.columns.right
+            = link_to 'Edit', edit_event_path(@event), :class => "button small expand secondary"
+            = link_to 'Attendee CSV', registrations_path(event_id: @event.id, format: :csv)
