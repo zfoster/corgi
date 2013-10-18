@@ -19,7 +19,8 @@
           .row.time
             = event.start_time.strftime("%a %b #{event.start_time.day.ordinalize}, %l:%M %p")
           .row.location
-            = event.address_line_1 + ", "
+            - if event.address_line_1
+              = event.address_line_1 + ", "
             - if event.city
               = event.city
           .row.price
