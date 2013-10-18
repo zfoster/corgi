@@ -85,9 +85,9 @@ OmniAuth.config.add_mock(:google_oauth2, {:uid => '12345',
   }
 )
 
-OmniAuth.config.add_mock(:facebook, {:uid => '12345', 
-  :info => { 
-    :email => 'bob@example.com', 
+OmniAuth.config.add_mock(:facebook, {:uid => '12345',
+  :info => {
+    :email => 'bob@example.com',
     :first_name => 'Bob',
     :last_name => 'Loblaw',
     :image => 'facebook_image'

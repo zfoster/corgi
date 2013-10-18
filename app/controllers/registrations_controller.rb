@@ -1,5 +1,7 @@
+require 'csv'
 class RegistrationsController < ApplicationController
   before_filter :set_registration, only: [:destroy]
+  before_filter :set_event, only: [:index]
 
   def create
     @registration = current_user.registrations.new registration_params
@@ -16,7 +18,18 @@ class RegistrationsController < ApplicationController
     redirect_to event_path(@registration.event), notice: 'Successfully removed you from this event.'
   end
 
+  def index
+    respond_to do |format|
+      format.html
+      format.csv { render csv: @event.registrations }
+    end
+  end
+
   private
+
+  def set_event
+    @event = Event.find(params[:event_id])
+  end
 
   def set_registration
     @registration = current_user.registrations.find(params[:id])
