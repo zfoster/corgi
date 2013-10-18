@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   has_many :registrations
   has_many :hosts, -> { distinct }, through: :hostings, source: :user
   has_many :attendees, -> { distinct }, through: :registrations, source: :user
-  has_and_belongs_to_many :organizations
+  belongs_to :organization
   belongs_to :creator, class_name: "User"
 
   scope :closed, -> { where(closed: true) }

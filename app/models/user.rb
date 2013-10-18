@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :created_events, class_name: 'Event', foreign_key: :creator_id
   has_many :registered_events, -> { distinct }, through: :registrations, source: :event
   has_many :hosted_events, -> { distinct }, through: :hostings, source: :event
+  has_many :org_administrations
   
   has_one :facebook_identity, -> { where provider: 'facebook' }, class_name: 'Identity'
   has_one :twitter_identity, -> { where provider: 'twitter' }, class_name: 'Identity'
