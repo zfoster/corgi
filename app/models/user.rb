@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :registered_events, -> { distinct }, through: :registrations, source: :event
   has_many :hosted_events, -> { distinct }, through: :hostings, source: :event
   has_many :org_administrations
+  has_many :administered_orgs, through: :org_administrations, source: :organization
   
   has_one :facebook_identity, -> { where provider: 'facebook' }, class_name: 'Identity'
   has_one :twitter_identity, -> { where provider: 'twitter' }, class_name: 'Identity'
