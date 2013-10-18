@@ -20,6 +20,10 @@
       .event-description.small-12.large-7.columns
         %p
           =simple_format h @event.description.html_safe
+
+    .event-organization
+      %p
+        = @event.organization.name
       .event-details.small-12.large-4.columns
         .event-price
           - if @event.price == 0
