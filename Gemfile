@@ -19,7 +19,7 @@ gem 'omniauth-linkedin'
 gem "omniauth-google-oauth2"
 gem 'pg'
 gem 'sentry-raven'
-gem "comma", "~> 3.1.0"
+gem "comma"
 
 group :production do
   gem 'rails_12factor'
