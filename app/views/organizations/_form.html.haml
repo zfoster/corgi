@@ -1,0 +1,5 @@
+= form_for @organization do |f|
+  %h1.field.name
+    = f.label :name
+    = f.text_field :name, placeholder: "Name"
+  = f.submit 'Save', :class => "button"
