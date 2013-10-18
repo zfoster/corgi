@@ -1,10 +1,26 @@
 .row.main-content
-  %ul
+  .12-small.columns
     - @events.each do |event|
-      %li
-        = link_to event.title, event
-        - if current_user && current_user.registered?(event)
-          Attending
-          = link_to 'Cancel', cancel_registration_registration_path(event), method: :delete
-        - else
-          = link_to 'Attend', registrations_path(event_id: event.id), method: :post, class: :button
+      .row.an-event
+        .small-1.columns.short-date
+          .day.row
+            = l event.start_time, :format => '%a'
+          .date.row
+            = l event.start_time, :format => '%b %d'
+        .small-10.large-5.columns.event-info
+          .row
+            %h3
+              = link_to event.title, event
+          .row.time
+            = l event.start_time, :format => :long
+          .row.location
+            = event.address_line_1 + ", " + event.city
+        .small-1.large-2.columns.price-and-attend
+          - if current_user.registered?(event)
+            .row.attending
+              .attending.button.success.small.small-12.large-6.columns
+                Attending
+              .cancel.small-12.large-6.columns
+                = link_to 'Cancel', cancel_registration_event_path(event), method: :delete
+          - else
+            = link_to 'Attend', event_registrations_path(event), method: :post, :class => "button small"

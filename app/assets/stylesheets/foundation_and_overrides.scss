@@ -1694,3 +1694,17 @@ body.events.new {
 .hidden {
   display: none;
 }
+
+// list of events (events index)
+
+.an-event {
+  padding: 1em 0;
+  border-bottom: 1px solid #ddd;
+  .short-date {
+    text-align: center;
+    padding-top: 1em;
+  }
+  h3 {
+    margin: 0;
+  }
+}
