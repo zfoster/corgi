@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   def new
   end
-  
+
   def create
     auth = request.env['omniauth.auth']
     @identity = Identity.find_or_create_with_omniauth(auth)
@@ -16,7 +16,11 @@ class SessionsController < ApplicationController
     unless @identity.user.email.present?
       redirect_to twitter_email_user_path(@identity.user.id) and return
     end
-    redirect_to root_path
+    if session[:pre_authorization_page]
+      redirect_to session[:pre_authorization_page]
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy

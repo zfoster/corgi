@@ -3,7 +3,7 @@
     - @events.each do |event|
       %li
         = link_to event.title, event
-        - if current_user.registered?(event)
+        - if current_user && current_user.registered?(event)
           Attending
           = link_to 'Cancel', cancel_registration_registration_path(event), method: :delete
         - else

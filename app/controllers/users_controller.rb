@@ -11,7 +11,11 @@ class UsersController < ApplicationController
     @user = current_user
     @user.update_attributes(user_params)
     respond_to do |format|
-      format.html { redirect_to root_path }
+      if session[:pre_authorization_page]
+        format.html { redirect_to session[:pre_authorization_page] }
+      else
+        format.html { redirect_to root_path }
+      end
       format.js
     end
   end
