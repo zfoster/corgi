@@ -20,6 +20,8 @@ gem "omniauth-google-oauth2"
 gem 'pg'
 gem 'sentry-raven'
 gem "comma"
+gem 'activemerchant'
+gem 'paypal-sdk-rest'
 
 group :production do
   gem 'rails_12factor'

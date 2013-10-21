@@ -5,11 +5,19 @@ class RegistrationsController < ApplicationController
 
   def create
     @registration = current_user.registrations.new registration_params
-    if @registration.save
-      RegistrationMailer.created(@registration).deliver
-      redirect_to :back, notice: 'Sweet! You are attending this event'
+    if @registration.event.price > 0
+      if @registration.save
+        redirect_to new_payment_path(registration_id: @registration.id)
+      else
+        redirect_to @registration.event, notice: 'There was an issue registering'
+      end
     else
-      redirect_to @registration.event, notice: 'There was an issue registering you for this event'
+      if @registration.save
+        RegistrationMailer.created(@registration).deliver
+        redirect_to :back, notice: 'Sweet! You are attending this event'
+      else
+        redirect_to @registration.event, notice: 'There was an issue registering you for this event'
+      end
     end
   end
 

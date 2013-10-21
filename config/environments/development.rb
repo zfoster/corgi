@@ -28,4 +28,13 @@ Corgi::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :production
+    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+      :login => "notzachfoster-facilitator_api1.gmail.com",
+      :password => "1382361812",
+      :signature => "AAhfI6DrDHZvv9.AOMlkLLQlIW7hAOTeqqqcBhDanQ1C9z94un1GP4-M"
+    )
+  end
 end
