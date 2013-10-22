@@ -23,11 +23,11 @@ class Payment < ActiveRecord::Base
       :ip => ip_address,
       :billing_address => {
         :name     => registration_user.display_name,
-        :address1 => address_line_1,
-        :address2 => address_line_2,
-        :city     => city,
-        :state    => state,
-        :zip      => zip_code
+        :address1 => registration_user.address_line_1,
+        :address2 => registration_user.address_line_2,
+        :city     => registration_user.city,
+        :state    => registration_user.state,
+        :zip      => registration_user.zip_code
       }
     }
   end

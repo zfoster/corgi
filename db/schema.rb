@@ -80,6 +80,11 @@ ActiveRecord::Schema.define(version: 20131022195702) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ip_address"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
   end
 
   add_index "payments", ["registration_id"], name: "index_payments_on_registration_id", using: :btree
