@@ -22,12 +22,12 @@ class Payment < ActiveRecord::Base
     {
       :ip => ip_address,
       :billing_address => {
-        :name     => registration_user.display_name,
-        :address1 => address_line_1,
-        :address2 => address_line_2,
-        :city     => city,
-        :state    => state,
-        :zip      => zip_code
+        :name     => registration_user.name,
+        :address1 => registration_user.address_line_1,
+        :address2 => registration_user.address_line_2,
+        :city     => registration_user.city,
+        :state    => registration_user.state,
+        :zip      => registration_user.zip_code
       }
     }
   end
@@ -47,9 +47,6 @@ class Payment < ActiveRecord::Base
       :verification_value => card_verification,
       :month              => card_expires_on.month,
       :year               => card_expires_on.year,
-      :first_name         => first_name,
-      :last_name          => last_name
-    )
+      :name               => cardholder_name)
   end
-
 end

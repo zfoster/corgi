@@ -19,9 +19,7 @@ describe "A new user creates an event" do
     select '10', from: 'event[end_time(3i)]'
     select '07 PM', from: 'event[end_time(4i)]'
     select '30', from: 'event[end_time(5i)]'
-
     fill_in 'event[price]', with: '10'
-
     click_on 'Save'
     expect(page.find('#flash_notice')).to have_content("Event was successfully created.")
     expect(page.find('.hosts')).to have_content("Bob Loblaw")
