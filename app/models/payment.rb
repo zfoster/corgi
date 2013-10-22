@@ -9,7 +9,6 @@ class Payment < ActiveRecord::Base
 
   def purchase
     response = GATEWAY.purchase(amount_in_cents, credit_card, billing_address)
-    transactions.create!(:amount_in_cents => amount_in_cents)
     response.success?
   end
 
@@ -19,25 +18,11 @@ class Payment < ActiveRecord::Base
 
   private
 
-   def purchase_options
-    {
-
-      :billing_address => {
-        :name     => "Ryan Bates",
-        :address1 => "123 Main St.",
-        :city     => "New York",
-        :state    => "NY",
-        :country  => "US",
-        :zip      => "10001"
-      }
-    }
-  end
-
   def billing_address
     {
       :ip => ip_address,
       :billing_address => {
-        :name     => registration_user.first_name + ' ' + registration_user.last_name,
+        :name     => registration_user.display_name,
         :address1 => address_line_1,
         :address2 => address_line_2,
         :city     => city,

@@ -12,10 +12,10 @@ class PaymentsController < ApplicationController
       if @payment.purchase
         redirect_to event_path(@payment.registration.event), notice: 'Your payment was successful'
       else
-        redirect_to event_path(@payment.registration.event), error: "#{@payment.errors.full_messages}"
+        redirect_to event_path(@payment.registration.event), error: "There was a billing error!"
       end
     else
-      redirect_to event_path(@payment.registration.event), error: "#{@payment.errors.full_messages}"
+      redirect_to event_path(@payment.registration.event), error: "There was a billing error!"
     end
   end
 
@@ -23,6 +23,6 @@ class PaymentsController < ApplicationController
   private
 
   def payment_params
-    params.require(:payment).permit(:amount_in_cents, :first_name, :last_name, :card_type, :card_expires_on, :card_number, :card_verification, :registration_id)
+    params.require(:payment).permit(:amount_in_cents, :first_name, :last_name, :card_type, :card_expires_on, :card_number, :card_verification, :registration_id, :address_line_1, :address_line_2, :city, :state, :zip_code)
   end
 end

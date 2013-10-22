@@ -30,11 +30,11 @@ Corgi::Application.configure do
   config.assets.debug = true
 
   config.after_initialize do
-    ActiveMerchant::Billing::Base.mode = :production
+    ActiveMerchant::Billing::Base.mode = :test
     ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
-      :login => "notzachfoster-facilitator_api1.gmail.com",
-      :password => "1382361812",
-      :signature => "AAhfI6DrDHZvv9.AOMlkLLQlIW7hAOTeqqqcBhDanQ1C9z94un1GP4-M"
+      :login => "zfoster_api1.wisc.edu",
+      :password => "K5MHJYYYV2Z5BD2N",
+      :signature => "ABRZHvCZYWLHfYCiA0PfkJR8gPv0A6dFKBaI2lpcLF3NvJG4xgrM8Nxc"
     )
   end
 end

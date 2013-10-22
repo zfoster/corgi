@@ -1,9 +1,5 @@
 = form_for @payment do |f|
   %h1.field.name
-    = f.label :first_name
-    = f.text_field :first_name, placeholder: 'First Name'
-    = f.label :last_name
-    = f.text_field :last_name, placeholder: 'Last Name'
     = f.label :card_type
     = f.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]]
     = f.label :card_number
@@ -12,7 +8,7 @@
     = f.text_field :card_verification
     = f.label :card_expires_on
     = f.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true
-    = f.hidden_field :amount_in_cents, value: @registration.event.price
+    = f.hidden_field :amount_in_cents, value: @registration.event.price*100
     = f.hidden_field :registration_id, value: @registration.id
     = f.label :address_line_1
     = f.text_field :address_line_1
