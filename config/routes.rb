@@ -7,7 +7,6 @@ Corgi::Application.routes.draw do
     end
   end
   resources :payments, only: [:new, :create]
-  resources :registrations, only: [:destroy]
   resources :contributions, only: [:create]
   resources :identities, only: [:destroy, :index]
   resources :sessions, only: [:new, :create, :destroy]
@@ -17,7 +16,7 @@ Corgi::Application.routes.draw do
       delete :cancel_registration
     end
   end
-  resources :registrations, only: [:create, :index, :destory]
+  resources :registrations, only: [:create, :index]
 
   get '/support', to: 'content#support'
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]

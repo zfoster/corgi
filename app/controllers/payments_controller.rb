@@ -12,9 +12,11 @@ class PaymentsController < ApplicationController
       if @payment.purchase
         redirect_to event_path(@payment.registration.event), notice: 'Your payment was successful'
       else
+        @payment.registration.destroy
         redirect_to event_path(@payment.registration.event), notice: "There was a billing error!"
       end
     else
+      @payment.registration.destroy
       redirect_to event_path(@payment.registration.event), notice: "There was a billing error!"
     end
   end

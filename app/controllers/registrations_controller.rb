@@ -26,11 +26,6 @@ class RegistrationsController < ApplicationController
     end
   end
 
-  def destroy
-    @registration.cancel
-    redirect_to event_path(@registration.event), notice: 'Successfully removed you from this event.'
-  end
-
   def index
     respond_to do |format|
       format.html

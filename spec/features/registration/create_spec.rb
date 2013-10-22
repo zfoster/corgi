@@ -36,7 +36,7 @@ describe "An authenticated user registers to attend event" do
       expect(page).to have_content 'Your payment was successful'
     end
 
-    it 'fails a payment but attends the event' do
+    it 'fails a payment registering for an event' do
       visit root_path
       click_link 'Connect with Facebook'
       click_on 'EVENTS'
@@ -50,7 +50,7 @@ describe "An authenticated user registers to attend event" do
       fill_in 'Zip code', with: '11111'
       click_on 'Save'
       expect(page).to have_content event.title
-      expect(page).to have_content 'Attending'
+      expect(page).to have_content 'Attend'
       expect(page).to have_content 'There was a billing error!'
     end
   end
