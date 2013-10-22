@@ -10,14 +10,15 @@
     = f.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true
     = f.hidden_field :amount_in_cents, value: @registration.event.price*100
     = f.hidden_field :registration_id, value: @registration.id
-    = f.label :address_line_1
-    = f.text_field :address_line_1
-    = f.label :address_line_2
-    = f.text_field :address_line_2
-    = f.label :city
-    = f.text_field :city
-    = f.label :state
-    = f.text_field :state
-    = f.label :zip_code
-    = f.text_field :zip_code
-  = f.submit 'Save', :class => "button"
+    = fields_for current_user do |u|
+      = u.label :address_line_1
+      = u.text_field :address_line_1
+      = u.label :address_line_2
+      = u.text_field :address_line_2
+      = u.label :city
+      = u.text_field :city
+      = u.label :state
+      = u.text_field :state
+      = u.label :zip_code
+      = u.text_field :zip_code
+    = f.submit 'Save', :class => "button"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131021230635) do
+ActiveRecord::Schema.define(version: 20131022195702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,11 +80,6 @@ ActiveRecord::Schema.define(version: 20131021230635) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ip_address"
-    t.string   "address_line_1"
-    t.string   "address_line_2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip_code"
   end
 
   add_index "payments", ["registration_id"], name: "index_payments_on_registration_id", using: :btree
@@ -120,6 +115,11 @@ ActiveRecord::Schema.define(version: 20131021230635) do
     t.integer  "default_identity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
   end
 
   add_index "users", ["default_identity_id"], name: "index_users_on_default_identity_id", using: :btree
