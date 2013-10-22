@@ -6,7 +6,8 @@ Corgi::Application.routes.draw do
       get :twitter_email
     end
   end
-
+  resources :payments, only: [:new, :create]
+  resources :registrations, only: [:destroy]
   resources :contributions, only: [:create]
   resources :identities, only: [:destroy, :index]
   resources :sessions, only: [:new, :create, :destroy]
