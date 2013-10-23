@@ -10,3 +10,9 @@ $(document).ready ->
     no_fee_radio.click ->
       price_field.attr('disabled', true)
       price_field.val(0)
+
+    $('.datepicker').fdatetimepicker()
+    $('#dp1').fdatetimepicker ->
+      format: 'mm-dd-yyyy hh:ii'
+    $('#dp2').fdatetimepicker ->
+      format: 'mm-dd-yyyy hh:ii'
