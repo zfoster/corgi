@@ -28,7 +28,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event.attributes(event_params)
+    @event.attributes=(event_params)
     if @event.save
       redirect_to @event, notice: 'Event was successfully updated.'
     else
