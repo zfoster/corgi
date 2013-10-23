@@ -1,3 +1,6 @@
+- content_for :head do
+  = javascript_include_tag 'foundation-datetimepicker.js'
+
 .row.main-content
   %h3 New Event
   = render 'form'
