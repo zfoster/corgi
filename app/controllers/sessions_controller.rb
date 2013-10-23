@@ -16,11 +16,7 @@ class SessionsController < ApplicationController
     unless @identity.user.email.present?
       redirect_to twitter_email_user_path(@identity.user.id) and return
     end
-    if session[:pre_authorization_page]
-      redirect_to session[:pre_authorization_page]
-    else
-      redirect_to root_path
-    end
+    redirect_to session[:pre_authorization_page] || root_path
   end
 
   def destroy
