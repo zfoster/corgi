@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20131021230635) do
     t.string   "zip_code"
     t.integer  "price",          default: 0
     t.integer  "creator_id"
-    t.boolean  "closed",         default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -98,18 +97,6 @@ ActiveRecord::Schema.define(version: 20131021230635) do
 
   add_index "registrations", ["event_id"], name: "index_registrations_on_event_id", using: :btree
   add_index "registrations", ["user_id"], name: "index_registrations_on_user_id", using: :btree
-
-  create_table "transactions", force: true do |t|
-    t.integer  "payment_id"
-    t.integer  "amount_in_cents"
-    t.boolean  "success"
-    t.string   "authorization"
-    t.string   "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "transactions", ["payment_id"], name: "index_transactions_on_payment_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"
