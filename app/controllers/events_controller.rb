@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :authorize_user!, only: [:new]
   before_action :set_event, only: [:show, :edit, :update, :destroy, :cancel_registration]
 
   def show
