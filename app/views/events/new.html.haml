@@ -1,5 +1,8 @@
-- content_for :head do
-  = javascript_include_tag 'foundation-datetimepicker.js'
+- content_for :body do
+  = javascript_include_tag"http://code.jquery.com/jquery-1.9.1.js"
+  = javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui.js"
+  = javascript_include_tag "jquery-timepicker-addon.js"
+  = stylesheet_link_tag "jquery-timepicker-addon.css"
 
 .row.main-content
   %h3 New Event
