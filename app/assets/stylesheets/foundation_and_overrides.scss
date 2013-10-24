@@ -1753,9 +1753,15 @@ body.events.new {
       cursor: default;
       top: -.3em;
       margin-left: -.6em;
-      border: 2px solid lighten($blue, 20%);
       background: $blue;
       border-radius: 100%;
+    }
+    .ui-datepicker-buttonpane {
+      clear: left;
+      text-align: center;
+      button {
+        margin: 0 1em;
+      }
     }
   }
 }
