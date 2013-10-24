@@ -16,10 +16,6 @@
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/custom.modernizr"
     = csrf_meta_tags
-    / :javascript
-    /   document.write('<script src=/js/vendor/'
-    /     + ('__proto__' in {} ? 'zepto' : 'jquery')
-    /     + '.js><\/script>');
     = yield :head
   %body{ class: "#{controller_name} #{action_name}" }
     = render 'shared/nav'
@@ -36,6 +32,4 @@
         = link_to image_tag("cc-sa.png", title: "CC license", class: "center"), "http://creativecommons.org/licenses/by/3.0/"
         = link_to image_tag("mom-small.png", title: "Made of Madison", class: "right"), "http://www.madeofmadison.com"
     = javascript_include_tag "application"
-    :javascript
-      $(document).foundation();
     = yield :body
