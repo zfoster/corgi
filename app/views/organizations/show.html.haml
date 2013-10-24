@@ -1,3 +1,14 @@
 .event-title
   %h1
     = @organization.name
+.row.main-content
+  .small-12.columns
+    .row.top-event-content
+      .event-title.small-12.large-7.columns
+        %h1
+          = @organization.name
+    .row
+      .event-details.small-12.large-4.columns
+        .row.edit
+          .small-6.large-6.columns.right
+            = link_to 'Edit', edit_organization_path(@organization), :class => "button small expand secondary"

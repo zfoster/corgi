@@ -5,6 +5,13 @@ class OrganizationsController < ApplicationController
 
   end
 
+  def edit
+  end
+
+  def index
+    @organizations = Organization.all
+  end
+  
   def new
     @organization = Organization.new
   end

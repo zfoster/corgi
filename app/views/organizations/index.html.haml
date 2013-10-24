@@ -1,0 +1,8 @@
+.row.main-content
+  .small-12.large-6.columns
+    - @organizations.each do |organization|
+      .row.an-event
+        .small-9.large-10.columns.event-info
+          .row
+            %h3
+              = link_to organization.name, organization
