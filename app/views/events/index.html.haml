@@ -1,6 +1,6 @@
 .row.main-content
   .small-12.large-6.columns
-    - @events.each do |event|
+    - @events.order("start_time asc").each do |event|
       .row.an-event
         .small-3.large-2.columns.actions
           - if current_user && current_user.registered?(event)
