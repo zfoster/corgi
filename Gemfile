@@ -22,6 +22,7 @@ gem 'sentry-raven'
 gem "comma"
 gem 'activemerchant'
 gem 'paypal-sdk-rest'
+gem 'paperclip'
 
 group :production do
   gem 'rails_12factor'
