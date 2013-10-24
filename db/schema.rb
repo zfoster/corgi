@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20131021230635) do
     t.string   "zip_code"
     t.integer  "price",          default: 0
     t.integer  "creator_id"
+    t.boolean  "closed",         default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
