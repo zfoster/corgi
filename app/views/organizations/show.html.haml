@@ -12,3 +12,4 @@
         .row.edit
           .small-6.large-6.columns.right
             = link_to 'Edit', edit_organization_path(@organization), :class => "button small expand secondary"
+    = image_tag(@organization.avatar.url(:thumb))
