@@ -11,8 +11,10 @@ $(document).ready ->
       price_field.attr('disabled', true)
       price_field.val(0)
 
-    $('.datepicker').fdatetimepicker()
-    $('#dp1').fdatetimepicker ->
-      format: 'mm-dd-yyyy hh:ii'
-    $('#dp2').fdatetimepicker ->
-      format: 'mm-dd-yyyy hh:ii'
+    $( "#datepicker" ).datetimepicker
+      stepHour : 1
+      stepMinute: 15
+
+    $( "#datepicker2" ).datetimepicker
+      stepHour: 1
+      stepMinute: 15
