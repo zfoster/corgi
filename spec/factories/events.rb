@@ -8,6 +8,7 @@ FactoryGirl.define do
     state 'WI'
     zip_code '53703'
     association :creator, factory: :user
+    organization
 
     factory :paid_event do
       title "PaidCityCamp"
