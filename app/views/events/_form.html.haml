@@ -7,6 +7,9 @@
     .field.description
       = f.label :description
       = f.text_area :description, rows: "20", placeholder: "Description"
+    .field.organization
+      = f.label :organization
+      = collection_select(:event, :organization_id, Organization.all, :id, :name)
   .small-12.large-5.columns
     .event-price
       .radio-buttons

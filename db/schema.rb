@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 20131018211855) do
     t.string   "zip_code"
     t.integer  "price",           default: 0
     t.integer  "creator_id"
-    t.boolean  "closed",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id"
@@ -69,16 +68,6 @@ ActiveRecord::Schema.define(version: 20131018211855) do
   end
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
-
-  create_table "org_administrations", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "organization_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "org_administrations", ["organization_id"], name: "index_org_administrations_on_organization_id", using: :btree
-  add_index "org_administrations", ["user_id"], name: "index_org_administrations_on_user_id", using: :btree
 
   create_table "organizations", force: true do |t|
     t.string   "name"

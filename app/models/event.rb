@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   has_many :hostings
   has_many :registrations
+  belongs_to :organization
   has_many :hosts, -> { distinct }, through: :hostings, source: :user
   has_many :attendees, -> { distinct }, through: :registrations, source: :user
   belongs_to :organization
