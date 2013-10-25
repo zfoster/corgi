@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe "A new user creates an event" do
 
+let!(:organization) { create(:organization) }
+
   it "creates the event" do
     visit root_path
     click_link 'Connect with LinkedIn'
@@ -19,6 +21,7 @@ describe "A new user creates an event" do
     select '10', from: 'event[end_time(3i)]'
     select '07 PM', from: 'event[end_time(4i)]'
     select '30', from: 'event[end_time(5i)]'
+    select 'Madisonium', from: 'event_organization_id'
 
     fill_in 'event[price]', with: '10'
 
@@ -30,6 +33,7 @@ describe "A new user creates an event" do
     expect(page).to have_content('CityCamp')
     expect(page).to have_content('The best city camp event ever')
     expect(page).to have_content('$10')
+    expect(page).to have_content('Madisonium')
     expect(unread_emails_for("bob@example.com").size).to eq(1)
   end
 
