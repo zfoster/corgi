@@ -23,10 +23,10 @@
       = f.number_field :price
     .fields.date-time
       = f.label :start_time
-      = f.datetime_field :start_time, ampm: true, id: "datepicker", data: {format: "dd/MM/yyyy hh:mm:ss"}
+      = f.datetime_field :start_time, ampm: true, id: "datepicker", data: {format: "dd/MM/yyyy hh:mm"}
     .fields.date-time
       = f.label :end_time
-      = f.datetime_field :end_time, ampm: true, id: "datepicker2", data: {format: "dd/MM/yyyy hh:mm:ss"}
+      = f.datetime_field :end_time, ampm: true, id: "datepicker2", data: {format: "dd/MM/yyyy hh:mm"}
     .fields.location
       .field.address_1
         = f.label :address_line_1
