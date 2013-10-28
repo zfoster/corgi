@@ -1694,6 +1694,76 @@ body.events.new {
       }
     }
   }
+  #ui-datepicker-div {
+    background: white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px #aaa;
+    .ui-datepicker-header {
+      background: $blue;
+      padding: 5px;
+      border-radius: 5px 5px 0 0;
+        .ui-datepicker-prev {
+        float: left;
+      }
+      .ui-datepicker-next {
+        float: right;
+      }
+      .ui-datepicker-title {
+        text-align: center;
+        color: white;
+      }
+    }
+    .ui-datepicker-calendar {
+      text-align: center;
+      td {
+        padding: 0;
+        width: 20px;
+        height: 20px;
+      }
+      a {
+        color: #666;
+        padding: 3px;
+        margin: 0;
+        display: block;
+        &:hover {
+          background: #ddd;
+        }
+        &.ui-state-active {
+          background: $blue;
+          color: white;
+        }
+      }
+    }
+    table, th, td {
+      border-collapse: collapse;
+      background: white;
+      border: 1px solid #ddd;
+    }
+    .ui-slider {
+      border: 1px solid #aaa;
+      height: 10px;
+      border-radius: 5px;
+      position: relative;
+    }
+    .ui-slider-handle {
+      position: absolute;
+      z-index: 2;
+      width: 1.2em;
+      height: 1.2em;
+      cursor: default;
+      top: -.3em;
+      margin-left: -.6em;
+      background: $blue;
+      border-radius: 100%;
+    }
+    .ui-datepicker-buttonpane {
+      clear: left;
+      text-align: center;
+      button {
+        margin: 0 1em;
+      }
+    }
+  }
 }
 
 .hidden {

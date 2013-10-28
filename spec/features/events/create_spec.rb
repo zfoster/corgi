@@ -11,20 +11,9 @@ let!(:organization) { create(:organization) }
     fill_in 'Title', with: 'CityCamp'
     fill_in 'Description', with: 'The best city camp event ever'
     choose 'Has a fee'
-    select '2013', from: 'event[start_time(1i)]'
-    select 'December', from: 'event[start_time(2i)]'
-    select '10', from: 'event[start_time(3i)]'
-    select '06 PM', from: 'event[start_time(4i)]'
-    select '30', from: 'event[start_time(5i)]'
-    select '2013', from: 'event[end_time(1i)]'
-    select 'December', from: 'event[end_time(2i)]'
-    select '10', from: 'event[end_time(3i)]'
-    select '07 PM', from: 'event[end_time(4i)]'
-    select '30', from: 'event[end_time(5i)]'
-    select 'Madisonium', from: 'event_organization_id'
-
+    fill_in 'event[start_time]', with: '10/24/2013 16:45'
+    fill_in 'event[end_time]', with: '10/24/2013 18:45'
     fill_in 'event[price]', with: '10'
-
     click_on 'Save'
     expect(page.find('#flash_notice')).to have_content("Event was successfully created.")
     expect(page.find('.hosts')).to have_content("Bob Loblaw")

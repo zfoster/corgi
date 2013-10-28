@@ -1,29 +1,30 @@
 .row.main-content
   .small-12.columns
     .row.top-event-content
-      .event-title.small-12.large-7.columns
-        %h1
-          = @event.title
-      .event-actions.small-12.large-4.columns
-        - if current_user && current_user.registered?(@event)
-          .row.attending
-            .small-6.large-6.columns
+      .small-12.large-7.columns
+        .row.event-title
+          %h1
+            = @event.title
+        .row.event-actions
+          - if current_user && current_user.registered?(@event)
+            .small-3.columns
               .attending.button.success.small.expand
                 Attending
-            .cancel.small-6.columns
-              = link_to 'Cancel', cancel_registration_event_path(@event), method: :delete, :class => "button small secondary expand"
-        - else
-          .row.attending
-            .small-6.large-6.columns
-              = link_to 'Attend', registrations_path(event_id: @event.id), method: :post, :class => "button small expand right"
-    .row
-      .event-description.small-12.large-7.columns
-        %p
-          =simple_format h @event.description.html_safe
+            .small-3.columns.left
+              = link_to 'Cancel', cancel_registration_event_path(@event), method: :delete, :class => "button small secondary expand cancel"
+          - else
+            .row.attending
+              .small-4.columns
+                = link_to 'Attend', registrations_path(event_id: @event.id), method: :post, :class => "button small expand right"
+        .row
+          .event-description
+            %p
+              =simple_format h @event.description.html_safe
 
-      .event-organization
-        %p
-          = @event.organization.name
+      - if @event.organization
+        .event-organization
+          %p
+            = @event.organization.name
       .event-details.small-12.large-4.columns
         .event-price
           - if @event.price == 0
