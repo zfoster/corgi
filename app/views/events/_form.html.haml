@@ -1,12 +1,11 @@
 = form_for @event do |f|
   .small-12.large-7.columns
-    .event-title
-      %h1.field.title
-        = f.label :title
-        = f.text_field :title, placeholder: "Title"
+    .field.title
+      = f.label :title
+      = f.text_field :title, placeholder: "Title"
     .field.description
       = f.label :description
-      = f.text_area :description, rows: "20", placeholder: "Description"
+      = f.text_area :description, rows: "3", placeholder: "Description"
     .field.organization
       = f.label :organization
       = collection_select(:event, :organization_id, Organization.all, :id, :name)
@@ -23,11 +22,14 @@
       = f.number_field :price
     .fields.date-time
       = f.label :start_time
-      = f.datetime_field :start_time, ampm: true, id: "datepicker", data: {format: "dd/MM/yyyy hh:mm"}
+      = f.datetime_field :start_time, ampm: true, id: "datepicker", data: {format: "dd/MM/yyyy hh:mm"}, placeholder: "Start time"
     .fields.date-time
       = f.label :end_time
-      = f.datetime_field :end_time, ampm: true, id: "datepicker2", data: {format: "dd/MM/yyyy hh:mm"}
-    .fields.location
+      = f.datetime_field :end_time, ampm: true, id: "datepicker2", data: {format: "dd/MM/yyyy hh:mm"}, placeholder: "End time"
+    .fieldset.location
+      .field.location-name
+        = label_tag "Location name"
+        = text_field_tag "Location name", nil, placeholder: "Name"
       .field.address_1
         = f.label :address_line_1
         = f.text_field :address_line_1, placeholder: "Address line 1"
@@ -45,4 +47,4 @@
         = f.text_field :zip_code, placeholder: "Zip code"
       .clearfix
     .actions
-      = f.submit 'Save', :class => "button"
+      = f.submit 'Save', :class => "button right"

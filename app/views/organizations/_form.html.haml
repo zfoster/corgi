@@ -1,8 +1,8 @@
 = form_for @organization do |f|
-  %h1.field.name
+  .field.name
     = f.label :name
     = f.text_field :name, placeholder: "Name"
-  %h1.field.image
+  .field.image
     = f.label :avatar, "Upload organization avatar"
     = f.file_field :avatar
   = f.submit 'Save', :class => "button"
