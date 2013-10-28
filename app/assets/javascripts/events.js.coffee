@@ -11,10 +11,11 @@ $(document).ready ->
       price_field.attr('disabled', true)
       price_field.val(0)
 
-    $( "#datepicker" ).datetimepicker
-      stepHour : 1
-      stepMinute: 15
+    jQuery ->
+      $( "#datepicker" ).datetimepicker
+        stepHour : 1
+        stepMinute: 15
 
-    $( "#datepicker2" ).datetimepicker
-      stepHour: 1
-      stepMinute: 15
+      $( "#datepicker2" ).datetimepicker
+        stepHour: 1
+        stepMinute: 15
