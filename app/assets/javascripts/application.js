@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery_ui
+//= require jquery-timepicker-addon
 //= require foundation
 //= require turbolinks
 //= require users

@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20131023202634) do
-=======
-ActiveRecord::Schema.define(version: 20131018211855) do
->>>>>>> Add org_administrators join table
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +64,16 @@ ActiveRecord::Schema.define(version: 20131018211855) do
   end
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
+
+  create_table "org_administrations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "organization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "org_administrations", ["organization_id"], name: "index_org_administrations_on_organization_id", using: :btree
+  add_index "org_administrations", ["user_id"], name: "index_org_administrations_on_user_id", using: :btree
 
   create_table "organizations", force: true do |t|
     t.string   "name"
