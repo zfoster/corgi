@@ -209,9 +209,6 @@ GEM
       faraday (>= 0.7.6)
       hashie (>= 1.1.0)
       uuidtools
-    shareable (0.0.2)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
@@ -282,7 +279,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 4.0.0)
   sentry-raven
-  shareable
   simplecov
   thin
   turbolinks
