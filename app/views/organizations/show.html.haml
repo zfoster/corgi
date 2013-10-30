@@ -1,4 +1,6 @@
-.event-title
-  %h1
-    = @organization.name
-    = image_tag(@organization.avatar.url(:thumb))
+.row.main-content
+  .small-12.large-5.columns
+    .event-title
+      %h1
+        = @organization.name
+        = image_tag(@organization.avatar.url(:thumb))
