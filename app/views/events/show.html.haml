@@ -50,13 +50,13 @@
             %h3 Hosts
             %ul
               - @event.hosts.each do |user|
-                %li= user.display_name
+                %li= user.name
 
           .attendees
             %h3 Attendees
             %ul
               - @event.attendees.each do |user|
-                %li= user.display_name
+                %li= user.name
 
           .row.edit
             .small-6.large-6.columns.right
