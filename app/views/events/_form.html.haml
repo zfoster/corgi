@@ -7,6 +7,9 @@
     .field.description
       = f.label :description
       = f.text_area :description, rows: "20", placeholder: "Description"
+    .field.organization
+      = f.label :organization
+      = collection_select(:event, :organization_id, Organization.all, :id, :name)
   .small-12.large-5.columns
     .event-price
       .radio-buttons
@@ -20,9 +23,10 @@
       = f.number_field :price
     .fields.date-time
       = f.label :start_time
-      = f.datetime_select :start_time, ampm: true
+      = f.datetime_field :start_time, ampm: true, id: "datepicker", data: {format: "dd/MM/yyyy hh:mm"}
+    .fields.date-time
       = f.label :end_time
-      = f.datetime_select :end_time, ampm: true
+      = f.datetime_field :end_time, ampm: true, id: "datepicker2", data: {format: "dd/MM/yyyy hh:mm"}
     .fields.location
       .field.address_1
         = f.label :address_line_1

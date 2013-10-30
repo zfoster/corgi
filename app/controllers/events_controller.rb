@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :authorize_user!, only: [:new]
   before_action :set_event, only: [:show, :edit, :update, :destroy, :cancel_registration]
 
   def show
@@ -10,6 +11,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @organization = Organization.all
   end
 
   def edit
@@ -28,7 +30,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event.attributes(event_params)
+    @event.attributes=(event_params)
     if @event.save
       redirect_to @event, notice: 'Event was successfully updated.'
     else
@@ -49,6 +51,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :price, :start_time, :end_time, :address_line_1, :address_line_2, :city, :state, :zip_code)
+    params.require(:event).permit(:title, :description, :price, :start_time, :end_time, :address_line_1, :address_line_2, :city, :state, :zip_code, :organization_id)
   end
 end

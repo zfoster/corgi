@@ -23,4 +23,11 @@ class ApplicationController < ActionController::Base
     session[:user_id] = user.nil? ? user : user.id
   end
 
+  def authorize_user!
+    unless current_user
+      session[:pre_authorization_page] = request.env['HTTP_REFERER']
+      redirect_to identities_path, notice: 'You must authorize before continuing'
+    end
+  end
+
 end
