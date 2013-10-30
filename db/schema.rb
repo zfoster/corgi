@@ -17,6 +17,16 @@ ActiveRecord::Schema.define(version: 20131031025219) do
   enable_extension "plpgsql"
   enable_extension "hstore"
 
+  create_table "amps", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "amps", ["event_id"], name: "index_amps_on_event_id", using: :btree
+  add_index "amps", ["user_id"], name: "index_amps_on_user_id", using: :btree
+
   create_table "contributions", force: true do |t|
     t.text     "note"
     t.string   "email"
