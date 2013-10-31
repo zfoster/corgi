@@ -10,7 +10,11 @@ Corgi::Application.routes.draw do
   resources :contributions, only: [:create]
   resources :identities, only: [:destroy, :index]
   resources :sessions, only: [:new, :create, :destroy]
-  resources :organizations, only: [:new, :create, :show]
+  resources :organizations, only: [:new, :create, :show] do
+    collection do
+      get :autocomplete_organization_name
+    end
+  end
   resources :amps, only: [:new, :create]
   resources :events, only: [:new, :show, :create, :edit, :update, :index] do
     member do
