@@ -1,5 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show]
+  autocomplete :organization, :name
 
   def show
 

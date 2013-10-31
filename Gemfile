@@ -26,6 +26,7 @@ gem 'paperclip'
 gem 'american_date'
 gem 'httparty'
 gem 'nokogiri'
+gem 'rails3-jquery-autocomplete'
 
 group :production do
   gem 'rails_12factor'
