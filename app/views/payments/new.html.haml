@@ -1,26 +1,27 @@
-.large-6.columns
-  = form_for @payment do |f|
-    .field.name
-      = f.label :cardholder_name
-      = f.text_field :cardholder_name
-      = f.label :card_type
-      = f.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]]
-      = f.label :card_number
-      = f.text_field :card_number, placeholder: 'Credit Card Number'
-      = f.label :card_verification, "Card Verification Value (CVV)"
-      = f.text_field :card_verification
-      = f.label :card_expires_on
-      = f.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true
-      = f.hidden_field :amount_in_cents, value: @registration.event.price*100
-      = f.hidden_field :registration_id, value: @registration.id
-      = f.label :address_line_1
-      = f.text_field :address_line_1
-      = f.label :address_line_2
-      = f.text_field :address_line_2
-      = f.label :city
-      = f.text_field :city
-      = f.label :state
-      = f.text_field :state
-      = f.label :zip_code
-      = f.text_field :zip_code
-    = f.submit 'Save', :class => "button"
+.row.main-content
+  .large-6.columns
+    = form_for @payment do |f|
+      .field.name
+        = f.label :cardholder_name
+        = f.text_field :cardholder_name
+        = f.label :card_type
+        = f.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]]
+        = f.label :card_number
+        = f.text_field :card_number, placeholder: 'Credit Card Number'
+        = f.label :card_verification, "Card Verification Value (CVV)"
+        = f.text_field :card_verification
+        = f.label :card_expires_on
+        = f.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true
+        = f.hidden_field :amount_in_cents, value: @registration.event.price*100
+        = f.hidden_field :registration_id, value: @registration.id
+        = f.label :address_line_1
+        = f.text_field :address_line_1
+        = f.label :address_line_2
+        = f.text_field :address_line_2
+        = f.label :city
+        = f.text_field :city
+        = f.label :state
+        = f.text_field :state
+        = f.label :zip_code
+        = f.text_field :zip_code
+      = f.submit 'Save', :class => "button"
