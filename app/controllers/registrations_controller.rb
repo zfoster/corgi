@@ -6,7 +6,7 @@ class RegistrationsController < ApplicationController
 
   def create
     @registration = current_user.registrations.new registration_params
-    if @registration.event.price > 0
+    if @registration.event.price.to_i > 0
       if @registration.save
         redirect_to new_payment_path(registration_id: @registration.id)
       else
