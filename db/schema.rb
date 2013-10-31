@@ -102,19 +102,13 @@ ActiveRecord::Schema.define(version: 20131031025219) do
   create_table "payments", force: true do |t|
     t.integer  "registration_id"
     t.integer  "amount_in_cents"
-    t.string   "first_name"
-    t.string   "last_name"
     t.string   "card_type"
     t.date     "card_expires_on"
     t.string   "last_4"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ip_address"
-    t.string   "address_line_1"
-    t.string   "address_line_2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip_code"
+    t.string   "cardholder_name"
   end
 
   add_index "payments", ["registration_id"], name: "index_payments_on_registration_id", using: :btree
@@ -130,14 +124,18 @@ ActiveRecord::Schema.define(version: 20131031025219) do
   add_index "registrations", ["user_id"], name: "index_registrations_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
     t.string   "email"
     t.string   "mobile_num"
     t.string   "avatar"
     t.integer  "default_identity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
+    t.string   "name"
   end
 
   add_index "users", ["default_identity_id"], name: "index_users_on_default_identity_id", using: :btree

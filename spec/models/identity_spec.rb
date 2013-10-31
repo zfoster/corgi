@@ -16,7 +16,7 @@ describe Identity do
 
     context 'an associated user does not exist' do
       it 'creates a new user' do
-        User.should_receive(:create).with(hash_including(:email, :first_name, :last_name))
+        User.should_receive(:create).with(hash_including(:email, :name))
         identity = Identity.new( info: {} ).find_or_create_user
       end
     end
