@@ -10,7 +10,7 @@ let!(:organization) { create(:organization) }
     click_on 'CREATE EVENT'
     fill_in 'Title', with: 'CityCamp'
     fill_in 'Description', with: 'The best city camp event ever'
-    choose 'Has a fee'
+    check 'enable_fee'
     fill_in 'event[start_time]', with: '10/24/2013 16:45'
     fill_in 'event[end_time]', with: '10/24/2013 18:45'
     fill_in 'event[price]', with: '10'

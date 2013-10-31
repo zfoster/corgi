@@ -14,13 +14,10 @@
     .event-price
       .radio-buttons
         .field-and-label
-          = radio_button_tag "fee", "no_charge", :checked => true
-          = label_tag "fee_no_charge", "No fee"
-        .field-and-label
-          = radio_button_tag "fee", "has_charge"
-          = label_tag "fee_has_charge", "Has a fee"
+          = check_box_tag :enable_fee
+          = label_tag :enable_fee, "Admission Fee"
       = f.label :price
-      = f.number_field :price
+      = f.text_field :price
     .fields.date-time
       = f.label :start_time
       = f.datetime_field :start_time, ampm: true, id: "datepicker", data: {format: "dd/MM/yyyy hh:mm"}
