@@ -1,27 +1,29 @@
-= form_for @registration do |f|
-  %h1.field.name
-    = fields_for @registration.build_payment do |p|
-      = p.label :cardholder_name
-      = p.text_field :cardholder_name
-      = p.label :card_type
-      = p.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]]
-      = p.label :card_number
-      = p.text_field :card_number, placeholder: 'Credit Card Number'
-      = p.label :card_verification, "Card Verification Value (CVV)"
-      = p.text_field :card_verification
-      = p.label :card_expires_on
-      = p.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true
-      = p.hidden_field :amount_in_cents, value: @registration.event.price*100
-      = p.hidden_field :registration_id, value: @registration.id
-    = fields_for current_user do |u|
-      = u.label :address_line_1
-      = u.text_field :address_line_1
-      = u.label :address_line_2
-      = u.text_field :address_line_2
-      = u.label :city
-      = u.text_field :city
-      = u.label :state
-      = u.text_field :state
-      = u.label :zip_code
-      = u.text_field :zip_code
-  = f.submit 'Save', :class => "button"
+.row.main-content
+  .large-6.columns
+    = form_for @registration do |f|
+      .field.name
+        = fields_for @registration.build_payment do |p|
+          = p.label :cardholder_name
+          = p.text_field :cardholder_name
+          = p.label :card_type
+          = p.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]]
+          = p.label :card_number
+          = p.text_field :card_number, placeholder: 'Credit Card Number'
+          = p.label :card_verification, "Card Verification Value (CVV)"
+          = p.text_field :card_verification
+          = p.label :card_expires_on
+          = p.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true
+          = p.hidden_field :amount_in_cents, value: @registration.event.price*100
+          = p.hidden_field :registration_id, value: @registration.id
+        = fields_for current_user do |u|
+          = u.label :address_line_1
+          = u.text_field :address_line_1
+          = u.label :address_line_2
+          = u.text_field :address_line_2
+          = u.label :city
+          = u.text_field :city
+          = u.label :state
+          = u.text_field :state
+          = u.label :zip_code
+          = u.text_field :zip_code
+      = f.submit 'Save', :class => "button"
