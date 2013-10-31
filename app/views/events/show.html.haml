@@ -43,7 +43,7 @@
             - else
               = @event.start_time.strftime("%l:%M %p")
         .event-price
-          - if @event.price == 0
+          - if @event.price == 0 || @event.price == nil
             %p No charge
           - else
             %p
@@ -52,12 +52,12 @@
           %h3 Hosts
           %ul
             - @event.hosts.each do |user|
-              %li= user.name
+              %li= user.first_name + " " + user.last_name
         .attendees
           %h3 Attendees
           %ul
             - @event.attendees.each do |user|
-              %li= user.name
+              %li= user.first_name + " " + user.last_name
           .csv
             = link_to 'Attendee CSV', registrations_path(event_id: @event.id, format: :csv), :class => "button secondary"
 
