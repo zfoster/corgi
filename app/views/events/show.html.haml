@@ -56,11 +56,16 @@
                 = @event.address_line_2
               %br
               = @event.city + ', ' + @event.state + ' ' + @event.zip_code
-
+        .hosts
+          %h3 Hosts
+          %ul
+            - @event.hosts.each do |user|
+              %li= user.name
         .attendees
           %h3 Attendees
           %ul
             - @event.attendees.each do |user|
-              %li= user.display_name
+              %li= user.name
           .csv
             = link_to 'Attendee CSV', registrations_path(event_id: @event.id, format: :csv), :class => "button secondary"
+

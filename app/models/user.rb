@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
   has_many :hosted_events, -> { distinct }, through: :hostings, source: :event
   has_many :org_administrations
   has_many :administered_orgs, through: :org_administrations, source: :organization
-  
   has_one :facebook_identity, -> { where provider: 'facebook' }, class_name: 'Identity'
   has_one :twitter_identity, -> { where provider: 'twitter' }, class_name: 'Identity'
   has_one :linkedin_identity, -> { where provider: 'linkedin' }, class_name: 'Identity'
@@ -31,9 +30,4 @@ class User < ActiveRecord::Base
   def amplified?(event)
     amps.exists? event_id: event.id
   end
-
-  def display_name
-    [first_name, last_name].join(" ") 
-  end
-
 end
