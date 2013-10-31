@@ -9,7 +9,12 @@ class Payment < ActiveRecord::Base
 
   def purchase
     response = GATEWAY.purchase(amount_in_cents, credit_card, billing_address)
-    response.success?
+    if response.success?
+      payment.user.update_attribute(:payment_token, 'fixmelater')
+      return true
+    else
+      return false
+    end
   end
 
   def price_in_cents

@@ -1,17 +1,16 @@
-require 'csv'
 class RegistrationsController < ApplicationController
   before_filter :authorize_user!, only: [:create]
   before_filter :set_registration, only: [:destroy]
-  before_filter :set_event, only: [:index]
+  before_filter :set_event, only: [:new, :create, :index]
+
+  def new
+    @registration = @event.registrations.new
+  end
 
   def create
     @registration = current_user.registrations.new registration_params
-    if @registration.event.price.to_i > 0
-      if @registration.save
-        redirect_to new_payment_path(registration_id: @registration.id)
-      else
-        redirect_to @registration.event, notice: 'There was an issue registering'
-      end
+    if !current_user.payment_token? && @registration.event.price.to_i > 0
+      redirect_to new_event_registration_path(@event)
     else
       if @registration.save
         RegistrationMailer.created(@registration).deliver

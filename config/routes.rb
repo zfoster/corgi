@@ -16,6 +16,7 @@ Corgi::Application.routes.draw do
     member do
       delete :cancel_registration
     end
+    resources :registrations, only: [:new]
   end
   resources :registrations, only: [:create, :index]
 
