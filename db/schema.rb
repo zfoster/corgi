@@ -108,6 +108,11 @@ ActiveRecord::Schema.define(version: 20131031025219) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ip_address"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
     t.string   "cardholder_name"
   end
 
