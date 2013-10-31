@@ -30,37 +30,32 @@
         .event-organization
           %p
       .event-details.small-12.large-4.columns
-        .event-location
-          =image_tag "madison-map.gif"
-          %p
-            = @event.address_line_1
-            - if @event.address_line_2 != ""
-              %br
-              = @event.address_line_2
-            %br
-            = @event.city + ', ' + @event.state + ' ' + @event.zip_code
-        .event-time
-          %p
-            = @event.start_time.strftime("%a %b #{@event.start_time.day.ordinalize}")
-            %br
-            = @event.start_time.strftime("%l:%M %p") + " to "
-            - if @event.end_time
-              = @event.end_time.strftime("%l:%M %p")
         .event-price
           - if @event.price == 0
             %p No charge
           - else
             %p
               = "$" + @event.price.to_s
-        - if @event.organization
-          .event-organization
-            %p
-              = @event.organization.name
-        .hosts
-          %h3 Hosts
-          %ul
-            - @event.hosts.each do |user|
-              %li= user.display_name
+        .event-time
+          %p
+            = @event.start_time.strftime("%a %b #{@event.start_time.day.ordinalize}")
+            %br
+            - if @event.end_time.present?
+              = @event.start_time.strftime("%l:%M %p")+ " to " + @event.end_time.strftime("%l:%M %p")
+            - else
+              = @event.start_time.strftime("%l:%M %p")
+        .event-location
+          =image_tag "madison-map.gif"
+          %p
+            - if @event.address
+              = @event.address
+            - else
+              = @event.address_line_1
+              - if @event.address_line_2 != ""
+                %br
+                = @event.address_line_2
+              %br
+              = @event.city + ', ' + @event.state + ' ' + @event.zip_code
 
         .attendees
           %h3 Attendees

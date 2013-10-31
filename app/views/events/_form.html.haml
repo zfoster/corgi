@@ -1,8 +1,11 @@
 = form_for @event do |f|
   .small-12.large-7.columns
-    .field.title
-      = f.label :title
-      = f.text_field :title, placeholder: "Title"
+    = f.label :existing_url
+    = f.text_field :existing_url, placeholder: "Existing URL"
+    .event-title
+      .field.title
+        = f.label :title
+        = f.text_field :title, placeholder: "Title"
     .field.description
       = f.label :description
       = f.text_area :description, rows: "3", placeholder: "Description"
