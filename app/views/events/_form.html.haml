@@ -11,7 +11,10 @@
       = f.text_area :address_line_1, rows: "3", placeholder: "Location"
     .field.organization
       = f.label :organization
-      = f.text_field(:event, :organization_id, Organization.all, :id, :name)
+      = collection_select(:event, :organization_id, Organization.all, :id, :name)
+    .field.url
+      = f.label :url
+      = f.text_field :url, placeholder: "http://www.myeventurl.com"
   .small-12.large-5.columns
     .event-price
       .radio-buttons
@@ -19,10 +22,10 @@
         /   = radio_button_tag "fee", "no_fee", :checked => true
         /   = label_tag "fee_no_fee", "No fee"
         .field-and-label
-          = check_box_tag "fee", "has_fee"
-          = label_tag "fee_has_fee", "Admission fee"
+          = check_box_tag :enable_fee
+          = label_tag :enable_fee, "Admission Fee"
       = f.label :price
-      = f.number_field :price
+      = f.text_field :price
     .fields.date-time
       = f.label :start_time
       = f.datetime_field :start_time, ampm: true, id: "datepicker", data: {format: "dd/MM/yyyy hh:mm"}, placeholder: "Start time"
