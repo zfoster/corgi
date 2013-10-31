@@ -1822,6 +1822,15 @@ input[disabled="disabled"] {
   border: none;
 }
 
+// event show
+
+.attendees {
+  ul {
+    list-style-type: none;
+    margin-left: 5px;
+  }
+}
+
 // Make sure google map controls display
 
 .gmnoprint img {
