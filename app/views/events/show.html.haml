@@ -52,12 +52,12 @@
           %h3 Hosts
           %ul
             - @event.hosts.each do |user|
-              %li= user.first_name + " " + user.last_name
+              %li= user.name
         .attendees
           %h3 Attendees
           %ul
             - @event.attendees.each do |user|
-              %li= user.first_name + " " + user.last_name
+              %li= user.name
           .csv
             = link_to 'Attendee CSV', registrations_path(event_id: @event.id, format: :csv), :class => "button secondary"
 
