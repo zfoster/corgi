@@ -6,10 +6,15 @@
   .small-12.large-7.columns
     = f.label :existing_url
     = f.text_field :existing_url, placeholder: "Existing URL"
+    %p
+      OR
     .event-title
       .field.title
         = f.label :title
         = f.text_field :title, placeholder: "Title"
+    .field.url
+      = f.label :url
+      = f.text_field :url, placeholder: "http://www.myeventurl.com"
     .field.description
       = f.label :description
       = f.text_area :description, rows: "3", placeholder: "Description"
@@ -17,14 +22,13 @@
       = f.label "Venue"
       = f.text_area :address_line_1, rows: "3", type: 'text', placeholder: "Venue"
     #map-canvas{ :style => "height: 300px;" }
-    .field.organization
-      = label_tag :organization
-      = autocomplete_field_tag :organization_name, '', autocomplete_organization_name_organizations_path, placeholder: "Organization"
-      // = collection_select(:event, :organization_id, Organization.all, :id, :name)
-    .field.url
-      = f.label :url
-      = f.text_field :url, placeholder: "http://www.myeventurl.com"
   .small-12.large-5.columns
+    %br
+    %br
+    %br
+    %br
+    %br
+    %br
     .event-price
       .radio-buttons
         .field-and-label
@@ -38,6 +42,9 @@
     .fields.date-time
       = f.label :end_time
       = f.datetime_field :end_time, ampm: true, id: "datepicker2", data: {format: "A, b MM hh:mmp"}, placeholder: "End time"
+    .field.organization
+      = label_tag :organization
+      = autocomplete_field_tag :organization_name, '', autocomplete_organization_name_organizations_path, placeholder: "Organization"
     / .fieldset.location
     /   .field.location-name
     /     = label_tag "Location name"
