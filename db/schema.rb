@@ -54,19 +54,14 @@ ActiveRecord::Schema.define(version: 20131106012002) do
     t.string   "zip_code"
     t.integer  "price"
     t.integer  "creator_id"
-    t.boolean  "closed",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id"
-    t.string   "url"
     t.string   "address"
     t.string   "source"
     t.string   "source_id"
-<<<<<<< HEAD
     t.string   "url"
     t.string   "ical_uid"
-=======
->>>>>>> Receive contacts information via Facebook and Twitter APIs during user authentication.
   end
 
   add_index "events", ["organization_id"], name: "index_events_on_organization_id", using: :btree
@@ -122,14 +117,11 @@ ActiveRecord::Schema.define(version: 20131106012002) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ip_address"
-<<<<<<< HEAD
     t.string   "address_line_1"
     t.string   "address_line_2"
     t.string   "city"
     t.string   "state"
     t.string   "zip_code"
-=======
->>>>>>> Receive contacts information via Facebook and Twitter APIs during user authentication.
     t.string   "cardholder_name"
   end
 
@@ -158,12 +150,10 @@ ActiveRecord::Schema.define(version: 20131106012002) do
     t.string   "state"
     t.string   "zip_code"
     t.string   "name"
-<<<<<<< HEAD
     t.string   "payment_token"
     t.boolean  "admin",               default: false
-=======
     t.text     "contacts"
->>>>>>> Receive contacts information via Facebook and Twitter APIs during user authentication.
+    t.text     "pulled_events"
   end
 
   add_index "users", ["default_identity_id"], name: "index_users_on_default_identity_id", using: :btree

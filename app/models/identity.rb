@@ -38,7 +38,7 @@ class Identity < ActiveRecord::Base
       {contacts: "#{twitter_user.following}"}
     when 'facebook'
       facebook_user = Koala::Facebook::API.new(credentials['token'])
-      {contacts: "#{facebook_user.get_connections("me", "friends")}"}
+      {contacts: "#{facebook_user.get_connections("me", "friends")}", pulled_events: "#{facebook_user.get_connections("me", "events")}"}
     end
   end
 
