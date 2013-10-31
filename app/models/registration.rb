@@ -6,8 +6,7 @@ class Registration < ActiveRecord::Base
   delegate :email, to: :user, prefix: true
 
   comma do
-    user :first_name
-    user :last_name
+    user :name
     user_email
     created_at
   end

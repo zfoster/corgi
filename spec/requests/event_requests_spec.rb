@@ -7,7 +7,7 @@ describe 'EventRequests' do
   describe 'GET attendees_csv' do
     it 'gets a csv of attendees' do
       file_name = 'data.csv'
-      get registrations_path(format: :csv, event_id: event.id)
+      get event_registrations_path(event, format: :csv)
       response.content_type.should eq("text/csv")
       response.headers["Content-Disposition"].should eq("attachment; filename=#{file_name}")
     end
