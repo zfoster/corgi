@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :identities
   has_many :registrations
   has_many :hostings
+  has_many :amps
   has_many :created_events, class_name: 'Event', foreign_key: :creator_id
   has_many :registered_events, -> { distinct }, through: :registrations, source: :event
   has_many :hosted_events, -> { distinct }, through: :hostings, source: :event
@@ -25,6 +26,10 @@ class User < ActiveRecord::Base
 
   def registered?(event)
     registrations.exists? event_id: event.id
+  end
+
+  def amplified?(event)
+    amps.exists? event_id: event.id
   end
 
   def display_name

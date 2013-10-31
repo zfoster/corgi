@@ -11,6 +11,7 @@ Corgi::Application.routes.draw do
   resources :identities, only: [:destroy, :index]
   resources :sessions, only: [:new, :create, :destroy]
   resources :organizations, only: [:new, :create, :show]
+  resources :amps, only: [:new, :create]
   resources :events, only: [:new, :show, :create, :edit, :update, :index] do
     member do
       delete :cancel_registration
