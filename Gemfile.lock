@@ -85,7 +85,7 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
-    haml (4.0.3)
+    haml (4.0.4)
       tilt
     haml-rails (0.4)
       actionpack (>= 3.1, < 4.1)
@@ -109,6 +109,10 @@ GEM
     json (1.8.1)
     jwt (0.1.8)
       multi_json (>= 1.5)
+    koala (1.8.0rc1)
+      addressable
+      faraday
+      multi_json
     launchy (2.3.0)
       addressable (~> 2.3)
     mail (2.5.4)
@@ -277,6 +281,7 @@ DEPENDENCIES
   icalendar
   jbuilder (~> 1.2)
   jquery-rails
+  koala (~> 1.8.0rc1)
   nokogiri
   omniauth
   omniauth-facebook
