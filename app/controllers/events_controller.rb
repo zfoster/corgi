@@ -18,14 +18,19 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.created_events.new(event_params)
-    @event.hosts << current_user
-    @event.attendees << current_user
-    if @event.save
-      EventMailer.created(@event).deliver
-      redirect_to @event, notice: 'Event was successfully created.'
+    if event_params['existing_url'].present?
+      @event = Event.create_from_url(event_params['existing_url'])
+      redirect_to @event
     else
-      render action: 'new'
+      @event = current_user.created_events.new(event_params)
+      @event.hosts << current_user
+      @event.attendees << current_user
+      if @event.save
+        EventMailer.created(@event).deliver
+        redirect_to @event, notice: 'Event was successfully created.'
+      else
+        render action: 'new'
+      end
     end
   end
 
@@ -51,6 +56,9 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :price, :start_time, :end_time, :address_line_1, :address_line_2, :city, :state, :zip_code, :url, :organization_id)
+    params.require(:event).permit :title, :description, :price, 
+      :start_time, :end_time, :address_line_1, 
+      :address_line_2, :city, :state, :zip_code, :url, 
+      :organization_id, :existing_url
   end
 end

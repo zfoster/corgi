@@ -39,15 +39,21 @@
           %p
             = @event.start_time.strftime("%a %b #{@event.start_time.day.ordinalize}")
             %br
-            = @event.start_time.strftime("%l:%M %p") + " to " + @event.end_time.strftime("%l:%M %p")
+            - if @event.end_time.present?
+              = @event.start_time.strftime("%l:%M %p")+ " to " + @event.end_time.strftime("%l:%M %p")
+            - else
+              = @event.start_time.strftime("%l:%M %p")
         .event-location
           %p
-            = @event.address_line_1
-            - if @event.address_line_2 != ""
+            - if @event.address
+              = @event.address
+            - else
+              = @event.address_line_1
+              - if @event.address_line_2 != ""
+                %br
+                = @event.address_line_2
               %br
-              = @event.address_line_2
-            %br
-            = @event.city + ', ' + @event.state + ' ' + @event.zip_code
+              = @event.city + ', ' + @event.state + ' ' + @event.zip_code
 
           .hosts
             %h3 Hosts

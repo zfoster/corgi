@@ -1,5 +1,7 @@
 = form_for @event do |f|
   .small-12.large-7.columns
+    = f.label :existing_url
+    = f.text_field :existing_url, placeholder: "Existing URL"
     .event-title
       %h1.field.title
         = f.label :title

@@ -24,6 +24,8 @@ gem 'activemerchant'
 gem 'paypal-sdk-rest'
 gem 'paperclip'
 gem 'american_date'
+gem 'httparty'
+gem 'nokogiri'
 
 group :production do
   gem 'rails_12factor'
