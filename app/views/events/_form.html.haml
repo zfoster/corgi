@@ -1,14 +1,22 @@
+- content_for(:head) do
+  = javascript_include_tag "http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"
+- content_for(:body) do
+  = javascript_include_tag "places.js"
 = form_for @event do |f|
   .small-12.large-7.columns
     = f.label :existing_url
     = f.text_field :existing_url, placeholder: "Existing URL"
     .event-title
-      %h1.field.title
+      .field.title
         = f.label :title
         = f.text_field :title, placeholder: "Title"
     .field.description
       = f.label :description
-      = f.text_area :description, rows: "20", placeholder: "Description"
+      = f.text_area :description, rows: "3", placeholder: "Description"
+    .field.address
+      = f.label "Venue"
+      = f.text_area :address_line_1, rows: "3", type: 'text', placeholder: "Venue"
+    #map-canvas{ :style => "height: 300px;" }
     .field.organization
       = f.label :organization
       = collection_select(:event, :organization_id, Organization.all, :id, :name)
@@ -18,6 +26,9 @@
   .small-12.large-5.columns
     .event-price
       .radio-buttons
+        / .field-and-label
+        /   = radio_button_tag "fee", "no_fee", :checked => true
+        /   = label_tag "fee_no_fee", "No fee"
         .field-and-label
           = check_box_tag :enable_fee
           = label_tag :enable_fee, "Admission Fee"
@@ -25,26 +36,29 @@
       = f.text_field :price
     .fields.date-time
       = f.label :start_time
-      = f.datetime_field :start_time, ampm: true, id: "datepicker", data: {format: "dd/MM/yyyy hh:mm"}
+      = f.datetime_field :start_time, ampm: true, id: "datepicker", data: {format: "dd/MM/yyyy hh:mm"}, placeholder: "Start time"
     .fields.date-time
       = f.label :end_time
-      = f.datetime_field :end_time, ampm: true, id: "datepicker2", data: {format: "dd/MM/yyyy hh:mm"}
-    .fields.location
-      .field.address_1
-        = f.label :address_line_1
-        = f.text_field :address_line_1, placeholder: "Address line 1"
-      .field.address_2
-        = f.label :address_line_2
-        = f.text_field :address_line_2, placeholder: "Address line 2"
-      .field.city
-        = f.label :city
-        = f.text_field :city, placeholder: "City"
-      .field.state
-        = f.label :state
-        = f.text_field :state, placeholder: "State"
-      .field.zip-code
-        = f.label :zip_code
-        = f.text_field :zip_code, placeholder: "Zip code"
-      .clearfix
+      = f.datetime_field :end_time, ampm: true, id: "datepicker2", data: {format: "dd/MM/yyyy hh:mm"}, placeholder: "End time"
+    / .fieldset.location
+    /   .field.location-name
+    /     = label_tag "Location name"
+    /     = text_field_tag "Location name", nil, placeholder: "Name"
+    /   .field.address
+    /     = f.label :address_line_1
+    /     = f.text_area :address_line_1, placeholder: "Location"
+    /   .field.address_2
+    /     = f.label :address_line_2
+    /     = f.text_field :address_line_2, placeholder: "Address line 2"
+    /   .field.city
+    /     = f.label :city
+    /     = f.text_field :city, placeholder: "City"
+    /   .field.state
+    /     = f.label :state
+    /     = f.text_field :state, placeholder: "State"
+    /   .field.zip-code
+    /     = f.label :zip_code
+    /     = f.text_field :zip_code, placeholder: "Zip code"
+    /   .clearfix
     .actions
-      = f.submit 'Save', :class => "button"
+      = f.submit 'Save', :class => "button right"

@@ -10,8 +10,10 @@
             .small-3.columns
               .attending.button.success.small.expand
                 Attending
-            .small-3.columns.left
+            .small-3.columns
               = link_to 'Cancel', cancel_registration_event_path(@event), method: :delete, :class => "button small secondary expand cancel"
+            .small-3.columns.left
+              = link_to 'Edit', edit_event_path(@event), :class => "button small expand secondary"
           - else
             .row.attending
               .small-4.columns
@@ -27,14 +29,11 @@
       - if @event.organization
         .event-organization
           %p
-            = @event.organization.name
       .event-details.small-12.large-4.columns
-        .event-price
-          - if @event.price == 0
-            %p No charge
-          - else
-            %p
-              = "$" + @event.price.to_s
+        .event-location
+          =image_tag "madison-map.gif"
+          %p
+            = @event.address_line_1
         .event-time
           %p
             = @event.start_time.strftime("%a %b #{@event.start_time.day.ordinalize}")
@@ -43,31 +42,22 @@
               = @event.start_time.strftime("%l:%M %p")+ " to " + @event.end_time.strftime("%l:%M %p")
             - else
               = @event.start_time.strftime("%l:%M %p")
-        .event-location
-          %p
-            - if @event.address
-              = @event.address
-            - else
-              = @event.address_line_1
-              - if @event.address_line_2 != ""
-                %br
-                = @event.address_line_2
-              %br
-              = @event.city + ', ' + @event.state + ' ' + @event.zip_code
+        .event-price
+          - if @event.price == 0 || @event.price == nil
+            %p No charge
+          - else
+            %p
+              = "$" + @event.price.to_s
+        .hosts
+          %h3 Hosts
+          %ul
+            - @event.hosts.each do |user|
+              %li= user.first_name + " " + user.last_name
+        .attendees
+          %h3 Attendees
+          %ul
+            - @event.attendees.each do |user|
+              %li= user.first_name + " " + user.last_name
+          .csv
+            = link_to 'Attendee CSV', registrations_path(event_id: @event.id, format: :csv), :class => "button secondary"
 
-          .hosts
-            %h3 Hosts
-            %ul
-              - @event.hosts.each do |user|
-                %li= user.name
-
-          .attendees
-            %h3 Attendees
-            %ul
-              - @event.attendees.each do |user|
-                %li= user.name
-
-          .row.edit
-            .small-6.large-6.columns.right
-              = link_to 'Edit', edit_event_path(@event), :class => "button small expand secondary"
-              = link_to 'Attendee CSV', registrations_path(event_id: @event.id, format: :csv)

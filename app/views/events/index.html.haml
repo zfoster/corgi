@@ -23,15 +23,16 @@
           .row
             %h3
               = link_to event.title, event
-          .row.time
-            = event.start_time.strftime("%a %b #{event.start_time.day.ordinalize}, %l:%M %p")
+          - if event.start_time
+            .row.time
+              = event.start_time.strftime("%a %b #{event.start_time.day.ordinalize}, %l:%M %p")
           .row.location
             - if event.address_line_1.present?
-              = event.address_line_1 + ", "
-            - if event.city
-              = event.city
+              = event.address_line_1
           .row.price
             - if event.price == 0
               No charge
             - else
               = "$" + event.price.to_s
+  .small-12.large-6.columns
+    #ajax-event-details.row
