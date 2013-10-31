@@ -12,6 +12,13 @@
           - else
             .row.attend
               = link_to 'Attend', registrations_path(event_id: event.id), method: :post, :class => "button small expand"
+          - if current_user && current_user.amplified?(event)
+            .row
+              .button.success.small.expand
+                Amplified!
+          - else
+            .row
+              = link_to 'Amplify', amps_path(event_id: event.id), method: :post, :class => "button small expand"
         .small-9.large-10.columns.event-info
           .row
             %h3
