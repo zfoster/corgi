@@ -1728,10 +1728,21 @@ body.events.new {
         &:hover {
           background: #ddd;
         }
-        &.ui-state-active {
-          background: $blue;
-          color: white;
-        }
+      }
+      .ui-state-highlight,
+      .ui-widget-content .ui-state-highlight,
+      .ui-widget-header .ui-state-highlight {
+        background: lighten($blue, 40);
+      }
+      .ui-state-highlight a,
+      .ui-widget-content .ui-state-highlight a,
+      .ui-widget-header .ui-state-highlight a {
+      }
+      .ui-state-active,
+      .ui-widget-content .ui-state-active,
+      .ui-widget-header .ui-state-active {
+        background: $blue;
+        color: white;
       }
     }
     table, th, td {

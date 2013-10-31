@@ -29,11 +29,11 @@
   var Timepicker = function () {
     this.regional = []; // Available regional settings, indexed by language code
     this.regional[''] = { // Default regional settings
-      currentText: 'Now',
+      currentText: 'Today',
       closeText: 'Done',
       amNames: ['AM', 'A'],
       pmNames: ['PM', 'P'],
-      timeFormat: 'HH:mm',
+      timeFormat: 'h:mm tt',
       timeSuffix: '',
       timeOnlyTitle: 'Choose Time',
       timeText: 'Time',
@@ -60,7 +60,7 @@
       stepSecond: 1,
       stepMillisec: 1,
       stepMicrosec: 1,
-      hour: 0,
+      hour: 12,
       minute: 0,
       second: 0,
       millisec: 0,
@@ -72,7 +72,7 @@
       millisecMin: 0,
       microsecMin: 0,
       hourMax: 23,
-      minuteMax: 59,
+      minuteMax: 60,
       secondMax: 59,
       millisecMax: 999,
       microsecMax: 999,
@@ -1470,7 +1470,7 @@
     var tp_inst = this._get(inst, 'timepicker');
     selectLocalTimezone(tp_inst);
     var now = new Date();
-    this._setTime(inst, now);
+    // this._setTime(inst, now);
     $('.ui-datepicker-today', $dp).click();
   };
 

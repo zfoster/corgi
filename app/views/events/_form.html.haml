@@ -26,9 +26,6 @@
   .small-12.large-5.columns
     .event-price
       .radio-buttons
-        / .field-and-label
-        /   = radio_button_tag "fee", "no_fee", :checked => true
-        /   = label_tag "fee_no_fee", "No fee"
         .field-and-label
           = check_box_tag :enable_fee
           = label_tag :enable_fee, "Admission Fee"
@@ -36,10 +33,10 @@
       = f.text_field :price
     .fields.date-time
       = f.label :start_time
-      = f.datetime_field :start_time, ampm: true, id: "datepicker", data: {format: "dd/MM/yyyy hh:mm"}, placeholder: "Start time"
+      = f.datetime_field :start_time, ampm: true, id: "datepicker", data: {format: "A, b MM hh:mmp"}, placeholder: "Start time"
     .fields.date-time
       = f.label :end_time
-      = f.datetime_field :end_time, ampm: true, id: "datepicker2", data: {format: "dd/MM/yyyy hh:mm"}, placeholder: "End time"
+      = f.datetime_field :end_time, ampm: true, id: "datepicker2", data: {format: "A, b MM hh:mmp"}, placeholder: "End time"
     / .fieldset.location
     /   .field.location-name
     /     = label_tag "Location name"
