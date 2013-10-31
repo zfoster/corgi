@@ -46,13 +46,14 @@ ActiveRecord::Schema.define(version: 20131031025219) do
     t.string   "zip_code"
     t.integer  "price"
     t.integer  "creator_id"
+    t.boolean  "closed",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id"
+    t.string   "url"
     t.string   "address"
     t.string   "source"
     t.string   "source_id"
-    t.string   "url"
   end
 
   add_index "events", ["organization_id"], name: "index_events_on_organization_id", using: :btree
