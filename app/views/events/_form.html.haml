@@ -1,3 +1,7 @@
+- content_for(:head) do
+  = javascript_include_tag "http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"
+- content_for(:body) do
+  = javascript_include_tag "places.js"
 = form_for @event do |f|
   .small-12.large-7.columns
     = f.label :existing_url
@@ -10,8 +14,9 @@
       = f.label :description
       = f.text_area :description, rows: "3", placeholder: "Description"
     .field.address
-      = f.label :address_line_1
-      = f.text_area :address_line_1, rows: "3", placeholder: "Location"
+      = f.label "Venue"
+      = f.text_area :address_line_1, rows: "3", type: 'text', placeholder: "Venue"
+    #map-canvas{ :style => "height: 300px;" }
     .field.organization
       = f.label :organization
       = collection_select(:event, :organization_id, Organization.all, :id, :name)

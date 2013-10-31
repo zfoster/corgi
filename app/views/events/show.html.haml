@@ -30,12 +30,10 @@
         .event-organization
           %p
       .event-details.small-12.large-4.columns
-        .event-price
-          - if @event.price == 0
-            %p No charge
-          - else
-            %p
-              = "$" + @event.price.to_s
+        .event-location
+          =image_tag "madison-map.gif"
+          %p
+            = @event.address_line_1
         .event-time
           %p
             = @event.start_time.strftime("%a %b #{@event.start_time.day.ordinalize}")
@@ -44,18 +42,12 @@
               = @event.start_time.strftime("%l:%M %p")+ " to " + @event.end_time.strftime("%l:%M %p")
             - else
               = @event.start_time.strftime("%l:%M %p")
-        .event-location
-          =image_tag "madison-map.gif"
-          %p
-            - if @event.address
-              = @event.address
-            - else
-              = @event.address_line_1
-              - if @event.address_line_2 != ""
-                %br
-                = @event.address_line_2
-              %br
-              = @event.city + ', ' + @event.state + ' ' + @event.zip_code
+        .event-price
+          - if @event.price == 0
+            %p No charge
+          - else
+            %p
+              = "$" + @event.price.to_s
         .hosts
           %h3 Hosts
           %ul

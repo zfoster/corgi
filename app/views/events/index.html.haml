@@ -28,9 +28,7 @@
               = event.start_time.strftime("%a %b #{event.start_time.day.ordinalize}, %l:%M %p")
           .row.location
             - if event.address_line_1.present?
-              = event.address_line_1 + ", "
-            - if event.city
-              = event.city
+              = event.address_line_1
           .row.price
             - if event.price == 0
               No charge

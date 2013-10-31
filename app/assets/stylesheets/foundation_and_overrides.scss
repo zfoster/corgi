@@ -1791,3 +1791,14 @@ body.events.new {
     }
   }
 }
+
+input[disabled="disabled"] {
+  box-shadow: none;
+  border: none;
+}
+
+// Make sure google map controls display
+
+.gmnoprint img {
+    max-width: none;
+}

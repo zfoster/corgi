@@ -15,9 +15,8 @@
 //= require jquery_ui
 //= require jquery-timepicker-addon
 //= require foundation
-//= require turbolinks
 //= require users
 //= require events
-//= require_tree .
+
 
 $(function(){ $(document).foundation(); });
