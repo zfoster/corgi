@@ -10,6 +10,9 @@
     .field.organization
       = f.label :organization
       = collection_select(:event, :organization_id, Organization.all, :id, :name)
+    .field.url
+      = f.label :url
+      = f.text_field :url, placeholder: "http://www.myeventurl.com"
   .small-12.large-5.columns
     .event-price
       .radio-buttons

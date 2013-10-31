@@ -20,6 +20,9 @@
           .event-description
             %p
               =simple_format h @event.description.html_safe
+        .row.event-url
+          %p
+            = @event.url
 
       - if @event.organization
         .event-organization
