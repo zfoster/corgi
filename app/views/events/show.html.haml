@@ -17,7 +17,7 @@
           - else
             .row.attending
               .small-4.columns
-                = link_to 'Attend', registrations_path(event_id: @event.id), method: :post, :class => "button small expand right"
+                = link_to 'Attend', event_registrations_path(@event), method: :post, :class => "button small expand right"
         .row
           .event-description
             %p
@@ -59,5 +59,5 @@
             - @event.attendees.each do |user|
               %li= user.name
           .csv
-            = link_to 'Attendee CSV', registrations_path(event_id: @event.id, format: :csv), :class => "button secondary"
+            = link_to 'Attendee CSV', event_registrations_path(@event, format: :csv), :class => "button secondary"
 

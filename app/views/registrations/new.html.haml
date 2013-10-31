@@ -1,6 +1,6 @@
 .row.main-content
   .large-6.columns
-    = form_for @registration do |f|
+    = form_for [@event, @registration] do |f|
       .field.name
         = fields_for @registration.build_payment do |p|
           = p.label :cardholder_name

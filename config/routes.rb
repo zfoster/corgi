@@ -16,9 +16,8 @@ Corgi::Application.routes.draw do
     member do
       delete :cancel_registration
     end
-    resources :registrations, only: [:new]
+    resources :registrations, only: [:new, :create, :index]
   end
-  resources :registrations, only: [:create, :index]
 
   get '/support', to: 'content#support'
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
