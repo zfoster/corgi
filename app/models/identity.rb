@@ -51,7 +51,6 @@ class Identity < ActiveRecord::Base
         :application_name => 'Madi',
         :application_version => '1.0.0')
       plus = google_user.discovered_api('plus', 'v1')
-      binding.pry
       google_user.authorization.access_token = credentials['token']
       response = google_user.execute!(plus.people.list,
         :userId => 'me',
