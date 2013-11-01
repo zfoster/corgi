@@ -8,7 +8,7 @@
               .button.success.small.expand
                 Attending
             .row.cancel
-              = link_to 'Cancel', cancel_registration_event_path(event), method: :delete, :class => "button small secondary expand"
+              = link_to 'Cancel Registration', cancel_registration_event_path(event), method: :delete, :class => "button small secondary expand"
           - else
             .row.attend
               = link_to 'Attend', event_registrations_path(event), method: :post, :class => "button small expand"
@@ -30,7 +30,7 @@
             - if event.address_line_1.present?
               = event.address_line_1
           .row.price
-            - if event.price == 0
+            - if event.price == 0 || event.price == nil
               No charge
             - else
               = "$" + event.price.to_s

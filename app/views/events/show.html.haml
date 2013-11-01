@@ -11,9 +11,9 @@
               .attending.button.success.small.expand
                 Attending
             .small-3.columns
-              = link_to 'Cancel', cancel_registration_event_path(@event), method: :delete, :class => "button small secondary expand cancel"
+              = link_to 'Cancel Registration', cancel_registration_event_path(@event), method: :delete, :class => "button small secondary expand cancel"
             .small-3.columns.left
-              = link_to 'Edit', edit_event_path(@event), :class => "button small expand secondary"
+              = link_to 'Edit Event', edit_event_path(@event), :class => "button small expand secondary"
           - else
             .row.attending
               .small-4.columns
