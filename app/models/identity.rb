@@ -1,3 +1,6 @@
+require 'google/api_client'
+require 'google/api_client/client_secrets'
+require 'google/api_client/auth/installed_app'
 class Identity < ActiveRecord::Base
   belongs_to :user
 
@@ -39,6 +42,21 @@ class Identity < ActiveRecord::Base
     when 'facebook'
       facebook_user = Koala::Facebook::API.new(credentials['token'])
       {contacts: "#{facebook_user.get_connections("me", "friends")}", pulled_events: "#{facebook_user.get_connections("me", "events")}"}
+    when 'linkedin'
+      linkedin_user = LinkedIn::Client.new(ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET'])
+      linkedin_user.authorize_from_access(credentials['token'], credentials['secret'])
+      {contacts: "#{linkedin_user.connections}"}
+    when 'google_oauth2'
+      google_user = Google::APIClient.new(
+        :application_name => 'Madi',
+        :application_version => '1.0.0')
+      plus = google_user.discovered_api('plus', 'v1')
+      binding.pry
+      google_user.authorization.access_token = credentials['token']
+      response = google_user.execute!(plus.people.list,
+        :userId => 'me',
+        :collection => 'visible').body
+      {contacts: "#{response}"}
     end
   end
 

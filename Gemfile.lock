@@ -40,6 +40,10 @@ GEM
     american_date (1.1.0)
     arel (4.0.1)
     atomic (1.1.14)
+    autoparse (0.3.3)
+      addressable (>= 2.3.1)
+      extlib (>= 0.9.15)
+      multi_json (>= 1.0.0)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -75,6 +79,7 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
+    extlib (0.9.16)
     factory_girl (4.3.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.3.0)
@@ -85,6 +90,16 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    google-api-client (0.6.4)
+      addressable (>= 2.3.2)
+      autoparse (>= 0.3.3)
+      extlib (>= 0.9.15)
+      faraday (~> 0.8.4)
+      jwt (>= 0.1.5)
+      launchy (>= 2.1.1)
+      multi_json (>= 1.0.0)
+      signet (~> 0.4.5)
+      uuidtools (>= 2.1.0)
     haml (4.0.4)
       tilt
     haml-rails (0.4)
@@ -115,6 +130,10 @@ GEM
       multi_json
     launchy (2.3.0)
       addressable (~> 2.3)
+    linkedin (0.4.3)
+      hashie (>= 1.2, < 2.1)
+      multi_json (~> 1.0)
+      oauth (~> 0.4)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -219,6 +238,11 @@ GEM
       faraday (>= 0.7.6)
       hashie (>= 1.1.0)
       uuidtools
+    signet (0.4.5)
+      addressable (>= 2.2.3)
+      faraday (~> 0.8.1)
+      jwt (>= 0.1.5)
+      multi_json (>= 1.0.0)
     simple_oauth (0.2.0)
     simplecov (0.7.1)
       multi_json (~> 1.0)
@@ -276,12 +300,14 @@ DEPENDENCIES
   email_spec
   factory_girl_rails
   figaro
+  google-api-client
   haml-rails
   httparty
   icalendar
   jbuilder (~> 1.2)
   jquery-rails
   koala (~> 1.8.0rc1)
+  linkedin
   nokogiri
   omniauth
   omniauth-facebook
