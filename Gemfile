@@ -28,7 +28,7 @@ gem 'httparty'
 gem 'nokogiri'
 gem 'rails3-jquery-autocomplete'
 gem 'icalendar'
-gem 'simple_form'
+gem 'twitter'
 
 group :production do
   gem 'rails_12factor'
