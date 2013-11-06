@@ -1,0 +1,29 @@
+.row
+  .col-sm-8
+    %h2 
+      Event Feeds
+    %table.table
+      %thead
+        %tr
+          %th Name
+          %th URL
+          %th Last Sync
+          %th Actions
+      %tbody
+        - @event_feeds.each do |feed|
+          %tr
+            %td= feed.name
+            %td= feed.url
+            %td= feed.synced_at.to_formatted_s(:short)
+            %td
+              = link_to "Sync", sync_admin_event_feed_path(feed), method: :put
+              = link_to "Remove", admin_event_feed_path(feed), method: :delete
+
+  .col-sm-4
+    %h2 Add Feed
+    = form_for @new_event_feed , url: admin_event_feeds_path do |f|
+      .form-group
+        = f.text_field :name, class: 'form-control', placeholder: 'Name'
+      .form-group
+        = f.text_field :url, class: 'form-control', placeholder: 'URL'
+      = f.submit 'Add Feed', :class => "btn btn-primary"

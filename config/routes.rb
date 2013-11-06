@@ -23,6 +23,15 @@ Corgi::Application.routes.draw do
     resources :registrations, only: [:new, :create, :index]
   end
 
+  get "/admin" => "admin#index", as: :admin
+  namespace :admin do
+    resources :event_feeds, only: [:index, :new, :create, :destroy] do
+      member do
+        put :sync
+      end
+    end
+  end
+
   get '/support', to: 'content#support'
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match '/logout', to: 'sessions#destroy', via: [:get, :destroy]
