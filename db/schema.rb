@@ -152,6 +152,8 @@ ActiveRecord::Schema.define(version: 20131106012002) do
     t.string   "name"
     t.string   "payment_token"
     t.boolean  "admin",               default: false
+    t.text     "contacts"
+    t.text     "pulled_events"
   end
 
   add_index "users", ["default_identity_id"], name: "index_users_on_default_identity_id", using: :btree

@@ -29,6 +29,9 @@ gem 'nokogiri'
 gem 'rails3-jquery-autocomplete'
 gem 'icalendar'
 gem 'twitter'
+gem "koala", "~> 1.8.0rc1"
+gem 'linkedin'
+gem 'google-api-client'
 
 group :production do
   gem 'rails_12factor'
