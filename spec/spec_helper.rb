@@ -77,7 +77,7 @@ OmniAuth.config.add_mock(:linkedin, {:uid => '12345',
   }
 )
 
-OmniAuth.config.add_mock(:google_oauth2, {:uid => '12345',
+OmniAuth.config.add_mock(:google, {:uid => '12345',
   :info => {
     :email => 'bob@example.com',
     :first_name => 'Bob',

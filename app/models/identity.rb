@@ -1,6 +1,3 @@
-require 'google/api_client'
-require 'google/api_client/client_secrets'
-require 'google/api_client/auth/installed_app'
 class Identity < ActiveRecord::Base
   belongs_to :user
 
@@ -21,41 +18,48 @@ class Identity < ActiveRecord::Base
     user
   end
 
+  def update_follows
+    followee_ids.map do |id|
+      user.follows.create source: provider, source_id: id
+    end
+    touch(:follows_updated_at)
+  end
+
   private
 
-  def build_user_from_autho
-    user_info = {email: info['email'],
-      name: name,
-      avatar: info['image'],
-      default_identity: self}
-    user_info.merge!(contacts)
-    new_user = User.create user_info
+  def build_user_from_auth 
+    new_user = User.create email: info['email'], name: name, avatar: info['image'], default_identity: self
     self.user = new_user
   end
 
-  def contacts
-    case self.provider
+  def api_client
+    case provider
     when 'twitter'
-      twitter_user = Twitter::Client.new oauth_token: credentials['token'],
-        oauth_token_secret: credentials['secret']
-      {contacts: "#{twitter_user.following}"}
+      @api_client ||= Twitter::Client.new oauth_token: credentials['token'], oauth_token_secret: credentials['secret']
     when 'facebook'
-      facebook_user = Koala::Facebook::API.new(credentials['token'])
-      {contacts: "#{facebook_user.get_connections("me", "friends")}", pulled_events: "#{facebook_user.get_connections("me", "events")}"}
+      @api_client ||= Koala::Facebook::API.new(credentials['token'])
     when 'linkedin'
-      linkedin_user = LinkedIn::Client.new(ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET'])
-      linkedin_user.authorize_from_access(credentials['token'], credentials['secret'])
-      {contacts: "#{linkedin_user.connections}"}
-    when 'google_oauth2'
-      google_user = Google::APIClient.new(
-        :application_name => 'Madi',
-        :application_version => '1.0.0')
-      plus = google_user.discovered_api('plus', 'v1')
-      google_user.authorization.access_token = credentials['token']
-      response = google_user.execute!(plus.people.list,
-        :userId => 'me',
-        :collection => 'visible').body
-      {contacts: "#{response}"}
+      @api_client ||= LinkedIn::Client.new ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET']
+      @api_client.authorize_from_access credentials['token'], credentials['secret']
+      @api_client 
+    when 'google'
+      @api_client ||= Google::APIClient.new application_name: 'Madi', application_version: '1.0.0'
+      @api_client.authorization.access_token = credentials['token']
+    end
+    @api_client
+  end
+
+  def followee_ids
+    case provider
+    when 'twitter'
+      api_client.follower_ids
+    when 'facebook'
+      api_client.get_connections("me", "friends", fields: ['id']).map { |friend| friend['id'] }
+    when 'linkedin'
+      api_client.connections(fields: ['id'])['all'].map(&:id).select{ |el| el != 'private' }
+    when 'google'
+      plus = api_client.discovered_api('plus', 'v1')
+      JSON.parse(api_client.execute!(plus.people.list, userId: 'me', collection: 'visible', fields: 'items/id').body)['items'].map { |friend| friend['id'] }
     end
   end
 
