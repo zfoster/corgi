@@ -3,10 +3,18 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy, :cancel_registration]
 
   def show
+    respond_to do |format|
+      format.html
+      format.ics { render text: @event.to_ical_event }
+    end
   end
 
   def index
     @events = Event.all
+    respond_to do |format|
+      format.html
+      format.ics { render text: EventList.new(@events).to_ical }
+    end
   end
 
   def new

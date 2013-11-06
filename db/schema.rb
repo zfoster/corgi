@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131031190425) do
+ActiveRecord::Schema.define(version: 20131106012002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 20131031190425) do
     t.datetime "updated_at"
   end
 
+  create_table "event_feeds", force: true do |t|
+    t.string   "url"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "synced_at"
+  end
+
   create_table "events", force: true do |t|
     t.string   "title"
     t.text     "description"
@@ -46,14 +54,14 @@ ActiveRecord::Schema.define(version: 20131031190425) do
     t.string   "zip_code"
     t.integer  "price"
     t.integer  "creator_id"
-    t.boolean  "closed",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id"
-    t.string   "url"
     t.string   "address"
     t.string   "source"
     t.string   "source_id"
+    t.string   "url"
+    t.string   "ical_uid"
   end
 
   add_index "events", ["organization_id"], name: "index_events_on_organization_id", using: :btree
@@ -143,6 +151,7 @@ ActiveRecord::Schema.define(version: 20131031190425) do
     t.string   "zip_code"
     t.string   "name"
     t.string   "payment_token"
+    t.boolean  "admin",               default: false
   end
 
   add_index "users", ["default_identity_id"], name: "index_users_on_default_identity_id", using: :btree

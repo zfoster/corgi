@@ -22,6 +22,13 @@
       = f.label "Venue"
       = f.text_area :address_line_1, rows: "3", type: 'text', placeholder: "Venue"
     #map-canvas{ :style => "height: 300px;" }
+    .field.organization
+      = label_tag :organization
+      = autocomplete_field_tag :organization_name, '', autocomplete_organization_name_organizations_path, placeholder: "Organization"
+
+    .field.url
+      = f.label :url
+      = f.text_field :url, placeholder: "http://www.myeventurl.com"
   .small-12.large-5.columns
     %br
     %br
@@ -45,25 +52,5 @@
     .field.organization
       = label_tag :organization
       = autocomplete_field_tag :organization_name, '', autocomplete_organization_name_organizations_path, placeholder: "Organization"
-    / .fieldset.location
-    /   .field.location-name
-    /     = label_tag "Location name"
-    /     = text_field_tag "Location name", nil, placeholder: "Name"
-    /   .field.address
-    /     = f.label :address_line_1
-    /     = f.text_area :address_line_1, placeholder: "Location"
-    /   .field.address_2
-    /     = f.label :address_line_2
-    /     = f.text_field :address_line_2, placeholder: "Address line 2"
-    /   .field.city
-    /     = f.label :city
-    /     = f.text_field :city, placeholder: "City"
-    /   .field.state
-    /     = f.label :state
-    /     = f.text_field :state, placeholder: "State"
-    /   .field.zip-code
-    /     = f.label :zip_code
-    /     = f.text_field :zip_code, placeholder: "Zip code"
-    /   .clearfix
     .actions
       = f.submit 'Save', :class => "button right"

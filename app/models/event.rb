@@ -7,6 +7,8 @@ class Event < ActiveRecord::Base
   belongs_to :organization
   belongs_to :creator, class_name: "User"
 
+  validates_presence_of :end_time, :if => :start_time?
+
   scope :closed, -> { where(closed: true) }
   scope :open, -> { where(closed: false) }
   scope :starts_in_the_future, -> { where('start_at > ?', Time.now) }
@@ -31,6 +33,7 @@ class Event < ActiveRecord::Base
     unless event.persisted?
       data = Meetup.event(id)
       event.start_time = Time.at(data['time']/1000)
+      event.end_time = Time.at(event.start_time + (data['duration']/1000).seconds)
       event.title = data['name']
       event.description = Nokogiri::HTML(data['description']).text
       event.organization = Organization.where(name: data['group']['name']).first_or_initialize
@@ -53,6 +56,46 @@ class Event < ActiveRecord::Base
       event.address = data['venue']['address']
       event.save 
     end
+    event
+  end
+
+  def self.import_from_ical_url(url)
+    resp = HTTParty.get(url)
+    import_from_ical(resp)
+  end
+
+  def self.import_from_ical(ical)
+    events = []
+    calendars = Icalendar::parse(ical)
+    calendars.each do |calendar|
+      calendar.events.each do |ical_event|
+        event = Event.where(ical_uid: ical_event.uid).first_or_initialize
+        event.start_time = ical_event.start
+        event.end_time = ical_event.end
+        event.address = ical_event.location
+        event.title = ical_event.summary
+        event.description = ical_event.description
+        event.url = ical_event.url.to_s
+        event.save!
+        events << event
+      end
+    end
+    events
+  end
+
+  def to_ical
+    cal = Icalendar::Calendar.new
+    cal.add_event(self.to_ical_event)
+    cal.publish
+    cal.to_ical
+  end
+
+  def to_ical_event
+    event = Icalendar::Event.new
+    event.start = start_time.utc.strftime('%Y%m%dT%H%M%SZ')
+    event.end = end_time.utc.strftime('%Y%m%dT%H%M%SZ')
+    event.summary = title
+    event.description = description
     event
   end
 
