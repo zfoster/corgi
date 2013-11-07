@@ -1,3 +1,5 @@
+require 'google/api_client'
+
 class Identity < ActiveRecord::Base
   belongs_to :user
 
@@ -52,7 +54,7 @@ class Identity < ActiveRecord::Base
   def followee_ids
     case provider
     when 'twitter'
-      api_client.follower_ids
+      api_client.friend_ids
     when 'facebook'
       api_client.get_connections("me", "friends", fields: ['id']).map { |friend| friend['id'] }
     when 'linkedin'
