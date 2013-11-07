@@ -54,13 +54,14 @@ ActiveRecord::Schema.define(version: 20131107194824) do
     t.string   "zip_code"
     t.integer  "price"
     t.integer  "creator_id"
+    t.boolean  "closed",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id"
+    t.string   "url"
     t.string   "address"
     t.string   "source"
     t.string   "source_id"
-    t.string   "url"
     t.string   "ical_uid"
   end
 
@@ -130,11 +131,6 @@ ActiveRecord::Schema.define(version: 20131107194824) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ip_address"
-    t.string   "address_line_1"
-    t.string   "address_line_2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip_code"
     t.string   "cardholder_name"
   end
 
@@ -163,10 +159,10 @@ ActiveRecord::Schema.define(version: 20131107194824) do
     t.string   "state"
     t.string   "zip_code"
     t.string   "name"
-    t.string   "payment_token"
-    t.boolean  "admin",               default: false
     t.text     "contacts"
     t.text     "pulled_events"
+    t.string   "payment_token"
+    t.boolean  "admin",               default: false
   end
 
   add_index "users", ["default_identity_id"], name: "index_users_on_default_identity_id", using: :btree
