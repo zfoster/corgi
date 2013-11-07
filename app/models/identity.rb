@@ -22,7 +22,7 @@ class Identity < ActiveRecord::Base
 
   def update_follows
     followee_ids.map do |id|
-      user.follows.where(source: provider, source_id: id).first_or_create
+      user.follows.where(source: provider, source_id: id.to_s).first_or_create
     end
     touch(:follows_updated_at)
   end
