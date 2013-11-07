@@ -32,9 +32,11 @@ gem 'twitter'
 gem "koala", "~> 1.8.0rc1"
 gem 'linkedin'
 gem 'google-api-client'
+gem 'sidekiq'
 
 group :production do
   gem 'rails_12factor'
+  gem 'unicorn'
 end
 
 group :development, :test do

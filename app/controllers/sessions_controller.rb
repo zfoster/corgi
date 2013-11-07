@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       @identity.find_or_create_user
       sign_in @identity.user
     end
-    @identity.update_follows
+    FollowUpdater.perform_async(@identity.id)
     unless @identity.user.email.present?
       redirect_to twitter_email_user_path(@identity.user.id) and return
     end
