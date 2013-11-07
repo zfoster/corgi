@@ -12,7 +12,7 @@ module ApplicationHelper
     '/auth/linkedin'
   end
 
-  def googleplus_auth_path
-    '/auth/google_oauth2'
+  def google_auth_path
+    '/auth/google'
   end
 end

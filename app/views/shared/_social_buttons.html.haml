@@ -45,20 +45,20 @@
 - else
   = link_to "Connect with Facebook", facebook_auth_path, :class => "button facebook expand large social-media"
 %br
-- if current_user && current_user.googleplus_identity
+- if current_user && current_user.google_identity
   .identity.googleplus
     .image
-      = link_to image_tag(current_user.googleplus_identity.info['image']), 'http://plus.google.com/' + current_user.googleplus_identity.uid
+      = link_to image_tag(current_user.google_identity.info['image']), 'http://plus.google.com/' + current_user.google_identity.uid
     .names
       .name
-        = link_to current_user.googleplus_identity.info['name'].truncate(25), 'http://plus.google.com/' + current_user.googleplus_identity.uid
-    = link_to "", identity_path(current_user.googleplus_identity), method: 'delete', class: 'disconnect'
-    = f.radio_button :default_identity_id, current_user.googleplus_identity.id
+        = link_to current_user.google_identity.info['name'].truncate(25), 'http://plus.google.com/' + current_user.google_identity.uid
+    = link_to "", identity_path(current_user.google_identity), method: 'delete', class: 'disconnect'
+    = f.radio_button :default_identity_id, current_user.google_identity.id
     .icon
       = image_tag "smi_gplus-logo.png", title: "Google"
     .clearfix
 - else
-  = link_to "Connect with Google", googleplus_auth_path, :class => "button googleplus expand large social-media"
+  = link_to "Connect with Google", google_auth_path, :class => "button googleplus expand large social-media"
 
 
 - if current_user
