@@ -13,10 +13,10 @@ class SessionsController < ApplicationController
       @identity.find_or_create_user
       sign_in @identity.user
     end
+    @identity.update_follows
     unless @identity.user.email.present?
       redirect_to twitter_email_user_path(@identity.user.id) and return
     end
-    @identity.update_follows
     redirect_to session[:pre_authorization_page] || root_path
   end
 
