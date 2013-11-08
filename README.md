@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/southpolesteve/corgi.png?branch=master)](https://travis-ci.org/southpolesteve/corgi)
 [![Dependency Status](https://gemnasium.com/southpolesteve/corgi.png)](https://gemnasium.com/southpolesteve/corgi)
 [![Code Climate](https://codeclimate.com/github/southpolesteve/corgi.png)](https://codeclimate.com/github/southpolesteve/corgi)
+[![Coverage Status](https://coveralls.io/repos/southpolesteve/corgi/badge.png)](https://coveralls.io/r/southpolesteve/corgi)
 
 ## Setup
 
