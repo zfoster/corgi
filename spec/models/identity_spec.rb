@@ -4,6 +4,24 @@ describe Identity do
   describe "self.find_or_create_with_omniauth" do
   end
 
+  describe "update_follows" do
+    let(:user) { create(:user) }
+    let(:identity) { user.identities.first }
+    let(:follow_ids) { ['1', '2'] }
+
+    before do
+      identity.should_receive(:followee_ids).and_return(follow_ids)
+    end
+
+    it 'should create new follows' do
+      expect{identity.update_follows}.to change{user.follows.count}.from(0).to(2)
+    end
+
+    it 'should update follows_updated_at' do
+      expect{identity.update_follows}.to change{identity.follows_updated_at}
+    end
+  end
+
   describe "find_or_create_user" do
 
     context 'an associated user exists' do
