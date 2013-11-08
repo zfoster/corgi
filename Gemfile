@@ -33,7 +33,9 @@ gem "koala", "~> 1.8.0rc1"
 gem 'linkedin'
 gem 'google-api-client'
 gem 'sidekiq'
+gem 'sidekiq-failures'
 gem 'coveralls', require: false
+
 
 # Don't require so Object does not get all Sintra DSL methods
 gem 'sinatra', '>= 1.3.0', :require => nil 
