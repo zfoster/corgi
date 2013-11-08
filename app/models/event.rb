@@ -99,4 +99,12 @@ class Event < ActiveRecord::Base
     event
   end
 
+  def organization_name=(name)
+    self.organization = Organization.where(name: name).first_or_initialize
+  end
+
+  def organization_name
+    organization.try(:name)
+  end
+
 end

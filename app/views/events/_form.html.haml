@@ -22,20 +22,10 @@
       = f.label "Venue"
       = f.text_area :address_line_1, rows: "3", type: 'text', placeholder: "Venue"
     #map-canvas{ :style => "height: 300px;" }
+  .small-12.large-5.columns
     .field.organization
       = label_tag :organization
-      = autocomplete_field_tag :organization_name, '', autocomplete_organization_name_organizations_path, placeholder: "Organization"
-
-    .field.url
-      = f.label :url
-      = f.text_field :url, placeholder: "http://www.myeventurl.com"
-  .small-12.large-5.columns
-    %br
-    %br
-    %br
-    %br
-    %br
-    %br
+      = f.text_field :organization_name, placeholder: "Organization"
     .event-price
       .radio-buttons
         .field-and-label
@@ -49,8 +39,5 @@
     .fields.date-time
       = f.label :end_time
       = f.datetime_field :end_time, ampm: true, id: "datepicker2", data: {format: "A, b MM hh:mmp"}, placeholder: "End time"
-    .field.organization
-      = label_tag :organization
-      = autocomplete_field_tag :organization_name, '', autocomplete_organization_name_organizations_path, placeholder: "Organization"
     .actions
       = f.submit 'Save', :class => "button right"
