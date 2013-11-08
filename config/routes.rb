@@ -1,5 +1,10 @@
+require 'sidekiq/web'
+require "admin_constraint"
+
 Corgi::Application.routes.draw do
   root "home#index"
+
+  mount Sidekiq::Web => '/sidekiq', :constraints => AdminConstraint.new
 
   resources :users, only: [:show, :update] do
     member do

@@ -34,6 +34,9 @@ gem 'linkedin'
 gem 'google-api-client'
 gem 'sidekiq'
 
+# Don't require so Object does not get all Sintra DSL methods
+gem 'sinatra', '>= 1.3.0', :require => nil 
+
 group :production do
   gem 'rails_12factor'
   gem 'unicorn'
