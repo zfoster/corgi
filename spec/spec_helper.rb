@@ -9,6 +9,11 @@ require 'capybara/rspec'
 require 'capybara/rails'
 require 'factory_girl'
 
+# Removes log chatter from sidekiq
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
+Sidekiq::Logging.logger = nil
+
 # require 'capybara/poltergeist'
 # Capybara.javascript_driver = :poltergeist
 

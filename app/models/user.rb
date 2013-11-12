@@ -1,10 +1,14 @@
 class User < ActiveRecord::Base
+  has_many :registrations
   has_many :hostings
   has_many :amps
 
   has_many :follows, foreign_key: :follower_id
   has_many :complete_follows, -> { complete }, class_name: 'Follow', foreign_key: :follower_id
   has_many :followed_users, -> { distinct }, through: :complete_follows, source: :followee
+
+  has_many :followings, foreign_key: :followee_id, class_name: 'Follow'
+  has_many :following_users, -> { distinct }, through: :followings, source: :followee
 
   has_many :registrations
   has_many :created_events, class_name: 'Event', foreign_key: :creator_id
@@ -39,11 +43,32 @@ class User < ActiveRecord::Base
     end
   end
 
+  def following_user_ids
+    followed_users.pluck(:id)
+  end
+
   def registered?(event)
     registrations.exists? event_id: event.id
   end
 
   def amplified?(event)
     amps.exists? event_id: event.id
+  end
+
+  def following_events
+    # Event.joins(:)
+    # Event.find_by_sql(
+    # 'SELECT events.*
+    # FROM events
+    # INNER JOIN registrations
+    # ON events.id = registrations.event_id
+    # INNER JOIN users
+    # ON users.id = registrations.user_id
+    # WHERE users.id IN (SELECT follower_id FROM follows WHERE followee_id IS NOT NULL)
+    # GROUP BY events.id')
+
+    # (SELECT(SELECT COUNT(id) FROM registrations WHERE registrations.event_id = events.id) * 2 +
+    #   (SELECT COUNT(id) FROM hostings WHERE hostings.event_id = events.id) * 4 + 
+    #   (SELECT COUNT(id) FROM amps WHERE amps.event_id = events.id) * 1) AS event_weight
   end
 end

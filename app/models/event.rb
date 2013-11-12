@@ -1,9 +1,11 @@
 class Event < ActiveRecord::Base
   has_many :hostings
   has_many :registrations
+  has_many :amps
   belongs_to :organization
   has_many :hosts, -> { distinct }, through: :hostings, source: :user
   has_many :attendees, -> { distinct }, through: :registrations, source: :user
+  has_many :amplifiers, -> { distinct }, through: :amps, source: :user
   belongs_to :organization
   belongs_to :creator, class_name: "User"
 
@@ -14,6 +16,7 @@ class Event < ActiveRecord::Base
   scope :starts_in_the_future, -> { where('start_at > ?', Time.now) }
 
   delegate :email, to: :creator, prefix: true
+  delegate :name, to: :organization, prefix: true, allow_nil: true
 
   attr_accessor :existing_url
 
@@ -103,8 +106,8 @@ class Event < ActiveRecord::Base
     self.organization = Organization.where(name: name).first_or_initialize
   end
 
-  def organization_name
-    organization.try(:name)
+  def update_ranks
+    EventRanksUpdater.perform_async(self.id)
   end
 
 end

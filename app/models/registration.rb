@@ -5,6 +5,9 @@ class Registration < ActiveRecord::Base
 
   delegate :email, to: :user, prefix: true
 
+  delegate :update_ranks, to: :event
+  after_commit :update_ranks
+
   comma do
     user :name
     user_email
