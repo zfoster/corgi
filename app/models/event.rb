@@ -8,6 +8,7 @@ class Event < ActiveRecord::Base
   has_many :amplifiers, -> { distinct }, through: :amps, source: :user
   belongs_to :organization
   belongs_to :creator, class_name: "User"
+  belongs_to :event
 
   validates_presence_of :end_time, :if => :start_time?
 
@@ -60,30 +61,6 @@ class Event < ActiveRecord::Base
       event.save 
     end
     event
-  end
-
-  def self.import_from_ical_url(url)
-    resp = HTTParty.get(url)
-    import_from_ical(resp)
-  end
-
-  def self.import_from_ical(ical)
-    events = []
-    calendars = Icalendar::parse(ical)
-    calendars.each do |calendar|
-      calendar.events.each do |ical_event|
-        event = Event.where(ical_uid: ical_event.uid).first_or_initialize
-        event.start_time = ical_event.start
-        event.end_time = ical_event.end
-        event.address = ical_event.location
-        event.title = ical_event.summary
-        event.description = ical_event.description
-        event.url = ical_event.url.to_s
-        event.save!
-        events << event
-      end
-    end
-    events
   end
 
   def to_ical

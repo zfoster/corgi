@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112045630) do
+ActiveRecord::Schema.define(version: 20131113021045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20131112045630) do
     t.string   "zip_code"
     t.integer  "price"
     t.integer  "creator_id"
-    t.boolean  "closed",          default: false
+    t.boolean  "closed",           default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id"
@@ -63,8 +63,10 @@ ActiveRecord::Schema.define(version: 20131112045630) do
     t.string   "source"
     t.string   "source_id"
     t.string   "ical_uid"
+    t.integer  "event_feed_id_id"
   end
 
+  add_index "events", ["event_feed_id_id"], name: "index_events_on_event_feed_id_id", using: :btree
   add_index "events", ["organization_id"], name: "index_events_on_organization_id", using: :btree
 
   create_table "follows", force: true do |t|
