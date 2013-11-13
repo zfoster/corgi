@@ -5,7 +5,7 @@ class EventFeed < ActiveRecord::Base
     calendars.each do |calendar|
       calendar.events.each do |ical_event|
         event = events.where(ical_uid: ical_event.uid).first_or_initialize
-        event.attributes = attributes_from_ical
+        event.attributes = attributes_from_ical(ical_event)
         event.save!
       end
     end
