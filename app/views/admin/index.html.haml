@@ -16,3 +16,13 @@
             %td= user.identities.count
             %td= user.follows.count
             %td= user.complete_follows.count
+    %h2 
+      Events
+    %table.table
+      %thead
+        %tr
+          %th Name
+      %tbody
+        - Event.all.each do |event|
+          %tr
+            %td= event.name
