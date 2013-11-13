@@ -13,13 +13,13 @@ GEM
     active_utils (2.0.1)
       activesupport (>= 2.3.11)
       i18n
-    activemerchant (1.41.0)
+    activemerchant (1.42.2)
       active_utils (~> 2.0, >= 2.0.1)
       activesupport (>= 2.3.14, < 5.0.0)
       builder (>= 2.1.2, < 4.0.0)
       i18n (~> 0.5)
       json (~> 1.7)
-      money (< 6.0.0)
+      money (< 7.0.0)
       nokogiri (~> 1.4)
     activemodel (4.0.1)
       activesupport (= 4.0.1)
@@ -139,7 +139,7 @@ GEM
       addressable
       faraday
       multi_json
-    launchy (2.3.0)
+    launchy (2.4.0)
       addressable (~> 2.3)
     linkedin (0.4.3)
       hashie (>= 1.2, < 2.1)
@@ -153,8 +153,8 @@ GEM
     mime-types (1.25)
     mini_portile (0.5.2)
     minitest (4.7.5)
-    money (5.1.1)
-      i18n (~> 0.6.0)
+    money (6.0.0)
+      i18n (~> 0.6.4)
     multi_json (1.8.2)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
