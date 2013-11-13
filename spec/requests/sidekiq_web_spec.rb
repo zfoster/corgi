@@ -4,19 +4,14 @@ describe 'Sidekiq' do
 
   describe 'GET /sidekiq' do
 
-    before do
-      get_via_redirect('/auth/facebook')
-      User.last.update_attribute(:admin, admin)
-    end
-
     context 'as admin' do
-      let(:admin) { true }
+      before { sign_in(admin: true) }
 
       it { get('/sidekiq'); response.response_code.should eq(200) }
     end
 
     context 'not as admin' do
-      let(:admin) { false }
+      before { sign_in }
 
       it { expect{ get('/sidekiq') }.to raise_exception(ActionController::RoutingError) }
     end

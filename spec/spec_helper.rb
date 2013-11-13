@@ -60,6 +60,7 @@ RSpec.configure do |config|
   config.include EmailSpec::Matchers
   config.include Rails.application.routes.url_helpers, type: :mailer
   config.include ActionDispatch::TestProcess
+  config.include AuthHelper, type: :request
 end
 
 OmniAuth.config.test_mode = true
