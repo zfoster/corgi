@@ -1,11 +1,18 @@
-%h1 This is the admin section
-
-%p One day we will put cool charts about the site here
-
-%p
-  User Count:
-  = User.count
-
-%p
-  Event Count:
-  = Event.count
+.row
+  .col-sm-12
+    %h2 
+      Users
+    %table.table
+      %thead
+        %tr
+          %th Name
+          %th Identities
+          %th Follows
+          %th Complete Follows
+      %tbody
+        - User.all.each do |user|
+          %tr
+            %td= user.name
+            %td= user.identities.count
+            %td= user.follows.count
+            %td= user.complete_follows.count
