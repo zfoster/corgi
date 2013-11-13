@@ -1,6 +1,4 @@
-class EventRanksUpdater
-  include Sidekiq::Worker
-  sidekiq_options :retry => false
+class EventRanksUpdater < BaseWorker
 
   def perform(event_id)
     User.find_each do |user|
