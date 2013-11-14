@@ -12,7 +12,7 @@ class Identity < ActiveRecord::Base
 
   def self.find_or_create_with_omniauth(auth)
     identity = where(provider: auth.provider, uid: auth.uid).first_or_initialize
-    identity.update_attributes AuthExtractor.new(auth).extract
+    identity.update_attributes Auth.new(auth).extract
     identity
   end
 

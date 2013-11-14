@@ -3,7 +3,7 @@ class Event::Meetup < Event::Importer
   def import
     @id = @url.match(/\/events\/([0-9]+)/)[1]
     @event = where(source: 'meetup', source_id: id).first_or_initialize
-    unless event.persisted?
+    unless @event.persisted?
       @data = Meetup.event(id)
       @event.update_attributes(attributes)
     end

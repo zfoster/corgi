@@ -25,26 +25,10 @@ class Event < ActiveRecord::Base
     parsed_url = URI.parse(url)
     case parsed_url.host
     when /eventbrite/
-      create_from_eventbrite(url)
+      Event::Eventbrite.new(url).import
     when /meetup/
       Event::Meetup.new(url).import
     end
-  end
-
-  def self.create_from_eventbrite(url)
-    id = Eventbrite.scrape_id(url)
-    event = where(source: 'eventbrite', source_id: id).first_or_initialize
-    unless event.persisted?
-      data = Eventbrite.event_get(id)['event']
-      event.start_time = data['start_date']
-      event.end_time = data['end_date']
-      event.title = data['title']
-      event.description = Nokogiri::HTML(data['description']).text
-      event.organization = Organization.where(name: data['organizer']['name']).first_or_initialize
-      event.address = data['venue']['address']
-      event.save 
-    end
-    event
   end
 
   def to_ical

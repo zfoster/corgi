@@ -1,4 +1,4 @@
-class AuthExtractor
+class Identity::Auth
   def initialize(auth)
     @auth = auth
   end
