@@ -4,8 +4,7 @@
   = javascript_include_tag "places.js"
 = form_for @event do |f|
   .small-12.large-7.columns
-    = f.label :existing_url
-    = f.text_field :existing_url, placeholder: "Existing URL"
+    = f.text_field :existing_url, placeholder: "Meetup or Eventbrite URL"
     %p
       OR
     .event-title

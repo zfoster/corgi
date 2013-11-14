@@ -1,10 +1,22 @@
 class Event::Eventbrite < Event::Importer
+  default_params app_key: ENV['EVENTBRITE_APP_KEY']
+
+  def self.scrape_id(url)
+    response = HTTParty.get(url)
+    html = Nokogiri::HTML(response.body)
+    url = html.css('a.contact_organizer_link').first['href']
+    id = CGI.parse(URI.parse(url).query)['eid'].first
+  end
+
+  def self.event_get(id)
+    resp = get("https://www.eventbrite.com/json/event_get", query: { id: id })
+  end
 
   def import
-    @id = Eventbrite.scrape_id(url)
-    @event = where(source: 'eventbrite', source_id: id).first_or_initialize
+    @id = self.class.scrape_id(@url)
+    @event = Event.where(source: 'eventbrite', source_id: @id).first_or_initialize
     unless @event.persisted?
-      @data = Eventbrite.event_get(id)['event']
+      @data = self.class.event_get(@id)['event']
       @event.update_attributes(attributes)
     end
     @event
@@ -17,8 +29,8 @@ class Event::Eventbrite < Event::Importer
       end_time: @data['end_date'],
       title: @data['title'],
       description: Nokogiri::HTML(@data['description']).text,
-      organization_name: @data['organizer']['name']
-      address: @data['venue']['address']
+      organization_name: @data['organizer']['name'],
+      address: @data['venue']['address'],
     }
   end
 

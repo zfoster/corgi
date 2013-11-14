@@ -25,9 +25,9 @@ class Event < ActiveRecord::Base
     parsed_url = URI.parse(url)
     case parsed_url.host
     when /eventbrite/
-      Event::Eventbrite.new(url).import
+      Eventbrite.new(url).import
     when /meetup/
-      Event::Meetup.new(url).import
+      Meetup.new(url).import
     end
   end
 
