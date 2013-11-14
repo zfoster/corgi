@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Identity do
 
-  describe '#update_follows' do
+  describe '#create_follows' do
     let(:user) { create(:user) }
     let(:identity) { user.identities.first }
     let(:follow_ids) { ['1', '2'] }
@@ -12,25 +12,25 @@ describe Identity do
     end
 
     it 'should create new follows' do
-      expect{identity.update_follows}.to change{user.follows.count}.from(0).to(2)
+      expect{identity.create_follows}.to change{user.follows.count}.from(0).to(2)
     end
 
     it 'should update follows_updated_at' do
-      expect{identity.update_follows}.to change{identity.follows_updated_at}
+      expect{identity.create_follows}.to change{identity.follows_updated_at}
     end
   end
 
-  describe '#link_existing_follows' do
+  describe '#complete_existing_follows' do
     let(:user_id) { 2 }
     let(:identity) { create(:identity, provider: 'twitter', uid: 'test', user_id: user_id) }
-    
-    before { create(:follow) }
+    let(:follow) { create(:follow) }
+    let(:follows) { [ follow ] }
 
     it 'should complete the follow' do
-      identity.link_existing_follows
-      expect(Follow.last.followee_id).to eq(user_id)
+      identity.should_receive(:existing_follows).and_return(follows)
+      identity.complete_existing_follows
+      expect(follow.followee_id).to eq(user_id)
     end
-
   end
 
   describe '#find_or_create_user' do

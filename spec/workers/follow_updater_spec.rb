@@ -7,8 +7,8 @@ describe FollowUpdater do
 
     it 'should queue a rank update job' do
       Identity.should_receive(:find).with(identity.id).and_return(identity)
-      identity.should_receive(:update_follows)
-      identity.should_receive(:link_existing_follows)
+      identity.should_receive(:create_follows)
+      identity.should_receive(:complete_existing_follows)
       FollowUpdater.new.perform(identity.id)
     end
 

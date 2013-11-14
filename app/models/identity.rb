@@ -24,17 +24,21 @@ class Identity < ActiveRecord::Base
     user
   end
 
-  def update_follows
+  def create_follows
     followee_ids.map do |id|
       user.follows.where(source: provider, source_id: id.to_s).first_or_create
     end
     touch(:follows_updated_at)
   end
 
-  def link_existing_follows
-    Follow.incomplete.where(source: provider, source_id: uid.to_s).each do |follow|
+  def complete_existing_follows
+    existing_follows.each do |follow|
       follow.update_attributes(followee_id: user_id)
     end
+  end
+
+  def existing_follows
+    @existing_follows ||= Follow.incomplete.where(source: provider, source_id: uid.to_s)
   end
 
   private
