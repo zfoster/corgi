@@ -20,6 +20,19 @@ describe Identity do
     end
   end
 
+  describe '#link_existing_follows' do
+    let(:user_id) { 2 }
+    let(:identity) { create(:identity, provider: 'twitter', uid: 'test', user_id: user_id) }
+    
+    before { create(:follow) }
+
+    it 'should complete the follow' do
+      identity.link_existing_follows
+      expect(Follow.last.followee_id).to eq(user_id)
+    end
+
+  end
+
   describe '#find_or_create_user' do
 
     context 'an associated user exists' do
