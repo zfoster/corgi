@@ -1,10 +1,8 @@
 require 'spec_helper'
 
 describe Identity do
-  describe "self.find_or_create_with_omniauth" do
-  end
 
-  describe "update_follows" do
+  describe '#update_follows' do
     let(:user) { create(:user) }
     let(:identity) { user.identities.first }
     let(:follow_ids) { ['1', '2'] }
@@ -22,7 +20,7 @@ describe Identity do
     end
   end
 
-  describe "find_or_create_user" do
+  describe '#find_or_create_user' do
 
     context 'an associated user exists' do
       it 'returns an existing user' do
