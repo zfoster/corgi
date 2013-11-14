@@ -27,24 +27,8 @@ class Event < ActiveRecord::Base
     when /eventbrite/
       create_from_eventbrite(url)
     when /meetup/
-      create_from_meetup(url)
+      Event::Meetup.new(url).import
     end
-  end
-
-  def self.create_from_meetup(url)
-    id = url.match(/\/events\/([0-9]+)/)[1]
-    event = where(source: 'meetup', source_id: id).first_or_initialize
-    unless event.persisted?
-      data = Meetup.event(id)
-      event.start_time = Time.at(data['time']/1000)
-      event.end_time = Time.at(event.start_time + (data['duration']/1000).seconds)
-      event.title = data['name']
-      event.description = Nokogiri::HTML(data['description']).text
-      event.organization = Organization.where(name: data['group']['name']).first_or_initialize
-      event.address = data['venue']['address_1']
-      event.save 
-    end
-    event
   end
 
   def self.create_from_eventbrite(url)
