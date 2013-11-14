@@ -34,5 +34,6 @@
               No charge
             - else
               = "$" + event.price.to_s
-  .small-12.large-6.columns
-    #ajax-event-details.row
+    %p.ical_link
+      = link_to 'iCal', events_path(format: :ics)
+      = link_to 'webCal', 'webcal://localhost:3000/events.ics'
