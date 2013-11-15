@@ -133,6 +133,11 @@ ActiveRecord::Schema.define(version: 20131113021045) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ip_address"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
     t.string   "cardholder_name"
   end
 
@@ -172,9 +177,9 @@ ActiveRecord::Schema.define(version: 20131113021045) do
     t.string   "state"
     t.string   "zip_code"
     t.string   "name"
+    t.string   "payment_token"
     t.text     "contacts"
     t.text     "pulled_events"
-    t.string   "payment_token"
     t.boolean  "admin",               default: false
   end
 
