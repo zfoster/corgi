@@ -1,7 +1,22 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
-require 'coveralls'
-Coveralls.wear!('rails')
+
+if ENV['CI']
+  require 'coveralls'
+  Coveralls.wear!('rails')
+  SimpleCov.start do
+    add_filter 'spec/'
+    add_filter 'config/'
+    add_filter 'vendor/'
+    add_filter 'db/'
+
+    add_group 'Controllers', 'app/controllers'
+    add_group 'Models', 'app/models'
+    add_group 'Helpers', 'app/helpers'
+    add_group 'Mailers', 'app/mailers'
+    add_group 'Workers', 'app/workers'
+  end
+end
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
