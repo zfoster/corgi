@@ -36,4 +36,4 @@
               = "$" + event.price.to_s
     %p.ical_link
       = link_to 'iCal', events_path(format: :ics)
-      = link_to 'webCal', 'webcal://localhost:3000/events.ics'
+      = link_to 'webCal', webcal_url(events_url(format: :ics))

@@ -15,4 +15,8 @@ module ApplicationHelper
   def google_auth_path
     '/auth/google'
   end
+
+  def webcal_url(url)
+    url.gsub('http', 'webcal')
+  end
 end
