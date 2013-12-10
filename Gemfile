@@ -11,7 +11,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'pry-rails'
 gem 'haml-rails'
-gem 'zurb-foundation'
+gem 'foundation-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
@@ -38,7 +38,7 @@ gem 'coveralls', require: false
 
 
 # Don't require so Object does not get all Sintra DSL methods
-gem 'sinatra', '>= 1.3.0', :require => nil 
+gem 'sinatra', '>= 1.3.0', :require => nil
 
 group :production do
   gem 'rails_12factor'
