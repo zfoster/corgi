@@ -20,6 +20,7 @@ class Identity < ActiveRecord::Base
     unless user
       build_user_from_auth
       save
+      send_user_welcome_email
     end
     user
   end
@@ -47,7 +48,7 @@ class Identity < ActiveRecord::Base
     @api ||= "Identity::#{provider.titleize}".constantize.new(credentials)
   end
 
-  def build_user_from_auth 
+  def build_user_from_auth
     new_user = User.create email: info['email'], name: name, avatar: info['image'], default_identity: self
     self.user = new_user
   end
@@ -58,6 +59,10 @@ class Identity < ActiveRecord::Base
     else
       info['name']
     end
+  end
+
+  def send_user_welcome_email
+    NewUserEmailWorker.perform_async(self)
   end
 
 end
