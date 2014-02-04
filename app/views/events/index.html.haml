@@ -25,7 +25,7 @@
               = link_to event.title, event
           - if event.start_time
             .row.time
-              = event.start_time.strftime("%a %b #{event.start_time.day.ordinalize}, %l:%M %p")
+              = event.display_time
           .row.location
             - if event.address_line_1.present?
               = event.address_line_1

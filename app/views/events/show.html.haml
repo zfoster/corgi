@@ -35,7 +35,7 @@
             = @event.address_line_1
         .event-time
           %p
-            = @event.start_time.strftime("%a %b #{@event.start_time.day.ordinalize}")
+            = @event.display_date
             %br
             - if @event.end_time.present?
               = @event.start_time.strftime("%l:%M %p")+ " to " + @event.end_time.strftime("%l:%M %p")

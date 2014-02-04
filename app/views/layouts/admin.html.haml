@@ -21,6 +21,7 @@
       .navbar-header
         = link_to 'Madi Admin', admin_path, class: 'navbar-brand'
       %ul.nav.navbar-nav
+        %li= link_to 'Events', admin_events_path
         %li= link_to 'Event Feeds', admin_event_feeds_path
         %li= link_to 'Back to Madi', root_path
     .container

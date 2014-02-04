@@ -1,0 +1,11 @@
+%h1 Events
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th Date
+  %tbody
+    - @events.each do |event|
+      %tr
+        %td= link_to event.title, admin_event_path(event)
+        %td= event.display_time

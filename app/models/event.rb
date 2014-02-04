@@ -55,4 +55,12 @@ class Event < ActiveRecord::Base
     EventRanksUpdater.perform_async(self.id)
   end
 
+  def display_date
+    start_time.strftime("%a %b #{start_time.day.ordinalize}")
+  end
+
+  def display_time
+    start_time.strftime("%a %b #{start_time.day.ordinalize}, %l:%M %p")
+  end
+
 end

@@ -35,6 +35,7 @@ Corgi::Application.routes.draw do
         put :sync
       end
     end
+    resources :events, only: [:index, :show]
   end
 
   get '/support', to: 'content#support'
