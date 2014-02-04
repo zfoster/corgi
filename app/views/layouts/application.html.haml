@@ -13,8 +13,7 @@
     / Set the viewport width to device width for mobile
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
     %title= content_for?(:title) ? yield(:title) : "MADi: discover Madison innovation"
-    = stylesheet_link_tag    "application"
-    = javascript_include_tag "vendor/custom.modernizr"
+    = stylesheet_link_tag "application"
     = csrf_meta_tags
     = yield :head
   %body{ class: "#{controller_name} #{action_name}" }

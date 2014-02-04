@@ -3,12 +3,11 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '4.0.2'
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 gem 'uglifier'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 1.2'
 gem 'pry-rails'
 gem 'haml-rails'
 gem 'foundation-rails'
@@ -29,7 +28,7 @@ gem 'nokogiri'
 gem 'rails3-jquery-autocomplete'
 gem 'icalendar'
 gem 'twitter', "~> 4.8.1"
-gem "koala", "~> 1.8.0rc1"
+gem "koala"
 gem 'linkedin'
 gem 'google-api-client'
 gem 'sidekiq'
@@ -64,10 +63,4 @@ group :development do
   gem 'binding_of_caller'
   gem 'railroady'
 end
-
-
-
-
-# Use unicorn as the app server
-# gem 'unicorn'
 
