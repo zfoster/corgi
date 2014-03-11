@@ -14,6 +14,8 @@
     %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
     %title= content_for?(:title) ? yield(:title) : "MADi | Admin"
     = stylesheet_link_tag "admin"
+    :plain
+      <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script
     = csrf_meta_tags
     = yield :head
   %body{ class: "#{controller_name} #{action_name}" }
@@ -22,8 +24,14 @@
         = link_to 'Madi Admin', admin_path, class: 'navbar-brand'
       %ul.nav.navbar-nav
         %li= link_to 'Events', admin_events_path
+        %li= link_to 'New Event', new_admin_event_path
         %li= link_to 'Event Feeds', admin_event_feeds_path
         %li= link_to 'Back to Madi', root_path
     .container
+      - flash.each do |name, msg|
+        - if msg.is_a?(String)
+          %div{class: "alert alert-#{name.to_s == 'notice' ? 'success' : 'danger'}"}
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} ×
+            = content_tag :div, msg, :id => "flash_#{name}"
       = yield
     = javascript_include_tag "admin"

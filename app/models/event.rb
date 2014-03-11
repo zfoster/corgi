@@ -14,7 +14,10 @@ class Event < ActiveRecord::Base
 
   scope :closed, -> { where(closed: true) }
   scope :open, -> { where(closed: false) }
-  scope :starts_in_the_future, -> { where('start_at > ?', Time.now) }
+  scope :future, -> { where('start_time > ?', Time.now) }
+  scope :past, -> { where('start_time < ?', Time.now) }
+  scope :this_week, -> { where(start_time: Time.now..7.days.from_now)}
+  scope :this_month, -> { where(start_time: Time.now..1.month.from_now)}
 
   delegate :email, to: :creator, prefix: true
   delegate :name, to: :organization, prefix: true, allow_nil: true

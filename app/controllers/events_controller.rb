@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authorize_user!, only: [:new]
+  before_action :authorize_user!, only: [:new, :create, :edit, :update]
   before_action :set_event, only: [:show, :edit, :update, :destroy, :cancel_registration]
 
   def show
@@ -64,7 +64,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit :title, :description, :price, 
+    params.require(:event).permit :title, :description, :price,
       :start_time, :end_time, :url, :organization_name, :existing_url
   end
 end

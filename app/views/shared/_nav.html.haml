@@ -13,4 +13,6 @@
         = link_to "EVENTS", events_path
       %li
         = link_to "CREATE EVENT", new_event_path
-
+      - if current_user && current_user.admin?
+        %li
+          = link_to "ADMIN", admin_path

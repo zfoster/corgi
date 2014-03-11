@@ -1,0 +1,7 @@
+.row
+  .col-sm-6
+    %h1= @event.title
+    %p Attendees: #{@event.attendees.count}
+    %p Amplifications: #{@event.amps.count}
+  .col-sm-6
+    = render "form"
