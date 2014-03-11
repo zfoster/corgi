@@ -3,5 +3,6 @@
     %h1= @event.title
     %p Attendees: #{@event.attendees.count}
     %p Amplifications: #{@event.amps.count}
+    %img{ src: "https://maps.googleapis.com/maps/api/staticmap?center=#{@event.lat},#{@event.lon}&sensor=false&size=250x250&zoom=14" }
   .col-sm-6
     = render "form"

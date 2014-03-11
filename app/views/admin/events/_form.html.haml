@@ -1,7 +1,7 @@
 = form_for [:admin, @event] do |f|
   .form-group
     = f.label :title
-    = f.text_field :title, placeholder: "Title", class: 'form-control'
+    = f.text_field :title, class: 'form-control'
   .form-group
     = f.label :url
     = f.text_field :url, class: 'form-control'
@@ -11,6 +11,12 @@
   .form-group
     = f.label "Venue"
     = f.text_area :address_line_1, rows: "3", class: 'form-control', id: 'places-autocomplete'
+  .form-group
+    = f.label :lat
+    = f.text_field :lat, class: 'form-control'
+  .form-group
+    = f.label :lon
+    = f.text_field :lon, class: 'form-control'
   .form-group
     = label_tag :organization
     = f.autocomplete_field :organization_name, autocomplete_organization_name_organizations_path, class: 'form-control'

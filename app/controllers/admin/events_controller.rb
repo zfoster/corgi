@@ -45,7 +45,8 @@ class Admin::EventsController < AdminController
 
   def event_params
     params.require(:event).permit :title, :description, :price,
-      :start_time, :end_time, :url, :organization_name, :existing_url
+      :start_time, :end_time, :url, :organization_name, :existing_url,
+      :lat, :lon, :address_line_1
   end
 
 end

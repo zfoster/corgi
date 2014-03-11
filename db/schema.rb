@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131113021045) do
+ActiveRecord::Schema.define(version: 20140311180222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(version: 20131113021045) do
     t.string   "source_id"
     t.string   "ical_uid"
     t.integer  "event_feed_id"
+    t.float    "lat"
+    t.float    "lon"
   end
 
   add_index "events", ["event_feed_id"], name: "index_events_on_event_feed_id", using: :btree
@@ -133,11 +135,6 @@ ActiveRecord::Schema.define(version: 20131113021045) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ip_address"
-    t.string   "address_line_1"
-    t.string   "address_line_2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip_code"
     t.string   "cardholder_name"
   end
 
@@ -177,9 +174,9 @@ ActiveRecord::Schema.define(version: 20131113021045) do
     t.string   "state"
     t.string   "zip_code"
     t.string   "name"
-    t.string   "payment_token"
     t.text     "contacts"
     t.text     "pulled_events"
+    t.string   "payment_token"
     t.boolean  "admin",               default: false
   end
 
