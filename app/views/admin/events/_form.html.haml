@@ -15,7 +15,7 @@
     = label_tag :organization
     = f.autocomplete_field :organization_name, autocomplete_organization_name_organizations_path, class: 'form-control'
   .form-group
-    = f.label :price
+    = f.label :price, "Display Price"
     = f.text_field :price, class: 'form-control'
   .form-group
     = f.label :start_time, "Start Date"
