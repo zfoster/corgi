@@ -22,18 +22,6 @@ class Event < ActiveRecord::Base
   delegate :email, to: :creator, prefix: true
   delegate :name, to: :organization, prefix: true, allow_nil: true
 
-  attr_accessor :existing_url
-
-  def self.create_from_url(url)
-    parsed_url = URI.parse(url)
-    case parsed_url.host
-    when /eventbrite/
-      Eventbrite.new(url).import
-    when /meetup/
-      Meetup.new(url).import
-    end
-  end
-
   def to_ical
     cal = Icalendar::Calendar.new
     cal.add_event(self.to_ical_event)

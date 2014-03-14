@@ -10,7 +10,7 @@ describe "An authenticated user registers to attend event" do
     it "attends from a list of events" do
       visit root_path
       click_link 'Connect with Facebook'
-      click_on 'EVENTS'
+      click_on 'Events'
       first(:link, 'Attend').click
       expect(page).to have_content event.title
       expect(page).to have_content 'Attending'

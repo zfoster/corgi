@@ -35,6 +35,7 @@ gem 'google-api-client'
 gem 'sidekiq'
 gem 'sidekiq-failures'
 gem 'coveralls', require: false
+gem 'bootstrap-sass'
 
 
 # Don't require so Object does not get all Sintra DSL methods

@@ -1,5 +1,5 @@
 .row.home-bg
-  .small-12.large-7.columns
+  .col-sm-7
     .header{ :height => "56px"}
       = image_tag "madi-logo.png", title: "MADi logo", :height => "56px", :width => "146px"
     .left-content
@@ -13,7 +13,7 @@
         We'll be in touch,
         %br
         The MADi Team
-  .small-12.large-4.columns
+  .col-sm-5
     - if current_user
       = form_for current_user do |f|
         = render "shared/social_buttons", f: f

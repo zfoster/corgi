@@ -26,20 +26,26 @@ class EventsController < ApplicationController
   end
 
   def create
-    if event_params['existing_url'].present?
-      @event = Event.create_from_url(event_params['existing_url'])
-      redirect_to @event
+    @event = current_user.created_events.new(event_params)
+    @event.hosts << current_user
+    @event.attendees << current_user
+    if @event.save
+      EventMailer.created(@event).deliver
+      redirect_to @event, notice: 'Event was successfully created.'
     else
-      @event = current_user.created_events.new(event_params)
-      @event.hosts << current_user
-      @event.attendees << current_user
-      if @event.save
-        EventMailer.created(@event).deliver
-        redirect_to @event, notice: 'Event was successfully created.'
-      else
-        render action: 'new'
-      end
+      render action: 'new'
     end
+  end
+
+  def import
+    parsed_url = URI.parse(params[:url])
+    @event = case parsed_url.host
+    when /eventbrite/
+      Event::Eventbrite.new(parsed_url.to_s).import
+    when /meetup/
+      Event::Meetup.new(parsed_url.to_s).import
+    end
+    render json: @event
   end
 
   def update
@@ -65,6 +71,6 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit :title, :description, :price,
-      :start_time, :end_time, :url, :organization_name, :existing_url
+      :start_time, :end_time, :url, :organization_name
   end
 end

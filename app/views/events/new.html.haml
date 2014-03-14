@@ -1,8 +1,23 @@
-- content_for :body do
-  / = javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui.js"
-  / = javascript_include_tag "jquery-timepicker-addon.js"
-  / = stylesheet_link_tag "jquery-timepicker-addon.css"
+.row
+  .col-sm-6
+    %h1 New Event
 
-.row.main-content
-  %h3 New Event
-  = render 'form'
+    %p Welcome to Madi! Here is some instructions on how to create a new event
+
+    %p
+      You can also import data from these sources:
+      %ul
+        %li Meetup
+        %li Eventbrite
+
+    .input-group
+      %input.form-control{type: "text", placeholder: 'Paste a URL', id: 'import-event'}
+      %span.input-group-btn
+        %button.btn.btn-success{type: "button"} Import
+  .col-sm-6
+    = render 'form'
+
+-# - content_for :javascript do
+-#   $.ajax({
+-#     url: https://www.eventbrite.com/e/madisons-spring-tech-kickoff-and-capital-entrepreneurs-open-social-tickets-10949417001
+-#   })
