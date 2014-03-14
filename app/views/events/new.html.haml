@@ -11,13 +11,29 @@
         %li Eventbrite
 
     .input-group
-      %input.form-control{type: "text", placeholder: 'Paste a URL', id: 'import-event'}
+      %input.form-control{type: "text", placeholder: 'Paste a URL', id: 'import-url'}
       %span.input-group-btn
-        %button.btn.btn-success{type: "button"} Import
+        %button.btn.btn-success{type: "button", id: 'import-event'} Import
   .col-sm-6
     = render 'form'
 
--# - content_for :javascript do
--#   $.ajax({
--#     url: https://www.eventbrite.com/e/madisons-spring-tech-kickoff-and-capital-entrepreneurs-open-social-tickets-10949417001
--#   })
+- content_for :javascript do
+  :javascript
+    $('#import-event').on('click', function(){
+      var url = $('#import-url').val();
+      button = this
+      $(button).prop('disabled', true)
+      $(button).text('Importing...')
+      $.ajax({
+        url: '/events/import?url='+url,
+        type: 'GET',
+        dataType: 'json'
+      }).done(function(data){
+        Object.keys(data).forEach(function(key){
+          $('#event_'+key).val(data[key]);
+        });
+        $('#event_url').val(url)
+        $(button).prop('disabled', false)
+        $(button).text('Import')
+      });
+    });
