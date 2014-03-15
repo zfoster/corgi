@@ -14,10 +14,6 @@
 //= require jquery_ujs
 //= require jquery_ui
 //= require autocomplete-rails
+//= require bootstrap
 //= require jquery-timepicker-addon
-//= require foundation
 //= require users
-//= require events
-
-
-$(function(){ $(document).foundation(); });

@@ -1,8 +1,39 @@
-- content_for :body do
-  / = javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui.js"
-  / = javascript_include_tag "jquery-timepicker-addon.js"
-  / = stylesheet_link_tag "jquery-timepicker-addon.css"
+.row
+  .col-sm-6
+    %h1 New Event
 
-.row.main-content
-  %h3 New Event
-  = render 'form'
+    %p Welcome to Madi! Here is some instructions on how to create a new event
+
+    %p
+      You can also import data from these sources:
+      %ul
+        %li Meetup
+        %li Eventbrite
+
+    .input-group
+      %input.form-control{type: "text", placeholder: 'Paste a URL', id: 'import-url'}
+      %span.input-group-btn
+        %button.btn.btn-success{type: "button", id: 'import-event'} Import
+  .col-sm-6
+    = render 'form'
+
+- content_for :javascript do
+  :javascript
+    $('#import-event').on('click', function(){
+      var url = $('#import-url').val();
+      button = this
+      $(button).prop('disabled', true)
+      $(button).text('Importing...')
+      $.ajax({
+        url: '/events/import?url='+url,
+        type: 'GET',
+        dataType: 'json'
+      }).done(function(data){
+        Object.keys(data).forEach(function(key){
+          $('#event_'+key).val(data[key]);
+        });
+        $('#event_url').val(url)
+        $(button).prop('disabled', false)
+        $(button).text('Import')
+      });
+    });

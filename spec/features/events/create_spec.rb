@@ -5,10 +5,9 @@ describe "A new user creates an event" do
   it "creates the event" do
     visit root_path
     click_link 'Connect with LinkedIn'
-    click_on 'CREATE EVENT'
+    click_on 'Create Event'
     fill_in 'Title', with: 'CityCamp'
     fill_in 'Description', with: 'The best city camp event ever'
-    check 'enable_fee'
     fill_in 'event_url', with: 'http://www.citycampmadison.org'
     fill_in 'event[start_time]', with: '10/24/2013 16:45'
     fill_in 'event[end_time]', with: '10/24/2013 18:45'
