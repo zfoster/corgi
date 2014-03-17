@@ -1,0 +1,152 @@
+body.events.index,
+body.events.show,
+body.events.edit{
+  .top-section {
+    padding: 0 15px;
+    .new-event-action {
+      div {
+        display: inline-block;
+        float: right;
+        a {
+          border-radius: 0;
+          @include heading-text;
+          border-color: $beige;
+          background-color: $white;
+          text-transform: uppercase;
+          &:hover,
+          &:active {
+            background-color: white;
+          }
+        }
+        &.csv,
+        &.cancel-edit {
+          margin-right: 10px;
+        }
+      }
+    }
+    .event-page-header {
+      text-transform: uppercase;
+      float: left;
+    }
+  }
+  .section-divider {
+    hr {
+      border-top: 2px solid $beige;
+    }
+  }
+  .content-wrapper {
+    padding: 0 5em 2em;
+  }
+  h2.date-group {
+    margin-left: 15px;
+  }
+  .an-event,
+  .the-event {
+    border-top: 10px solid $dark-gray;
+    background-color: $light-gray;
+    padding: 0 20px;
+    @include box-sizing;
+    box-shadow: 1px 2px 3px rgb(204,204,204);
+    margin: 1em 0;
+    @include body-text;
+    position: relative;
+    .event-description {
+      margin-bottom: 5em;
+    }
+    .event-organization {
+      p {
+        margin-top: 1em;
+      }
+    }
+    .event-map {
+      margin-top: 3.5em;
+      border: 2px solid $dark-gray;
+      border-radius: 2px;
+    }
+  }
+  .an-event {
+    height: 245px;
+    .description {
+      max-height: 65px;
+      overflow: hidden;
+    }
+  }
+
+  #event-right {
+    .event-map {
+      margin-top: 3.5em;
+      border: 2px solid $dark-gray;
+      border-radius: 2px;
+    }
+  }
+
+  h3 {
+    margin-bottom: 0;
+    a {
+      @include heading-text;
+    }
+  }
+  .actions {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    padding: 10px;
+  }
+  .attend, .attending {
+    width: 22px;
+    height: 22px;
+    float: right;
+    margin-left: 10px;
+  }
+  .amp, .amped{
+    width: 22px;
+    height: 22px;
+    float: right;
+  }
+  .form-group.title {
+    margin-top: 0.8em;
+    margin-bottom: 0.1em;
+    margin-left: -2em;
+    input {
+      @include heading-text;
+      text-transform: uppercase;
+      width: 100%;
+      background-color: rgba(255,255,255,0.4);
+    }
+  }
+  .form-group {
+    &.submit {
+      margin: 0;
+      float: right;
+      input[type="submit"] {
+        font-family: $sansfont;
+        text-transform: uppercase;
+        border-radius: 0;
+        font-size: 16px;
+      }
+    }
+  }
+}
+body.events.show {
+  .actions a {
+    div {
+      padding: 0 10px;
+      width: auto;
+      color: white;
+      text-transform: uppercase;
+      &.attending {
+        background-color: $green;
+      }
+      &.amp {
+        background-color: $dark-gray;
+      }
+      &.attend {
+        background-color: $blue;
+      }
+      span.text {
+        vertical-align: middle;
+      }
+    }
+  }
+}

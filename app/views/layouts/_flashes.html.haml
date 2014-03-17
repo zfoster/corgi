@@ -1,7 +1,5 @@
 - flash.each do |name, msg|
-  .columns
-    .row
-      .alert-box.secondary
-        - if msg.is_a?(String)
-          = content_tag :div, msg, :id => "flash_#{name}"
-        = link_to "&times;".html_safe, "#", :class => "close"
+  - if msg.is_a?(String)
+    %div{class: "alert allert-dismissable alert-#{name.to_s == 'notice' ? 'success' : 'danger'}"}
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} ×
+      = content_tag :div, msg, :id => "flash_#{name}"
