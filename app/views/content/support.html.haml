@@ -1,28 +1,34 @@
 .row.main-content
-  .col-sm-12.col-md-7.supporters
-    %h4 These people and organizations support MADi
-    .row
-      .col-sm-3.col-md-4
-        .s-logo
-          = link_to image_tag("horizon-new.png", title: "Horizon Coworking"), "http://horizoncw.com"
-      .col-sm-3.col-md-4
-        .s-logo
-          = link_to image_tag("murfie_pink.png", title: "Murfie"), "http://murfie.com"
-      .col-sm-3.col-md-4
-        .s-logo
-          = link_to image_tag("madisonium.png", title: "Madisonium"), "http://madisonium.org"
-    .row
-      .col-sm-3.col-md-4
-        .s-logo
-          = link_to image_tag("gmcc.png", title: "Greater Madison Chamber of Commerce"), "http://greatermadisonchamber.com/"
-  .col-sm-12.col-md-5.support-contrib
-    .support
-      %h4 Support MADi development
-      = render "paypal_button"
-    .contribute
-      = form_for :contribution, url: contributions_path, method: :post do |f|
-        = f.label :note, 'Contribute to MADi development'
-        = f.text_area :note
-        = f.label :email, 'Email Address'
-        = f.text_field :email, :placeholder => "Email Address"
-        = f.submit 'Contribute', class: "button contribute right"
+  .col-sm-12.col-md-6.supporters
+    %h2 These people and organizations support MADi
+    .collection-of-logos
+      .row
+        .col-sm-3.col-md-4
+          .s-logo
+            = link_to image_tag("horizon-new.png", title: "Horizon Coworking"), "http://horizoncw.com"
+        .col-sm-3.col-md-4
+          .s-logo
+            = link_to image_tag("murfie_pink.png", title: "Murfie"), "http://murfie.com"
+        .col-sm-3.col-md-4
+          .s-logo
+            = link_to image_tag("madisonium.png", title: "Madisonium"), "http://madisonium.org"
+      .row
+        .col-sm-3.col-md-4
+          .s-logo
+            = link_to image_tag("gmcc.png", title: "Greater Madison Chamber of Commerce"), "http://greatermadisonchamber.com/"
+  .col-sm-12.col-md-6.support-contrib
+    %h2 Support MADi development
+    .support-forms
+      .support
+        = render "paypal_button"
+      .contribute
+        = form_for :contribution, url: contributions_path, method: :post do |f|
+          .form-group
+            = f.label :note, 'Contribute to MADi development'
+            = f.text_area :note, class: 'form-control'
+
+          .input-group
+            = f.label :email, 'Email Address'
+            = f.text_field :email, :placeholder => "Email Address", class: 'form-control'
+            %span.input-group-btn
+              = f.submit 'Contribute', class: "btn btn-success"
