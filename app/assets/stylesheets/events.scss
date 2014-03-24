@@ -92,17 +92,60 @@ body.events.edit{
     left: 0px;
     width: 100%;
     padding: 10px;
-  }
-  .attend, .attending {
-    width: 22px;
-    height: 22px;
-    float: right;
-    margin-left: 10px;
-  }
-  .amp, .amped{
-    width: 22px;
-    height: 22px;
-    float: right;
+    a {
+
+      div {
+        padding: 0 0 0 10px;
+        width: auto;
+        color: white;
+        text-transform: uppercase;
+        border-radius: 4px;
+        border: 2px solid;
+        &.attend {
+          background-color: $blue;
+          border-color: $blue;
+          float: right;
+        }
+        &.attending {
+          background-color: $green;
+          border-color: $green;
+          float: right;
+        }
+        &.amp {
+          background-color: $light-gray;
+          margin-right: 8px;
+          border-color: $dark-gray;
+          color: $dark-gray;
+          float: left;
+        }
+        span.text {
+          vertical-align: middle;
+        }
+        &:hover,
+        &:focus {
+          box-shadow: 1px 2px 3px rgba(10,10,10,0.2);
+        }
+        &:active {
+          background-color: #ddd;
+        }
+      }
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    .amped {
+      padding: 0 0 0 10px;
+      width: auto;
+      color: white;
+      text-transform: uppercase;
+      border-radius: 4px;
+      border: 2px solid;
+      background-color: $dark-gray;
+      border-color: $dark-gray;
+      margin-right: 8px;
+      color: $white;
+      float: left;
+    }
   }
   .form-group.title {
     margin-top: 0.8em;
