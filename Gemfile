@@ -11,7 +11,6 @@ gem 'jquery-ui-rails'
 gem 'turbolinks'
 gem 'pry-rails'
 gem 'haml-rails'
-gem 'foundation-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
@@ -36,6 +35,7 @@ gem 'sidekiq'
 gem 'sidekiq-failures'
 gem 'coveralls', require: false
 gem 'bootstrap-sass'
+gem 'rails_autolink'
 
 
 # Don't require so Object does not get all Sintra DSL methods

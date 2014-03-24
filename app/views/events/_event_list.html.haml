@@ -1,0 +1,35 @@
+.event-wrapper.col-md-4
+  .an-event
+    .event-info
+      .title
+        %h3
+          = link_to event.title, event
+      - if event.start_time
+        .time
+          = event.display_time
+      .location
+        - if event.address_line_1.present?
+          = event.address_line_1
+      - if event.description.present?
+        .description
+          =simple_format h event.description.html_safe
+          .read-more
+            =link_to "READ MORE", event
+      .price
+        - if event.price == 0 || event.price == nil
+          No charge
+        - else
+          = "$" + event.price.to_s
+    .actions
+      - if current_user && current_user.registered?(event)
+        .attending.click-to-cancel
+          = link_to image_tag('check.png', title: 'Attending. Click to cancel registration.'), cancel_registration_event_path(event), method: :delete
+      - else
+        .attend
+          = link_to image_tag('add.png', title: 'Click to attend'), event_registrations_path(event), method: :post
+      - if current_user && current_user.amplified?(event)
+        .amped
+          Amplified!
+      - else
+        .amp
+          = link_to image_tag('amp.png', title: "Amplify"), amps_path(event_id: event.id), method: :post

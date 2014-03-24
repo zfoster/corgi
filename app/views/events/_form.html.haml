@@ -1,11 +1,11 @@
--# - content_for(:head) do
--#   = javascript_include_tag "http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"
--# - content_for(:body) do
--#   = javascript_include_tag "places.js"
+- content_for(:head) do
+  = javascript_include_tag "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
 
 = form_for [@event] do |f|
   = f.hidden_field :lat, class: 'form-control'
   = f.hidden_field :lon, class: 'form-control'
+  = f.hidden_field :address_line_2, class: 'form-control'
+  = f.hidden_field :city, class: 'form-control'
   .form-group
     = f.label :title
     = f.text_field :title, class: 'form-control'
@@ -29,12 +29,12 @@
     = f.date_field :start_time, class: 'form-control'
   .form-group
     = f.label :start_time
-    = f.time_select :start_time, class: 'form-control', ampm: true, minute_step: 15
+    = f.time_select :start_time, class: 'form-control', ampm: true, minute_step: 15, ignore_date: true
   .form-group
     = f.label :end_time, "End Date"
     = f.date_field :end_time, class: 'form-control'
   .form-group
     = f.label :end_time
-    = f.time_select :end_time, class: 'form-control', ampm: true, minute_step: 15
+    = f.time_select :end_time, class: 'form-control', ampm: true, minute_step: 15, ignore_date: true
   .form-group
     = f.submit 'Save', class: 'btn btn-primary'

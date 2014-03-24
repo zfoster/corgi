@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "An authenticated user registers to attend event" do
 
   let!(:event) { create(:event) }
-  let!(:paid_event) { create(:paid_event) }
+  # let!(:paid_event) { create(:paid_event) }
 
   context 'chooses an event' do
 
@@ -11,10 +11,10 @@ describe "An authenticated user registers to attend event" do
       visit root_path
       click_link 'Connect with Facebook'
       click_on 'Events'
-      first(:link, 'Attend').click
-      expect(page).to have_content event.title
-      expect(page).to have_content 'Attending'
-      expect(page).to have_link("Cancel")
+      first('.attend a').click
+      expect(page).to have_content 'You are attending this event'
+      first(".actions .attending")
+      first(".actions .attending a")
       expect(unread_emails_for("bob@example.com").size).to eq(1)
     end
 

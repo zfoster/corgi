@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery_ui
+//= require jquery.ui.autocomplete
 //= require autocomplete-rails
 //= require bootstrap
-//= require jquery-timepicker-addon
 //= require users
+//= require events

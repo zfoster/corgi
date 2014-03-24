@@ -1,0 +1,60 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,700);
+
+$dark-gray: #595C5C;
+$light-gray: #EFEEED;
+$beige: #C9C0BC;
+$white: #F9F9F9;
+$red: #D72C20;
+$blue: #2070D7;
+$green: #20D788;
+
+$sansfont: "Ubuntu", Helvetica, Arial, sans-serif;
+
+@mixin heading-text {
+  font: {
+    family: $sansfont;
+    size: 16px;
+    weight: bold;
+  }
+  color: $dark-gray;
+}
+
+@mixin box-sizing {
+  -moz-box-sizing: border-box;
+  -weblit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@mixin body-text {
+  font: {
+    family: $sansfont;
+    size: 13px;
+    weight: normal;
+  }
+  color: $dark-gray;
+}
+
+body {
+  background-color: $white;
+  font-family: $sansfont;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  @include heading-text;
+}
+
+.red-banner {
+  width: auto;
+  display: inline-block;
+  background: $red;
+  border: 18px solid $red;
+  border-right: 19px solid $white;
+  border-left-width: 10px;
+  line-height: 0;
+  @include heading-text;
+  font-size: 14px;
+  font-weight: 400;
+  padding-right: 10px;
+  color: $white;
+  text-transform: uppercase;
+}

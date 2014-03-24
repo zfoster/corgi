@@ -1,0 +1,22 @@
+nav.navbar {
+  background-color: $beige;
+  border: none;
+  border-radius: 0;
+  border-top: $red solid 10px;
+  min-height: 50px;
+  .navbar-header {
+    .navbar-brand {
+      padding: 8px 15px;
+    }
+    img {
+      height: 30px;
+    }
+  }
+  ul.navbar-nav li a {
+    font-family: $sansfont;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $dark-gray;
+    padding: 13px 15px;
+  }
+}

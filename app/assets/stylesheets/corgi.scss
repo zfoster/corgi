@@ -1,186 +1,38 @@
-// $blue: #2070D7;
-// $lt-grey: #F7F5EF;
-// $red: #D72C20;
-// $green: #20D788;
-//
-// a {
-//   color:white;
-// }
-// a:hover {
-//   color:rgba(255, 255, 255, 0.7);
-// }
-//
-// .bold {
-//   font-weight: bold;
-// }
-//
-// Social Media Buttons
+@import 'bootstrap';
+@import 'defaults';
 
-.identity {
-  color: white;
-  position: relative;
-  a {
-    color:white;
+// Front page content
+
+body.home.index {
+  background-image: asset-url('madison.jpg');
+  background-repeat: no-repeat;
+  background-size:100%;
+  background-color: rgba(56, 73, 119,1);
+  nav {
+    // margin-bottom: 0;
   }
-  .image {
-    float: left;
-    padding-right:10px;
-    img {
-      width: 61px;
-      height: 61px;
+  .home-bg {
+    margin-top: 0;
+    margin-top: 1em;
+    padding: 1em 0;
+    color: $white;
+    @include box-sizing;
+    // background-color: rgba(255,255,255,0.4);
+    .top-content {
+      @include box-sizing;
     }
-  }
-  .names {
-    padding: 5px 0 5px 10px;
-    .name {
-      font-size: 1.2em;
-      padding: 3px 0;
+    p {
+      color: #222222;
+      font-size: 1.1em;
     }
-    .nickname {
-      padding: 3px 3px;
-    }
-  }
-  input[type=radio] {
-    position: absolute;
-    left: 3px;
-    bottom: 3px;
-    margin: 0;
-  }
-
-  .disconnect {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    background-image: asset-url("toggle-2.png");
-    background-repeat: no-repeat;
-    background-size: 32px auto;
-    height: 15px;
-    width: 32px;
-  }
-  .icon {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 24px;
-  }
-}
-
-.social-media {
-  &:hover,
-  &:active {
-    box-shadow: 0 0 5px 1px #9f9f9f;
-  }
-}
-
-.twitter {
-  background-color: #00aced;
-  background-image: asset-url("smi_twitter-logo.png");
-  background-repeat: no-repeat;
-  background-position: 4px 13px;
-  &:hover,
-  &:active {
-    background-color: #00aced;
-  }
-}
-
-.facebook {
-  background-color: #3b5998;
-  background-image: asset-url("smi_fb-logo.png");
-  background-repeat: no-repeat;
-  background-position: 3px 12px;
-  &:hover,
-  &:active {
-    background-color: #3b5998;
-  }
-}
-
-.linkedin {
-  background-color: #007bb6;
-  background-image: asset-url("smi_linkedin-logo.png");
-  background-repeat: no-repeat;
-  background-position: 5px 12px;
-  &:hover,
-  &:active {
-    background-color: #007bb6;
-  }
-}
-
-.googleplus {
-  background-color: #dd4b39;
-  background-image: asset-url("smi_gplus-logo.png");
-  background-repeat: no-repeat;
-  background-position: 7px 13px;
-  &:hover,
-  &:active {
-    background-color: #dd4b39;
-  }
-}
-.default-identity {
-  background-color: #595c5c;
-  background-image: asset-url("smi_madi-logo.png");
-  background-repeat: no-repeat;
-  background-position: 7px 13px;
-  font-size: 0.8em;
-  &:hover, &:active {
-    background-color: #595c5c;
-  }
-  .name-name, .number-number {
-    display: inline;
-    font-size: 1.3em;
-  }
-  .icon {
-    right: 4px;
-    bottom: 4px;
-  }
-
-  #default-email-edit, #default-mobile-edit {
-    display: none;
-    .blank-card {
-      height: 61px;
-      background-color: #595c5c;
-      input[type="text"] {
-        width: 75%;
-        margin: 0 1em;
-        height: 2em;
-      }
-      label {
-        display: inline-block;
-        color: white;
-        float: right;
-        margin: -20px 15px 10px 5px;
-      }
+    .left-content,
+    .right-content {
+      @include box-sizing;
+      padding: 0 2em;
     }
   }
 }
-//
-// // Front page content
-//
-// body.home.index {
-//   background-image: asset-url('madison.jpg');
-//   background-repeat: no-repeat;
-//   background-size:100%;
-//   background-color: rgba(56, 73, 119,1);
-// }
-//
-// .home-bg {
-//   margin-top: 1em;
-//   padding: 1em 0;
-//   background-color: rgba(255,255,255,0.4);
-//   p {
-//     color: #222222;
-//     font-size: 1.1em;
-//   }
-//   .name, .number {
-//     a {
-//       color: white;
-//     }
-//     .edit-default-email, edit-default-mobile {
-//       font-size: 0.8em;
-//       color: white;
-//     }
-//   }
-// }
-//
+
 //
 // .main-content {
 //   margin-top: 1em;
@@ -237,73 +89,73 @@
 //   }
 // }
 //
-// // Support & contribute page
-//
-// body.support {
-//   .supporters {
-//     .s-logo {
-//       float: left;
-//       height: 80px;
-//       line-height: 80px;
-//       text-align: center;
-//       img {
-//         vertical-align: middle;
-//         max-width:120px;
-//         max-height:65px;
-//         margin: auto;
-//         padding: 0;
-//       }
-//     }
-//   }
-// }
-//
-// // Paypal form
-//
-// form#paypal {
-//   text-align: center;
-//   table {
-//     width :100%;
-//     background: none;
-//     font-size: 1.5em;
-//     border: none;
-//     tbody {
-//       tr {
-//         background: none;
-//       }
-//       td {
-//         padding: 0;
-//       }
-//     }
-//   }
-//   input[name="submit"] {
-//     margin-top: -2em;
-//   }
-// }
-//
-// div.contribute {
-//   margin-top:1em;
-//   padding-top: 1em;
-//   textarea {
-//     height: 65px;
-//   }
-//   input[id="contribution_email"] {
-//     width: 70%;
-//     float: left;
-//     font-size: 1.1em;
-//   }
-//   input[type="submit"] {
-//     width: 27%;
-//     float: right;
-//     padding: 0.57em 0;
-//   }
-// }
-//
-//
-// //support page
-//
-//
-// //SOCIAL OBJECTS INDEX
-//
+// Support & contribute page
+
+body.support {
+  .supporters {
+    .s-logo {
+      float: left;
+      height: 80px;
+      line-height: 80px;
+      text-align: center;
+      img {
+        vertical-align: middle;
+        max-width:120px;
+        max-height:65px;
+        margin: auto;
+        padding: 0;
+      }
+    }
+  }
+}
+
+// Paypal form
+
+form#paypal {
+  text-align: center;
+  table {
+    width :100%;
+    background: none;
+    font-size: 1.5em;
+    border: none;
+    tbody {
+      tr {
+        background: none;
+      }
+      td {
+        padding: 0;
+      }
+    }
+  }
+  input[name="submit"] {
+    margin-top: -2em;
+  }
+}
+
+div.contribute {
+  margin-top:1em;
+  padding-top: 1em;
+  textarea {
+    height: 65px;
+  }
+  input[id="contribution_email"] {
+    width: 70%;
+    float: left;
+    font-size: 1.1em;
+  }
+  input[type="submit"] {
+    width: 27%;
+    float: right;
+    padding: 0.57em 0;
+  }
+}
+
+
+//support page
+
+
+//SOCIAL OBJECTS INDEX
+
 // .go-left {
 //   float:left;
 //   margin:10px;
@@ -368,129 +220,29 @@
 //       }
 //     }
 //   }
-//   #ui-datepicker-div {
-//     background: white;
-//     border-radius: 5px;
-//     box-shadow: 2px 2px 8px #aaa;
-//     .ui-datepicker-header {
-//       background: $blue;
-//       padding: 5px;
-//       border-radius: 5px 5px 0 0;
-//         .ui-datepicker-prev {
-//         float: left;
-//       }
-//       .ui-datepicker-next {
-//         float: right;
-//       }
-//       .ui-datepicker-title {
-//         text-align: center;
-//         color: white;
-//       }
-//     }
-//     .ui-datepicker-calendar {
-//       text-align: center;
-//       td {
-//         padding: 0;
-//         width: 20px;
-//         height: 20px;
-//       }
-//       a {
-//         color: #666;
-//         padding: 3px;
-//         margin: 0;
-//         display: block;
-//         &:hover {
-//           background: #ddd;
-//         }
-//       }
-//       .ui-state-highlight,
-//       .ui-widget-content .ui-state-highlight,
-//       .ui-widget-header .ui-state-highlight {
-//         background: lighten($blue, 40);
-//       }
-//       .ui-state-highlight a,
-//       .ui-widget-content .ui-state-highlight a,
-//       .ui-widget-header .ui-state-highlight a {
-//       }
-//       .ui-state-active,
-//       .ui-widget-content .ui-state-active,
-//       .ui-widget-header .ui-state-active {
-//         background: $blue;
-//         color: white;
-//       }
-//     }
-//     table, th, td {
-//       border-collapse: collapse;
-//       background: white;
-//       border: 1px solid #ddd;
-//     }
-//     .ui-slider {
-//       border: 1px solid #aaa;
-//       height: 10px;
-//       border-radius: 5px;
-//       position: relative;
-//     }
-//     .ui-slider-handle {
-//       position: absolute;
-//       z-index: 2;
-//       width: 1.2em;
-//       height: 1.2em;
-//       cursor: default;
-//       top: -.3em;
-//       margin-left: -.6em;
-//       background: $blue;
-//       border-radius: 100%;
-//     }
-//     .ui-datepicker-buttonpane {
-//       clear: left;
-//       text-align: center;
-//       button {
-//         margin: 0 1em;
-//       }
-//     }
-//   }
 // }
 //
-// ul.ui-autocomplete {
-//   list-style-type: none;
-//   background: #fff;
-//   width: 550px;
-// }
-//
-// .ui-menu-item a {
-//   color: #4d4d4d;
-// }
-//
-// .ui-helper-hidden-accessible {
-//   display: none;
-// }
+ul.ui-autocomplete {
+  list-style-type: none;
+  background: #fff;
+  width: 550px;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 4px;
+}
+
+.ui-menu-item a {
+  color: #4d4d4d;
+}
+
+.ui-helper-hidden-accessible {
+  display: none;
+}
 //
 // .hidden {
 //   display: none;
 // }
 //
-// // list of events (events index)
-//
-// .an-event {
-//   padding: 1em 1em 0.5em;
-//   border-bottom: 1px solid #ddd;
-//   margin: 0;
-//   .short-date {
-//     text-align: center;
-//     padding-top: 1em;
-//   }
-//   .event-info > .row {
-//     margin-left: 0;
-//     margin-top: .15em;
-//   }
-//   h3 {
-//     margin: 0;
-//     font-size: 1.2em;
-//     a {
-//       color: $blue;
-//     }
-//   }
-// }
 //
 // input[disabled="disabled"] {
 //   box-shadow: none;
@@ -511,3 +263,7 @@
 // .gmnoprint img {
 //     max-width: none;
 // }
+
+@import 'identity_cards';
+@import 'nav';
+@import 'events';

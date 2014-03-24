@@ -14,10 +14,10 @@ class Event < ActiveRecord::Base
 
   scope :closed, -> { where(closed: true) }
   scope :open, -> { where(closed: false) }
-  scope :future, -> { where('start_time > ?', Time.now) }
+  scope :future, -> { where('start_time > ?', 1.month.from_now) }
   scope :past, -> { where('start_time < ?', Time.now) }
   scope :this_week, -> { where(start_time: Time.now..7.days.from_now)}
-  scope :this_month, -> { where(start_time: Time.now..1.month.from_now)}
+  scope :this_month, -> { where(start_time: 7.days.from_now..1.month.from_now)}
 
   delegate :email, to: :creator, prefix: true
   delegate :name, to: :organization, prefix: true, allow_nil: true
@@ -47,11 +47,11 @@ class Event < ActiveRecord::Base
   end
 
   def display_date
-    start_time.strftime("%a %b #{start_time.day.ordinalize}")
+    start_time.strftime("%A %B #{start_time.day.ordinalize}")
   end
 
   def display_time
-    start_time.strftime("%a %b #{start_time.day.ordinalize}, %l:%M %p")
+    start_time.strftime("%A %B %e, %l:%M%P")
   end
 
 end
