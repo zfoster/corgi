@@ -1,5 +1,8 @@
 - content_for(:head) do
   = javascript_include_tag "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
+  %meta{content: "#{@event.title}", name: "twitter:title"}
+  %meta{content: '@#{@event.creator.try(:twitter_identity).info["nickname"]}', name: "twitter:author"}
+  %meta{content: "#{@event.try(:description)}", name: "twitter:description"}
 
 .row.top-section
   %h1.event-page-header
