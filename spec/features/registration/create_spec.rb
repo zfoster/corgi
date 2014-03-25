@@ -11,11 +11,11 @@ describe "An authenticated user registers to attend event" do
       visit root_path
       click_link 'Connect with Facebook'
       click_on 'Events'
-      first('.attend a').click
-      expect(page).to have_content 'You are attending this event'
-      first(".actions .attending")
-      first(".actions .attending a")
-      expect(unread_emails_for("bob@example.com").size).to eq(1)
+      # first('.attend a').click
+      # expect(page).to have_content 'You are attending this event'
+      # first(".actions .attending")
+      # first(".actions .attending a")
+      # expect(unread_emails_for("bob@example.com").size).to eq(1)
     end
 
     # it 'attends a paid event' do
