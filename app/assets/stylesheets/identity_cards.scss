@@ -45,7 +45,6 @@
     position: absolute;
     right: 0;
     bottom: 0;
-    // width: 24px;
   }
 }
 
@@ -55,7 +54,7 @@
   color: white;
   &:hover,
   &:active {
-    box-shadow: 0 0 5px 1px #9f9f9f;
+    box-shadow: 0 0 5px 1px #ccc;
   }
 }
 
@@ -64,9 +63,8 @@
   background-image: asset-url("smi_twitter-logo.png");
   background-repeat: no-repeat;
   background-position: 4px 13px;
-  &:hover,
   &:active {
-    background-color: #00aced;
+    background-image: asset-url("smi_twitter-logo.png");
   }
 }
 
@@ -75,9 +73,8 @@
   background-image: asset-url("smi_fb-logo.png");
   background-repeat: no-repeat;
   background-position: 3px 12px;
-  &:hover,
   &:active {
-    background-color: #3b5998;
+    background-image: asset-url("smi_fb-logo.png");
   }
 }
 
@@ -86,9 +83,8 @@
   background-image: asset-url("smi_linkedin-logo.png");
   background-repeat: no-repeat;
   background-position: 5px 12px;
-  &:hover,
   &:active {
-    background-color: #007bb6;
+    background-image: asset-url("smi_linkedin-logo.png");
   }
 }
 
@@ -97,9 +93,8 @@
   background-image: asset-url("smi_gplus-logo.png");
   background-repeat: no-repeat;
   background-position: 7px 13px;
-  &:hover,
   &:active {
-    background-color: #dd4b39;
+    background-image: asset-url("smi_gplus-logo.png");
   }
 }
 .default-identity {
@@ -108,12 +103,13 @@
   background-repeat: no-repeat;
   background-position: 7px 13px;
   font-size: 0.8em;
-  &:hover, &:active {
-    background-color: #595c5c;
-  }
+  position: relative;
   .name-name, .number-number {
     display: inline;
     font-size: 1.3em;
+  }
+  .number {
+    margin-top: 7px;
   }
   .icon {
     right: 4px;
@@ -125,41 +121,20 @@
     right: 5px;
     top: 5px;
   }
+  .email {
+    position: absolute;
+    top: 0px;
+    left: 75px;
+  }
+  .mobile_num {
+    position: absolute;
+    bottom: 10px;
+    left: 75px;
+  }
   input[type='tel'],
   input[type='email'] {
     margin: 0.5em 0 0;
     height: 2em;
     width: 250px;
   }
-
-  // #default-email-edit, #default-mobile-edit {
-  //   display: none;
-  //   .blank-card {
-  //     height: 65px;
-  //     background-color: #595c5c;
-  //     input[type="text"] {
-  //       width: 75%;
-  //       margin: 0 1em;
-  //       height: 2em;
-  //     }
-  //     label {
-  //       display: inline-block;
-  //       color: white;
-  //       float: right;
-  //       margin: -20px 15px 10px 5px;
-  //     }
-  //   }
-  // }
 }
-
-
-
-// .name, .number {
-//     a {
-//       color: white;
-//     }
-//     .edit-default-email, edit-default-mobile {
-//       font-size: 0.8em;
-//       color: white;
-//     }
-//   }

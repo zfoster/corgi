@@ -18,10 +18,6 @@
     .group-of-events.clearfix
       - @events.future.order("start_time asc").each do |event|
         = render 'event_list', :event => event
-    %h2.date-group.red-banner Past Events
-    .group-of-events.clearfix
-      - @events.past.order("start_time desc").each do |event|
-        = render 'event_list', :event => event
   %p.ical_link
     = link_to 'iCal', events_path(format: :ics)
     = link_to 'webCal', webcal_url(events_url(format: :ics))

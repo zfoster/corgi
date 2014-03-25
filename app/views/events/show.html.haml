@@ -30,28 +30,30 @@
         .event-description
           %p
             =simple_format h auto_link(@event.description).html_safe
-      .actions
-        - if current_user && current_user.registered?(@event)
-          = link_to cancel_registration_event_path(@event), method: :delete do
-            .attending.click-to-cancel
-              %span.text
-                Attending
-              = image_tag('check.png', title: 'Attending. Click to cancel registration.')
-        - else
-          = link_to event_registrations_path(@event), method: :post do
-            .attend
-              %span.text
-                Attend
-              = image_tag('add.png', title: 'Click to attend')
-        - if current_user && current_user.amplified?(@event)
-          .amped
-            Amplified!
-        - else
-          = link_to amps_path(event_id: @event.id), method: :post do
-            .amp
-              %span.text
-                Amplify
-              = image_tag('amp.png', title: "Amplify")
+      / .actions
+      /   - if current_user && current_user.registered?(@event)
+      /     = link_to cancel_registration_event_path(@event), method: :delete do
+      /       .attending.click-to-cancel
+      /         %span.text
+      /           Attending
+      /         = image_tag('check.png', title: 'Attending. Click to cancel registration.', width: "36px", height: "35px")
+      /   - else
+      /     = link_to event_registrations_path(@event), method: :post do
+      /       .attend
+      /         %span.text
+      /           Attend
+      /         = image_tag('add.png', title: 'Click to attend', width: "36px", height: "35px")
+      /   - if current_user && current_user.amplified?(@event)
+      /     .amped
+      /       %span.text
+      /         Amped
+      /       = image_tag('amp.png', title: "Amplified", width: "36px", height: "35px")
+      /   - else
+      /     = link_to amps_path(event_id: @event.id), method: :post do
+      /       .amp
+      /         %span.text
+      /           Amplify
+      /         = image_tag('amped.png', title: "Amplify", width: "36px", height: "35px")
 
       / .event-price
       /   - if @event.price == 0 || @event.price == nil

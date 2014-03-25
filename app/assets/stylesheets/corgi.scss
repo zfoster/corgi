@@ -14,214 +14,106 @@ body.home.index {
   .home-bg {
     margin-top: 0;
     margin-top: 1em;
-    padding: 1em 0;
+    padding: 1em 5em;
     color: $white;
     @include box-sizing;
-    // background-color: rgba(255,255,255,0.4);
     .top-content {
       @include box-sizing;
+      padding: 0 2em;
+      margin-bottom: 2em;
+      h2 {
+        color: $white;
+        font-size: 36px;
+        margin-top: 0;
+      }
     }
     p {
-      color: #222222;
-      font-size: 1.1em;
+      color: $white;
+      font-size: 1.3em;
     }
     .left-content,
     .right-content {
       @include box-sizing;
       padding: 0 2em;
     }
+    .intro-copy {
+      background-color: rgba(55,55,55,0.4);
+      padding: 1em;
+    }
   }
 }
 
-//
-// .main-content {
-//   margin-top: 1em;
-//   padding: 1em 0;
-//   // background-color: rgba(56, 73, 119,0.2);
-//   p {
-//     color: #222222;
-//     font-size: 1.1em;
-//   }
-//   .name, .number {
-//     a {
-//       color: white;
-//     }
-//     .edit-default-email, edit-default-mobile {
-//       font-size: 0.8em;
-//       color: white;
-//     }
-//   }
-// }
-//
-// input#email {
-//   height:2em;
-//   font-size: 1.4em;
-// }
-//
-// .footer-wrapper {
-//   position: fixed;
-//   bottom: 0px;
-//   left: 0px;
-//   width: 100%;
-//  .photo-credit {
-//     position: absolute;
-//     bottom: 0;
-//     left: 0;
-//     color: white;
-//     padding: 10px;
-//     background-color: rgba(155, 155, 155, 0.2);
-//     font-size: 0.8em;
-//     a {
-//       color:white;
-//     }
-//   }
-//   img {
-//     position: absolute;
-//     right: 20px;
-//     width: 80px;
-//     &.center {
-//       bottom: 10px;
-//       left:40%;
-//     }
-//     &.right {
-//       bottom: 10px;
-//     }
-//   }
-// }
-//
+
 // Support & contribute page
 
 body.support {
-  .supporters {
-    .s-logo {
-      float: left;
-      height: 80px;
-      line-height: 80px;
-      text-align: center;
-      img {
-        vertical-align: middle;
-        max-width:120px;
-        max-height:65px;
-        margin: auto;
-        padding: 0;
+  h2 {
+    font-size: 22px;
+  }
+  .main-content {
+    margin: 1em;
+    padding: 1em 0;
+    .collection-of-logos,
+    .support-forms {
+      border-top: 10px solid $dark-gray;
+      padding: 1em;
+      background-color: $light-gray;
+      @include box-sizing;
+      box-shadow: 1px 2px 3px rgb(204,204,204);
+      margin: 1em 0;
+      .row {
+        margin: 1em 0;
+      }
+      .s-logo {
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+        a {
+          display: block;
+          &:hover {
+            box-shadow: 1px 1px 3px rgba(10,10,10,0.2);
+          }
+        }
+        img {
+          vertical-align: middle;
+          max-width:120px;
+          max-height:65px;
+          margin: auto;
+          padding: 0;
+        }
       }
     }
   }
-}
-
-// Paypal form
-
-form#paypal {
-  text-align: center;
-  table {
-    width :100%;
-    background: none;
-    font-size: 1.5em;
-    border: none;
-    tbody {
-      tr {
-        background: none;
-      }
-      td {
-        padding: 0;
+  form#paypal {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 3em;
+    table {
+      width :100%;
+      // background: none;
+      font-size: 1.5em;
+      border: none;
+      tbody {
+        tr {
+          background: none;
+        }
+        td {
+          padding: 0;
+        }
       }
     }
+    input[name="submit"] {
+      margin-top: 1em;
+    }
   }
-  input[name="submit"] {
-    margin-top: -2em;
+  #contribution_email {
+    border-radius: 4px 0 0 4px;
   }
-}
-
-div.contribute {
-  margin-top:1em;
-  padding-top: 1em;
-  textarea {
-    height: 65px;
-  }
-  input[id="contribution_email"] {
-    width: 70%;
-    float: left;
-    font-size: 1.1em;
-  }
-  input[type="submit"] {
-    width: 27%;
-    float: right;
-    padding: 0.57em 0;
+  span.input-group-btn {
+    vertical-align: bottom;
   }
 }
 
-
-//support page
-
-
-//SOCIAL OBJECTS INDEX
-
-// .go-left {
-//   float:left;
-//   margin:10px;
-//   width:8%;
-// }
-//
-// // EVENTS FORM
-//
-// body.events.edit,
-// body.events.new {
-//   .field-and-label {
-//     float: left;
-//     clear: left;
-//     margin: 5px 0;
-//   }
-//   textarea {
-//     height: auto;
-//   }
-//   select {
-//     width: auto;
-//   }
-//   label {
-//     height: 0px;
-//     width: 0px;
-//     overflow: hidden;
-//   }
-//   .radio-buttons {
-//     input {
-//       float: left;
-//       margin-right: 5px;
-//     }
-//     label {
-//       height: auto;
-//       width: auto;
-//       float: left;
-//     }
-//   }
-//   .location {
-//     .field {
-//       &.city {
-//         width: auto;
-//         float: left;
-//         margin-right: 10px;
-//         input {
-//           width: 100px;
-//         }
-//       }
-//       &.state {
-//         width: auto;
-//         float: left;
-//         margin-right: 10px;
-//         input {
-//           width: 50px;
-//         }
-//       }
-//       &.zip-code {
-//         width: auto;
-//         float: left;
-//         input {
-//           width: 110px;
-//         }
-//       }
-//     }
-//   }
-// }
-//
 ul.ui-autocomplete {
   list-style-type: none;
   background: #fff;
@@ -238,31 +130,6 @@ ul.ui-autocomplete {
 .ui-helper-hidden-accessible {
   display: none;
 }
-//
-// .hidden {
-//   display: none;
-// }
-//
-//
-// input[disabled="disabled"] {
-//   box-shadow: none;
-//   border: none;
-// }
-//
-// // event show
-//
-// .attendees, .hosts {
-//   ul {
-//     list-style-type: none;
-//     margin-left: 5px;
-//   }
-// }
-//
-// // Make sure google map controls display
-//
-// .gmnoprint img {
-//     max-width: none;
-// }
 
 @import 'identity_cards';
 @import 'nav';
