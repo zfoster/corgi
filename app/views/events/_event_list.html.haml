@@ -12,14 +12,12 @@
           = event.address_line_1
       - if event.description.present?
         .description
-          =simple_format h event.description.html_safe
-          .read-more
-            =link_to "READ MORE", event
-      .price
-        - if event.price == 0 || event.price == nil
-          No charge
-        - else
-          = "$" + event.price.to_s
+          = truncate event.description, length: 150
+      -# .price
+      -#   - if event.price == 0 || event.price == nil
+      -#     No charge
+      -#   - else
+      -#     = "$" + event.price.to_s
     / .actions
     /   - if current_user && current_user.registered?(event)
     /     = link_to cancel_registration_event_path(event), method: :delete do

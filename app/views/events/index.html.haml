@@ -1,23 +1,16 @@
-.content-wrapper
-  .row.top-section
-    .new-event-action.clearfix
-      .add
-        = link_to "ADD AN EVENT", new_event_path, class: 'btn btn-default btn-lg pull-right'
-  .section-divider
-    %hr
-  .row.main-content
-    %h2.date-group.red-banner This Week
-    .group-of-events.clearfix
-      - @events.this_week.order("start_time asc").each do |event|
-        = render 'event_list', :event => event
-    %h2.date-group.red-banner This Month
-    .group-of-events.clearfix
-      - @events.this_month.order("start_time asc").each do |event|
-        = render 'event_list', :event => event
-    %h2.date-group.red-banner Future Events
-    .group-of-events.clearfix
-      - @events.future.order("start_time asc").each do |event|
-        = render 'event_list', :event => event
-  %p.ical_link
-    = link_to 'iCal', events_path(format: :ics)
-    = link_to 'webCal', webcal_url(events_url(format: :ics))
+.row
+  %h2.date-group.red-banner This Week
+  .group-of-events.clearfix
+    - @events.this_week.order("start_time asc").each do |event|
+      = render 'event_list', :event => event
+  %h2.date-group.red-banner This Month
+  .group-of-events.clearfix
+    - @events.this_month.order("start_time asc").each do |event|
+      = render 'event_list', :event => event
+  %h2.date-group.red-banner Future Events
+  .group-of-events.clearfix
+    - @events.future.order("start_time asc").each do |event|
+      = render 'event_list', :event => event
+-# %p.ical_link
+-#   = link_to 'iCal', events_path(format: :ics)
+-#   = link_to 'webCal', webcal_url(events_url(format: :ics))

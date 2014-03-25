@@ -1,4 +1,7 @@
 class Event < ActiveRecord::Base
+  extend TimeSplitter::Accessors
+  split_accessor :start_time, :end_time
+
   has_many :hostings
   has_many :registrations
   has_many :amps
@@ -10,7 +13,7 @@ class Event < ActiveRecord::Base
   belongs_to :creator, class_name: "User"
   belongs_to :event
 
-  validates_presence_of :end_time, :if => :start_time?
+  validates_presence_of :start_time, :title
 
   scope :closed, -> { where(closed: true) }
   scope :open, -> { where(closed: false) }

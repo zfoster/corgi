@@ -34,9 +34,6 @@ body.events.edit{
       border-top: 2px solid $beige;
     }
   }
-  .content-wrapper {
-    padding: 0 5em 2em;
-  }
   h2.date-group {
     margin-left: 15px;
   }
@@ -65,7 +62,7 @@ body.events.edit{
     }
   }
   .an-event {
-    height: 245px;
+    height: 150px;
     .description {
       max-height: 65px;
       overflow: hidden;

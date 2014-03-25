@@ -26,36 +26,15 @@ class EventsController < ApplicationController
   end
 
   def create
-    parse_date_fields
     @event = current_user.created_events.new(event_params)
-    @event.hosts << current_user
-    @event.attendees << current_user
+    @event.end_time_date = @event.start_time_date if @event.start_time_date
     if @event.save
+      @event.hosts << current_user
+      @event.attendees << current_user
       EventMailer.created(@event).deliver
       redirect_to @event, notice: 'Event was successfully created.'
     else
       render action: 'new'
-    end
-  end
-
-  def parse_date_fields
-    start_time = params[:event][:start_time].to_date
-    end_time = params[:event][:end_time].to_date
-    params[:event]['start_time(1i)'],
-      params[:event]['start_time(2i)'],
-      params[:event]['start_time(3i)'],
-      params[:event]['end_time(1i)'],
-      params[:event]['end_time(2i)'],
-      params[:event]['end_time(3i)'] = nil
-    unless start_time == nil
-      params[:event]['start_time(1i)'] = start_time.year.to_s
-      params[:event]['start_time(2i)'] = start_time.month.to_s
-      params[:event]['start_time(3i)'] = start_time.day.to_s
-    end
-    unless end_time == nil
-      params[:event]['end_time(1i)'] = end_time.year.to_s
-      params[:event]['end_time(2i)'] = end_time.month.to_s
-      params[:event]['end_time(3i)'] = end_time.day.to_s
     end
   end
 
@@ -67,11 +46,14 @@ class EventsController < ApplicationController
     when /meetup/
       Event::Meetup.new(parsed_url.to_s).import
     end
-    render json: @event
+    if @event
+      render json: @event
+    else
+      render json: { error: 'No Event Data Found'}, status: 404
+    end
   end
 
   def update
-    parse_date_fields
     @event.attributes=(event_params)
     if @event.save
       redirect_to @event, notice: 'Event was successfully updated.'
@@ -94,6 +76,6 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit :title, :description, :price,
-      :start_time, :end_time, :url, :organization_name, :address_line_1, :lat, :lon, :state
+      :start_time_date, :start_time_time, :end_time_date, :end_time_time, :url, :organization_name, :address_line_1, :lat, :lon, :state
   end
 end

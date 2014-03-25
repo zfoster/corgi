@@ -14,12 +14,9 @@
         %li
           = link_to "Events", events_path
         %li
-          = link_to "ADD AN EVENT", new_event_path
+          = link_to "Add an Event", new_event_path
         %li
           = link_to "Support & Contribute", support_path
-        - if current_user && current_user.admin?
-          %li
-            = link_to "Admin", admin_path
       -if current_user
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown

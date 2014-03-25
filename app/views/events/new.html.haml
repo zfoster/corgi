@@ -30,17 +30,18 @@
         .col-sm-9
           = f.text_field :title, class: 'col-sm-9 form-control'
       .form-group
-        = f.label :start_time, "Date", class: 'col-sm-3 control-label'
+        = f.label :start_time_date, "Date", class: 'col-sm-3 control-label'
         .col-sm-9
-          = f.date_field :start_time, class: 'form-control'
+          = f.text_field :start_time_date, class: 'form-control date-picker'
+          = f.hidden_field :end_time_date
       .form-group
-        = f.label :start_time, class: 'col-sm-3 control-label'
+        = f.label :start_time_time, class: 'col-sm-3 control-label'
         .col-sm-9.form-inline
-          = f.time_select :start_time, class: 'form-control', ampm: true, minute_step: 15, ignore_date: true
+          = f.time_select :start_time_time, class: 'form-control', ampm: true, minute_step: 15
       .form-group
-        = f.label :end_time, class: 'col-sm-3 control-label'
+        = f.label :end_time_time, class: 'col-sm-3 control-label'
         .col-sm-9.form-inline
-          = f.time_select :end_time, class: 'form-control', ampm: true, minute_step: 15, ignore_date: true
+          = f.time_select :end_time_time, class: 'form-control', ampm: true, minute_step: 15
       .form-group
         = f.label "Venue", class: 'col-sm-3 control-label'
         .col-sm-9

@@ -1,7 +1,13 @@
 @import 'bootstrap';
+@import 'bootstrap-datetimepicker';
 @import 'defaults';
 
 // Front page content
+
+.field_with_errors {
+  @extend .has-error;
+}
+
 
 body.home.index {
   background-image: asset-url('madison.jpg');
@@ -50,37 +56,33 @@ body.support {
   h2 {
     font-size: 22px;
   }
-  .main-content {
-    margin: 1em;
-    padding: 1em 0;
-    .collection-of-logos,
-    .support-forms {
-      border-top: 10px solid $dark-gray;
-      padding: 1em;
-      background-color: $light-gray;
-      @include box-sizing;
-      box-shadow: 1px 2px 3px rgb(204,204,204);
+  .collection-of-logos,
+  .support-forms {
+    border-top: 10px solid $dark-gray;
+    padding: 1em;
+    background-color: $light-gray;
+    @include box-sizing;
+    box-shadow: 1px 2px 3px rgb(204,204,204);
+    margin: 1em 0;
+    .row {
       margin: 1em 0;
-      .row {
-        margin: 1em 0;
+    }
+    .s-logo {
+      height: 80px;
+      line-height: 80px;
+      text-align: center;
+      a {
+        display: block;
+        &:hover {
+          box-shadow: 1px 1px 3px rgba(10,10,10,0.2);
+        }
       }
-      .s-logo {
-        height: 80px;
-        line-height: 80px;
-        text-align: center;
-        a {
-          display: block;
-          &:hover {
-            box-shadow: 1px 1px 3px rgba(10,10,10,0.2);
-          }
-        }
-        img {
-          vertical-align: middle;
-          max-width:120px;
-          max-height:65px;
-          margin: auto;
-          padding: 0;
-        }
+      img {
+        vertical-align: middle;
+        max-width:120px;
+        max-height:65px;
+        margin: auto;
+        padding: 0;
       }
     }
   }
@@ -112,23 +114,6 @@ body.support {
   span.input-group-btn {
     vertical-align: bottom;
   }
-}
-
-ul.ui-autocomplete {
-  list-style-type: none;
-  background: #fff;
-  width: 550px;
-  border: 1px solid #ccc;
-  border-top: none;
-  border-radius: 4px;
-}
-
-.ui-menu-item a {
-  color: #4d4d4d;
-}
-
-.ui-helper-hidden-accessible {
-  display: none;
 }
 
 @import 'identity_cards';
