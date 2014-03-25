@@ -4,9 +4,9 @@
       .title
         %h3
           = link_to event.title, event
-      - if event.start_time
         .time
-          = event.display_time
+          = event.display_date
+          = event.dispay_start_time
       .location
         - if event.address_line_1.present?
           = event.address_line_1

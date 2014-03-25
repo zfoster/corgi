@@ -15,11 +15,13 @@
     %hr
   #event-left.col-xs-12.col-md-8
     .event-time.red-banner
-      #{@event.display_date},
-      - if @event.end_time.present?
-        = @event.start_time.strftime("%l:%M %p")+ " to " + @event.end_time.strftime("%l:%M %p")
-      - else
-        = @event.start_time.strftime("%l:%M %p")
+      = @event.display_date
+      = @event.display_start_time
+      / #{@event.display_date},
+      / - if @event.end_time.present?
+      /   = @event.start_time.strftime("%l:%M %p")+ " to " + @event.end_time.strftime("%l:%M %p")
+      / - else
+      /   = @event.start_time.strftime("%l:%M %p")
     .the-event.clearfix
       - if @event.organization
         .event-organization
@@ -54,14 +56,6 @@
       /         %span.text
       /           Amplify
       /         = image_tag('amped.png', title: "Amplify", width: "36px", height: "35px")
-
-      / .event-price
-      /   - if @event.price == 0 || @event.price == nil
-      /     %p No charge
-      /   - else
-      /     %p
-      /       Cost:
-      /       = "$" + @event.price.to_s
   #event-right.col-xs-6.col-md-4
     .event-details
       - if @event.lat && @event.lon
@@ -70,13 +64,18 @@
             = link_to "http://maps.google.com/?q=#{@event.lon},#{@event.lat}" do
               %img.img-responsive{src: "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=400x300&maptype=roadmap&markers=color:red%7C#{@event.lon},#{@event.lat}&sensor=false", style: "width: auto; height: 300px;"}
       .event-location
-        = @event.address_line_1
+        - if @event.venue_name
+          = "#{@event.venue_name + ', '}"
+        - if @event.street_address
+          = "#{@event.street_address + ', '}"
+        - if @event.city
+          = "#{@event.city.to_s}"
+
       .event-time-event-page
         = @event.display_date
-        - if @event.end_time.present?
-          = @event.start_time.strftime("%l:%M %p")+ " to " + @event.end_time.strftime("%l:%M %p")
-        - else
-          = @event.start_time.strftime("%l:%M %p")
+        = @event.display_start_time
+      /   - else
+      /     = @event.start_time.strftime("%l:%M %p")
       .event-price
         - if @event.price == 0 || @event.price == nil
           %p No charge

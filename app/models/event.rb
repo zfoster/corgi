@@ -47,11 +47,15 @@ class Event < ActiveRecord::Base
   end
 
   def display_date
-    start_time.strftime("%A %B #{start_time.day.ordinalize}")
+    display_date = date.strftime("%A, %B %e") if date
   end
 
-  def display_time
-    start_time.strftime("%A %B %e, %l:%M%P")
+  def display_start_time
+    display_start_time = new_start_time.strftime(", %l:%M%P") if new_start_time
+  end
+
+  def display_end_time
+    display_end_time = new_end_time.strftime(", %l:%M%P") if new_end_time
   end
 
 end

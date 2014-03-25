@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140311180222) do
+ActiveRecord::Schema.define(version: 20140325052246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,12 @@ ActiveRecord::Schema.define(version: 20140311180222) do
     t.integer  "event_feed_id"
     t.float    "lat"
     t.float    "lon"
+    t.date     "date"
+    t.time     "new_start_time"
+    t.time     "new_end_time"
+    t.string   "venue_name"
+    t.string   "street_address"
+    t.json     "meta_location"
   end
 
   add_index "events", ["event_feed_id"], name: "index_events_on_event_feed_id", using: :btree
@@ -102,6 +108,7 @@ ActiveRecord::Schema.define(version: 20140311180222) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "follows_updated_at"
+    t.hstore   "auth_response"
   end
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
@@ -135,6 +142,11 @@ ActiveRecord::Schema.define(version: 20140311180222) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ip_address"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
     t.string   "cardholder_name"
   end
 
@@ -161,6 +173,25 @@ ActiveRecord::Schema.define(version: 20140311180222) do
   add_index "registrations", ["event_id"], name: "index_registrations_on_event_id", using: :btree
   add_index "registrations", ["user_id"], name: "index_registrations_on_user_id", using: :btree
 
+  create_table "shares", force: true do |t|
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_id"
+    t.integer  "user_id"
+  end
+
+  create_table "social_objects", force: true do |t|
+    t.integer  "corgi_foreign_key"
+    t.datetime "corgi_create_date"
+    t.string   "type"
+    t.string   "title"
+    t.text     "description"
+    t.string   "uri"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email"
     t.string   "mobile_num"
@@ -174,9 +205,9 @@ ActiveRecord::Schema.define(version: 20140311180222) do
     t.string   "state"
     t.string   "zip_code"
     t.string   "name"
+    t.string   "payment_token"
     t.text     "contacts"
     t.text     "pulled_events"
-    t.string   "payment_token"
     t.boolean  "admin",               default: false
   end
 

@@ -1,21 +1,65 @@
+- content_for(:head) do
+  = javascript_include_tag "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
+
 .row
-  .col-sm-6
-    %h1 New Event
-
-    %p Welcome to Madi! Here is some instructions on how to create a new event
-
-    %p
-      You can also import data from these sources:
-      %ul
-        %li Meetup
-        %li Eventbrite
-
-    .input-group
-      %input.form-control{type: "text", placeholder: 'Paste a URL', id: 'import-url'}
-      %span.input-group-btn
-        %button.btn.btn-success{type: "button", id: 'import-event'} Import
-  .col-sm-6
-    = render 'form'
+  .add-event-form.col-sm-6
+    %h1 Add an Event
+    = form_for [@event], :html => {:class => 'form-horizontal'} do |f|
+      = f.hidden_field :meta_location
+      = f.hidden_field :lat
+      = f.hidden_field :lon
+      = f.hidden_field :venue_name
+      = f.hidden_field :street_address
+      = f.hidden_field :city
+      .input-group
+        %label.col-sm-3.control-label Import
+        .col-sm-9
+          %input.form-control{type: "text", placeholder: 'Enter a Meetup or Eventbrite URL', id: 'import-url'}
+        %span.input-group-btn
+          %button.btn.btn-success{type: "button", id: 'import-event'} Import
+      .col-sm-9.col-sm-offset-3.help-text
+        %span.help-block We will try to read from the url to fill the fields below.
+      .form-group
+        = f.label :title, class: 'col-sm-3 control-label'
+        .col-sm-9
+          = f.text_field :title, class: 'col-sm-9 form-control'
+      .form-group
+        = f.label :date, "Date", class: 'col-sm-3 control-label'
+        .col-sm-9
+          = f.date_field :date, class: 'form-control'
+      .form-group
+        = f.label :new_start_time, "Start Time", class: 'col-sm-3 control-label'
+        .col-sm-9.form-inline
+          = f.time_select :new_start_time, class: 'form-control', ampm: true, minute_step: 15, ignore_date: true
+      .form-group
+        = f.label :new_end_time, "End Time", class: 'col-sm-3 control-label'
+        .col-sm-9.form-inline
+          = f.time_select :new_end_time, class: 'form-control', ampm: true, minute_step: 15, ignore_date: true
+      .form-group
+        = f.label "Venue", class: 'col-sm-3 control-label'
+        .col-sm-9
+          = f.text_area :address_line_1, rows: "3", class: 'form-control', id: 'places-autocomplete'
+      .form-group
+        = f.label :description, class: 'col-sm-3 control-label'
+        .col-sm-9
+          = f.text_area :description, rows: "3", class: 'form-control'
+          %span.help-block URLs which include the protocol (eg. http://) and email address will be converted into links.
+      .form-group
+        = label_tag :organization, "Organization", class: 'col-sm-3 control-label'
+        .col-sm-9
+          = f.autocomplete_field :organization_name, autocomplete_organization_name_organizations_path, class: 'form-control'
+      .form-group
+        = f.label :url, 'Registration URL', class: 'col-sm-3 control-label'
+        .col-sm-9
+          = f.text_field :url, class: 'form-control'
+          %span.help-block Enter a link if attendees should register on another site.
+      .form-group
+        = f.label :price, "Display Price", class: 'col-sm-3 control-label'
+        .col-sm-9
+          = f.text_field :price, class: 'form-control'
+      .form-group
+        .col-sm-3.col-sm-offset-9
+          = f.submit 'Save Event', class: 'btn btn-primary btn-lg btn-block'
 
 - content_for :javascript do
   :javascript

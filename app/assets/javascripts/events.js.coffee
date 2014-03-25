@@ -7,15 +7,26 @@ if $('body').hasClass('events')
     google.maps.event.addListener autocomplete, 'place_changed', ()->
       place = autocomplete.getPlace()
       addressArray = place.address_components
+      streetNumber = ""
+      street = ""
+      suiteNumber = ""
       i = 0
 
+      $('#event_meta_location').val(place)
+      $('#event_venue_name').val(place.name)
       $('#event_lat').val(place.geometry.location.A)
       $('#event_lon').val(place.geometry.location.k)
       while i < addressArray.length
+        if addressArray[i].types[0] is "street_number"
+          streetNumber = place.address_components[i].long_name
+        if addressArray[i].types[0] is "route"
+          street = place.address_components[i].long_name
+        if addressArray[i].types[0] is "subpremise"
+          suiteNumber = place.address_components[i].long_name
         if addressArray[i].types[0] is "locality"
           $("#event_city").val place.address_components[i].long_name
-          break
         i++
+      $('#event_street_address').val(streetNumber + " " + street + " " + suiteNumber)
 
   if $('body').hasClass('edit')
 
@@ -36,7 +47,6 @@ if $('body').hasClass('events')
         center: new google.maps.LatLng(43.0667, -89.4000)
         radius: 50000
       map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
-      # infowindow = new google.maps.InfoWindow()
       marker = new google.maps.Marker(
         position: initialLatLng
         map: map
@@ -44,25 +54,35 @@ if $('body').hasClass('events')
       autocomplete.bindTo "bounds", map
       )
       google.maps.event.addListener autocomplete, 'place_changed', ->
-        # infowindow.close()
         marker.setVisible false
         place = autocomplete.getPlace()
         addressArray = place.address_components
+        streetNumber = undefined
+        street = undefined
+        suiteNumber = undefined
         i = 0
 
+        $('#event_meta_location').val(place)
+        $('#event_venue_name').val(place.name)
         $('#event_lat').val(place.geometry.location.A)
         $('#event_lon').val(place.geometry.location.k)
         while i < addressArray.length
+          if addressArray[i].types[0] is "street_number"
+            streetNumber = place.address_components[i].long_name
+          if addressArray[i].types[0] is "route"
+            street = place.address_components[i].long_name
+          if addressArray[i].types[0] is "subpremise"
+            suiteNumber = place.address_components[i].long_name
           if addressArray[i].types[0] is "locality"
             $("#event_city").val place.address_components[i].long_name
-            break
           i++
+        $('#event_street_address').val(streetNumber + " " + street + " " + suiteNumber)
 
         if place.geometry.viewport
           map.fitBounds place.geometry.viewport
         else
           map.setCenter place.geometry.location
-          map.setZoom 14 # Why 17? Because it looks good.
+          map.setZoom 14
         marker.setIcon (
           url: place.icon
           size: new google.maps.Size(71, 71)
@@ -72,16 +92,6 @@ if $('body').hasClass('events')
         )
         marker.setPosition place.geometry.location
         marker.setVisible true
-
-        # address = ""
-        # if place.address_components
-        #   address = [
-        #     place.address_components[0] and place.address_components[0].short_name or ""
-        #     place.address_components[1] and place.address_components[1].short_name or ""
-        #     place.address_components[2] and place.address_components[2].short_name or ""
-        #   ].join(" ")
-        # infowindow.setContent "<div><strong>" + place.name + "</strong><br>" + address
-        # infowindow.open map, marker
         return
 
       return
