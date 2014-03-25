@@ -16,7 +16,7 @@ class Event::Meetup < Event::Importer
   private
 
   def attributes
-    { start_time: Time.at(event_data['time']/1000)
+    { start_time: Time.at(event_data['time']/1000),
       title: event_data['name'],
       description: Nokogiri::HTML(event_data['description']).text,
       organization_name: event_data['group']['name'],
