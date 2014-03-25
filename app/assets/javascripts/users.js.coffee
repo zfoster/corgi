@@ -9,3 +9,9 @@ $(document).ready ->
     $('.email').removeClass('hidden')
     $('.mobile_num').removeClass('hidden')
     $('.save').removeClass('hidden')
+
+  $('.edit-default-mobile').click (event) ->
+    event.preventDefault()
+    $('.default-identity .number').hide()
+    $('.mobile_num').removeClass('hidden')
+    $('.save').removeClass('hidden')

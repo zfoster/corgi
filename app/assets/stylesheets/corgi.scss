@@ -14,21 +14,31 @@ body.home.index {
   .home-bg {
     margin-top: 0;
     margin-top: 1em;
-    padding: 1em 0;
+    padding: 1em 5em;
     color: $white;
     @include box-sizing;
-    // background-color: rgba(255,255,255,0.4);
     .top-content {
       @include box-sizing;
+      padding: 0 2em;
+      margin-bottom: 2em;
+      h2 {
+        color: $white;
+        font-size: 36px;
+        margin-top: 0;
+      }
     }
     p {
-      color: #222222;
-      font-size: 1.1em;
+      color: $white;
+      font-size: 1.3em;
     }
     .left-content,
     .right-content {
       @include box-sizing;
       padding: 0 2em;
+    }
+    .intro-copy {
+      background-color: rgba(55,55,55,0.4);
+      padding: 1em;
     }
   }
 }
