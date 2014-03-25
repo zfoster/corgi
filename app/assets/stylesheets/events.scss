@@ -1,6 +1,5 @@
 body.events.index,
-body.events.show,
-body.events.edit{
+body.events.show {
   .top-section {
     padding: 0 15px;
     .new-event-action {
@@ -191,8 +190,10 @@ body.events.show {
   }
 }
 
-body.events.new {
-  .add-event-form {
+body.events.new,
+body.events.edit {
+  .add-event-form,
+  .edit-event-form {
     margin: 0 auto 5em;
     float: none;
     h1 {
