@@ -193,3 +193,32 @@ body.events.show {
     }
   }
 }
+
+body.events.new {
+  .add-event-form {
+    margin: 0 auto 5em;
+    float: none;
+    h1 {
+      font-size: 26px;
+      margin-bottom: 1em;
+    }
+    .input-group {
+      div.col-sm-9 {
+        padding-right: 0;
+        padding-left: 25px;
+        input {
+          border-radius: 4px 0 0 4px;
+        }
+      }
+      span.input-group-btn {
+        vertical-align: bottom;
+      }
+    }
+    .help-text {
+      margin-left: 24%;
+      span {
+        margin-bottom: 25px;
+      }
+    }
+  }
+}
