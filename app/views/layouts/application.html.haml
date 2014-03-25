@@ -17,8 +17,8 @@
     = csrf_meta_tags
     = yield :head
   %body{ class: "#{controller_name} #{action_name}" }
+    = render 'shared/nav'
     .container
-      = render 'shared/nav'
       = render 'layouts/flashes'
       = yield
     = javascript_include_tag "application"
