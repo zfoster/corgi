@@ -1,60 +1,85 @@
-- content_for :javascript do
+- content_for(:head) do
   = javascript_include_tag "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
-= form_for [@event] do |f|
-  = f.hidden_field :lat, class: 'form-control'
-  = f.hidden_field :lon, class: 'form-control'
-  = f.hidden_field :address_line_2, class: 'form-control'
-  = f.hidden_field :city, class: 'form-control'
-  .row.top-section
-    .col-xs-12.col-md-8
-      .form-group.title
-        = f.label :title, class: 'sr-only'
-        = f.text_field :title, class: 'form-control'
-    .new-event-action.col-xs-6.col-md-4
-      .form-group.submit
-        = f.submit 'Save Event', class: 'btn btn-primary btn-default btn-lg'
-      .cancel-edit
-        = link_to 'Cancel', event_path, :class => 'btn btn-default btn-lg'
-  .section-divider
-    %hr
-  #event-left.col-xs-12.col-md-8
-    .event-time.form-inline
-      .form-group.start.date
-        = f.label :start_time, "Start Date", class: 'sr-only'
-        = f.date_field :start_time, class: 'form-control'
-      .form-group.start.time
-        = f.label :start_time, class: 'sr-only'
-        = f.time_select :start_time, class: 'form-control', ampm: true, minute_step: 15, ignore_date: true
-      .date-form-divider{style: "display: inline-block;"}
-        to
-      .form-group.end.date
-        = f.label :end_time, "End Date", class: 'sr-only'
-        = f.date_field :end_time, class: 'form-control'
-      .form-group.end.time
-        = f.label :end_time, class: 'sr-only'
-        = f.time_select :end_time, class: 'form-control', ampm: true, minute_step: 15, ignore_date: true
-    .the-event
-      .event-organization
-        .form-group
-          = f.label :organization_name, "Presented by"
-          = f.autocomplete_field :organization_name, autocomplete_organization_name_organizations_path, class: 'form-control'
-      .event-description
-        .form-group
-          = f.label :description, class: 'sr-only'
+
+.row
+  .edit-event-form.col-sm-6
+    %h1
+      Editing
+      = @event.title
+    = form_for [@event], :html => {:class => 'form-horizontal'} do |f|
+      = f.hidden_field :lat, class: 'form-control'
+      = f.hidden_field :lon, class: 'form-control'
+      = f.hidden_field :address_line_2, class: 'form-control'
+      = f.hidden_field :city, class: 'form-control'
+      / .input-group
+      /   %label.col-sm-3.control-label Import
+      /   .col-sm-9
+      /     %input.form-control{type: "text", placeholder: 'Enter a Meetup or Eventbrite URL', id: 'import-url'}
+      /   %span.input-group-btn
+      /     %button.btn.btn-success{type: "button", id: 'import-event'} Import
+      / .col-sm-9.col-sm-offset-3.help-text
+      /   %span.help-block We will try to read from the url to fill the fields below.
+      .form-group
+        = f.label :title, class: 'col-sm-3 control-label'
+        .col-sm-9
+          = f.text_field :title, class: 'col-sm-9 form-control'
+      .form-group
+        = f.label :start_time_date, "Date", class: 'col-sm-3 control-label'
+        .col-sm-9
+          = f.text_field :start_time_date, class: 'form-control date-picker'
+          = f.hidden_field :end_time_date
+      .form-group
+        = f.label :start_time_time, class: 'col-sm-3 control-label'
+        .col-sm-9.form-inline
+          = f.time_select :start_time_time, class: 'form-control', ampm: true, minute_step: 15
+      .form-group
+        = f.label :end_time_time, class: 'col-sm-3 control-label'
+        .col-sm-9.form-inline
+          = f.time_select :end_time_time, class: 'form-control', ampm: true, minute_step: 15
+      .form-group
+        = f.label "Venue", class: 'col-sm-3 control-label'
+        .col-sm-9
+          = f.text_area :address_line_1, rows: "3", class: 'form-control', id: 'places-autocomplete'
+      .form-group
+        = f.label :description, class: 'col-sm-3 control-label'
+        .col-sm-9
           = f.text_area :description, rows: "3", class: 'form-control'
-  #event-right.col-xs-6.col-md-4
-    .event-details
-      - if @event.lat && @event.lon
-        .event-map
-          #map-canvas{style: "width: 100%; height: 300px;"}
+          %span.help-block URLs which include the protocol (eg. http://) and email address will be converted into links.
       .form-group
-        = f.label "Venue", class: 'sr-only'
-        = f.text_area :address_line_1, rows: "3", class: 'form-control', id: 'places-autocomplete'
+        = label_tag :organization, "Organization", class: 'col-sm-3 control-label'
+        .col-sm-9
+          = f.autocomplete_field :organization_name, autocomplete_organization_name_organizations_path, class: 'form-control'
       .form-group
-        = f.label :url, class: 'sr-only'
-        = f.text_field :url, class: 'form-control'
+        = f.label :url, 'Registration URL', class: 'col-sm-3 control-label'
+        .col-sm-9
+          = f.text_field :url, class: 'form-control'
+          %span.help-block Enter a link if attendees should register on another site.
       .form-group
-        = f.label :price, "Display Price"
-        = f.text_field :price, class: 'form-control'
-      .form-group.submit
-        = f.submit 'Save Event', class: 'btn btn-primary btn-default btn-lg'
+        = f.label :price, "Display Price", class: 'col-sm-3 control-label'
+        .col-sm-9
+          = f.text_field :price, class: 'form-control'
+      .form-group
+        .col-sm-3.col-sm-offset-9
+          = f.submit 'Update Event', class: 'btn btn-primary btn-lg btn-block'
+
+- content_for :javascript do
+  :javascript
+    $('#import-event').on('click', function(){
+      var url = $('#import-url').val();
+      button = this
+      $(button).prop('disabled', true)
+      $(button).text('Importing...')
+      $.ajax({
+        url: '/events/import?url='+url,
+        type: 'GET',
+        dataType: 'json'
+      }).done(function(data){
+        Object.keys(data).forEach(function(key){
+          $('#event_'+key).val(data[key]);
+        });
+        $('#event_url').val(url)
+        $(button).prop('disabled', false)
+        $(button).text('Import')
+      });
+    });
+
