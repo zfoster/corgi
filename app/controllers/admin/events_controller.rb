@@ -16,8 +16,8 @@ class Admin::EventsController < AdminController
   end
 
   def create
-    parse_date_fields
     @event = current_user.created_events.new(event_params)
+    @event.end_time_date = @event.start_time_date if @event.start_time_date
     if @event.save
       flash[:notice] = 'Event was successfully created.'
       redirect_to action: 'index'
@@ -27,7 +27,6 @@ class Admin::EventsController < AdminController
   end
 
   def update
-    parse_date_fields
     @event = Event.find(params[:id])
     @event.attributes = event_params
     if @event.save
@@ -43,17 +42,6 @@ class Admin::EventsController < AdminController
     @event.destroy
     flash[:notice] = 'Event has been destroyed'
     redirect_to action: 'index'
-  end
-
-  def parse_date_fields
-    start_time = params[:event][:start_time].to_date
-    end_time = params[:event][:end_time].to_date
-    params[:event]['start_time(1i)'] = start_time.year.to_s
-    params[:event]['start_time(2i)'] = start_time.month.to_s
-    params[:event]['start_time(3i)'] = start_time.day.to_s
-    params[:event]['end_time(1i)'] = end_time.year.to_s
-    params[:event]['end_time(2i)'] = end_time.month.to_s
-    params[:event]['end_time(3i)'] = end_time.day.to_s
   end
 
   def event_params
