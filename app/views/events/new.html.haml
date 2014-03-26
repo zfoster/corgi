@@ -35,11 +35,11 @@
           = f.text_field :start_time_date, class: 'form-control date-picker'
           = f.hidden_field :end_time_date
       .form-group
-        = f.label :start_time_time, class: 'col-sm-3 control-label'
+        = f.label :start_time_time, "Start Time", class: 'col-sm-3 control-label'
         .col-sm-9.form-inline
           = f.time_select :start_time_time, class: 'form-control', ampm: true, minute_step: 15
       .form-group
-        = f.label :end_time_time, class: 'col-sm-3 control-label'
+        = f.label :end_time_time, "End Time", class: 'col-sm-3 control-label'
         .col-sm-9.form-inline
           = f.time_select :end_time_time, class: 'form-control', ampm: true, minute_step: 15
       .form-group
