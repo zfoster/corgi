@@ -11,14 +11,14 @@
       = f.hidden_field :lon, class: 'form-control'
       = f.hidden_field :address_line_2, class: 'form-control'
       = f.hidden_field :city, class: 'form-control'
-      .input-group
-        %label.col-sm-3.control-label Import
-        .col-sm-9
-          %input.form-control{type: "text", placeholder: 'Enter a Meetup or Eventbrite URL', id: 'import-url'}
-        %span.input-group-btn
-          %button.btn.btn-success{type: "button", id: 'import-event'} Import
-      .col-sm-9.col-sm-offset-3.help-text
-        %span.help-block We will try to read from the url to fill the fields below.
+      / .input-group
+      /   %label.col-sm-3.control-label Import
+      /   .col-sm-9
+      /     %input.form-control{type: "text", placeholder: 'Enter a Meetup or Eventbrite URL', id: 'import-url'}
+      /   %span.input-group-btn
+      /     %button.btn.btn-success{type: "button", id: 'import-event'} Import
+      / .col-sm-9.col-sm-offset-3.help-text
+      /   %span.help-block We will try to read from the url to fill the fields below.
       .form-group
         = f.label :title, class: 'col-sm-3 control-label'
         .col-sm-9
