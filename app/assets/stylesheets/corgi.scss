@@ -15,12 +15,10 @@ body.home.index {
   background-size:100%;
   background-color: rgba(56, 73, 119,1);
   nav {
-    // margin-bottom: 0;
   }
   .home-bg {
     margin-top: 0;
     margin-top: 1em;
-    padding: 1em 5em;
     color: $white;
     @include box-sizing;
     .top-content {
@@ -41,6 +39,7 @@ body.home.index {
     .right-content {
       @include box-sizing;
       padding: 0 2em;
+      margin-bottom: 2em;
     }
     .intro-copy {
       background-color: rgba(55,55,55,0.4);
@@ -92,7 +91,6 @@ body.support {
     margin-bottom: 3em;
     table {
       width :100%;
-      // background: none;
       font-size: 1.5em;
       border: none;
       tbody {
@@ -115,6 +113,7 @@ body.support {
     vertical-align: bottom;
   }
 }
+
 
 @import 'identity_cards';
 @import 'nav';
