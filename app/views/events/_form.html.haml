@@ -1,34 +1,70 @@
-- content_for(:head) do
-  = javascript_include_tag "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
+= form_for event, :html => {:class => 'form-horizontal'} do |f|
+  - if event.errors.any?
+    .alert.alert-danger
+      #{pluralize(event.errors.count, "error")} prohibited this event from being saved:
+      %ul
+        - event.errors.full_messages.each do |msg|
+          %li= msg
 
-= form_for [@event] do |f|
   = f.hidden_field :lat, class: 'form-control'
   = f.hidden_field :lon, class: 'form-control'
   = f.hidden_field :address_line_2, class: 'form-control'
   = f.hidden_field :city, class: 'form-control'
+
+  / %p Welcome to Madi! Here is some instructions on how to create a new event
+
+  / %p
+  /   You can also import data from these sources:
+  /   %ul
+  /     %li Meetup
+  /     %li Eventbrite
+  / .input-group
+  /   %label.col-sm-3.control-label Import
+  /   .col-sm-9
+  /     %input.form-control{type: "text", placeholder: 'Enter a Meetup or Eventbrite URL', id: 'import-url'}
+  /   %span.input-group-btn
+  /     %button.btn.btn-success{type: "button", id: 'import-event'} Import
+  / .col-sm-9.col-sm-offset-3.help-text
+  /   %span.help-block We will try to read from the url to fill the fields below.
   .form-group
-    = f.label :title, "Event Name"
-    = f.text_field :title, class: 'form-control'
+    = f.label :title, class: 'col-sm-3 control-label'
+    .col-sm-9
+      = f.text_field :title, class: 'col-sm-9 form-control'
   .form-group
-    = f.label :date, "Start Date/Time"
-    = f.text_field :start_time, class: 'form-control'
+    = f.label :start_time_date, "Date", class: 'col-sm-3 control-label'
+    .col-sm-9
+      = f.text_field :start_time_date, class: 'form-control date-picker'
+      = f.hidden_field :end_time_date
   .form-group
-    = f.label :end_time, "End Date/Time"
-    = f.text_field :end_time, class: 'form-control'
+    = f.label :start_time_time, "Start Time", class: 'col-sm-3 control-label'
+    .col-sm-9.form-inline
+      = f.time_select :start_time_time, class: 'form-control', ampm: true, minute_step: 15
   .form-group
-    = f.label :url, "Website"
-    = f.text_field :url, class: 'form-control'
+    = f.label :end_time_time, "End Time", class: 'col-sm-3 control-label'
+    .col-sm-9.form-inline
+      = f.time_select :end_time_time, class: 'form-control', ampm: true, minute_step: 15
   .form-group
-    = f.label :description
-    = f.text_area :description, rows: "3", class: 'form-control'
+    = f.label "Venue", class: 'col-sm-3 control-label'
+    .col-sm-9
+      = f.text_area :address_line_1, rows: "3", class: 'form-control', id: 'places-autocomplete'
   .form-group
-    = f.label "Venue"
-    = f.text_area :address_line_1, rows: "3", class: 'form-control', id: 'places-autocomplete'
+    = f.label :description, class: 'col-sm-3 control-label'
+    .col-sm-9
+      = f.text_area :description, rows: "3", class: 'form-control'
+      %span.help-block URLs which include the protocol (eg. http://) and email address will be converted into links.
   .form-group
-    = label_tag :organization
-    = f.autocomplete_field :organization_name, autocomplete_organization_name_organizations_path, class: 'form-control'
+    = label_tag :organization, "Organization", class: 'col-sm-3 control-label'
+    .col-sm-9
+      = f.autocomplete_field :organization_name, autocomplete_organization_name_organizations_path, class: 'form-control'
   .form-group
-    = f.label :price, "Display Price"
-    = f.text_field :price, class: 'form-control'
+    = f.label :url, 'Registration URL', class: 'col-sm-3 control-label'
+    .col-sm-9
+      = f.text_field :url, class: 'form-control'
+      %span.help-block Enter a link if attendees should register on another site.
   .form-group
-    = f.submit 'Save', class: 'btn btn-primary'
+    = f.label :price, "Display Price", class: 'col-sm-3 control-label'
+    .col-sm-9
+      = f.text_field :price, class: 'form-control'
+  .form-group
+    .col-sm-3.col-sm-offset-9
+      = f.submit 'Save Event', class: 'btn btn-primary btn-lg btn-block'

@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   extend TimeSplitter::Accessors
-  split_accessor :start_time, :end_time
+  split_accessor :start_time, :end_time, default: -> { DateTime.current }
 
   has_many :hostings
   has_many :registrations
