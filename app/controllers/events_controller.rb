@@ -10,7 +10,12 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    if current_user
+      @events = Event.joins(:ranks).where(ranks: { user_id: current_user.id }).order('ranks.value desc, events.start_time asc').future
+    else
+      @events = Event.all
+      flash[:notice] = "Welcome to Madi! Your seeing a list of all events currently in our system. Connect one of your social media accounts to see events tailored only to you."
+    end
     respond_to do |format|
       format.html
       format.ics { render text: EventList.new(@events).to_ical }

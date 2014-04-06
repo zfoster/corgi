@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :registrations
   has_many :hostings
   has_many :amps
+  has_many :ranks
 
   has_many :follows, foreign_key: :follower_id
   has_many :complete_follows, -> { complete }, class_name: 'Follow', foreign_key: :follower_id
@@ -35,6 +36,7 @@ class User < ActiveRecord::Base
   belongs_to :default_identity, class_name: 'Identity'
 
   before_update :update_madi_identity
+  after_create :update_ranks
 
   def update_madi_identity
     if default_identity_id_changed?
@@ -55,6 +57,10 @@ class User < ActiveRecord::Base
     amps.exists? event_id: event.id
   end
 
+  def update_ranks
+    UserRanksUpdater.perform_async(self.id)
+  end
+
   def following_events
     # Event.joins(:)
     # Event.find_by_sql(
@@ -68,7 +74,7 @@ class User < ActiveRecord::Base
     # GROUP BY events.id')
 
     # (SELECT(SELECT COUNT(id) FROM registrations WHERE registrations.event_id = events.id) * 2 +
-    #   (SELECT COUNT(id) FROM hostings WHERE hostings.event_id = events.id) * 4 + 
+    #   (SELECT COUNT(id) FROM hostings WHERE hostings.event_id = events.id) * 4 +
     #   (SELECT COUNT(id) FROM amps WHERE amps.event_id = events.id) * 1) AS event_weight
   end
 end

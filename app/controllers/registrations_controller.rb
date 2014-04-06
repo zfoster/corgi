@@ -9,17 +9,11 @@ class RegistrationsController < ApplicationController
 
   def create
     @registration = current_user.registrations.new registration_params
-    if !current_user.payment_token? && @registration.event.price.to_i > 0
-      current_user.update_attribute(:payment_token, '123123123')
-      session[:return_to] = request.env['HTTP_REFERER']
-      redirect_to new_event_registration_path(@event)
+    if @registration.save
+      RegistrationMailer.created(@registration).deliver
+      redirect_to session.delete(:return_to) || :back, notice: 'Sweet! You are attending this event'
     else
-      if @registration.save
-        RegistrationMailer.created(@registration).deliver
-        redirect_to session.delete(:return_to) || :back, notice: 'Sweet! You are attending this event'
-      else
-        redirect_to session.delete(:return_to) || :back, notice: 'There was an issue registering you for this event'
-      end
+      redirect_to session.delete(:return_to) || :back, notice: 'There was an issue registering you for this event'
     end
   end
 

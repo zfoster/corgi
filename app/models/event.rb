@@ -9,6 +9,7 @@ class Event < ActiveRecord::Base
   has_many :hosts, -> { distinct }, through: :hostings, source: :user
   has_many :attendees, -> { distinct }, through: :registrations, source: :user
   has_many :amplifiers, -> { distinct }, through: :amps, source: :user
+  has_many :ranks
   belongs_to :organization
   belongs_to :creator, class_name: "User"
   belongs_to :event
@@ -21,6 +22,8 @@ class Event < ActiveRecord::Base
   scope :past, -> { where('start_time < ?', Time.now) }
   scope :this_week, -> { where(start_time: Time.now..7.days.from_now)}
   scope :this_month, -> { where(start_time: 7.days.from_now..1.month.from_now)}
+
+  after_create :update_ranks
 
   delegate :email, to: :creator, prefix: true
   delegate :name, to: :organization, prefix: true, allow_nil: true
