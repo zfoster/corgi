@@ -23,5 +23,9 @@
     .container
       = render 'layouts/flashes'
       = yield
+      .section-divider
+        %hr
+      %footer.center
+        Having trouble? #{link_to "Send us an email", 'mailto:madihelp@gmail.com'}. Madi is #{link_to 'open source software' , 'https://github.com/southpolesteve/corgi'}.
     = javascript_include_tag "application"
     = yield :javascript
