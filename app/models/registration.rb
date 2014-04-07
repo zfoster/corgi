@@ -10,8 +10,8 @@ class Registration < ActiveRecord::Base
 
   comma do
     user :name
-    user_email
-    created_at
+    user_email :email
+    created_at :registered_at
   end
 
 end
