@@ -1,18 +1,22 @@
 .row
   .col-sm-12
-    %h2 
+    %h2
       Users
     %table.table
       %thead
         %tr
+          %th ID
           %th Name
           %th Identities
           %th Follows
           %th Complete Follows
+          %th Created
       %tbody
         - User.all.each do |user|
           %tr
+            %td= user.id
             %td= user.name
             %td= user.identities.count
             %td= user.follows.count
             %td= user.complete_follows.count
+            %td= user.created_at.to_s(:short)
