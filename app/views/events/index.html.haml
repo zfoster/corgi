@@ -1,9 +1,9 @@
 - if current_user
   .row
-    %h2.date-group.red-banner Your Ranked Events
+    %h2.date-group.red-banner Your Events
     .group-of-events.clearfix
-      - @events.each do |event|
-        = render 'event_list', event: event
+      - @ranks.each do |rank|
+        = render 'event_list', event: rank.event, rank: rank
 - else
   .row
     %h2.date-group.red-banner This Week
