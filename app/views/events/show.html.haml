@@ -59,7 +59,6 @@
       - if @event.lat && @event.lon
         .event-map
           #map-canvas{style: "width: auto; height: 300px; object-fit: cover;", :data => {:lat => @event.lat, :lon => @event.lon}}
-            = link_to "http:/maps.google.com/?q=#{@event.lon},#{@event.lat}"
       .event-location
         = @event.address_line_1
       .event-time-event-page
