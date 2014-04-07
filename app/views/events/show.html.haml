@@ -59,8 +59,7 @@
       - if @event.lat && @event.lon
         .event-map
           #map-canvas{style: "width: auto; height: 300px; object-fit: cover;", :data => {:lat => @event.lat, :lon => @event.lon}}
-            = link_to "http:/maps.google.com/?q=#{@event.lon},#{@event.lat}" do
-              %img.img-responsive{src: "http:/maps.googleapis.com/maps/api/staticmap?zoom=14&size=400x300&maptype=roadmap&markers=color:red%7C#{@event.lon},#{@event.lat}&sensor=false", style: "width: auto; height: 300px;"}
+            = link_to "http:/maps.google.com/?q=#{@event.lon},#{@event.lat}"
       .event-location
         = @event.address_line_1
       .event-time-event-page
