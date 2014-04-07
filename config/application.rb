@@ -23,6 +23,6 @@ module Corgi
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = true
 
-    ActionMailer::Base.default form: 'madihelp@gmail.com'
+    ActionMailer::Base.default from: 'madihelp@gmail.com'
   end
 end

@@ -14,6 +14,7 @@ class RegistrationsController < ApplicationController
         flash[:notice] = "We have marked you as attending. It is important you head to #{@event.url} to complete your registration."
       else
         flash[:notice] = "We have marked you as attending. The host of this event has not provided a registration URL, but we will email you if the add one later."
+      end
       redirect_to session.delete(:return_to) || :back
     else
       redirect_to session.delete(:return_to) || :back, notice: 'There was an issue registering you for this event'
