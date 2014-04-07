@@ -8,7 +8,7 @@
 .row.top-section
   %h1.event-page-header
     = @event.title
-  - if current_user && ( current_user.created_events.include?(@event) || current_user.hosted_events.include?(@event) )
+  - if current_user && ( current_user.created_events.include?(@event) || current_user.hosted_events.include?(@event) || current_user.admin? )
     .new-event-action.clearfix
       .edit
         = link_to "Edit", edit_event_path, class: 'btn btn-default btn-lg'
