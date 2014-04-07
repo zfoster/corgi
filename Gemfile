@@ -39,6 +39,7 @@ gem 'rails_autolink'
 gem 'momentjs-rails', '~> 2.5.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0'
 gem "time_splitter"
+gem "friendly_id"
 
 
 # Don't require so Object does not get all Sintra DSL methods

@@ -104,6 +104,8 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    friendly_id (5.0.3)
+      activerecord (>= 4.0.0)
     google-api-client (0.7.1)
       addressable (>= 2.3.2)
       autoparse (>= 0.3.3)
@@ -358,6 +360,7 @@ DEPENDENCIES
   email_spec
   factory_girl_rails
   figaro
+  friendly_id
   google-api-client
   haml-rails
   httparty

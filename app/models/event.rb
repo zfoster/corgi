@@ -2,6 +2,9 @@ class Event < ActiveRecord::Base
   extend TimeSplitter::Accessors
   split_accessor :start_time, :end_time, default: -> { DateTime.current }
 
+  extend FriendlyId
+  friendly_id :slug_candidates, use: [:slugged, :finders]
+
   has_many :hostings
   has_many :registrations
   has_many :amps
@@ -58,6 +61,14 @@ class Event < ActiveRecord::Base
 
   def display_time
     start_time.strftime("%A %B %e, %l:%M%P")
+  end
+
+  def start_time_year
+    start_time.year
+  end
+
+  def slug_candidates
+    [ :title, [:title, :start_time] ]
   end
 
 end
