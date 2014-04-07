@@ -34,45 +34,33 @@
         .event-description
           %p
             =simple_format h auto_link(@event.description).html_safe
-      / .actions
-      /   - if current_user && current_user.registered?(@event)
-      /     = link_to cancel_registration_event_path(@event), method: :delete do
-      /       .attending.click-to-cancel
-      /         %span.text
-      /           Attending
-      /         = image_tag('check.png', title: 'Attending. Click to cancel registration.', width: "36px", height: "35px")
-      /   - else
-      /     = link_to event_registrations_path(@event), method: :post do
-      /       .attend
-      /         %span.text
-      /           Attend
-      /         = image_tag('add.png', title: 'Click to attend', width: "36px", height: "35px")
-      /   - if current_user && current_user.amplified?(@event)
-      /     .amped
-      /       %span.text
-      /         Amped
-      /       = image_tag('amp.png', title: "Amplified", width: "36px", height: "35px")
-      /   - else
-      /     = link_to amps_path(event_id: @event.id), method: :post do
-      /       .amp
-      /         %span.text
-      /           Amplify
-      /         = image_tag('amped.png', title: "Amplify", width: "36px", height: "35px")
-
-      / .event-price
-      /   - if @event.price == 0 || @event.price == nil
-      /     %p No charge
-      /   - else
-      /     %p
-      /       Cost:
-      /       = "$" + @event.price.to_s
+      .actions
+        - if current_user && current_user.registered?(@event)
+          = link_to cancel_registration_event_path(@event), method: :delete do
+            .attending.click-to-cancel
+              %span.text Attending
+              = image_tag('check.png', title: 'Attending. Click to cancel registration.', width: "36px", height: "35px")
+        - else
+          = link_to event_registrations_path(@event), method: :post do
+            .attend
+              %span.text Attend
+              = image_tag('add.png', title: 'Click to attend', width: "36px", height: "35px")
+        - if current_user && current_user.amplified?(@event)
+          .amped
+            %span.text Amped
+            = image_tag('amp.png', title: "Amplified", width: "36px", height: "35px")
+        - else
+          = link_to amps_path(event_id: @event.id), method: :post do
+            .amp
+              %span.text Amplify
+              = image_tag('amped.png', title: "Amplify", width: "36px", height: "35px")
   #event-right.col-xs-12.col-md-4
     .event-details
       - if @event.lat && @event.lon
         .event-map
           #map-canvas{style: "width: auto; height: 300px; object-fit: cover;", :data => {:lat => @event.lat, :lon => @event.lon}}
-            = link_to "http://maps.google.com/?q=#{@event.lon},#{@event.lat}" do
-              %img.img-responsive{src: "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=400x300&maptype=roadmap&markers=color:red%7C#{@event.lon},#{@event.lat}&sensor=false", style: "width: auto; height: 300px;"}
+            = link_to "http:/maps.google.com/?q=#{@event.lon},#{@event.lat}" do
+              %img.img-responsive{src: "http:/maps.googleapis.com/maps/api/staticmap?zoom=14&size=400x300&maptype=roadmap&markers=color:red%7C#{@event.lon},#{@event.lat}&sensor=false", style: "width: auto; height: 300px;"}
       .event-location
         = @event.address_line_1
       .event-time-event-page
@@ -92,20 +80,18 @@
         = link_to @event.url, @event.url
 
       .hosts
-        %h3 Hosts
-        %ul
+        %h3 HOSTS
+        %p
           - @event.hosts.each do |user|
-            %p
-              = user.name
-              |
+            = user.name
+            |
 
       .attendees
         %h3 ATTENDEES
-        %ul
+        %p
           - @event.attendees.each do |user|
-            %p
-              = user.name
-              |
+            = user.name
+            |
 
 - content_for :javascript do
   :javascript

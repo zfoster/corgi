@@ -13,7 +13,6 @@ $sansfont: "Ubuntu", Helvetica, Arial, sans-serif;
 @mixin heading-text {
   font: {
     family: $sansfont;
-    size: 16px;
     weight: bold;
   }
   color: $dark-gray;

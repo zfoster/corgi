@@ -22,5 +22,7 @@ module Corgi
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = true
+
+    ActionMailer::Base.default form: 'madihelp@gmail.com'
   end
 end
