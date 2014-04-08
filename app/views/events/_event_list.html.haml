@@ -9,7 +9,7 @@
           = event.display_time
       .location
         - if event.address_line_1.present?
-          = event.address_line_1
+          = event.display_address
       - if event.description.present?
         .description
           = truncate event.description, length: 150

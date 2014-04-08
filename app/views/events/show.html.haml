@@ -60,13 +60,7 @@
         .event-map
           #map-canvas{style: "width: auto; height: 300px; object-fit: cover;", :data => {:lat => @event.lat, :lon => @event.lon}}
       .event-location
-        = @event.address_line_1
-      .event-time-event-page
-        = @event.display_date
-        - if @event.end_time.present?
-          = @event.start_time.strftime("%l:%M %p")+ " to " + @event.end_time.strftime("%l:%M %p")
-        - else
-          = @event.start_time.strftime("%l:%M %p")
+        = @event.display_address
       .event-price
         - if @event.price == 0 || @event.price == nil
           %p No charge
@@ -77,19 +71,20 @@
       .event-url
         = link_to @event.url, @event.url
 
-      .hosts
-        %h3 HOSTS
-        %p
-          - @event.hosts.each do |user|
-            = user.name
-            |
-
-      .attendees
-        %h3 ATTENDEES
-        %p
-          - @event.attendees.each do |user|
-            = user.name
-            |
+      - if @event.hosts.any?
+        .hosts
+          %h3 HOSTS
+          %p
+            - @event.hosts.each do |user|
+              = user.name
+              |
+      - if @event.attendees.any?
+        .attendees
+          %h3 ATTENDEES
+          %p
+            - @event.attendees.each do |user|
+              = user.name
+              |
 
 - content_for :javascript do
   :javascript

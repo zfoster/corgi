@@ -55,6 +55,10 @@ class Event < ActiveRecord::Base
     EventRanksUpdater.perform_async(self.id)
   end
 
+  def display_address
+    address_line_1.chomp(", WI, United States")
+  end
+
   def display_date
     start_time.strftime("%A %B #{start_time.day.ordinalize}")
   end
