@@ -21,7 +21,8 @@ class Event < ActiveRecord::Base
 
   scope :closed, -> { where(closed: true) }
   scope :open, -> { where(closed: false) }
-  scope :future, -> { where('start_time > ?', 1.month.from_now) }
+  scope :future, -> { where('start_time > ?', Time.now) }
+  scope :after_this_month, -> { where('start_time > ?', 1.month.from_now) }
   scope :past, -> { where('start_time < ?', Time.now) }
   scope :this_week, -> { where(start_time: Time.now..7.days.from_now)}
   scope :this_month, -> { where(start_time: 7.days.from_now..1.month.from_now)}
@@ -56,7 +57,7 @@ class Event < ActiveRecord::Base
   end
 
   def display_address
-    address_line_1.chomp(", WI, United States")
+    address_line_1.try(:chomp, ", WI, United States")
   end
 
   def display_date
