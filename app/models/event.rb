@@ -57,7 +57,7 @@ class Event < ActiveRecord::Base
   end
 
   def display_address
-    address_line_1.chomp(", WI, United States")
+    address_line_1.try(:chomp, ", WI, United States")
   end
 
   def display_date
