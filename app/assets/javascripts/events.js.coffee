@@ -91,3 +91,11 @@ if $('body').hasClass('events')
 
       return
     google.maps.event.addDomListener window, "load", initialize
+
+  if $('body').hasClass('show')
+    $("#get-embed-code").on 'click', ()->
+      $("#embed-code").toggle()
+
+
+    $("#event-embed-code").on 'click', ()->
+      $("#event-embed-code").select()

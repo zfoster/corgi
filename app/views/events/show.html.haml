@@ -70,6 +70,38 @@
             = "$" + @event.price.to_s
       .event-url
         = link_to @event.url, @event.url
+      .event-embed
+        .embed-link
+          = link_to "Share this event", "javascript:void(0);", id: 'get-embed-code'
+        #embed-code{style: "display:none;"}
+          %textarea#event-embed-code{readonly: "readonly", style: "width: 100%;", rows:4}
+            #madi-event-widget{style: "width: 100%; line-height: 1em;"}
+              %table{style: "width: 100%;"}
+                %tr
+                  %td.madi-widget-event-info{style: "width: 75%;"}
+                    %table{style: "table-layout: fixed; width: 100%;"}
+                      %tr
+                        %td{style: "width: 90px;"}
+                          = link_to root_url, title: "Visit MADi", style: "display: block;, text-decoration: none;" do
+                            .madi-widget-logo{style: "width: 95px; box-sizing:border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;"}
+                              %span{style: "position: relative; color: #666; font-weight: bold; font-size: 16px;"} ON
+                              = image_tag('madi-logo.png', title: 'MADi Logo', alt: "MADi Logo", style: "width: 55px; padding: 0; box-shadow: none; border: none;")
+                        %td{style: "width: 70%; overflow-x: hidden; white-space: nowrap;"}
+                          .madi-widget-event-title
+                            = link_to event_url do
+                              %h3{style: "font-size: 24px; color: #666"}
+                                = @event.title
+                        %td{style: "white-space: nowrap; padding-left: 10px;"}
+                          .madi-widget-event-date
+                            %span
+                              = @event.start_time.strftime("%a %b %-d")
+                  %td.madi-widget-event-actions{style: "width: 25%; text-transform: uppercase; padding: 10px 0; text-align: right;"}
+                    %table{style: "float:right;"}
+                      %tr
+                        %td
+                          = link_to "Attend", event_url, style: "padding: 6px 10px; background-color: #2070D7; color: white; border: 2px solid #2070D7"
+                        %td
+                          = link_to "Amplify", event_url, style: "padding: 6px 10px; background-color: white; color: #666; border: 2px solid #666;"
 
       - if @event.hosts.any?
         .hosts
