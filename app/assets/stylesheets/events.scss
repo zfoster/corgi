@@ -26,6 +26,7 @@ body.events.show {
     .event-page-header {
       text-transform: uppercase;
       float: left;
+      margin-top: 0;
     }
   }
   .section-divider {
@@ -90,14 +91,13 @@ body.events.show {
     width: 100%;
     padding: 10px;
     a {
-
       div {
         padding: 0 0 0 10px;
         width: auto;
         color: white;
         text-transform: uppercase;
-        border-radius: 4px;
-        border: 2px solid;
+        border-radius: 2px;
+        border: 1px solid;
         &.attend {
           background-color: $blue;
           border-color: $blue;
@@ -135,13 +135,16 @@ body.events.show {
       width: auto;
       color: white;
       text-transform: uppercase;
-      border-radius: 4px;
-      border: 2px solid;
+      border-radius: 2px;
+      border: 1px solid;
       background-color: $dark-gray;
       border-color: $dark-gray;
       margin-right: 8px;
       color: $white;
       float: left;
+      span {
+        vertical-align: middle;
+      }
     }
   }
   .form-group.title {
@@ -171,7 +174,7 @@ body.events.show {
 body.events.show {
   .actions a {
     div {
-      padding: 0 10px;
+      padding: 0 0 0 10px;
       width: auto;
       color: white;
       text-transform: uppercase;
@@ -179,7 +182,7 @@ body.events.show {
         background-color: $green;
       }
       &.amp {
-        background-color: $dark-gray;
+        background-color: $light-gray;
       }
       &.attend {
         background-color: $blue;

@@ -87,7 +87,7 @@
                               %span{style: "position: relative; color: #666; font-weight: bold; font-size: 16px;"} ON
                               = image_tag('madi-logo.png', title: 'MADi Logo', alt: "MADi Logo", style: "width: 55px; padding: 0; box-shadow: none; border: none;")
                         %td{style: "width: 70%; overflow-x: hidden; white-space: nowrap;"}
-                          .madi-widget-event-title
+                          .madi-widget-event-title{style: "overflow-x: hidden; line-height: 2em;"}
                             = link_to event_url do
                               %h3{style: "font-size: 24px; color: #666"}
                                 = @event.title
