@@ -44,7 +44,7 @@ class Event < ActiveRecord::Base
     event.start = start_time.utc.strftime('%Y%m%dT%H%M%SZ')
     event.end = end_time.utc.strftime('%Y%m%dT%H%M%SZ')
     event.summary = "On MADi: " + title
-    event.description = "www.meetmadi.com/events/#{@attributes['slug']} " + description
+    event.description = "www.meetmadi.com/events/#{@attributes['slug']}\r\n\r\n" + description
     event.url =  "www.meetmadi.com/events/#{@attributes['slug']}"
     event
   end
