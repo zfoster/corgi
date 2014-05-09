@@ -43,8 +43,8 @@ class Event < ActiveRecord::Base
     event = Icalendar::Event.new
     event.start = start_time.utc.strftime('%Y%m%dT%H%M%SZ')
     event.end = end_time.utc.strftime('%Y%m%dT%H%M%SZ')
-    event.summary = "On MADi: " + title
-    event.description = "www.meetmadi.com/events/#{@attributes['slug']}\r\n\r\n" + description
+    event.summary = "on MADi: " + title
+    event.description = description + "\r\n\r\nwww.meetmadi.com/events/#{@attributes['slug']}"
     event.url =  "www.meetmadi.com/events/#{@attributes['slug']}"
     event
   end
