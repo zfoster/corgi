@@ -32,6 +32,8 @@
             .attend
               %span.text Attend
               = image_tag('add.png', title: 'Click to attend', width: "36px", height: "35px")
+        - if current_user && current_user.registered?(event)
+          = link_to 'Finish Registration', event.url
         - if current_user && current_user.amplified?(event)
           .amped
             %span.text
