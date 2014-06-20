@@ -1,4 +1,6 @@
-$('.date-picker').datetimepicker({pickTime: false});
+$('.date-picker').datetimepicker({
+  minDate: new Date(),
+  pickTime: false});
 
 $('#event_start_time_date').on 'change', ()->
     $('#event_end_time_date').val($(this).val())
