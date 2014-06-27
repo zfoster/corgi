@@ -4,6 +4,7 @@ rvm:
 before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database deploy_test' -U postgres
+  - rake db:migrate RAILS_ENV=test
 notifications:
   email: false
 services:
