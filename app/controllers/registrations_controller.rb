@@ -8,7 +8,7 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    @registration = current_user.registrations.new registration_params
+    @registration = current_user.registrations.new(event_id: @event.id)
     if @registration.save
       if @event.url.present?
         flash[:notice] = "We have marked you as attending. It is important you head to #{@event.url} to complete your registration."
