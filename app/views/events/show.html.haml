@@ -109,14 +109,16 @@
           %p
             - @event.hosts.each do |user|
               = user.name
-              |
+              - if @event.hosts.size > 1
+                |
       - if @event.attendees.any?
         .attendees
           %h3 ATTENDEES
           %p
             - @event.attendees.each do |user|
               = user.name
-              |
+              - if @event.attendees.size > 1
+                |
 
 - content_for :javascript do
   :javascript
