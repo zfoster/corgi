@@ -31,6 +31,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    event_params["price"].gsub(/[^0-9,.]/, "")
     @event = current_user.created_events.new(event_params)
     @event.end_time_date = @event.start_time_date if @event.start_time_date
     if @event.save
