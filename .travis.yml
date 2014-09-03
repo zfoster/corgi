@@ -1,9 +1,10 @@
 language: ruby
 rvm:
-  - 2.1.1
+  - 2.1.2
 before_script:
   - cp config/database.travis.yml config/database.yml
-  - psql -c 'create database corgi_test' -U postgres
+  - psql -c 'create database deploy_test' -U postgres
+  - bundle exec rake db:migrate RAILS_ENV=test
 notifications:
   email: false
 services:
