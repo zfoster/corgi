@@ -28,7 +28,7 @@
               %span.text Attending
               = image_tag('check.png', title: 'Attending. Click to cancel registration.', width: "36px", height: "35px")
         - else
-          = link_to event_registrations_path(event), method: :post do
+          = link_to event_registrations_path(event_id: event.id), method: :post do
             .attend
               %span.text Attend
               = image_tag('add.png', title: 'Click to attend', width: "36px", height: "35px")
