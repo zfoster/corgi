@@ -16,6 +16,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
 gem "omniauth-google-oauth2"
+gem 'selenium-webdriver'
 gem 'pg'
 gem 'sentry-raven'
 gem "comma"

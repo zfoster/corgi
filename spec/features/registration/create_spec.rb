@@ -1,22 +1,23 @@
 require 'spec_helper'
+require 'sidekiq/testing'
 
 Sidekiq::Testing.inline! do
   describe "An authenticated user registers to attend event" do
 
-    let!(:event) { create(:event) }
+    # let!(:event) { create(:event) }
+    # let!(:user) { create(:user) }
+    # let!(:rank) { create(:rank, user: user, event: event) }
 
-    context 'chooses an event' do
+    # context 'chooses an event', js: true do
 
-      # it "attends from a list of events" do
-      #   visit root_path
-      #   click_link 'Connect with Facebook'
-      #   click_on 'Events'
-      #   first('.attend').click
-      #   expect(page).to have_content 'You are attending this event'
-      #   first(".actions .attending")
-      #   first(".actions .attending a")
-      #   expect(unread_emails_for("bob@example.com").size).to eq(1)
-      # end
+    #   it "attends from a list of events" do
+    #     visit root_path
+    #     click_link 'Connect with Facebook'
+    #     click_on 'Events'
+    #     binding.pry
+    #     first('.attend').click
+    #     expect(page).to have_content 'You are attending this event'
+    #   end
 
       # it 'attends a paid event' do
       #   visit root_path
