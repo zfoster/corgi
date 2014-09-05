@@ -54,6 +54,6 @@ Sidekiq::Testing.inline! do
       #   expect(page).to have_content 'Attend'
       #   expect(page).to have_content 'There was a billing error!'
       # end
-    end
+    # end
   end
 end
