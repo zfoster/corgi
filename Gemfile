@@ -28,7 +28,7 @@ gem 'httparty'
 gem 'nokogiri'
 gem 'rails3-jquery-autocomplete'
 gem 'icalendar'
-gem 'twitter', "~> 4.8.1"
+gem 'twitter'
 gem "koala"
 gem 'linkedin'
 gem 'google-api-client'
