@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   has_one :google_identity, -> { where provider: 'google' }, class_name: 'Identity'
   belongs_to :default_identity, class_name: 'Identity'
 
+  after_create :set_first_and_last_name
   before_update :update_madi_identity
   after_create :update_ranks
 
@@ -63,6 +64,11 @@ class User < ActiveRecord::Base
 
   def update_ranks
     UserRanksUpdater.perform_async(self.id)
+  end
+
+  def set_first_and_last_name
+    names = name.split(' ')
+    update_attributes(first_name: names[0], last_name: names[1])
   end
 
   def following_events
