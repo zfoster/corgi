@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
   before_update :update_madi_identity
   after_create :update_ranks
 
+  alias_attribute :FirstName, :first_name
+  alias_attribute :LastName, :last_name
+  alias_attribute :CompanyName, :company_name
+
   def update_madi_identity
     if default_identity_id_changed?
       self.avatar = default_identity.info['image']
