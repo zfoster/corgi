@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407230203) do
+ActiveRecord::Schema.define(version: 20140908211312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -193,6 +193,9 @@ ActiveRecord::Schema.define(version: 20140407230203) do
     t.text     "pulled_events"
     t.string   "payment_token"
     t.boolean  "admin",               default: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "company_name"
   end
 
   add_index "users", ["default_identity_id"], name: "index_users_on_default_identity_id", using: :btree

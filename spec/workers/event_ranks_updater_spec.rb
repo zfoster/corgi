@@ -4,7 +4,7 @@ describe EventRanksUpdater do
 
   describe "#perform" do
     before do
-      2.times { User.create }
+      2.times { User.create(name: 'Bob Loblaw') }
     end
 
     it 'should queue a rank update job' do
