@@ -4,13 +4,15 @@
 [![Code Climate](https://codeclimate.com/github/southpolesteve/corgi.png)](https://codeclimate.com/github/southpolesteve/corgi)
 [![Coverage Status](https://coveralls.io/repos/southpolesteve/corgi/badge.png)](https://coveralls.io/r/southpolesteve/corgi)
 
+MADi is an open source community network that uses your existing social connections to identify and show you the Greater Madison tech and entrepreneurship events you need to know about.
+
 ## Setup
 
 - Deploy to heroku
 - Add sentry
-- Migrat database on heroku
+- Migrate database on heroku
 - Add hstore to database
-- Setup config
+- Setup config (ask current developer for application.yml local config)
 
 ### Configuration
 
@@ -20,8 +22,8 @@ Corgi stores all configuration in environment variables on heroku.
 
 `rake secret`
 
-#### Facebook
-#### Twitter
-Make sure to go to app settings on twitter and check `Allow this application to be used to Sign in with Twitter`
-#### LinkedIn
-#### Google+
+### Contribute
+
+- Fork the project
+- Work on a current issue or, if you have an idea, submit an issue
+- Submit a pull request (with tests!)
