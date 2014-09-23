@@ -22,6 +22,7 @@ gem 'pg'
 gem 'sentry-raven'
 gem "comma"
 gem 'activemerchant'
+gem 'comfortable_mexican_sofa'
 gem 'paypal-sdk-rest'
 gem 'paperclip'
 gem 'american_date'
