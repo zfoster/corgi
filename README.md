@@ -35,6 +35,7 @@ Corgi stores all configuration in environment variables on heroku.
 - Create event widgets to be published on blogs, etc. that link to Madi events
 - Create place for local news/upcoming events coverage
 - General design touch ups
+- Try out graph database (Neo4J?)
 
 ### Questions?
 
